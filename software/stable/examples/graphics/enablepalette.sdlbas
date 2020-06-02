@@ -1,0 +1,23 @@
+'
+' sdlBasic example  Graphics:enablepalette
+'
+'   Name:      enablepalette.sdlbas
+'   Purpose:    enable disable and check the palettemode in 8 bit display
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+setdisplay(640,480,8,0)
+enablepalette(1)
+
+pen(255)
+prints(" this command works only with 8bit fullscreen display (on linux in many distro you must restart x)")
+
+
+for i= 1 to 127
+    color(i,rgb(i,127,0))
+    ink(i)
+    line(0,32+i,640,64+i)
+next
+
+waitkey

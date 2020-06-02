@@ -1,0 +1,12 @@
+'
+'scroll print
+'
+
+setautoback(25)
+curson
+
+for i= 0 to 200
+    prints(str$(i))
+next
+
+waitkey

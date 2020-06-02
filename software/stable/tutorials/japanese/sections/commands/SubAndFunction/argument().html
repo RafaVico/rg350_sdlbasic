@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>argument$()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">argument$()
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">サブルーチンやファンクションの呼び出し元から渡されたアーギュメント。 
+			サブルーチンやファンクションの呼び出し時のパラメーターのやり取りに使用する。 古い<a href="_argC.html"><span style="font-weight: bold;">
+					argC</span> </a>, <a href="_argV.html"><span style="font-weight: bold;">argV</span>
+			</a>などの代わりのコマンド </span><span class="syntax2">
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">numberOfArguments </span><span class="syntax2">
+				= argument$()
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">argument </span><span class="syntax2">
+				= argument$( n </span><span class="syntax2">) </span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text"></span><span class="text">パラメータなしの時は呼び出し元からわたされた 
+			アーギュメントの数,パラメーターnが指定されるときｎ番目のアーギュメント。 </span><span class="text" style="font-style: italic; font-weight: bold;">
+			n</span><span class="text"> </span>
+		<br class="text">
+		<span class="text">$は省略可</span><span style="font-weight: bold;" class="text"> argument()
+		</span><span class="syntax2">
+			<br>
+			<br>
+			<span class="smallTitle">例:&nbsp;</span><span class="text"></span></span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">sub mySub(...)</span>
+			<br class="code">
+			<div style="margin-left: 40px;">
+				<span class="code">for i= 1 to <span style="font-weight: bold;">argument</span></span>
+				<br class="code">
+				<div style="margin-left: 40px;">
+					<span class="code">prints( <span style="font-weight: bold;">argument(</span> i <span style="font-weight: bold;">
+							)</span> )</span>
+					<br class="code">
+				</div>
+				<span class="code">next</span>
+				<br class="code">
+			</div>
+			<span class="code">end sub</span>
+			<br class="code">
+			<span class="code">mySub("test1")</span>
+			<br class="code">
+			<span class="code">mySub("test2","more arguments",1,9)</span>
+			<br class="code">
+			<span class="code">waitkey</span>
+			<br>
+		</div>
+		<br>
+		<span class="text">参照:<a href="sub.html"><span style="font-weight: bold;">sub</span></a>
+			, <a href="function.html"><span style="font-weight: bold;">function</span></a> </span>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+'
+' sdlBasic example Run Time:isfbsd
+'
+'   Name:      isfbsd.sdlbas
+'   Purpose:    restituisce 1 se il sistema operativo usato e' FreeBSD
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

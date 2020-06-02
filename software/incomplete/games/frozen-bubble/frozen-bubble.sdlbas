@@ -1,0 +1,795 @@
+#!/usr/local/bin/sdlBasic
+'
+' sdlBasic game: Frozen bubble
+'
+'  Name:      frozen-bubble.sdlbas
+'  Purpose:   rewriting of opensource perl game
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' Bugs: many at this time: please report!!!
+'
+' Todo:
+' 2 player version ,load level , key config ,high score and editor
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setdisplay(800,600,32,1)
+autoback(-15)
+mousehide
+common settings[8]
+common sb,c,c1,c2
+common xball,yball
+common ballcount
+common tableball[ 25,25 ]
+common appendemap[ 25, 25 ]
+common tablev[512]
+common gameover,win
+common ycompressor,countcompressor
+
+'_____________________________________________________________________________________________________________________
+'SECTION INIT
+
+sub loadsettings
+    if fileexists("frozen-bubble.cfg") then
+	open "frozen-bubble.cfg" for input as 1
+	for i = 1 to 8
+	    file input #1,a$
+	    settings[i]=val(a$)
+	next
+	close 1
+    end if
+    if settings[4]=0 then
+	setdisplay(640,480,16,1)
+    else
+	setdisplay(640,480,16,0)
+    end if
+
+end sub
+
+sub savesettings
+	open "frozen-bubble.cfg" for output as 1
+	for i =1  to 8
+	    print #1,str$(settings[i])
+	next
+	close 1
+end sub
+
+sub init
+
+    setfont("gfx/indigo.ttf")
+    cls
+    text(50,10,30,"loading..")
+
+    ink(0xff0000):text(100,200,40,"sdlBasic Go!!")
+
+    ink(0xffff00):text (50,260,25,"sure!! this is a basic")
+    ink(0xffffff)
+    text (191,10,30,"..")
+    screenswap
+
+
+    'Title
+
+    loadimage("gfx/menu/back_start.png",1)
+    loadimage("gfx/menu/version.png",2)
+    loadimage("gfx/menu/banner_artwork.png",10)
+    loadimage("gfx/menu/banner_cpucontrol.png",11)
+    loadimage("gfx/menu/banner_leveleditor.png",12)
+    loadimage("gfx/menu/banner_soundtrack.png",13)
+
+    'loadimage("gfx/menu/small_ping.png",6)
+
+    loadimage("gfx/menu/txt_1pgame_off.png",110)
+    loadimage("gfx/menu/txt_1pgame_over.png",111)
+
+    loadimage("gfx/menu/txt_2pgame_off.png",120)
+    loadimage("gfx/menu/txt_2pgame_over.png",121)
+
+    loadimage("gfx/menu/txt_editor_off.png",130)
+    loadimage("gfx/menu/txt_editor_over.png",131)
+
+    loadimage("gfx/menu/txt_fullscreen_off.png",140)
+    loadimage("gfx/menu/txt_fullscreen_over.png",141)
+    loadimage("gfx/menu/txt_fullscreen_act_off.png",142)
+    loadimage("gfx/menu/txt_fullscreen_act_over.png",143)
+
+    'loadimage("gfx/menu/txt_graphics_1.png",150)
+    loadimage("gfx/menu/txt_graphics_1_off.png",150)
+    loadimage("gfx/menu/txt_graphics_1_over.png",151)
+    'loadimage("gfx/menu/txt_graphics_2.png",24)
+    loadimage("gfx/menu/txt_graphics_2_off.png",152)
+    loadimage("gfx/menu/txt_graphics_2_over.png",153)
+    'loadimage("gfx/menu/txt_graphics_3.png",27)
+    loadimage("gfx/menu/txt_graphics_3_off.png",154)
+    loadimage("gfx/menu/txt_graphics_3_over.png",155)
+
+    loadimage("gfx/menu/txt_sound_off.png",160)
+    loadimage("gfx/menu/txt_sound_over.png",161)
+    loadimage("gfx/menu/txt_sound_act_off.png",162)
+    loadimage("gfx/menu/txt_sound_act_over.png",163)
+
+    loadimage("gfx/menu/txt_keys_off.png",170)
+    loadimage("gfx/menu/txt_keys_over.png",171)
+
+    loadimage("gfx/menu/txt_highscores_off.png",180)
+    loadimage("gfx/menu/txt_highscores_over.png",181)
+
+    text (212,10,30,"..")
+    screenswap
+
+
+    'loadimage("gfx/menu/txt_box_checked.png",11)
+    'loadimage("gfx/menu/txt_box_unchecked.png",12)
+    'loadimage("gfx/menu/txt_circle_full.png",13)
+    'loadimage("gfx/menu/txt_circle_void.png",14)
+    'loadimage("gfx/menu/void_panel.png",39)
+
+
+    'balls
+    setcolorkey(-1)
+    for i = 1 to 8
+	loadimage("gfx/balls/bubble-"+str$(i)+".gif",1000+i)
+	hotspot(1000+i,1,1)
+    next
+    loadimage("gfx/balls/bubble-colourblind-2.gif",1010)
+    setcolorkey(-1)
+
+    'shoot
+	loadimage("gfx/shoot/base_0.png",1150)
+	hotspot(1150,1,1)
+    for i = -39 to -1
+	copyimage(1150,1150+i)
+	rotateimage(1150+i,i*2)
+	hotspot(1150+i,1,1)
+    next
+
+    for i = 1 to 39
+	copyimage(1150,1150+i)
+	rotateimage(1150+i,i*2)
+	hotspot(1150+i,1,1)
+    next
+
+    text (233,10,30,"..")
+    screenswap
+
+
+
+    'game
+
+
+    loadimage("gfx/back_one_player.png",1051)
+    loadimage("gfx/win_panel_1player.png",1052)
+    loadimage("gfx/lose_panel.png",1053)
+
+    loadimage("gfx/pause_1.png",1054)
+    loadimage("gfx/pause_2.png",1055)
+    loadimage("gfx/pause_3.png",1056)
+    loadimage("gfx/pause_4.png",1057)
+    loadimage("gfx/pause_5.png",1058)
+
+    loadimage("gfx/compressor_main.png",1060)
+    loadimage("gfx/compressor_ext.png",1061)
+    loadimage("gfx/banane.png",1062)
+
+
+
+
+
+
+
+
+
+    'sounds
+
+    loadsound("snd/menu_change.wav",1)
+    loadsound("snd/menu_selected.wav",2)
+
+    loadsound("snd/applause.wav",3)
+    loadsound("snd/cancel.wav",4)
+    loadsound("snd/destroy_group.wav",5)
+    loadsound("snd/hurry.wav",6)
+    loadsound("snd/launch.wav",7)
+    loadsound("snd/lose.wav",8)
+    loadsound("snd/malus.wav",9)
+    loadsound("snd/newroot.wav",10)
+    loadsound("snd/newroot_solo.wav",11)
+    loadsound("snd/noh.wav",12)
+    loadsound("snd/pause.wav",13)
+    loadsound("snd/rebound.wav",14)
+    loadsound("snd/snore.wav",15)
+    loadsound("snd/stick.wav",16)
+    loadsound("snd/typewriter.wav",17)
+
+    'a$=dirfirst("gfx/b*.png")
+    'i=1
+    'while a$<>""'
+	'    print "loadimage(\"gfx/"+a$+"\","+str$(i)+")"
+	'i+=1
+	'a$=dirnext
+
+    'end while
+    'end
+    text (254,10,30,"..")
+    screenswap
+
+    wait(1000)
+    loadsettings
+end sub
+'_____________________________________________________________________________________________________________________
+'SECTION GAME
+
+sub _boxer(x,y,col)
+    if 1=1 then
+    if (y mod 2)=0 then
+	ink (0):box((x*32)-16,(y*28)+16,(x*32)+16,(y*28)+16+28)
+	screenswap
+	wait(50)
+	ink (col):box((x*32)-16,(y*28)+16,(x*28)+16,(y*28)+16+28)
+	screenswap
+	wait(50)
+    else
+	ink (0):box((x*32)-16+16,(y*28)+16,(x*28)+16+16,(y*28)+16+28)
+	screenswap
+	wait(50)
+	ink (col):box((x*32)-16+16,(y*28)+16,(x*32)+16+16,(y*28)+16+28)
+	screenswap
+	wait(50)
+    end if
+    end if
+end sub
+
+
+
+sub play_sound(n,can)
+    if settings[6]=1 then : playsound(n,can) :end if
+end sub
+
+
+function tablesprite(x,y)
+    n= (y*25)+x+10
+    if livesprite(n) >0 then
+	return n
+    else
+	return 0
+    end if
+end function
+
+
+
+sub compressor
+    sprite(5,160,ycompressor*28-10,1060)
+    pastebob(135,350-(countcompressor*16),1062)
+    if countcompressor>9 then
+	play_sound(11,1)
+	countcompressor=0
+	ycompressor+=1
+	for y = 0 to 15
+	    for x= 5 to 15
+		i=tablesprite(x,y)
+		if  appendemap[x,y]<>0 and livesprite(i)<>0 then
+		    sprite(i,xsprite(i),ysprite(i)+28,frsprite(i))
+		end if
+	    next
+	next
+    pasteicon(0,0,1051)
+    ink (0):bar(135,190,152,350)
+    for i = 0 to ycompressor
+	pastebob(228,i*28-28,1061)
+    next
+    sprite(5,160,ycompressor*28,1060)
+    screenswap
+    end if
+
+end sub
+
+sub shoot(ang)
+    sprite(1,320,400,1150+ang)
+end sub
+
+sub balldistac
+	for y=1 to 15
+	    for x=5 to 15
+		if tablesprite(x,y)<>0 then
+		    appendemap[x,y]=0
+		    if spritehit(tablesprite(x,y),5)<>0 then :appendemap[x,y]=1
+		    elseif tablesprite(x,y-1)<>0 and appendemap[x,y-1]=1 then :appendemap[x,y] =1
+		    elseif tablesprite(x-1,y-1)<>0 and appendemap[x-1,y-1]=1 and (y mod 2)=0 then :appendemap[x,y]=1
+		    elseif tablesprite(x+1,y-1)<>0 and appendemap[x+1,y-1]=1 and (y mod 2)=1 then :appendemap[x,y]=1
+		    end if
+		    if tablesprite(x-1,y)<>0 and appendemap[x-1,y]=1 then :appendemap[x,y] =1 :end if
+		    'if tablesprite(x+1,y)<>0 and appendemap[x+1,y]=1 then :appendemap[x,y] =1 :end if
+		end if
+		if ysprite(tablesprite(x,y))<>(y+ycompressor)*28+28 then :appendemap[x,y]=0:end if
+	    next
+	next
+
+	for y=1 to 15
+	    for x=15 to 5 step -1
+		if appendemap[x,y] =0 then
+		    if tablesprite(x,y-1)<>0 and appendemap[x,y-1]=1 then :appendemap[x,y] =1
+		    elseif tablesprite(x-1,y-1)<>0 and appendemap[x-1,y-1]=1 and (y mod 2)=0 then :appendemap[x,y]=1
+		    elseif tablesprite(x+1,y-1)<>0 and appendemap[x+1,y-1]=1 and (y mod 2)=1 then :appendemap[x,y]=1
+		    end if
+		    'if tablesprite(x-1,y)<>0 and appendemap[x-1,y]=1 then :appendemap[x,y] =1 :end if
+		    if tablesprite(x+1,y)<>0 and appendemap[x+1,y]=1 then :appendemap[x,y] =1 :end if
+		end if
+		if ysprite(tablesprite(x,y))<>(y+ycompressor)*28+28 then :appendemap[x,y]=0:end if
+		if appendemap[x,y]=0 then :end if
+	    next
+	next
+
+end sub
+
+
+sub balldown
+    'while r<>0
+	'r=0
+	for y=1 to 15
+	    for x=5 to 15
+		if tablesprite(x,y)<>0 then
+
+		    if appendemap[x,y]=0 then
+			'end
+			'r=1
+			n=tablesprite(x,y)
+			tablev[n]=8
+			sprite(n,xsprite(n),ysprite(n)+tablev[n],frsprite(n))
+
+			if ysprite(n)>500 then
+			    deletesprite(n)
+			    tableball[x,y]=0
+			    tablev[n]=0
+			end if
+		    end if
+		end if
+	    next
+	next
+	balldistac
+	'screenswap
+    'end while
+end sub
+
+
+sub checkwin
+    win=1
+    for y = 0 to 15
+	for x= 5 to 15
+	    if tableball[x,y]<>0 then :win=0:end if
+	next
+    next
+end sub
+
+sub balldelete(x,y)
+    dim paintmap[ 25, 25 ]
+
+    balls_deletable=0
+    xstart=x
+    ystart=y
+    src_col=tableball[x,y]
+    pm=10
+
+    while(0=0)
+	if tableball[x,y]=src_col then
+	    balls_deletable+=1
+	    paintmap[x,y]=pm
+	else
+	    exit while
+    	end if
+
+	if tableball[x+1,y]=src_col  and paintmap[x+1,y]=0 then
+		    x=x+1
+		    pm=1
+	elseif tableball[x-1,y]=src_col  and paintmap[x-1,y]=0 then
+		    x=x-1
+		    pm=2
+	elseif tableball[x,y+1]=src_col and paintmap[x,y+1]=0 then
+		    y=y+1
+		    pm=3
+	elseif tableball[x+1,y+1]=src_col  and paintmap[x+1,y+1]=0 and (y mod 2)=1 then
+		    y=y+1
+		    x=x+1
+		    pm=4
+	elseif tableball[x-1,y+1]=src_col  and paintmap[x-1,y+1]=0 and (y mod 2)=0 then
+		    y=y+1
+		    x=x-1
+		    pm=5
+	elseif tableball[x,y-1]=src_col  and paintmap[x,y-1]=0 then
+		    y=y-1
+		    pm=6
+	elseif tableball[x+1,y-1]=src_col  and paintmap[x+1,y-1]=0 and (y mod 2)=1 then
+		    y=y-1
+		    x=x+1
+		    pm=7
+	elseif tableball[x-1,y-1]=src_col  and paintmap[x-1,y-1]=0 and (y mod 2)=0 then
+		    y=y-1
+		    x=x-1
+		    pm=8
+	else
+	    'if x=xstart and y=ystart then
+		'exit while
+	    'end if
+
+	    'if paintmap[x,y]=10 then
+		'exit while
+	    'end if
+
+	    if paintmap[x,y]=1 then
+		x=x-1
+	    elseif paintmap[x,y]=2 then
+		x=x+1
+	    elseif paintmap[x,y]=3 then
+		y=y-1
+	    elseif paintmap[x,y]=4 then
+		y=y-1
+		x=x-1
+	    elseif paintmap[x,y]=5 then
+		y=y-1
+		x=x+1
+	    elseif paintmap[x,y]=6 then
+		y=y+1
+	    elseif paintmap[x,y]=7 then
+		y=y+1
+		x=x-1
+	    elseif paintmap[x,y]=8 then
+		y=y+1
+		x=x+1
+	    else
+		'boxer(x,y,0x0000ff)
+		exit while
+	    end if
+	end if
+
+    end while
+
+    if balls_deletable>3 then
+	play_sound(5,1)
+	r=1
+	while r<>0
+	    r=0
+	    for x1=0 to 25
+		for y1 = 0 to 25
+		    if paintmap[x1,y1]<>0 then
+			r=1
+			n=tablesprite(x1,y1)
+			if  tablev[n]=0 then
+			    tablev[n]=-5
+			end if
+			if ysprite(n)<=((y1+ycompressor)*28) then
+			    tablev[n]=0
+			    appendemap[x1,y1]=0
+			    paintmap[x1,y1]=0
+			end if
+			sprite(n,xsprite(n),ysprite(n)+tablev[n],frsprite(n))
+
+			if ysprite(n)>500 then
+			    deletesprite(n)
+			    paintmap[x1,y1]=0
+			    tableball[x1,y1]=0
+			    tablev[n]=0
+			end if
+		    end if
+		next
+	    next
+	    screenswap
+	end while
+    end if
+end sub
+
+
+
+
+sub appendball
+	    y=int(yball/28)-ycompressor
+	    if (y mod 2)=0 then
+		x=int((xball+16)/32)
+	    else
+		x=int((xball)/32)
+	    end if
+
+
+	    tableball[x,y]=c
+	    n=(y*25)+x+10
+	    if n>ballcount then:ballcount=n:end if
+
+	    if (y mod 2)=0 then
+		sprite(n,(x * 32),(y+ycompressor)*28+28,1000+c)
+	    else
+		sprite(n,(x * 32)+16,(y+ycompressor)*28+28,1000+c)
+	    end if
+    	    balldelete(x,y)
+	    balldistac
+	    deletesprite(2)
+
+
+	    xball=320
+	    yball=400
+	    xv=0: yv=0
+	    c=c1
+	    countcompressor+=1
+
+end sub
+
+sub ball(xv,yv)
+    xball+=xv
+    yball+=yv
+
+    if xball <220 and xv <0 then :xv=abs(xv) :end if
+    if xball >420 and xv >0 then :xv=-abs(xv) :end if
+
+    'set collision
+    for i =10 to ballcount
+	if spritehit(2,i) and appendemap[xsprite(i)/32,(ysprite(i)/28)-1-ycompressor]<>0 then
+	    appendball:xv=0:yv=0:exit for
+	end if
+    next
+
+    'if yball <55 then :appendball:xv=0:yv=0:end if
+    if spritehit(2,5) then:appendball:xv=0:yv=0:end if
+
+    sprite(2,xball,yball,1000+c)
+
+end sub
+
+
+sub prepareball(level)
+    for y=1 to 3
+	for x=6 to 13
+	    c=rnd(7)+1
+
+    	    tableball[x,y]=c
+	    appendemap[x,y]=1
+
+	    n=(y*25)+x+10
+	    if n>ballcount then:ballcount=n:end if
+
+	    if (y mod 2)=0 then
+		sprite(n,(x * 32),(y+ycompressor)*28+28,1000+c)
+	    else
+		sprite(n,(x * 32)+16,(y+ycompressor)*28+28,1000+c)
+	    end if
+	next
+    next
+
+end sub
+
+
+
+sub game
+    if fileexists("snd/frozen-mainzik-1p.xm") then
+	loadmusic("snd/frozen-mainzik-1p.xm")
+	if settings[6]=1 then : playmusic(-1):end if
+    end if
+    screenopen(2,640,480,0,0,640,480,0)
+
+
+    while key(27)=0
+	pasteicon(0,0,1051)
+	ink (0):bar(135,190,152,350)
+	screenswap
+
+	c=rnd(7)+1
+	c1=rnd(7)+1
+	c2=rnd(7)+1
+	ang =0
+	launchx=0
+	launchy=0
+	ballcount=10
+	xball=320
+	yball=400
+	countcompressor=0
+	ycompressor=0
+	for x=0 to 25
+	    for y=0 to 25
+		tableball[x,y]=0
+	    next
+	next
+	gameover=0
+	win=0
+	prepareball(0)
+
+	while key(27)=0
+	    compressor
+	    shoot(ang)
+	    ball(launchx,launchy)
+	    balldown
+
+	    for x=5 to 18
+		if tablesprite(x,13-ycompressor)<>0 then: gameover=1 :end if
+	    next
+	    if gameover=1 then :exit while:end if
+
+	    checkwin
+	    if win=1 then
+		sprite(512,160,150,1052)
+		screenswap
+		waitkey
+		deletesprite(512)
+		exit while
+	    end if
+
+	    if key(k_left) then : ang+=1 :end if
+	    if key(k_right) then : ang-=1 :end if
+
+	    if ang<-39 then :ang=-39:end if
+	    if ang>39 then :ang=39 :end if
+
+	    if launchx+launchy=0 then
+		if key(k_up) then
+		    play_sound(7,1)
+		    launchx=-(ang/5)
+		    launchy=-(41-abs(ang))/5
+		    c1=c2
+
+		    r=0
+		    while r=0
+			c2=rnd(7)+1
+			for y =0 to 10
+			    for x=5 to 15
+				if tableball[x,y]=c2 then :r=1:exit for:end if
+			    next
+			    if r=1 then :exit for:end if
+			next
+		    end while
+		end if
+	    else
+		sprite(4,320,400,1000+c1)
+
+	    end if
+
+	    sprite(3,319,455,1000+c2)
+	    screenswap
+	end while
+	if gameover=1 then :exit while:end if
+    end while
+
+    if gameover=1 then
+	play_sound(8,1)
+	sprite(512,160,150,1053)
+	for i =10 to ballcount
+	    if livesprite(i)<> 0 then
+		sprite(i,xsprite(i),ysprite(i),1010)
+		screenswap
+		wait(15)
+	    end if
+	next
+	play_sound(12,1)
+	waitkey
+
+	deletesprite(512)
+    else
+	play_sound(3,1)
+	wait (3000)
+    end if
+    for i =1 to ballcount
+	    deletesprite(i)
+    next
+    screenclose(2)
+    screen(0)
+
+    if fileexists("snd/introzik.xm") then
+	loadmusic("snd/introzik.xm")
+	if settings[6]=1 then : playmusic(-1):end if
+    end if
+end sub
+
+'_____________________________________________________________________________________________________________________
+'SECTION TITLE
+
+sub voicemenu(n,v,s)
+    y=n*50-10
+    fr=n*10+(v*2)+s+100
+    pastebob(60,y,fr):setalpha(fr,128):pasteicon(60,y,fr)
+end sub
+'_____________________________________________________________________________________________________________________
+
+sub runmenu(n)
+    if n= 1 then : game : end if
+
+    if n = 4 then
+	if settings[4]=0 then
+	    settings[4]=1
+	    setdisplay(640,480,32,0)
+
+	else
+	    settings[4]=0
+	    setdisplay(640,480,32,1)
+
+	end if
+    end if
+
+    if n = 5 then
+	select case  (settings[5])
+	    case 2
+	    settings[5]=0
+	    case 1
+	    settings[5]=2
+	    case 0
+	    settings[5]=1
+	end select
+    end if
+
+    if n = 6 then
+	if settings[6]=0 then
+	    settings[6]=1
+	    playmusic(-1)
+	else
+	    settings[6]=0
+	    stopmusic
+	end if
+    end if
+
+    savesettings
+end sub
+'_____________________________________________________________________________________________________________________
+
+sub scrollbanner
+    screen(1)
+    offset(sb,0)
+    sb=sb+1
+    if sb>(640*5) then : sb=0:end if
+    screen (0)
+    screenswap
+end sub
+'_____________________________________________________________________________________________________________________
+
+sub title
+
+    screenopen(1,640*6,20,80,445,210,20,2)
+    pastebob(640,0,10)
+    pastebob(640*2,0,11)
+    pastebob(640*3,0,12)
+    pastebob(640*4,0,13)
+    screen(0)
+    sb=0
+
+    if fileexists("snd/introzik.xm") then
+	loadmusic("snd/introzik.xm")
+	if settings[6]=1 then : playmusic(-1):end if
+    end if
+    n=1
+    while key(27)=0
+	while 0=0
+	    cls
+	    pasteicon(0,0,1)
+	    pastebob(15,435,2)
+	    for i=1 to 8
+		if i=n then
+		    voicemenu(i,settings[i],1)
+		else
+		    voicemenu(i,settings[i],0)
+		end if
+	    next
+	    screenswap
+	    while inkey=0
+		if key(k_up) then :exit while :end if
+		if key(k_down) then :exit while :end if
+		scrollbanner
+
+	    end while
+	    if key(27) then: end :end if
+	    if key(k_up) then :play_sound(1,1) :n-=1 :end if
+	    if key(k_down) then :play_sound(1,1) :n+=1 :end if
+	    if n<1 then :n=1 :end if
+	    if n>8 then :n=8 :end if
+
+	    if key(k_return) then :play_sound(2,1) :runmenu(n):exit while :end if
+	    screenswap
+	    while key(k_up)<>0 or key(k_down)<>0 or key(k_return)<>0:end while
+	end while
+	    while key(k_return)<>0:end while
+    end while
+end sub
+'_____________________________________________________________________________________________________________________
+
+sub main
+init
+while key(27)=0
+    'game
+    title
+end while
+'_____________________________________________________________________________________________________________________
+
+
+end sub
+main

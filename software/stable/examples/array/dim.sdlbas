@@ -1,0 +1,32 @@
+'
+' sdlBasic example Array: dim example
+'
+'   Name:     dim.sdlbas
+'   Purpose:   example dim array
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+dim  array$[100]
+
+for i = 0 to 100
+	array$[i]="record"+str$(i)
+next
+
+
+for i = 0 to 100
+	prints(array$[i])
+next
+
+'erase array$[100]
+dim  array$[110]
+for i = 0 to 110
+	array$[i]="record"+str$(110-i)
+next
+for i = 0 to 110
+	prints(array$[i])
+next
+

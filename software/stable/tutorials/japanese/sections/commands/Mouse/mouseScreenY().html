@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="en">
+<head>
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>mouseScreenY()</title>
+
+
+  <link rel="stylesheet" href="../../style.css" type="text/css">
+
+  <meta content="zoiba" name="author">
+
+</head>
+
+
+<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+
+<div style="text-align: left; background-color: rgb(204, 204, 255);">
+<span class="subTitle">mouseScreenY()<br>
+
+</span>
+</div>
+
+<span class="text"><br>
+
+Returns Y mouse coordinate relative to given screen.
+Old <span style="font-weight: bold;">YmouseScreen</span>
+syntax is still valid but
+discouraged.<br>
+
+</span>
+<br>
+
+<span class="smallTitle">Syntax:
+<br>
+
+</span>
+<div style="text-align: left; background-color: rgb(239, 239, 255);"><span class="syntax">variable
+</span><span class="syntax2"> = mouseScreenY( </span>
+<span class="syntax">screen
+</span><span class="syntax2"> )
+<br>
+
+</span>
+</div>
+
+<span class="text"></span><span class="text"></span><span class="syntax2"></span><br>
+
+<span class="smallTitle">Example:
+<br>
+
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="text code">screenOpen(1,100,100,150,150,100,100,0)
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">ink(rgb(255,0,0))
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">bar(0,0,100,100)
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">screen( 0)
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">while not key(k_esc)
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">&nbsp;&nbsp;&nbsp;
+locate(0,0)
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">&nbsp;&nbsp;&nbsp;
+prints( "Screen 1 X mouse coordinate: " &amp; mouseScreenX( 1 ) )</span><span class="syntax2"><br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">&nbsp;&nbsp;&nbsp;
+prints( "Screen 1 Y mouse coordinate: " &amp; <span style="font-weight: bold;">mouseScreenY(</span> 1 <span style="font-weight: bold;">)</span> )&nbsp;</span><span class="syntax2"></span><span class="syntax2"><br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">&nbsp;&nbsp;&nbsp;
+prints( "Current X mouse coordinate: " &amp; mouseX )
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">&nbsp;&nbsp;&nbsp;
+prints( "Current Y mouse coordinate: " &amp; mouseY )
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">&nbsp;&nbsp;&nbsp;
+waitVBL
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">&nbsp;&nbsp;&nbsp; cls
+<br>
+
+</span>
+</div>
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">wend
+<br>
+
+</span>
+</div>
+
+<br>
+
+<span class="text">
+See also <a style="font-weight: bold;" href="mouseScreenX%28%29.html">mouseScreenX()</a>, <a href="mouseX.html"><span style="font-weight: bold;">mouseX</span></a> and <a href="mouseY.html"><span style="font-weight: bold;">mouseY</span></a> commands.</span>
+</body>
+</html>

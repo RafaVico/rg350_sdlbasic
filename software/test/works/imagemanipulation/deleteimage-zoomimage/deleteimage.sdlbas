@@ -1,0 +1,10 @@
+' crash with deleteimage+zoomimage
+for i =0 to 10
+    loadimage("vroby.jpg",1)
+    zoomimage(1,i+1.1,i+1.1)
+    pasteicon(0,i,1)
+    deleteimage(1)
+    'deleteimage(1)
+    waitkey
+    while(inkey<>0):end while
+next

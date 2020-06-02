@@ -1,0 +1,12 @@
+rm ../*.zip 
+rm ../*.exe
+rm ../*.deb 
+rm ../*.tar.gz 
+
+./mk-linux-targz	    
+./mk-linux-deb  
+./test-install
+cd ..
+
+
+

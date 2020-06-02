@@ -1,0 +1,20 @@
+'
+' sdlBasic example Maths: sin example
+'
+'   Name:     sin.sdlbas
+'   Purpose:   example sin functions
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+prints("command: prints(str$(sin(10))")
+prints(str$(sin(10)))
+prints("command: prints(str$(sin(90))")
+prints(str$(sin(90)))
+prints("command: prints(str$(sin(0))")
+prints(str$(sin(0)))
+prints("press any key to exit")
+waitkey

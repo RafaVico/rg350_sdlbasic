@@ -1,0 +1,53 @@
+setdisplay(320,240,16,0)  '- aqui (esta linha e a de cima) defino otamanho da janela ou resolução, e se quero numa janela ou fullscreen
+paper(0x4488CC)
+cls  '- só escolhi uma cor qualquer para fundo,0x4488CC é o mesmo que a hexcolour #4488CC
+mousehide()
+ '- tira o cursor - às vezes faz jeito, às vezes atrapalha
+screenopen (1,285,256,0,0,0,0,0)  '- <- 320x200, neste caso, poderia ser perfeitamente 184x82, o tamanho da imagem, lá fica um tamanho qualquer de canvas, desde que igual ou maior que o da imagem
+loadimage("mario.png",1)
+pasteicon(0,0,1):
+screen(1)
+
+k=0
+for y=0 to 3:
+	for x=0 to 5
+		k=k+1
+		grab(11+k,x*47,y*64,47,60)
+	next
+next
+
+player_x=int(320/2):player_y=int(280/2)
+leftd=30
+rightd=18
+upd=12
+downd=24
+side=leftd
+pstep=0
+screen(0)
+while 0=0
+  if key(k_left) then
+    side = leftd
+    player_x = player_x - 3
+	pstep=pstep+1
+    end if
+  if key(k_right) then
+    side = rightd
+	 pstep=pstep+1
+    player_x = player_x + 3
+    end if
+  if key(k_up) then
+    side = upd
+    player_y = player_y - 1
+	 pstep=pstep+1
+    end if
+  if key(k_down) then
+    side = downd
+    player_y = player_y + 1
+	 pstep=pstep+1
+    end if
+  bob(0,player_x,player_y,side+pstep)
+
+  if pstep > 4 then: pstep=0 : end if
+
+  waitvbl   '- espera sincronia da frequência do ecrã
+end while

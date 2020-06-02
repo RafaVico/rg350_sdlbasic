@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Dirs:chdir
+'
+'   Name:      chdir.sdlbas
+'   Purpose:    change directory
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+if os="unix" then
+    chdir("/")
+else
+    chdir("c:/")
+end if
+
+prints(dir$)
+waitkey

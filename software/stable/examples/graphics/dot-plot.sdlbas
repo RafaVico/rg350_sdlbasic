@@ -1,0 +1,22 @@
+'
+' sdlBasic example Graphics: dot-plot example
+' 
+'   Name:     dot-plot.sdlbas
+'   Purpose:   example dot-plot functions
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+setautoback(25)
+
+prints("exec dot")
+ink(rgb(255,0,0))
+dot(150,20)
+
+prints("exec plot")
+plot(150,25,rgb(0,255,0))
+
+
+locate(2,20):prints("press space to exit" )
+waitkey(k_space)
+

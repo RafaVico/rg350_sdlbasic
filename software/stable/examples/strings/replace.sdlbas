@@ -1,0 +1,17 @@
+'
+' sdlBasic example Strings: tally example
+' 
+'   Name:     tally.sdlbas
+'   Purpose:   example tally string function
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+a$="ciao ciao"
+prints("string: "+a$)
+prints("replace(a$,\"bye bye\"):"+str$(replace(a$,"bye bye")))
+
+waitkey

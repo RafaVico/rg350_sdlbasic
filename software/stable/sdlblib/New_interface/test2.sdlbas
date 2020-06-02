@@ -1,0 +1,38 @@
+'
+' TEST2 Test advanced of interface
+'
+'_________________________________________________________________________________________________________________
+
+include "interface.sdlblib"
+
+setdisplay( 320,600,0,1)
+
+window1=newcontrol(window,0,20,20,200,450,"my window")
+button1=newcontrol(button, window1,10,10,60,15,"pressed")
+button2=newcontrol(button, window1,80,10,80,15,"removable")
+list1=newcontrol(list,window1,5,30,190,400,0)
+
+for i =0 to 500
+    addlist(list1,str$(i))
+next
+draw
+
+while key(27)=0
+    waitevent(1)
+
+    if getparam(button1,_state)=activated then
+	setparam(window1,_value,"pressed")
+	refresh
+    end if
+
+    if getparam(button2,_state)=activated then
+	destroycontrol(button2)
+	refresh
+    end if
+
+    if getparam(list1,_state)=activated then
+	setparam(window1,_value,getlist(list1,getparam(list1,_value)))
+	refresh
+    end if
+
+end while

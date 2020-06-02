@@ -1,0 +1,47 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  serverTCP.sdlbas
+'| date 16/07/2004
+'|
+'| description:
+'| a little server monouser in port 1024
+'| command "Q" sto the server
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+setdisplay (320,100,0,1)
+
+sub main
+    server=opensock(1024)
+    while key(27)=0
+	if client =0 then
+	    client=acceptsock(server)
+	    	if client <>0 then
+		    prints("remote host is :"+getremoteip(client))
+		    writelinesock(client,"welcome in 1024 sdlBasic server ")
+		    writelinesock(client,"send Q caracter for shootdown this server ")
+		end if
+	else
+	    r=isclientready(client)
+	    if r=-1 then
+			end
+	    end if
+	    if r>0 then
+		ret$=readlinesock(client)
+		writelinesock(client,"ok:"+left$(ret$,len(ret$)-1))
+		if left$(ret$,1)="Q" then
+		    exit while
+		end if
+		prints(ret$)
+	    end if
+	end if
+  end while
+    writelinesock(client,"good bye ")
+    closesock(client)
+    closesock(server)
+end sub
+main

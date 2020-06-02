@@ -1,0 +1,3 @@
+Runtime error on line number 32 of /home/devel_linux/basic/sdlBasicDevel/examples/files/savefile.sdlbas
+the value of author_mail is undefined
+    prints("'  Author:     "+author$+"    ( "+author_mail+" )")

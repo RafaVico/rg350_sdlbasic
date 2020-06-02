@@ -1,0 +1,9 @@
+'
+' sdlBasic example CD support:playcdtracks
+'
+'   Name:      playcdtracks.sdlbas
+'   Purpose:    play the given cd track(s) from frame fr1 of trrack trk1 for ntrks/nfrs
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

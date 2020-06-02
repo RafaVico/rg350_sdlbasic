@@ -1,0 +1,25 @@
+'
+' sdlBasic example control structures:for next 
+' 
+'   Name:      if.sdlbas
+'   Purpose:   example of if then else structure
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+prints("press a number key")
+waitkey
+x$=chr$(inkey)
+if x$="1" then
+	prints("press 1")
+elseif x$="2" then
+	prints("press 2")
+else
+	prints("press other key")
+end if
+if x$="4" then :prints("good bye"):end if
+prints("press esc to exit")
+waitkey (27)

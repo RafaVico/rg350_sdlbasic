@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Dirs:dirfirst
+'
+'   Name:      dirfirst.sdlbas
+'   Purpose:    returns first entry in path dir
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$=dirfirst("./")
+while a$<>""
+    prints(a$)
+    a$=dirnext
+end while
+waitkey

@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Memory Bank:baseimageCC
+'
+'   Name:      baseimageCC.sdlbas
+'   Purpose:    link a memorybank from a imagebank bitmap access with colorkey trasparency
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

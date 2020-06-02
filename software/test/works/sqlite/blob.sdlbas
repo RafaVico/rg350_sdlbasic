@@ -1,0 +1,55 @@
+
+setdisplay(320,240,32,1)
+mousehide()
+
+
+print "OPEN"
+sql_open("./blob.db",0)
+
+sql="SELECT name, image FROM  test;"
+
+print "PREPARE"
+
+sql_prepare(0, 0, sql)
+row=0
+rc=sql_step(0)
+
+while rc = 100 :cols=sql_get_columns(0)
+
+
+	name=sql_get_text(0,0)
+	s= sql_get_image(0,1,-1)
+
+	//print "ROW: " & row & "  ID: " & sql_get_text(0,0)
+
+	h=imageheight(s)
+	w=imagewidth(s)
+
+	zw= 320/w
+	zh= 240/h
+	hotspot(s, 0, 0)
+	zoomimage(s, zw, zh)
+
+	text(0,0, 32, name)
+	pasteicon(0, 50, s)
+
+	rc=sql_step(0)
+	wait(500)
+	cls()
+	row = row + 10
+	waitvbl
+
+end while
+
+print "RC:" & rc
+
+print "FINAL"
+sql_finalize(0)
+
+print "CLOSE"
+sql_close(0)
+wait(500)
+//waitkey
+
+end
+

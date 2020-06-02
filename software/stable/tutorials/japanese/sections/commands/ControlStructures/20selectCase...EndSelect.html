@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>select case ... end select</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">select case ... end select
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text"></span><span class="text">条件式がテストにマッチしたときだけ次のコードを実行する。
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span><span class="syntax2"></span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"><span class="text"></span></span><span class="syntax2">select 
+				case </span><span class="syntax">condition expression</span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case </span><span class="syntax">
+				value1</span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+				&nbsp;&nbsp;&nbsp; <span style="color: rgb(102, 102, 102);">statements to be 
+					executed if value1 match</span></span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; case </span><span class="syntax">
+				value2</span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+				&nbsp;&nbsp;&nbsp; <span style="color: rgb(102, 102, 102);">statements to be 
+					executed if value2 match</span></span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {case </span><span class="syntax">
+				valueN</span><span class="syntax2"> }</span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+				&nbsp;&nbsp;<span style="color: rgb(102, 102, 102);">&nbsp; {statements to be 
+					executed if valueN match}</span></span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {case else}</span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+				&nbsp;&nbsp;&nbsp;<span style="color: rgb(102, 102, 102);"> {statements to be 
+					executed if none of previous cases match}</span></span>
+			<br class="syntax2">
+			<span class="syntax2">end select </span>
+			<br>
+		</div>
+		<br class="text">
+		<span class="syntax">condition expression</span><span class="text">の変数または式 </span>
+		<span class="text">がcase文のvalue値が一致したときのみ次のブロックコマンドを実行する。
+			<br>
+			このコマンドは多くの可能な値をテストする際に<a href="10if-then-endIf.html"><span style="font-weight: bold;"> if...else</span></a>
+			をたくさん並べるよりプログラムがより読みやすくなる。 </span>
+		<br class="text">
+		<span class="text">
+			<br>
+			テスト値はコンマで区切って並べてもよい： </span><span class="syntax2"><span class="text">
+				<br>
+			</span></span><span class="syntax2">
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="code">Case 4, 5, 6</span><span class="text code">
+					<br>
+				</span>
+			</div>
+		</span><span class="text">
+			<br>
+			次のフォームも可: </span><span class="syntax2"><span class="text">
+				<br>
+			</span></span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="smallTitle"></span><span class="syntax2">is = expression &nbsp; &nbsp; 
+				&nbsp; &nbsp;</span><span class="text">この場合 is= は省略可</span>
+			<br class="syntax2">
+			<span class="syntax2">is&lt;&gt; expression</span>
+			<br class="syntax2">
+			<span class="syntax2">is&gt; expression</span>
+			<br class="syntax2">
+			<span class="syntax2">is&lt; expression</span>
+			<br class="syntax2">
+			<span class="syntax2">is&lt;= expression</span>
+			<br class="syntax2">
+			<span class="syntax2">is&gt;= expression </span>
+			<br>
+		</div>
+		<span class="text"></span>
+		<br class="text">
+		<span class="text"></span><span class="syntax2"><span class="smallTitle">例:
+				<br>
+			</span></span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">' Print the name of a number</span>
+			<br class="code">
+			<span class="code"><span style="font-weight: bold;">select case</span> n</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">case is</span>
+				= 1</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print "one"</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">case</span> 2 
+				' omitted is= here</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print "two"</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">case</span> 3 
+				' omitted is= here</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print "three"</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp;<span style="font-weight: bold;"> case</span> 4, 
+				5, 6 ' omitted is= here</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print "four, five or six"</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">case is</span>
+				&lt; 10</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print "less than 10"</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">case else</span></span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print "too big!"</span>
+			<br class="code">
+			<span class="code"><span style="font-weight: bold;">end select</span> </span><span class="syntax2">
+			</span>
+			<br>
+			<span class="syntax2"></span>
+		</div>
+	</body>
+</html>

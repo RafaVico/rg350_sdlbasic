@@ -1,0 +1,39 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  load-save.sdlbas
+'| date 1/01/2004
+'|
+'| description:
+'| verify the file read-write system
+'|
+'|
+'| keys : esc to exit
+'|
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+setautoback(50)
+fname$="dati.txt"
+dati$=""
+prints ("now load the file dati.txt")
+if fileexists(fname$) then
+	open fname$ for input as 1
+	Input 1,dati$
+	close 1
+end if
+prints("dati contain:"+dati$)
+
+if dati$="" then
+	dati$="__vroby__@libero.it"
+        prints("because dati.txt is empty then added:"+dati$)
+end if
+
+open fname$ for output as 1
+file output #1,dati$
+'print #1,dati$
+close 1
+waitkey

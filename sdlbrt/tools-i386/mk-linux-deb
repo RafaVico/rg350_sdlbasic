@@ -1,0 +1,46 @@
+# make debian pagage v 0.3
+#-------------------------------------------
+cd ../
+
+Package=sdlbrt-linux-i386
+Version=$(date --rfc-3339 date)
+Prefix=usr
+Source=linux
+
+rm -rf PACKAGE
+mkdir PACKAGE
+mkdir -p PACKAGE/${Prefix}
+
+
+cp -R ${Source}/*  PACKAGE/${Prefix}
+
+rm ${Package}-${Version}.deb
+
+echo 2.0 >debian-binary
+
+echo Package:${Package} >control
+echo Architecture:i386 >>control
+echo Version:${Version} >>control
+echo Maintainer: vroby [vroby.mail@gmail.com] >>control
+echo Priority: extra >>control
+echo Depends: >>control  
+echo Homepage: sdlbasic.sf.net >>control
+echo Description: sdlBasic is a small, efficient and multiplatform BASIC interpreter for creating games using the power of SDL library. It was inspired by the old and glorious AMOS. This package includes sdlBasic runtime interpreter. >>control
+
+tar zcvf control.tar.gz control
+rm control
+
+cd PACKAGE
+tar zcvf data.tar.gz *
+mv data.tar.gz ..
+cd ..
+
+ar r ${Package}-${Version}.deb debian-binary
+rm debian-binary
+ar r ${Package}-${Version}.deb control.tar.gz
+rm control.tar.gz
+ar r ${Package}-${Version}.deb data.tar.gz
+rm data.tar.gz
+chmod a+x ${Package}-${Version}.deb
+
+rm -rf PACKAGE

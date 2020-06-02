@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:WriteSock
+'
+'   Name:      WriteSock.sdlbas
+'   Purpose:    Sends NumBytes from Message
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

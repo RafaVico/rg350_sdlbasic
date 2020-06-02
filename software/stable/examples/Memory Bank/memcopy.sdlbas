@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Memory Bank:memcopy
+'
+'   Name:      memcopy.sdlbas
+'   Purpose:    copy a part of bank memory s in d
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

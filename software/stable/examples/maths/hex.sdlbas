@@ -1,0 +1,14 @@
+'
+' sdlBasic example  Maths:hex
+'
+'   Name:      hex.sdlbas
+'   Purpose:    returns hexidecimal representation of number
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+for i = 0 to 255
+    prints(hex(i))
+next
+prints("press any key to exit")
+waitkey

@@ -1,0 +1,20 @@
+'
+' sdlBasic example  Image manipulation:deleteimage
+'
+'   Name:      deleteimage.sdlbas
+'   Purpose:    erase the image n of the memory
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+pastebob(10,10,1)
+wait(1000)
+deleteimage(1)
+cls
+if imageexists(1)=1 then
+    pastebob(10,100,1)
+else
+    prints("image not found")
+end if
+waitkey

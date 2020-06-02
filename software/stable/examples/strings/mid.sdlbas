@@ -1,0 +1,23 @@
+'
+' sdlBasic example Strings: mid mid$ example
+' 
+'   Name:     mid.sdlbas
+'   Purpose:   example mid-mid$ string functions  
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+a$="   ciao   "
+prints(":"+a$+":")
+prints("mid$: prints(\":\"+mid$(a$,4,4)+\":\")")
+prints(":"+mid$(a$,4,4)+":")
+prints(":"+mid(a$,4,4)+":")
+prints("mid$: prints(\":\"+mid$(a$,4)+\":\")")
+prints(":"+mid$(a$,4)+":")
+prints(":"+mid(a$,4)+":")
+
+
+waitkey

@@ -1,0 +1,18 @@
+'
+' sdlBasic example  Sub and function:end sub
+'
+'   Name:      end sub.sdlbas
+'   Purpose:    terminate a subrutine
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sub mysub(a)
+	prints(a)
+end sub
+
+for i = 0 to 20
+	mysub(i)
+next
+
+waitkey

@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Strings:val
+'
+'   Name:      val.sdlbas
+'   Purpose:    returns closest numeric representation of number
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("prints(str$(val(\"18\")))")
+prints(str$(val("18")))
+prints("press any key")
+waitkey

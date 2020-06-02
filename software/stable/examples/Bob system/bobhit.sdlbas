@@ -1,0 +1,19 @@
+'
+' sdlBasic example  Bob system:bobhit
+'
+'   Name:      bobhit.sdlbas
+'   Purpose:    give 1 if bob n have a collision with bob x if x=-1 with any
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+
+
+
+bob(1,100,100,1)
+for i =50 to 175
+    bob(2,100,i,1)
+    locate(0,0):prints("bob1 collision with bob2 = "+str$(bobhit(1,2)))
+    waitvbl
+next

@@ -1,0 +1,13 @@
+'
+' sdlBasic example Maths: sqr example
+'
+'   Name:     sqr.sdlbas
+'   Purpose:   example sqr functions
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("prints(sqr(49))")
+prints(sqr(49))
+prints("press any key to exit")
+waitkey

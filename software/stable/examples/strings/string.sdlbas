@@ -1,0 +1,11 @@
+'
+' sdlBasic example  Strings:string
+'
+'   Name:      string.sdlbas
+'   Purpose:    returns string m chars wide with n in it
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints(string(10,"sdlbasic"))
+waitkey

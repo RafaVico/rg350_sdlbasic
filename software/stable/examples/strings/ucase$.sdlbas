@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Strings:ucase$
+'
+'   Name:      ucase$.sdlbas
+'   Purpose:    convert string to upper case
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="pippo"
+prints("a$=pippo")
+prints("ucase$(a$)="+ucase$(a$))
+waitkey

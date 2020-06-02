@@ -1,0 +1,78 @@
+'
+' sdlBasic library: Mouse
+'
+'   Name:      mouse.sdlblib
+'   Purpose:   basic library to implements
+'	mousechange 100%
+'
+'
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+'
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub changemouse_soft(n)
+	if n=1 then
+		deletesprite(0)
+		screenopen(7,32,32,0,0,0,0,0)
+
+		ink(rgb(255,255,0))
+		line(1,1,1,16)
+		line(16,1,1,1)
+		line(4,13,22,31)
+		line(32,22,14,4)
+
+
+		ink(rgb(128,128,0))
+		line(1,16,4,13)
+		line(22,31,31,22)
+		line(13,4,16,1)
+		ink(rgb(192,192,0))
+		paint(2,2)
+
+		grab(0,0,0,32,32)
+		hotspot(0,0,0)
+		'screen(0)
+		screenclose(7)
+	end if
+
+	if n=2 then
+		deletesprite(0)
+		screenopen(7,32,32,0,0,0,0,0)
+		ink(rgb(255,0,0))
+		line (15,0,15,14)
+		line (15,16,15,31)
+		line (0,15,14,15)
+		line (16,15,31,15)
+		grab(0,0,0,32,32)
+		hotspot(0,15,15)
+		screen(0)
+		screenclose(7)
+
+	end if
+
+
+	if n=3 then
+		deletesprite(0)
+		screenopen(7,32,32,0,0,0,0,0)
+		ink(rgb(255,255,0))
+		line (10,0,20,0)
+		line (10,0,20,30)
+		line (20,0,10,30)
+		line (10,30,20,30)
+		paint(15,2)
+		paint(15,28)
+		grab(0,0,0,32,32)
+		hotspot(0,15,15)
+		screen(0)
+		screenclose(7)
+	end if
+
+
+
+end sub

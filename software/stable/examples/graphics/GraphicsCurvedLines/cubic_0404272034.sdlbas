@@ -1,0 +1,52 @@
+'--- cubic (spline) curved line example
+'--- Paulo Silva - april '04 - gpl
+'--- handlers help from Vroby
+
+  randomize
+xedge=600:yedge=400
+  setdisplay(xedge,yedge,32,1)
+  paper (0xffffff):ink (0x000000):pen (0x000000):cls
+  setautoback(25)
+
+x0=rnd(xedge):y0=rnd(yedge)
+x1=rnd(xedge):y1=rnd(yedge)
+x2=rnd(xedge):y2=rnd(yedge)
+
+while (0=0)
+  cls
+
+if bmouse=0 then: m=-1:end if
+  dv=y1-y0:dh=x2-x1
+
+ink (0x007FFF)
+  box(x0-3,y0-3,x0+3,y0+3)
+  box(x1-3,y1-3,x1+3,y1+3)
+  box(x2-3,y2-3,x2+3,y2+3)
+
+xr1=x1-x0:yr1=y2-y1
+  x3=x0+x2-x1:y3=y0+y2-y1
+  xr2=x2-x1:yr2=y3-y2
+ 
+ink (0x007FFF)
+  line(x0,y0,x1,y1):line(x1,y1,x2,y2)
+
+  stepv=30
+for i=0 to stepv
+     ir=i*(1.570796/stepv)
+     xsn=(xr1*sin(ir))-(xr2*cos(ir))
+       ycs=(yr1*(cos(ir)*-1))-(yr2*sin(ir))
+     xi=x3+xsn:yi=y3+ycs
+     if i=0 then:xold=xi:yold=yi:end if
+   ink (0x000000)
+     line (xold,yold,xi,yi): xold=xi:yold=yi
+ next
+  screenswap
+   while bmouse=0 and m=-1 :end while
+  if mousezone(x0-5,y0-5,10,10)=1 or m=0 then
+    m=0: x0=xmouse: y0=ymouse: end if
+  if mousezone(x1-5,y1-5,10,10)=1 or m=1 then
+    m=1: x1=xmouse: y1=ymouse: end if
+  if mousezone(x2-5,y2-5,10,10)=1 or m=2 then
+    m=2: x2=xmouse: y2=ymouse: end if
+wend
+

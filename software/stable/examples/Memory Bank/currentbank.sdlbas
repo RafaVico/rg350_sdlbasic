@@ -1,0 +1,9 @@
+'
+' sdlBasic example Memory Bank:currentbank
+'
+'   Name:      currentbank.sdlbas
+'   Purpose:    set the current bank (if omitted return the current)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

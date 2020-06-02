@@ -1,0 +1,36 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  locate.sdlbas 
+'| date 1/01/2004 
+'|
+'| description: 
+'| test the cursor position and printinng screen system
+'| 
+'| keys: follow the istruction in program esc to exit
+'|
+'| bugfix:
+'| 
+'| 
+'| Bug:
+'| 
+'| 
+'|------------------------------------------------------------------------------------------------------------
+'
+' LOCATE
+'
+setautoback(25)
+curson
+locate(1,1):prints("press 1 to move in 15,15")
+locate(1,2):prints("press 2 to move in 30,30")
+
+while(inkey<>27)
+	if inkey=asc("1") then
+		locate(15,15):prints ("ciao")
+		locate(15,15)
+	end if
+
+	if inkey=asc("2") then
+		locate(30,30):prints ("ciao")
+		locate(30,30)
+	end if
+end while
+	

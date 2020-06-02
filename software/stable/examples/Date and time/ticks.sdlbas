@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Date and time:ticks
+'
+'   Name:      ticks.sdlbas
+'   Purpose:    returns current timer value
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+while key(27)=0
+    locate(1,1)
+    prints(" ticks="+str(ticks))
+    waitvbl
+
+
+
+end while

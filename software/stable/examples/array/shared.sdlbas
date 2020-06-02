@@ -1,0 +1,24 @@
+'
+' sdlBasic example  Array:shared
+'
+'   Name:      shared.sdlbas
+'   Purpose:    declare variable extern in a subrutine
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dim a$
+dim b$[10]
+
+sub sharearray
+ shared a$
+ shared b$[]
+ a$="shared"
+ b$[2]="array shared"
+end sub
+
+sharearray
+prints(a$)
+prints(b$[2])
+waitkey
+

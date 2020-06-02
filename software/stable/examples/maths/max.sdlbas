@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Maths:max
+'
+'   Name:      max.sdlbas
+'   Purpose:    return max number of the operands
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("prints(max(10,12))")
+prints(max(10,12))
+prints("press any key")
+waitkey

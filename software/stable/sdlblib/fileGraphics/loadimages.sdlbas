@@ -1,0 +1,17 @@
+'test loadimages
+include "filegraphics.sdlblib"
+
+autoback(1)
+n=loadimages_soft("media/spritesheet.bmp",0,0,24,32,1)
+prints(n)
+
+i = 1
+    for y= 0 to 7
+        for x=0 to 11
+            sprite(i,10+x*24,10+y*32,i)
+            i=i+1
+        next
+    next
+waitkey
+
+saveimages_soft("prova.bmp",1,n)

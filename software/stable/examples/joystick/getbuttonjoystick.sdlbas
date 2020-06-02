@@ -1,0 +1,18 @@
+'
+' sdlBasic example Joystick:getbuttonjoystick
+'
+'   Name:      getbuttonjoystick.sdlbas
+'   Purpose:    get the current state of a given button on a given joystick
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+while key(27)=0
+    locate (1,1)
+    if numjoysticks()>0 then
+	prints("getbuttonjoystick(0,0) return:"+str$(getbuttonjoystick(0,0)))
+    else
+	prints("not joystick found")
+    end if
+    waitvbl()
+end while

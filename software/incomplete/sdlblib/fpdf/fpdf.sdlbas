@@ -1,0 +1,413 @@
+
+'********************************************************************************
+'* Software: FPDF                                                               *
+'* Version:  1.52                                                               *
+'* Date:     2003-12-30                                                         *
+'* Author:   Olivier PLATHEY  porting by __vroby__                              *
+'* License:  Freeware                                                           *
+'*                                                                              *
+'* You may use, modify and redistribute this software as you wish.              *
+'********************************************************************************
+
+'COMMON CommonIABLES
+'----------------------
+'Common false=0
+'Common true=1
+'---------------------------------
+Common page               		'current page number
+Common n                  		'current object number
+Common offsets            		'array of object offsets
+Common buffer             		'buffer holding in-memory PDF
+Common pages              		'array containing pages
+Common state              		'current document state
+Common compress           		'compression flag
+Common DefOrientation     		'default orientation
+Common CurOrientation     		'current orientation
+Common OrientationChanges 		'array indicating orientation changes
+Common k                  		'scale factor (number of points in user unit)
+Common fwPt,fhPt         		'dimensions of page pdf_format in points
+Common fw,fh             		'dimensions of page pdf_format in user unit
+Common wPt,hPt           		'current dimensions of page in points
+Common w,h               		'current dimensions of page in user unit
+Common lMargin            		'left margin
+Common tMargin            		'top margin
+Common rMargin            		'right margin
+Common bMargin            		'page break margin
+Common cMargin            		'cell margin
+Common x,y               		'current position in user unit for cell positioning
+Common lasth              		'height of last cell printed
+Common LineWidth          		'line width in user unit
+Common CoreFonts          		'array of standard font names
+Common fonts              		'array of used fonts
+Common FontFiles          		'array of font files
+Common diffs              		'array of encoding differences
+Common images             		'array of used images
+Common PageLinks          		'array of links in pages
+Common links              		'array of internal links
+Common FontFamily         		'current font family
+Common FontStyle          		'current font style
+Common underline          		'underlining flag
+Common CurrentFont        		'current font info
+Common FontSizePt         		'current font size in points
+Common FontSize           		'current font size in user unit
+Common DrawColor          		'commands for drawing color
+Common FillColor          		'commands for filling color
+Common TextColor          		'commands for text color
+Common ColorFlag          		'indicates whether fill and text colors are different
+Common ws                 		'word spacing
+Common AutoPageBreak      		'automatic page breaking
+Common PageBreakTrigger   		'threshold used to trigger page breaks
+Common InFooter           		'flag set when processing footer
+Common ZoomMode           		'zoom display mode
+Common LayoutMode         		'layout display mode
+Common title              		'title
+Common subject            		'subject
+Common author             		'author
+Common keywords           		'keywords
+Common creator            		'creator
+Common AliasNbPages       		'alias for total number of pages
+'--------------------------------------------------------------------
+
+sub FPDF()
+	orientation="P"
+	unit="mm"
+	pdf_format="A4"
+
+	'Some checks
+	'_dochecks()
+	'Initialization of properties
+	page=0
+	n=2
+	buffer=""
+	'pages=array()
+	'OrientationChanges=array()
+	state=0
+	'fonts=array()
+	'FontFiles=array()
+	'diffs=array()
+	'images=array()
+	'links=array()
+	InFooter=false
+	lasth=0
+	FontFamily=""
+	FontStyle=""
+	FontSizePt=12
+	underline=false
+	DrawColor="0 G"
+	FillColor="0 g"
+	TextColor="0 g"
+	ColorFlag=false
+	ws=0
+	'Standard fonts
+	'CoreFonts
+	'=array'courier'=>'Courier',
+	'courierB'=>'Courier-Bold',
+	'courierI'=>'Courier-Oblique',
+	'courierBI'=>'Courier-BoldOblique',
+		'helvetica'=>'Helvetica',
+		'helveticaB'=>'Helvetica-Bold',
+		'helveticaI'=>'Helvetica-Oblique',
+		'helveticaBI'=>'Helvetica-BoldOblique',
+		'times'=>'Times-Roman',
+		'timesB'=>'Times-Bold',
+		'timesI'=>'Times-Italic',
+		'timesBI'=>'Times-BoldItalic',
+		'symbol'=>'Symbol',
+		'zapfdingbats'=>'ZapfDingbats'
+
+	'Scale factor
+	if (unit="pt") then
+		k=1
+	elseif(unit="mm") then
+		k=72/25.4
+	elseif(unit="cm") then
+		k=72/2.54
+	elseif(unit="in") then
+		k=72
+	else
+		printf("Incorrect unit: "+unit)
+		end
+	end if
+
+	'Page pdf_format
+	pdf_format=lcase$(pdf_format)
+	if(pdf_format="a3") then
+		pdf_formatx=841.89
+		pdf_formaty=1190.55
+	elseif(pdf_format="a4") then
+		pdf_formatx=595.28
+		pdf_formaty=841.89
+	elseif(pdf_format="a5") then
+		pdf_formatx=420.94
+		pdf_formaty=595.28
+	elseif(pdf_format="letter") then
+		pdf_formatx=612
+		pdf_formaty=792
+	elseif(pdf_format="legal") then
+		pdf_formatx=612
+		pdf_formaty=1008
+	else
+		print("Unknown page pdf_format: "+pdf_format)
+		fwPt=pdf_formatx
+		fhPt=pdf_formaty
+	end if
+
+	fw=fwPt/k
+	fh=fhPt/k
+
+	'Page orientation
+	orientation=lcase$(orientation)
+	if(orientation="p" or orientation="portrait") then
+		DefOrientation="P"
+		wPt=fwPt
+		hPt=fhPt
+	elseif(orientation="l" or orientation="landscape") then
+		DefOrientation="L"
+		wPt=fhPt
+		hPt=fwPt
+	else
+		print("Incorrect orientation: "+orientation)
+		end
+	end if
+	CurOrientation=DefOrientation
+	w=wPt/k
+	h=hPt/k
+	'Page margins (1 cm)
+	margin=28.35/k
+	SetMargins(margin,margin,-1)
+	'Interior cell margin (1 mm)
+	cMargin=margin/10
+	'Line width (0.2 mm)
+	LineWidth=.567/k
+	'Automatic page break
+	SetAutoPageBreak(true,2*margin)
+	'Full width display mode
+	SetDisplayMode("fullwidth","")
+	'Compression
+	SetCompression(true)
+end sub
+'--------------------------------------------------------------------
+
+sub SetMargins(leftM,topM,rightM)
+	'Set left, top and right margins
+	lMargin=leftM
+	tMargin=topM
+	if(rightM=-1) then
+		rightM=leftM
+		rMargin=rightM
+	end if
+end sub
+'--------------------------------------------------------------------
+
+sub SetLeftMargin(margin)
+	'Set left margin
+	lMargin=margin
+	if(page >0 and x<margin) then
+		x=margin
+	end if
+end sub
+'--------------------------------------------------------------------
+
+sub SetTopMargin(margin)
+	'Set top margin
+	tMargin=margin
+end sub
+'--------------------------------------------------------------------
+
+sub SetRightMargin(margin)
+	'Set right margin
+	rMargin=margin
+end sub
+'--------------------------------------------------------------------
+
+sub SetAutoPageBreak(auto,margin)
+	'Set auto page break mode and triggering margin
+	AutoPageBreak=auto
+	bMargin=margin
+	PageBreakTrigger=h-margin
+end sub
+'--------------------------------------------------------------------
+
+sub SetDisplayMode(zoom,layout)
+	'Set display mode in viewer
+	if layout="" then:layout="continuous":end if
+
+	if(zoom="fullpage" or zoom="fullwidth" or zoom="real" or zoom="default" ) then
+		ZoomMode=zoom
+	else
+		print ("Incorrect zoom display mode: "+zoom)
+		end
+	end if
+	if(layout="single" or layout="continuous" or layout="two" or layout="default")then
+		LayoutMode=layout
+	else
+		print("Incorrect layout display mode: "+layout)
+		end
+	end if
+end sub
+'--------------------------------------------------------------------
+
+sub SetCompression(_compress)
+	'Set page compression
+	if(sub_exists("gzcompress"))then
+		compress=_compress
+	else
+		compress=false
+	end if
+end sub
+'--------------------------------------------------------------------
+
+sub SetTitle(_title)
+	'Title of document
+	title=_title
+end sub
+'--------------------------------------------------------------------
+
+sub SetSubject(_subject)
+	'Subject of document
+	subject=_subject
+end sub
+'--------------------------------------------------------------------
+
+sub SetAuthor(_author)
+	'Author of document
+	author=_author
+end sub
+'--------------------------------------------------------------------
+
+sub SetKeywords(_keywords)
+	'Keywords of document
+	keywords=_keywords
+end sub
+'--------------------------------------------------------------------
+
+sub SetCreator(_creator)
+	'Creator of document
+	creator=_creator
+end sub
+'--------------------------------------------------------------------
+
+function SetAliasNbPages(_alias)
+	'Define an alias for total number of pages
+	if _alias="" then :_alias="{nb}":end if
+	AliasNbPages=_alias
+end function
+'--------------------------------------------------------------------
+
+sub _Error(msg)
+
+	'Fatal error
+	print("FPDF error: "+$msg)
+end sub
+'--------------------------------------------------------------------
+sub pdfOpen()
+	'Begin document
+	if(state=0)then
+		_begindoc()
+	end if
+end sub
+'--------------------------------------------------------------------
+
+sub pdfClose()
+
+	'Terminate document
+	if(state=3)then
+		exit sub
+	end if
+
+	if(page=0)then
+		AddPage()
+	end if
+	'Page footer
+	InFooter=true
+	Footer()
+	InFooter=false
+	'Close page
+	_endpage()
+	'Close document
+	_enddoc()
+end sub
+'--------------------------------------------------------------------
+
+function AddPage($orientation)
+	'Start a new page
+	if(state=0) then
+		pdfOpen()
+	end if
+	family=FontFamily
+	if (underline="U")then
+	    style=FontStyle+"U"
+	else
+	    style=FontStyle
+	end if
+	size=FontSizePt
+	lw=LineWidth
+	dc=DrawColor
+	fc=FillColor
+	tc=TextColor
+	cf=ColorFlag
+	if(page>0)then
+		'Page footer
+		InFooter=true
+		Footer()
+		InFooter=false
+		'Close page
+		_endpage()
+	end if
+	'Start new page
+	_beginpage(orientation)
+	'Set line cap style to square
+	_out("2 J")
+	'Set line width
+	>LineWidth=lw
+	'_out(sprintf('%.2f w',$lw*$this->k))
+	'Set font
+	if(family)then
+		sdfSetFont(family,style,size)
+	    end if
+	'Set colors
+	DrawColor=dc
+	if(dc<>"0 G")then
+		_out(dc)
+	end if
+	FillColor=fc
+	if(fc<>"0 g")then
+		_out(fc)
+	end if
+	TextColor=tc
+	ColorFlag=cf
+	'Page header
+	Header()
+	'Restore line width
+	if($this->LineWidth!=$lw)
+	{
+		$this->LineWidth=$lw;
+		$this->_out(sprintf('%.2f w',$lw*$this->k));
+	}
+	'Restore font
+	if($family)
+		$this->SetFont($family,$style,$size);
+	'Restore colors
+	if($this->DrawColor!=$dc)
+	{
+		$this->DrawColor=$dc;
+		$this->_out($dc);
+	}
+	if($this->FillColor!=$fc)
+	{
+		$this->FillColor=$fc;
+		$this->_out($fc);
+	}
+	$this->TextColor=$tc;
+	$this->ColorFlag=$cf;
+}
+
+function Header()
+{
+	'To be implemented in your own inherited class
+}
+
+function Footer()
+{
+	'To be implemented in your own inherited class
+}

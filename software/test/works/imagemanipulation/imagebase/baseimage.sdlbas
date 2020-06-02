@@ -1,0 +1,23 @@
+#!/usr/local/bin/sdlBasic
+' baseimage
+setdisplay(800,600,32,1)
+
+loadimage("bidone.bmp",1)
+baseimage(2,1)
+print sizebank(2)
+for i = 0 to (sizebank(2)-1)
+    poke(2,i,255)
+    pasteicon(10,10,1)
+    wait(1)
+next
+    waitvbl
+waitkey
+
+baseimageCC(1,1)
+print sizebank(1)
+for i = 0 to (sizebank(1)-1)
+    poke(1,i,255)
+next
+pastebob(150,50,1)
+
+waitkey(27)

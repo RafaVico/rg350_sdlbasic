@@ -1,0 +1,44 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasi\c test  hitbob.sdlbas
+'| date 21/12/2003
+'|
+'| description:
+'| verify the pixelperfect collision between bobs
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+'setdisplay (320,200,32,0)
+
+screenopen(7,80,80,0,0,0,0,0)
+ink(rgb(255,255,255))
+line(1,1,79,79)
+line(79,1,1,79)
+grab(1,0,0,80,80)
+screenclose(7)
+
+
+screenopen(7,80,80,0,0,0,0,0)
+ink(rgb(255,255,255))
+line(40,0,40,80)
+line(0,40,80,40)
+grab(2,0,0,80,80)
+screenclose(7)
+
+
+mousehide
+locate(0,0):prints("collision:  ")
+while key(27)=0
+    bob(2,xmouse,ymouse,2)
+    bob(1,100,100,1)
+    if bobhit(1,2) then
+	c=1
+    else
+	c=0
+    end if
+    locate(10,0):prints(str$(c))
+end while

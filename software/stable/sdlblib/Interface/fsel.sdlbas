@@ -1,0 +1,14 @@
+'
+' fsel v1.0
+'
+include "interface.sdlblib"
+
+
+paper(0xffffff):cls
+pen(0)
+prints( fsel(dir,".sdlbas","","File SELector"))
+waitkey
+
+
+
+

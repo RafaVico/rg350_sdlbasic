@@ -1,0 +1,71 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  dirfirst.sdlbas
+'| date 1/01/2004
+'|
+'| description:
+'| give in a string for file the list of current dir
+'|
+'| else make
+'| keys : esc to exit
+'|
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'| not distingue from file and folder
+'|
+'|------------------------------------------------------------------------------------------------------------
+setautoback(50)
+dim file$[256]
+path$="./"
+while inkey<>27
+    cls
+    prints ("the current folder "+path$+" contain:")
+    n=0
+    a$=dirfirst(path$)
+    while (a$<>"")
+        file$[n]=a$
+        n=n+1
+	if direxists(path$+a$)<>0 then
+		pen(rgb(0,2550,0))
+		prints ("(dir)"+a$)
+	end if
+		pen(rgb(255,255,255))
+	if fileexists(path$+a$) then
+		prints (a$)
+	end if
+
+	if direxists(path$+a$)=0 and fileexists(path$+a$)=0 then
+		pen(rgb(255,0,0))
+		prints ("(denied)"+a$)
+	end if
+
+	a$=dirnext()
+    end while
+
+    while bmouse<>1 :end while
+        s=ymouse/13-1
+        if direxists(path$+file$[s]) then
+            if file$[s]="." then
+                path$=""
+                file$[s]=""
+            end if
+            if file$[s]=".." then
+                path$=left$(path$,len(path$)-1)
+                while right$(path$,1)<>"/"
+                    path$=left$(path$,len(path$)-1)
+                    if len(path$)<2 then
+                        path$="/"
+                        exit while
+                    end if
+                end while
+            else
+                path$=path$+file$[s]+"/"
+            end if
+        end if
+    while bmouse<>0 :end while
+
+
+
+end while

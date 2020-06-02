@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Maths:sgn
+'
+'   Name:      sgn.sdlbas
+'   Purpose:    returns sign of numeric expression(if negative -1 else 1)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("n=-10:prints(sgn(n))")
+n=-10:prints(sgn(n))
+prints("n=35:prints(sgn(n))")
+n=35:prints(sgn(n))
+prints("press any key to exit")
+waitkey

@@ -1,0 +1,25 @@
+'hotspot
+
+loadimage("bidone.bmp",0)
+text(10,10,15,"hotspot(0,0,0)")
+hotspot(0,0,0)
+bob( 1,100,100,0)
+screenswap
+while(inkey=0):end while
+while(inkey<>0):end while
+
+cls
+text(10,10,15,"hotspot(0,1,1)")
+hotspot(0,1,1)
+bob( 1,100,100,0)
+screenswap
+while(inkey=0):end while
+while(inkey<>0):end while
+
+cls
+text(10,10,15,"hotspot(0,2,2)")
+hotspot(0,2,2)
+bob( 1,100,100,0)
+screenswap
+while(inkey=0):end while
+while(inkey<>0):end while

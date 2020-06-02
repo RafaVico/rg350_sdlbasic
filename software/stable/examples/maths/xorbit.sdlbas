@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Maths:xorbit
+'
+'   Name:      xorbit.sdlbas
+'   Purpose:    return the logic xor of the operands
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints(xorbit(127,128))
+prints("press any key to exit")
+waitkey

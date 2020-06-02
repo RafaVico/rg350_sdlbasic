@@ -1,0 +1,16 @@
+'
+' sdlBasic example Maths:bin$
+'
+'   Name:      bin$.sdlbas
+'   Purpose:    returns binary representation of number
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+n=32000
+for i =0 to n
+    prints(str$(i)+" "+bin$(i))
+next
+prints( sqr(n))
+prints("press any key to exit")
+waitkey

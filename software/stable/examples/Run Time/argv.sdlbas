@@ -1,0 +1,7 @@
+
+prints(argc)
+for i =0 to argc-1
+    prints(argv(i))
+next
+
+waitkey

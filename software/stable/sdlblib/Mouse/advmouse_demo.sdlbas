@@ -1,0 +1,61 @@
+'
+' changeMouse Pointer
+'
+include "advmouse.sdlblib"
+setdisplay(640,480,32,0)
+paper(0xc0c0c0)
+cls
+
+sub main
+	'mousehide
+	m=1
+	xold=-1
+	yold=-1
+	advmouse(m)
+
+	while(inkey<>27)
+		if key(k_up) then
+		    m+=1
+		    if m>36 then: m=36:end if
+		    advmouse(m)
+		    while  key(k_up)<>0:end while
+		end if
+
+		if key(k_down) then
+		    m-=1
+		    if m<0 then: m=0:end if
+		    advmouse(m)
+		    while  key(k_down)<>0:end while
+		end if
+		locate(10,7):fprints("cursor:"):fprints(m):prints(" press cursup or cursdown to change the pointer  ")
+		locate(10,9):prints("resolution:"+str$(displaywidth)+"x"+str$(displayheight)+"     ")
+		line(0,0,310,310)
+		line (0,32,31,0)
+
+		if key(asc("1")) then :setdisplay(320,240,32,0):paper(0xc0c0c0):cls:advmouse(m) :end if
+		if key(asc("2")) then :setdisplay(640,480,32,0):paper(0xc0c0c0):cls:advmouse(m) :end if
+		if key(asc("3")) then :setdisplay(800,600,32,0):paper(0xc0c0c0):cls:advmouse(m) :end if
+		if key(asc("4")) then :setdisplay(1024,768,32,0):paper(0xc0c0c0):cls:advmouse(m) :end if
+		if key(asc("5")) then :setdisplay(1280,960,32,0):paper(0xc0c0c0):cls:advmouse(m) :end if
+		if key(asc("6")) then :setdisplay(1600,1200,32,0):paper(0xc0c0c0):cls:advmouse(m) :end if
+
+
+
+
+		if bmouse=1 then
+		    ink (0xffffff)
+		    if yold=-1 then :yold=ymouse:xold=xmouse:end if
+		    line(xold,yold,xmouse,ymouse)
+		    xold=xmouse
+		    yold=ymouse
+		else
+		    xold=-1
+		    yold=-1
+		end if
+
+		waitvbl
+
+	end while
+end sub
+
+main

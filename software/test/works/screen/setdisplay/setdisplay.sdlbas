@@ -1,0 +1,3 @@
+setdisplay (800,600,4,0)
+prints("ciao ciao")
+waitkey

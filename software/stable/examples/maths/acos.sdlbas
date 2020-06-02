@@ -1,0 +1,21 @@
+'
+' sdlBasic example Maths: acos example
+'
+'   Name:     acos.sdlbas
+'   Purpose:   example acosin functions
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+
+prints("command: prints(str$(acos(10))")
+prints(str$(acos(10)))
+prints("command: prints(str$(acos(90))")
+prints(str$(acos(90)))
+prints("command: prints(str$(acos(0))")
+prints(str$(acos(0)))
+prints("press any key to exit")
+waitkey

@@ -1,0 +1,20 @@
+ '
+' sdlBasic example Strings: insert example
+'
+'   Name:     insert.sdlbas
+'   Purpose:   example insert function
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+a$="ciao  ti saluto"
+b$="Roby"
+prints("original: prints(a$+\":\"+b$)")
+prints(a$+":"+b$)
+prints("prints(insert(a$,b$,5))")
+prints(insert(a$,b$,5))
+
+waitkey

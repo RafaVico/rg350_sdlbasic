@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Strings:left$
+'
+'   Name:      left$.sdlbas
+'   Purpose:    returns leftmost chars in string
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="pippo micio"
+prints(left$(a$,5))
+waitkey

@@ -1,0 +1,4 @@
+bar(10,10,20,20)
+waitkey
+box(10,10,20,20):paint(11,11)
+waitkey(13)

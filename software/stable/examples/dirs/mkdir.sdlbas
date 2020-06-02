@@ -1,0 +1,21 @@
+'
+' sdlBasic example  Dirs:mkdir
+'
+'   Name:      mkdir.sdlbas
+'   Purpose:    create a new directory
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mkdir("test")
+if direxists("test") then
+    prints("dir test created")
+    wait(500)
+    rmdir("test")
+    if not direxists("test") then
+	prints("dir test removed")
+	wait(500)
+    end if
+else
+    prints("dir test not created")
+end if

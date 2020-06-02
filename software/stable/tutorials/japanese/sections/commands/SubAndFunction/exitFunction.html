@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>exit function</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">exit function
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text"></span><span class="text">実行中のfunctionを中止。
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">exit function </span>
+			<br>
+		</div>
+		<br>
+		<span class="text"></span><span class="text">sdlBasicは呼び出し元の次のラインから実行を続ける。
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">function myFunction(a)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp;&nbsp;&nbsp; if a&gt;5 then: <span style="font-weight: bold;">
+					exit function</span> : end if
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp;&nbsp;&nbsp; print(a)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">end function
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">for a = 1 to 10
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp;&nbsp;&nbsp; myFunction(a) &nbsp;&nbsp;&nbsp;
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">next
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">参照： </span><a href="function.html"><span class="text" style="font-weight: bold;">
+				function</span></a><span class="text"><a href="function.html"> </a></span>
+	</body>
+</html>

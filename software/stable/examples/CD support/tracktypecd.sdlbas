@@ -1,0 +1,31 @@
+'
+' sdlBasic example CD support:tracktypecd
+'
+'   Name:      tracktypecd.sdlbas
+'   Purpose:    return SDL_AUDIO_TRACK(0...) or SDL_DATA_TRACK(1...)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+opencd(0,0)
+while indrivecd(0)=0
+    prints("please insert cd")
+    wait(500)
+end while
+prints("tracks:"+str$(trackscd(0)))
+
+for t=0 to trackscd(0)
+    fprints(" track "+str$(t))
+    fprints(" - type "+str$(tracktypecd(0,t)))
+    if tracktypecd(0,t)!=0 then
+	prints(":this is a data tracks")
+    else
+	prints(":this is a audio tracks")
+    end if
+next
+waitkey
+
+stopcd(0)
+ejectcd(0)
+closecd(0)

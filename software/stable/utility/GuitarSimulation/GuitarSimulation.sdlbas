@@ -1,0 +1,39 @@
+' Paulo Silva - february '00 - GPL licence
+' (sdlBasic conversion and help from Vroby)
+' This is an example would be an idea for a guitar melody (not chords)
+'   composing interface
+' Goal would be, for example, composing .mod documents (or germanic notation
+'   txt files) with it
+
+'Screen Open 0,320,512,32,4: Screen 0 : Curs Off : Hide
+
+setdisplay(320,240,32,1)
+
+'Load Iff "GuitarArm.iff" : Flash Off
+loadimage("GuitarArm.png",1)
+pasteicon(0,0,1)
+  grab(1,0,0 ,8,16): grab(2,8,0,8,16)
+  grab(3,16,0 ,16,8): grab(4,16,8,16,8)
+
+    'Play 4,5
+    'Limit Mouse 128,158 To 448,210
+'cls
+while(key(27)=0)
+'CICLO2:
+  X1=(XMouse-128)/16
+  Y1=5-((YMouse-166)/6)
+    If X1<0 Then :X1=0:end if
+    If Y1<0 Then :Y1=0:end if
+    If Y1>5 Then :Y1=5:end if
+    If X1>15 Then :X1=15:end if
+  Bob (1,XMouse-132,144-(Y1*6),1)
+  Bob (2,300,151-(Y1*6),3)
+  Locate (0,0) : Prints(str$( X1)+"   "+Y1+"   "+str$(bMouse)+"   ")
+    If bMouse=1 then
+       Bob (1,XMouse-132,144-(Y1*6),2)
+       Bob (2,300,149-(Y1*6),4)
+       'Play(X1+(Y1*5)+16),2
+     End If
+ 'Goto CICLO2
+end while
+

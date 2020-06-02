@@ -1,0 +1,20 @@
+'
+' sdlBasic example  Maths:log
+'
+'   Name:      log.sdlbas
+'   Purpose:    returns natural log of expression
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+setautoback(50)
+
+
+prints("command: prints(str$(log(10))")
+prints(str$(log(10)))
+prints("command: prints(str$(log(90))")
+prints(str$(log(90)))
+prints("command: prints(str$(log(0))")
+prints(str$(log(0)))
+prints("press any key to exit")
+waitkey

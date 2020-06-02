@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Maths:frac
+'
+'   Name:      frac.sdlbas
+'   Purpose:    return fractional portion of number
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("n=3.14:prints(frac(n))")
+n=3.14:prints(frac(n))
+prints("press any key")
+waitkey

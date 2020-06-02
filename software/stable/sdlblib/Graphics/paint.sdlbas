@@ -1,0 +1,38 @@
+'paint test
+setautoback(1)
+include "graphics.sdlblib"
+
+
+prints("esc to exit | leftmouse to write |right mouse to fill a close area")
+ink(rgb(255,255,255))
+line(10,30,100,30)
+line(10,100,100,100)
+line(10,30,10,100)
+line(100,30,100,100)
+'screenswap
+
+ink(rgb(255,0,0))
+paint_soft(50,50)
+'screenswap
+
+xnew=0
+ynew=0
+while(inkey()=0)
+    if bmouse()=1 then
+	ink(rgb(255,255,255))
+	xold=xnew:yold=ynew
+	xnew=xmouse:ynew=ymouse
+	if xold=0 then
+	    xold=xnew:yold=ynew
+	end if
+        line(xold,yold,xnew,ynew)
+	'screenswap
+    elseif bmouse()>1 then
+	ink(rgb(255,0,0))
+        paint_soft(xmouse,ymouse)
+'	screenswap
+	xnew=0
+	ynew=0
+    end if
+end while
+

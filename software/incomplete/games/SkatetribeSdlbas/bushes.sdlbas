@@ -1,0 +1,63 @@
+
+windowed=0
+ setdisplay(320,200,16,windowed)
+ autoback(0):mousehide()
+ loadimage ("backgrounds/bushes.png",0)
+
+open "data/lev1.bin" for input as #1:sz=lof(1)
+    dim obstk[(sz/2)+10,2]: a=0
+  while not eof(1)
+     v1=readbyte(1):v0=readbyte(1)
+     obstk[a,1]=v1:obstk[a,0]=v0
+     a=a+1
+   end while
+close #1
+ ScreenOpen (1,320,200,0,0,0,0,0)
+
+ Loadimage("sprites/dsc5_1.png",1): pasteicon(0,0,1): Screen(1)
+    For y=0 To 5: For x=0 To 9
+       k=(y*10)+x: grab(11+k,x*32,y*32,32,32)
+     Next : Next 
+
+ Loadimage("sprites/skater1.png",1):pasteicon(0,0,1): Screen(1)  
+    For y=0 To 0: For x=0 To 9
+       k=(y*10)+x: grab(1+k,x*32,y*48,32,48)
+     Next : Next 
+
+screen(0)
+
+ oxsp=160:oysp=16
+xdrc=0
+
+  loadmusic ("tunes/broken.mod"):playmusic(-1)
+while(0=0)
+  tikcr=ticks
+  y=(tikcr/4)mod 200
+  blt(0,0,y,320,200-y,0,0)
+  blt(0,0,0,320,y,0,200-y)
+     screenswap()
+     if key(27) then : end :end if
+
+   if key(K_right) then :xdrc=xdrc+2:end if
+   if key(K_left) then :xdrc=xdrc-2:end if
+   if xdrc<-32 then: xdrc=-32:end if
+   if xdrc>32 then: xdrc=32:end if
+      oxsp=oxsp+(xdrc/16)   
+   if oxsp<0 then:oxsp=0:end if
+   if oxsp>288 then:oxsp=288:end if
+      adnk= (tikcr/16)mod 2
+   sprnum=(int((xdrc+32)*5)/65)+1
+    bob(10,oxsp,oysp,sprnum+(adnk*5))
+   obsxps=180
+   obsyps=32-((tikcr/4)mod 32)
+
+'   tikcnt=(int((tikcr/4)/32))mod 256
+    tikcnt=int((tikcr/4)/32)
+
+    tikcnt2=tikcnt mod ((int(sz/2))-7)
+  for n=0 to 5
+     bob(1+n,obstk[tikcnt2+n,1],obsyps+(n*32),12+obstk[tikcnt2+n,0])
+   next
+
+end while
+

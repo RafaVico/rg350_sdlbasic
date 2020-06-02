@@ -1,0 +1,3 @@
+#wine ~/nsis-2.46/makensisw.exe ~/source/alcor2/Tools/sdlbrt.nsi
+wine ~/nsis-2.46/makensis.exe -d2013-01-31 z:/home/sdlbasic/source/sdlbasic2013/sdlbrt/tools/sdlbrt.nsi
+mv sdlbrt-setup.exe ..

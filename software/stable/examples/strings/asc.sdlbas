@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Strings:asc
+'
+'   Name:      asc.sdlbas
+'   Purpose:    returns ascii value of first char in string
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("prints(asc(\"a\")")
+prints(str$(asc("a")))
+prints("prints(asc(\"b\")")
+prints(str$(asc("b")))
+prints("press any key")
+waitkey

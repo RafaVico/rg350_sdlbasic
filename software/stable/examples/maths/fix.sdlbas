@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Maths:fix
+'
+'   Name:      fix.sdlbas
+'   Purpose:    truncate fractional number, rounding down towards zero
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("n=3.14:prints(fix(n))")
+n=3.14:prints(fix(n))
+prints("n=3.84:prints(fix(n))")
+n=3.84:prints(fix(n))
+prints("press any key")
+waitkey

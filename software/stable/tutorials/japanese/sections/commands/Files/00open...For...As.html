@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>open ... for ... as</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">open ... for ... as
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			ファイルストリームをオープンする。
+			<br>
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">open </span><span class="syntax">filename</span><span class="syntax2">
+			</span><span class="syntax2">for </span><span class="syntax">mode</span><span class="syntax2">
+			</span><span class="syntax2">as </span><span class="syntax">stream</span><span class="syntax2"></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<span class="text"></span><span class="syntax">
+			<br>
+			filename</span><span class="text"> </span><span class="text">オープンするファイルの名前。</span>
+		<span class="syntax2">
+			<br>
+		</span><span class="text"></span><span class="syntax">mode </span><span class="text">
+			オープンするファイルへ要求する処理モード。</span><span class="text">ファイルは次のモードでオープンできる。 <span style="font-weight: bold;">
+				input</span> , <span style="font-weight: bold;">output</span> , <span style="font-weight: bold;">
+				append</span></span><span style="font-weight: bold;" class="syntax2"></span><span class="syntax2">
+			<br class="text">
+			<span class="text"></span><span class="syntax">stream</span><span class="text">は 
+				オープンするファイルの番号。他のコマンドを実行するときにはファイルを特定するためにこの番号をコマンドに渡す必要がある。 </span><span class="syntax2">
+				<br>
+			</span></span><span class="smallTitle">
+			<br>
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">' open a text file
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">open</span> &nbsp;"myfile.txt"
+				<span style="font-weight: bold;">for</span>&nbsp; input <span style="font-weight: bold;">
+					as</span>&nbsp; 1&nbsp;</span> <span class="syntax2"></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

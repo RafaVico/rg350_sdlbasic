@@ -1,0 +1,9 @@
+'
+' sdlBasic example Bob System:bobz
+'
+'   Name:      bobz.sdlbas
+'   Purpose:    set the zorder position of bob if z was omitted return the actual z position
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

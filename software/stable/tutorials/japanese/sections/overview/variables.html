@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+<head>
+
+
+
+
+
+  
+  
+  
+  
+  <meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+
+
+
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  <title>変数</title>
+  <meta content="zoiba" name="author">
+
+
+
+
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="../style.css" type="text/css">
+</head>
+
+
+<body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+
+
+
+
+
+<div style="background-color: rgb(0, 0, 0); text-align: left;"><span class="title">変数</span><span class="title"></span></div>
+
+
+
+
+
+<span class="text"><br>
+
+
+
+</span>
+<div style="text-align: justify;">
+<div style="text-align: justify;"><span class="text">
+変数とは数またはテキスト(ストリング)の格納用の箱とみなすことができます。 変数に値を与えると、それはコンピューターのメモリーに蓄えられ、後に変数名がタイプされたときには、変数に値が呼び戻されます。
+<br>
+
+<br>
+
+</span><span class="smallTitle">例題: </span><br>
+
+
+
+
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="text"></span>
+
+<span class="code">' create variables</span><br class="code">
+
+<span class="code">
+
+a = 2</span><br class="code">
+
+<span class="code">
+
+b = 5</span><br class="code">
+
+<span class="code">' use the&nbsp;previuosly created variables</span><br class="code">
+
+<span class="code">
+
+c = a + b</span><br>
+
+</div>
+
+<span class="text"><br>
+
+変数名は英字の大文字か小文字または数字の連続でなければなりません。
+わずかながらの規則があります。 変数名とは：
+
+<br>
+
+</span>
+<ul>
+
+  <li><span class="text">英字ではじまり;</span></li>
+  <li><span class="text">コマンドや内部定数などの予約語を避ける;<br>
+    </span></li>
+
+  <li><span class="text">スペースを含まない、（必要ならばアンダースコア (_)を使用してください);</span></li>
+
+</ul>
+
+<span class="smallTitle">例:</span><span class="text"><br>
+</span>
+<div style="text-align: left; background-color: rgb(255, 0, 0);">
+<div style="margin-left: 40px;"><small style="color: rgb(255, 255, 255);"><span style="font-family: Helvetica,Arial,sans-serif;">1st_player = 1</span></small><span class="text"></span><br>
+</div>
+<span class="text"></span></div>
+<span class="text">数で始まるので、間違い。&nbsp;</span><span class="text">以下の例は&nbsp;正しい:</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">player_1st = 1</span><br class="code">
+<span class="code">player1 = 1</span><span class="text"></span><br>
+<span class="text"></span></div>
+<span class="text"><br>
+</span><span class="smallTitle">例:</span><br>
+<div style="text-align: left; background-color: rgb(255, 0, 0);">
+<div style="margin-left: 40px;"><small style="color: rgb(255, 255, 255);"><span style="font-family: Helvetica,Arial,sans-serif;">bin = &nbsp;"some text"</span></small><span class="text"></span><br>
+</div>
+<span class="text"></span></div>
+<span class="text">binがコマンドなので間違い</span><span class="text">以下の例は&nbsp;正しい:<br>
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">bin2 = "some text"</span><br class="code">
+<span class="code">binary = "some text"</span><span class="text"></span><br>
+<span class="text"></span></div>
+<span class="text"><br>
+</span><span class="smallTitle">例:</span><br>
+<div style="text-align: left; background-color: rgb(255, 0, 0);">
+<div style="margin-left: 40px;"><small style="color: rgb(255, 255, 255);"><span style="font-family: Helvetica,Arial,sans-serif;">alien x = 1oo</span></small><span class="text"></span><br>
+</div>
+<span class="text"></span></div>
+<span class="text">スペースを含んでいるので間違い </span><span class="text"></span><span class="text">以下の例は&nbsp;正しい:</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">alien_x = 100</span><br class="code">
+<span class="code">alienX = 100</span><br>
+<span class="text"></span></div>
+<span class="text"><br>
+sdlBasicにおいては変数の型はありません； すべての変数と配列は一緒です。 これは、変数が数またはストリングの値を保持することができることを意味しています。 一般に、sdlBasicは、自動的に変数を正しい型にすることを試みるでしょう。
+<br>
+
+
+<br>
+
+
+</span><span class="smallTitle">例: </span><br>
+
+
+
+</div>
+
+
+
+<span class="text"></span></div>
+
+
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">' create variables</span><br class="code">
+
+
+
+<span class="code">a = "123"</span><br class="code">
+
+
+
+<span class="code">b = 456</span><br class="code">
+
+
+
+<span class="code">&nbsp;</span><br class="code">
+
+
+
+<span class="code">' variable a is automatically converted to a number</span><br class="code">
+
+
+
+<span class="code">Print a + b</span><span class="text"></span><br>
+
+
+
+<span class="text"></span></div>
+
+
+
+<span class="text"><br>
+
+このことは、以下の例のようにとしてストリングと数を比較することができることを意味しています：
+
+<br>
+
+
+<br>
+
+
+
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">a = "123"</span><br class="code">
+
+
+
+<span class="code">b = 123</span><br class="code">
+
+
+
+<span class="code">if a=b then : print &ldquo;they match&rdquo; : end if</span><span class="text"></span><br>
+
+
+
+<span class="text"></span></div>
+
+
+
+<div style="text-align: justify;"><span class="text"><br>
+
+ストリングと数を比較できることは、ダイナミックな配列機能を使う時にインデックスをストリングとして格納できるので、ときに有益であるかもしれません。
+</span></div>
+
+
+
+<span class="text"></span><span class="text">
+
+</span>
+<div style="text-align: right;"><span class="text">&nbsp;</span></div>
+
+
+
+
+
+<div style="text-align: right;"><span class="text">&nbsp;</span></div>
+
+
+
+
+
+</body>
+</html>

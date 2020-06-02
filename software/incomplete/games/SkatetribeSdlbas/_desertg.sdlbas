@@ -1,0 +1,24 @@
+windowed=0
+ setdisplay(320,200,16,windowed)
+ autoback(0):mousehide()
+ loadimage ("backgrounds/desertg.png",0)
+screen(0)
+  loadmusic ("tunes/cag.mod"):playmusic(-1)
+while(0=0)
+    tikcr=ticks
+  y1=(tikcr/8)mod 200
+   y2=(tikcr/16)mod 200
+   y3=200-((tikcr/8)mod 200)
+
+  blt(0,0,y1,50,200-y1,0,0)
+   blt(0,0,0,50,y1,0,200-y1)
+  blt(0,50,y2,190,200-y2,50,0)
+   blt(0,50,0,190,y2,50,200-y2)
+  blt(0,240,y3,80,200-y3,240,0)
+   blt(0,240,0,80,y3,240,200-y3)
+
+    screenswap()
+     if key(27) then : end :end if
+end while
+
+   

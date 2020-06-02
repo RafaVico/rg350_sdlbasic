@@ -1,0 +1,26 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  copysound.sdlbas
+'| date 29/04/2004
+'|
+'| description:
+'| copy sound command
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+loadsound("shot.wav",1)
+'wait(50)
+deletesound(1)
+'wait(50)
+if soundexists(1) then
+    prints("play sound 1")
+    playsound(1,1)
+else
+    prints("play sound 1;failed!! it's deleted")
+end if
+waitkey

@@ -1,0 +1,11 @@
+------------------------------------------------------------------------------------------
+--   Name:      imageproperies.sdlbas
+--  Author:     __vroby__ , Zoiba
+--  Licence:    LGPL
+------------------------------------------------------------------------------------------
+
+loadimage("sprites.png",1)
+prints("image exist="+str$(imageExists(1)))
+prints("image width="+str$(imagewidth(1)))
+prints("image height="+str$(imageheight(1)))
+waitkey

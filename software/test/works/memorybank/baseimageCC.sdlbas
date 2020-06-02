@@ -1,0 +1,19 @@
+'baseimageCC
+setdisplay(640,480,32,1)
+setcolorkey(0)
+loadimage("sprites.png",1)
+
+pastebob(0,0,1)
+baseimageCC(1,1)
+
+print sizebank(1)
+for i = 0 to sizebank(1)-1
+    poke(1,i,255)
+next
+
+'baseimageCC(1,1)
+
+pastebob(0,50,1)
+
+waitkey
+

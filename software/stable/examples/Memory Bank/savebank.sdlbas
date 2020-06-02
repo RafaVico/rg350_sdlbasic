@@ -1,0 +1,32 @@
+'
+' sdlBasic example  Memory Bank:savebank
+'
+'   Name:      savebank.sdlbas
+'   Purpose:    save memory bank in a file
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+reservebank(0,1000)
+'reservebank(1,1000)
+
+setbank(0)
+prints("poke bank 0")
+for i= 0 to 10
+    poke(i,i)
+    prints("poke "+str$(i)+" "+str$(i))
+next
+prints("")
+
+savebank("bank0",0)
+
+loadbank("bank0",1)
+
+setbank(1)
+prints("peek bank 1")
+for i= 0 to 10
+    prints(str$(i)+"="+str$(peek(i)))
+next
+prints("")
+waitkey

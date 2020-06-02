@@ -1,0 +1,5 @@
+prints("operative system family:"+os)
+prints("is   osx="+str$(isosx))
+prints("is linux="+str$(islinux))
+prints("is win32="+str$(iswin32))
+waitkey

@@ -1,0 +1,22 @@
+'*************************************************
+'* inputs pretest                                                                  *
+'*************************************************
+'  
+
+setautoback(50)
+include "printscreen.sdlblib"
+
+sub main
+	'initcursor_soft
+	curson_soft
+	prints_soft("type x(return) to exit")
+	a$=""
+	y=1
+	while(a$<>"x")    
+		a$ = inputs_soft(">>>>","") 
+		prints_soft (a$+":ok")     
+	end while
+end sub
+'_____________________________________________________________________________________________
+
+main

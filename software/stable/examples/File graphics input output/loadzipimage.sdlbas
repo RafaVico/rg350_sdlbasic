@@ -1,0 +1,9 @@
+'
+' sdlBasic example File graphics input output:loadzipimage
+'
+'   Name:      loadzipimage.sdlbas
+'   Purpose:    load a graphics file in a slot n if omitted n is the first free return n
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

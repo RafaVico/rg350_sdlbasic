@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>mirrorImage()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">mirrorImage()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			指定するスロットにあるイメージの上下反転像または左右反転像を得る。
+			<br>
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">mirrorImage( </span><span class="syntax">slot </span><span class="syntax2">
+				, </span><span class="syntax">x </span><span class="syntax2">, </span><span class="syntax">
+				y </span><span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<span class="text"></span><span class="syntax">
+			<br>
+			slot </span><span class="text">イメージのあるスロットナンバー</span> <span class="syntax2">
+			<br>
+		</span><span class="text"></span><span class="syntax">x </span><span class="syntax2">
+		</span><span class="text">and</span><span class="syntax2"> </span><span class="syntax">
+			y </span><span class="text">true , false (0 , 1) 水平または上下の反転を指定する。
+			<br>
+			<br>
+		</span><span class="syntax2"></span><span class="smallTitle">例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">loadimage("sprites.png",1)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">pasteIcon( 10, 10, 1 )&nbsp;</span> <span class="syntax"></span>
+			<span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">mirrorImage(</span> 1, 1, 
+				0&nbsp;<span style="font-weight: bold;">)</span>&nbsp;</span> <span class="syntax">
+			</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">pasteIcon( 100, 10, 1&nbsp;)&nbsp;</span> <span class="syntax">
+			</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">mirrorImage( </span>1, 0, 
+				1&nbsp;<span style="font-weight: bold;">)</span>&nbsp; </span><span class="syntax">
+			</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">pasteIcon( 10, 100, 1&nbsp;)&nbsp; </span><span class="syntax">
+			</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">mirrorImage(</span> 1, 1, 
+				1&nbsp;<span style="font-weight: bold;">)</span>&nbsp;</span> <span class="syntax">
+			</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">pasteIcon( 100, 100, 1&nbsp;)&nbsp;</span> <span class="syntax">
+			</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">waitKey
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

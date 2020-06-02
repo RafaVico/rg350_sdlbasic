@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Dirs:dir dir$
+'
+'   Name:      dir dir$.sdlbas
+'   Purpose:    returns current path
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints(dir)
+prints(dir$)
+waitkey

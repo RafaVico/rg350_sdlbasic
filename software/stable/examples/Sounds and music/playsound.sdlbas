@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Sounds and music:playsound
+'
+'   Name:      playsound.sdlbas
+'   Purpose:    play the sound n in  channel c l loops
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadsound("../wav.wav",1)
+playsound(1,1,-1)
+waitkey

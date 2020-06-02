@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>autoback</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">autoback()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			スクリーンスワップを使用可能にする。 オプションとして<span style="font-weight: bold;"> setAutoback()</span>コマンドを使用できる。 
+			<!---
+			Enable or disable automatic screenswap. Optionally you can use <span style="font-weight: bold;">
+				setAutoback()</span> command.</span><span class="syntax2">--->
+			<br>
+		</span><span class="smallTitle">
+			<br>
+			書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">autoback( </span><span class="syntax">value </span><span class="syntax2">
+				)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">setAutoback( </span><span class="syntax">value </span><span class="syntax2">
+				)
+				<br>
+			</span>
+		</div>
+		<span class="text"></span><span class="syntax">
+			<br>
+			value</span><span class="text"> </span><span class="text">= 0 autoback を不可にする。</span><span class="syntax2">
+			<br>
+		</span><span class="text"></span><span class="syntax">value</span><span class="text">
+		</span><span class="text">&gt; 0 スクリーンスワップを与えられたミリセカンドごとに行う。 
+			<!--perform screen swap every given number of 
+			milliseconds. ---></span><span class="syntax2">
+			<br>
+		</span><span class="syntax">value</span><span class="text"> </span><span class="text">
+			&lt;0 与えられたミリセカンド待ったのちscreenSwapコマンドが来たらスクリーンスワップを行う。 
+			<!---waits given number of milliseconds and perform screen swap only if is 
+			explicitly called by screenSwap command. ---></span>
+		<br>
+		<span class="smallTitle">
+			<br>
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">autoback(</span> 15 <span style="font-weight: bold;">
+					)</span>
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

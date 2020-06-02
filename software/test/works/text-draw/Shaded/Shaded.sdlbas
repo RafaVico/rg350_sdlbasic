@@ -1,0 +1,9 @@
+' Shaded
+paper(0xfffffff)
+ink(0)
+cls
+paper(0x0)
+text(10,0,128,"prova",0)'solid
+text(10,128,128,"prova",1)'shaded
+text(10,256,128,"prova",2)'blended
+waitkey

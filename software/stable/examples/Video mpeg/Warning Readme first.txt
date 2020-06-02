@@ -1,0 +1,1 @@
+please copy in this folder a mpeg video file and rename as "b.mpg"

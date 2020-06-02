@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Maths:abs
+'
+'   Name:      abs.sdlbas
+'   Purpose:    returns absolute value of number
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+n=-3.1415
+prints("the real number is "+str$(n))
+wait(1000)
+prints("now abs delete the sign")
+wait(1000)
+prints("the absolute number is "+str$(abs(n)))
+prints("press any key to exit")
+waitkey

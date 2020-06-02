@@ -1,0 +1,22 @@
+'soundfreq now work well!!!!
+
+setdisplay (200,200,32,1)
+text (10,10,20,"1) 10")
+text (10,30,20,"2) 20")
+text (10,50,20,"3) 30")
+text (10,70,20,"4) 40")
+text (10,90,20,"5) 50")
+
+if fileexists("shot.wav") then
+    loadsound ("0880hz.wav",1)
+end if
+ playsound (1,1)
+
+while key(27)=0
+    if key(49) then : playfreqsound (1,1,-2):while inkey<>0:end while: end if
+    if key(50) then : playfreqsound (1,1,-1):while inkey<>0:end while: end if
+    if key(51) then : playfreqsound (1,1,0):while inkey<>0:end while: end if
+    if key(52) then : playfreqsound (1,1,1):while inkey<>0:end while: end if
+    if key(53) then : playfreqsound (1,1,2):while inkey<>0:end while: end if
+end while
+

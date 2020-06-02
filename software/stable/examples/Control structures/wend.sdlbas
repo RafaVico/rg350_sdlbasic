@@ -1,0 +1,22 @@
+'
+' sdlBasic example  Control structures:wend
+'
+'   Name:      wend.sdlbas
+'   Purpose:    end while cycle
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+i=0
+while inkey <>27
+	i=i+1
+	prints(i)
+	if i>200 then
+		exit while
+	end if
+' you can use indifferent wend or end while
+wend
+'end while

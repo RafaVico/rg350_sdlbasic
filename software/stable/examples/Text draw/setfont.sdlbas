@@ -1,0 +1,24 @@
+'
+' sdlBasic example Text draw: setfont example
+' 
+'   Name:     setfont.sdlbas
+'   Purpose:   example of text function 
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+text(100,150,16,"sdlBasic")
+
+if os="linux" then
+    setfont("/usr/X11R6/lib/X11/font/TTF/unicode.ttf")'!important verify if font exist
+else
+        setfont("c:/Windows/Fonts/impact.ttf")'! important verify if font exist
+end if
+
+text(100,250,16,"sdlBasic")
+
+prints("press any key to exit")
+waitkey

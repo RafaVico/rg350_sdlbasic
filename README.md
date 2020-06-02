@@ -1,2 +1,4 @@
-# rg350_sdlbasic
-SDLBasic port for RG350
+# SDLBasic
+SDLBasic port for RG350.
+
+

@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Files:filecopy
+'
+'   Name:      filecopy.sdlbas
+'   Purpose:    copy a file
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+filecopy("filecopy.sdlbas","anothercopy.sdlbas")
+a$=dirfirst("./*")
+while a$<>""
+    prints(a$)
+    a$=dirnext
+end while
+kill("anothercopy.sdlbas")
+waitkey

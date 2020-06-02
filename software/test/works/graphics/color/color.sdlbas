@@ -1,0 +1,58 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  color.sdlbas 
+'| date 1/01/2004 
+'|
+'| description: 
+'| test color depth with a 32 16 and 8 bpp 
+'| keys: space to continue
+'|
+'| bugfix:
+'| 
+'| 
+'| Bug:
+'| in linux not change the depth color
+'| 
+'|------------------------------------------------------------------------------------------------------------
+
+setdisplay(1024,768,32,0)
+mousehide()
+
+for i = 0 to 255
+	ink(rgb(i,0,0))
+	line(0,0+i,640,0+i)
+	ink(rgb(0,i,0))
+	line(0,256+i,640,256+i)
+	ink(rgb(0,0,i))
+	line(0,512+i,640,512+i)
+next
+screenswap
+while(key(k_space)):end while
+while(!key(k_space)):end while
+
+setdisplay(1024,768,16,0)
+for i = 0 to 255
+	ink (rgb(i,0,0))
+	line(0,0+i,640,0+i)
+	ink(rgb(0,i,0))
+	line(0,256+i,640,256+i)
+	ink(rgb(0,0,i))
+	line(0,512+i,640,512+i)
+next
+screenswap
+while(key(k_space)):end while
+while(!key(k_space)):end while
+
+
+setdisplay(1024,768,8,0)
+
+for i = 0 to 255
+	ink(rgb(i,0,0))
+	line(0,0+i,640,0+i)
+	ink(rgb(0,i,0))
+	line(0,256+i,640,256+i)
+	ink(rgb(0,0,i))
+	line(0,512+i,640,512+i)
+next
+screenswap
+while(key(k_space)):end while
+while(!key(k_space)):end while

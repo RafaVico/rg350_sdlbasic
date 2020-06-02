@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>setDisplay()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">setDisplay()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			ディスプレーのパラメーターを変える。
+			<br>
+			sdlBasicはデフォルトのパラメーターでディスプレーをオープンするが、このコマンドでそれを変えることが出来る。 
+			<!---Change display parameters. sdlBasic open a default display that you can modify 
+			with this command.-->
+			<br>
+		</span><span class="smallTitle">
+			<br>
+			書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">setDisplay( </span><span class="syntax">width </span><span class="syntax2">
+				, </span><span class="syntax">height </span><span class="syntax2">, </span><span class="syntax">
+				depth </span><span class="syntax2">, </span><span class="syntax">mode </span>
+			<span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<span class="text"></span><span class="syntax">
+			<br>
+			width</span><span class="text"></span><span class="text"> ディスプレーの幅</span> <span class="syntax2">
+			<br>
+		</span><span class="text"></span><span class="syntax">height</span><span class="text">
+		</span><span class="text">ディスプレーの高さ </span><span class="syntax2">
+			<br>
+		</span><span class="text"></span><span class="syntax">depth</span><span class="text">
+		</span><span class="text">ディスプレーのカラービット値.
+			<BR>
+			標準値: </span><span class="syntax2">
+			<br>
+		</span>
+		<div style="margin-left: 40px;">
+			<span class="text">8 = 256色 </span>
+			<br>
+			<span class="text"></span><span class="text">16 = 65000色 </span>
+			<br>
+			<span class="text"></span><span class="text">32 = フルカラー </span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text"></span><span class="text"></span><span class="syntax">mode</span><span class="text">
+		</span><span class="text">ディスプレーモード
+			<BR>
+			標準値: </span><span class="syntax2">
+			<br>
+		</span>
+		<div style="margin-left: 40px;">
+			<span class="text">0 = フルスクリーン</span>
+			<br>
+			<span class="text"></span><span class="text">1 = 固定ウィンドウ </span>
+			<br>
+			<span class="text"></span><span class="text">2 = リサイズ可能ウィンドウ </span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text"></span><span class="smallTitle">
+			<br>
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">setDisplay(</span> 800, 
+				600, 16, 1 <span style="font-weight: bold;">)</span>
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

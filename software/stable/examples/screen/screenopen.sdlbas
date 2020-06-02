@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Screen:screenopen
+'
+'   Name:      screenopen.sdlbas
+'   Purpose:    open the logic screen n of dimension w,h in display coordinates dx,dy,dw,dh
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

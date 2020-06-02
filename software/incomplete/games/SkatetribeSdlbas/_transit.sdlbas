@@ -1,0 +1,21 @@
+windowed=0
+ setdisplay(320,200,16,windowed)
+ autoback(0):mousehide()
+ loadimage ("backgrounds/transit.png",0)
+screen(0)
+  loadmusic ("tunes/lament.mod"):playmusic(-1)
+while(0=0)
+  tikcr=ticks
+  y1=(tikcr/4)mod 200
+   y2=(tikcr/8)mod 200
+  blt(0,0,y1,128,200-y1,0,0)
+   blt(0,0,0,128,y1,0,200-y1)
+  blt(0,128,y2,64,200-y2,128,0)
+   blt(0,128,0,64,y2,128,200-y2)
+  blt(0,192,y1,128,200-y1,192,0)
+   blt(0,192,0,128,y1,192,200-y1)
+     screenswap()
+     if key(27) then : end :end if
+end while
+
+   

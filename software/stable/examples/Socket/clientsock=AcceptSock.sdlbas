@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:clientsock=AcceptSock
+'
+'   Name:      clientsock=AcceptSock.sdlbas
+'   Purpose:    Accept the client connection
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

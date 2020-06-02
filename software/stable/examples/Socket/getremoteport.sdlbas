@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:getremoteport
+'
+'   Name:      getremoteport.sdlbas
+'   Purpose:    return the port address of remote client connetted
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

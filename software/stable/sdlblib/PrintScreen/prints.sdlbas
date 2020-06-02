@@ -1,0 +1,32 @@
+''''''''''''''''''''''''''''''''''''''
+' screenprint
+'
+' Studio preliminare della stampa a video grafico a caratteri
+'
+''''''''''''''''''''''''''''''''''''''
+setautoback(25) 'refresh automatico
+include "printscreen.sdlblib"
+sub main	
+	locate_soft (1,1):prints_soft("ciao mondo")
+
+	paper_soft (rgb(255,0,0))
+	locate_soft (10,2):prints_soft("altro ciao")
+	prints_soft("Questo e' un testo di compatibilita'")
+	pen_soft(rgb(0,0,255))
+	prints_soft("12345678901234567890123456789012345678901234567890123456789012345678901234567890")
+	paper_soft(0)
+	for i =0 to 10
+		locate_soft(20-i,10+i)
+		prints_soft("ciao")
+	next	
+		
+	while(0=0)
+		if (key(27))then
+			exit while
+		end if
+	end while
+end sub
+'-------------------------------------------------------------------------------------------------------
+
+main
+

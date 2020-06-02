@@ -1,0 +1,244 @@
+s=0
+setdisplay (800,600,32,0)
+autoback(0)
+screenopen(0,800,600,0,0,800,600,0)
+screenopen(1,800,180,0,400,800,180,2)
+
+screen(0)
+mousehide()
+ink(rgb(255,255,255))
+textrender("vroby ",40,1)
+ink(rgb(255,0,0))
+textrender("Screensaver ",20,2)
+
+ink(rgb(0,0,255))
+textrender("........un testo a piacere .......................3....2...1",60,3)
+ink(rgb(255,255,0))
+textrender("........un testo a piacere .....3....2...1",30,4)
+
+dim logox[100]
+dim logoy[100]
+
+nl=0
+logox[ nl]=1:logoy[nl]=1:nl=nl+1
+logox[ nl]=1:logoy[nl]=1:nl=nl+1
+logox[ nl]=1:logoy[nl]=1:nl=nl+1
+logox[ nl]=1:logoy[nl]=1:nl=nl+1
+logox[ nl]=1:logoy[nl]=1:nl=nl+1
+logox[ nl]=1:logoy[nl]=1:nl=nl+1
+logox[ nl]=1:logoy[nl]=1:nl=nl+1
+logox[ nl]=1:logoy[nl]=1:nl=nl+1
+logox[ nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=0:nl=nl+1
+logox[nl]=1:logoy[nl]=0:nl=nl+1
+logox[nl]=1:logoy[nl]=0:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=0:logoy[nl]=1:nl=nl+1
+logox[nl]=0:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=0:nl=nl+1
+logox[nl]=-1:logoy[nl]=0:nl=nl+1
+logox[nl]=-1:logoy[nl]=0:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=1:logoy[nl]=1:nl=nl+1
+logox[nl]=0:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=1:logoy[nl]=0:nl=nl+1
+logox[nl]=1:logoy[nl]=0:nl=nl+1
+logox[nl]=1:logoy[nl]=0:nl=nl+1
+logox[nl]=1:logoy[nl]=-1:nl=nl+1
+logox[nl]=0:logoy[nl]=-1:nl=nl+1
+logox[nl]=0:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=0:nl=nl+1
+logox[nl]=-1:logoy[nl]=0:nl=nl+1
+logox[nl]=-1:logoy[nl]=0:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=-1:logoy[nl]=-1:nl=nl+1
+logox[nl]=0:logoy[nl]=-1:nl=nl+1
+
+p=0
+
+
+
+ts=800
+
+dim vrcpx[10]
+dim vrcpy[10]
+for i =0 to 10
+	vrcpx[i]=rnd(600)
+	vrcpy[i]=rnd(100)
+next
+
+dim vrx[200]
+dim vry[200]
+	for i=0 to 200
+		vrx[i]=0
+		vry[i]=0
+	next
+vrdx=0
+vrdy=0
+
+
+dim x[10]
+dim y[10]
+m=0
+n=0
+v=1
+
+
+
+x1=0
+y1=0
+for l=0 to 9
+	x[l]= rnd(9)
+	y[l]= rnd(9)
+next
+
+dim nevex[1500]
+dim nevey[1500]
+for i=0 to 1500
+	nevex[i]=rnd(800)
+	nevey[i]=0-rnd(600)
+next
+
+
+ink(rgb(128,128,128))
+line(0,599,800,599)
+ink(rgb(0,255,0))
+screen(0)
+text(300,300,40,"testo innevato")
+screen(0)
+while(inkey=0)
+	n=n+1:if n>8 then:n=0:end if
+	m=m+v:if abs(m)>39 then:v=-v:end if
+
+	'cancella un pezzo
+	ink(0)
+	bar(0,0,800,300)
+
+	'i vermi rossi
+            screen(1)
+	    screenlock(1)
+
+		for i=0 to 199
+			vrx[i]=vrx[i+1]
+			vry[i]=vry[i+1]
+		next
+		vrdx=logox[p]
+		vrdy=logoy[p]
+		p=p+0.2
+		if p>=nl then
+			p=0
+		end if
+
+	vrx[200]=vrx[199]+vrdx
+	vry[200]=vry[199]+vrdy
+
+	for l=1 to 8
+		for i=0 to 200
+			ink (rgb(i,((l-1)*i/10),0))
+			fillcircle (vrcpx[l]+vrx[i],vrcpy[l]+vry[i],l)
+		next
+	next
+	screenunlock(1)
+
+
+        'cade la neve
+        screen(0)
+	screenlock(0)
+	for i=0 to 1500
+		ink(0)
+		dot(nevex[i],nevey[i])
+		nevey[i]=nevey[i]+1
+		nevex[i]=nevex[i]+rnd(4)-2
+                pn=point(nevex[i],nevey[i]+1)
+		if pn<> 0 then
+                    if point(nevex[i]+1,nevey[i]+1)=0 then
+                        nevex[i]=nevex[i]+1
+                        nevey[i]=nevey[i]+1
+                    end if
+                    if point(nevex[i]-1,nevey[i]+1)= 0 then
+                        nevex[i]=nevex[i]-1
+                        nevey[i]=nevey[i]+1
+                    end if
+                    ink(rgb(255,255,255))
+                    dot(nevex[i],nevey[i])
+
+                    if point(nevex[i],nevey[i]+1)<> 0 then
+                    ink(rgb(255,255,255))
+                    dot(nevex[i],nevey[i])
+			nevex[i]=rnd(800)
+			nevey[i]=0-rnd(600)
+                    end if
+                end if
+                ink(rgb(255,255,255))
+                dot(nevex[i],nevey[i])
+            next
+	screenunlock(0)
+
+	'una strana bandiera
+        screen(0)
+	ink(rgb(abs(m*2),abs(m*2),abs(m*2)))
+	bar(300-m,50+m,450+m,200-m)
+
+	ink(rgb(0,abs(m*2),0))
+	bar(100+abs(m)+abs(m),50+m,250+m+abs(m),200-m)
+
+	ink(rgb(abs(m*2),0,0))
+	bar(500-m-abs(m)-abs(m),50+m,650-m,200-m)
+
+	'il logo che trema
+	sprite(1,650+x[n],500+y[n],1)
+    	sprite(2,650+x[n+1],550+y[n+1],2)
+
+	'testi scorrevoli
+	sprite(3,ts,450,3)
+    	sprite(4,0-(ts/2),350+rnd(4)-2,4)
+	ts=ts-4
+	if ts<-1600 then :ts=800:end if
+
+	screenswap
+end  while

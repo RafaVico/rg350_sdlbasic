@@ -1,0 +1,28 @@
+'
+' sdlBasic example  Files:kill
+'
+'   Name:      kill.sdlbas
+'   Purpose:    delete filename. filename can be then path+filename
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+open "killable-file" for output as 1
+print"kill me"
+close 1
+
+a$=dirfirst("./k*")
+while a$<>""
+    prints(a$)
+    a$=dirnext
+end while
+
+prints("\r now kill \"killable-file\" \r")
+kill("killable-file")
+
+a$=dirfirst("./k*")
+while a$<>""
+    prints(a$)
+    a$=dirnext
+end while
+waitkey

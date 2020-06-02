@@ -1,0 +1,24 @@
+'
+' sdlBasic example  Strings:insert$
+'
+'   Name:      insert$.sdlbas
+'   Purpose:    insert source string to target at index
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("the code:")
+prints("a$= \"pipo\" ")
+prints("b$=insert$(a$,\"p\",2)")
+prints("prints(b$)")
+prints("waitkey")
+prints("")
+
+prints("the result:")
+a$= "pipo"
+b$=insert$(a$,"p",2)
+prints(b$)
+prints("")
+
+prints("press any key")
+waitkey

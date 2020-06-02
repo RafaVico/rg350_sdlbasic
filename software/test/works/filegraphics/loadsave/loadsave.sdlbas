@@ -1,0 +1,21 @@
+setdisplay (800,600,32,1)
+cls()
+
+loadimage ("bidone.gif",1)
+pastebob(10,10,1)
+screenswap()
+
+while (0=0)
+    if key(32) then : exit while : end if
+end while
+
+saveimage ("bidone.bmp",1)
+screenswap()
+loadimage ("bidone.bmp",2)
+pastebob (60,10,2)
+
+blt (2,0,0,32,32,60,60)
+screenswap()
+while (0=0)
+    if key(27)<>0 then : exit while :end if
+end while

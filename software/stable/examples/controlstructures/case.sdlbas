@@ -1,0 +1,27 @@
+'
+' sdlBasic example control structures: case select 
+' 
+'   Name:      case.sdlbas
+'   Purpose:   example of case select   
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+prints("press a number key")
+waitkey
+x=chr$(inkey)
+select  case  (x)	
+	case "0"
+		prints("you press 0")	
+	case "1"
+		prints("you press 1")	
+	case "2"
+		prints("you press 2")	
+	case "3"
+		prints("you press 3")	
+end select	
+
+prints("press esc to exit")
+waitkey(27)

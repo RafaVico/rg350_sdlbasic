@@ -1,0 +1,16 @@
+'
+' sdlBasic example  Graphics:palette
+'
+'   Name:      palette.sdlbas
+'   Purpose:    set all palettes color(0,0xff,0xff00,....)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+palette(0x404040,0x0000ff,0x00ff00,0xff0000,0x00ffff,0xff00ff,0xffff00,0xffffff,0x808080 )
+
+for i =0 to 8
+    ink(color(i))
+    bar (0,i*8,640,i*8+8)
+next
+waitkey

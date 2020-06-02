@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Strings:mid$
+'
+'   Name:      mid$.sdlbas
+'   Purpose:    returns string with chars 1..n from source
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="    ciao ciao"
+prints(a$)
+prints(mid$(a$,5))
+prints(mid$(a$,5,5))
+
+waitkey

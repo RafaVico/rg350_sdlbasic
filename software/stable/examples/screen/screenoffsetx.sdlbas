@@ -1,0 +1,9 @@
+'
+' sdlBasic example Screen:screenoffsetx
+'
+'   Name:      screenoffsetx.sdlbas
+'   Purpose:    give the x coordinate offset in current screen
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

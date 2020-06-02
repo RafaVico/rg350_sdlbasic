@@ -1,0 +1,16 @@
+'alphaesp
+setdisplay(1024,768,32,1)
+setcolorkey(0xffffff)
+loadimage("motd.png",1)
+setalpha(1,192)
+hotspot(1,1,1)
+
+for i=0 to 100
+    ink(rnd(0xffffff))
+    line(rnd(320),rnd(200),rnd(320),rnd(200))
+next
+pasteicon(100,50,1)
+while inkey=0
+    sprite(1,xmouse,ymouse,1)
+    waitvbl
+end while

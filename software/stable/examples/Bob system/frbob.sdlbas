@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Bob system:frbob
+'
+'   Name:      frbob.sdlbas
+'   Purpose:    give the frame of bob n
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",10)
+
+
+bob(1,100,100,10)
+prints("bob frame = "+str$(frbob(1)))
+waitkey

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>loadSound()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">loadSound()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			サウンドファイルをディスクから指定のイメージスロットに読み込む。 サウンドファイルはwavフォーマットでなければならない。 
+			イメージスロットが指定されないときは、フリーなスロットの内の最初のスロットに読み込まれる。 この場合戻り値はこの読み込んだスロットの番号になる。 
+			sdlBasicは1024個のサウンドスロットを持つことができる。 
+			<!--Loads sound file from disk and store it into given sound slot. Sound file must 
+			be in wav sound format. sdlBasic allow 1024 sound slots. If sound slot is 
+			omitted, sound will be stored in first free slot, in this case command returns 
+			automatic assigned image slot.-->
+			<br>
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">loadSound( </span><span class="syntax">filename </span><span class="syntax2">
+				, </span><span class="syntax">slot </span><span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<span class="smallTitle">
+			<br>
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">s = <span style="font-weight: bold;">loadSound(</span> "testSound.wav"
+				<span style="font-weight: bold;">)</span></span><span class="syntax2"></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">playSound( s, 1 )
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">waitkey
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

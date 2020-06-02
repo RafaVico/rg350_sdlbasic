@@ -1,0 +1,11 @@
+setdisplay(640,480,16,1)
+common c=0
+while key(27)=0
+   ink(rgb(255,255,255))
+   cls
+   text(0,0,124,c)
+
+   c=c+1
+   ScreenSwap
+   wait(120)        'try another value!
+wend

@@ -1,0 +1,12 @@
+open "index.txt" for input  as 1
+open "dummy.txt" for output  as 2
+
+while not eof( 1 )
+file input #1, line$
+file output #2, line$
+end while
+wait(500)
+shell("sort dummy.txt --output=sortedIndex.txt ")
+close 1
+close 2
+shell("sort dummy.txt --output=sortedIndex2.txt ")

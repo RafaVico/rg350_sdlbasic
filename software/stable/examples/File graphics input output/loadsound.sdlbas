@@ -1,0 +1,17 @@
+'
+' sdlBasic example  File graphics input output:loadsound
+'
+'   Name:      loadsound.sdlbas
+'   Purpose:    load a wave file in a sound slot n
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sound=loadsound("../wav.wav")
+playsound(sound,1)
+wait(500)
+loadsound("../wav.wav",1)
+playsound(1,1)
+
+prints("press any key to exit")
+waitkey

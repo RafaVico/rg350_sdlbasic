@@ -1,0 +1,61 @@
+'
+' sdlBasic demo: water reflection
+'
+'   Name:      water_reflect.sdlbas
+'   Purpose:   testing blitting performance of sdlBasic
+'   Author:    zoiba
+'   Licence:    LGPL
+'
+'   Bugs:
+'	in windows full screen is too slow like in windows...
+'   Todo:
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+'--------------------------------------- graphic loading routine
+function  load()
+    loadimage("sdlBasicLogo.png",100)
+    loadimage("background.jpg",102)
+    hotspot (100,1,1)
+end function
+
+'--------------------------------------- main cycle
+function main()
+    o=0:' starting wave position
+    y=-64:' starting bob position
+    w_amplitude=4
+    w_frequency=.3
+
+    while(not(key(27))):' infinite loop untill esc key is pressed
+	pasteicon(0,0,102):'		paste the background
+	' ----------------------------- sprite movement
+	v=(150-y)/100:' 		let's calculate sprite velocity to smoothly stop it
+	if v<.1 then: v=0: end if:'
+	y=y+v:'				add velocity to vertical coordinate
+	pastebob(320,y,100):'		let's paste bob to the screen
+	'------------------------------ reflection
+
+	for n=1 to 240
+	    grab(200+n,0,240-n,640,1):' let's copy each line of upper half screen
+	next
+	o=o-.05:' let's move the wave
+	m=o
+	for n=1 to 240
+	    m=m+w_frequency
+	    pasteicon(sin(m)*w_amplitude,239+n,200+n)
+	next
+
+	'waitvbl
+	screenswap
+    wend
+
+end function
+
+'--------------------------------------
+'--------------------------------------
+
+setdisplay(640,480,32,0)
+setautoback(0)
+setcolorkey(0)
+load
+main

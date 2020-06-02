@@ -1,0 +1,19 @@
+'
+' sdlBasic example CD support:opencd
+'
+'   Name:      opencd.sdlbas
+'   Purpose:    opens a cd-rom drive for access.
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+opencd(0,0)
+while indrivecd(0)=0
+    prints("please insert audio cd")
+    wait(500)
+end while
+prints("tracks:"+str$(trackscd(0)))
+prints("press any key to exit")
+waitkey
+closecd(0)

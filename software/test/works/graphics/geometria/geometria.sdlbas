@@ -1,0 +1,157 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test       geometria.sdlbas
+'| date 1/01/2004
+'|
+'| description:
+'| verify the geometric graphics function implemented
+'|
+'|
+'| keys : esc to exit
+'|
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'| in windows mouse not perform
+'|
+'|------------------------------------------------------------------------------------------------------------
+setdisplay (800,600,32,0)
+
+screenopen (0,1000,1000,0,0,640,480,0)
+setautoback(0)
+for y= 0 to 255
+    for x =0 to 255
+	ink (rgb(255,x,y))
+	dot (10+x,10+y)
+    next
+    if key(27) then
+	end
+    end if
+next
+screenswap()
+
+
+
+
+for y= 0 to 255
+    for x =0 to 255
+	ink(rgb(x,255,y))
+	dot (300+255-x,10+255-y)
+	if key(27) then
+	    end
+	end if
+    next
+next
+screenswap()
+
+
+
+for y= 0 to 255
+    for x =0 to 255
+	ink(rgb(x,y,255))
+	dot (10+x,300+255-y)
+        if key(27) then
+	    end
+	end if
+    next
+next
+screenswap()
+
+
+
+
+ink (rgb(255,255,255))
+line (0,0,320,200)
+line (50,50,270,150)
+ink (rgb(255,255,255))
+line (320,0,0,200)
+line (270,50,50,150)
+screenswap()
+
+
+ink (rgb(255,0,0))
+box (0,0,320,200)
+box (50,50,270,150)
+screenswap()
+
+
+
+ink (rgb(0,0,255))
+bar (400,0,410,20)
+bar (400,350,420,360)
+
+
+
+ink (rgb(255,255,255))
+fillcircle (400,300,50)
+circle (400,300,100)
+circle (400,300,150)
+circle (400,300,200)
+
+
+
+ink (rgb(255,0,255))
+ellipse (400,300,400,100)
+fillellipse (400,300,300,10)
+screenswap()
+
+
+ink (rgb(255,255,255))
+dot (10,10)
+screenswap()
+p=point(10,10)
+print p
+ink (p)
+
+while(0=0)
+    if bmouse()=0 then
+	xold=xmousescreen(0)
+	yold=ymousescreen(0)
+    end if
+
+
+    if bmouse()>1 then
+	p = point(xmousescreen(0),ymousescreen(0))
+
+	t$ = str$(p)
+	ink( rgb(0,0,0))
+
+	bar (10,10,300,25 )
+	ink (rgb(255,255,255))
+	text (10,10,10,"valore:"+t$)
+	screenswap()
+	print p
+	ink(p)
+    end if
+
+    if bmouse()=1 then
+	xnew=xmousescreen(0)
+	ynew=ymousescreen(0)
+	line (xold,yold, xnew,ynew)
+	xold=xnew
+	yold=ynew
+
+	screenswap()
+    end if
+
+    if key(asc("1"))=1 then :ink(rgb(0,0,0)): dot(xmousescreen(0),ymousescreen(0)) : screenswap() : end if
+    if key(asc("2"))=1 then :ink(rgb(255,0,0)): dot(xmousescreen(0),ymousescreen(0)) : screenswap() : end if
+    if key(51)=1 then :ink(rgb(0,255,0)): dot(xmousescreen(0),ymousescreen(0)) : screenswap() : end if
+    if key(52)=1 then :ink(rgb(0,0,255)): dot(xmousescreen(0),ymousescreen(0)) : screenswap() : end if
+    if key(53)=1 then :ink(rgb(255,255,255)): dot(xmousescreen(0),ymousescreen(0)) : screenswap() : end if
+
+
+    if key(27) then : exit while : end if
+
+
+    if xmouse>displaywidth()-40 then :offset( xoffset()+5,yoffset()) : screenswap():end if
+    if xmouse<40 then : offset (xoffset()-5,yoffset()) : screenswap():end if
+
+    if ymouse>displayheight()-40 then :offset (xoffset(),yoffset()+5) : screenswap(): end if
+    if ymouse<40 then :offset(xoffset(),yoffset()-5) : screenswap():end if
+    screenswap
+end while
+
+while(key(27)=0)
+end while

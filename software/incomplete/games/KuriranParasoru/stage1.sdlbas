@@ -1,0 +1,92 @@
+
+'--- Preliminary conversion from ActiveBasic version
+'--- Original stuff from http://ww51.tiki.ne.jp/~kuriran/
+'--- Hard to convert: plenty of goto statements
+'---   and japanese text/documentation (mainly JIS encoding)
+'--- Hard to understand how enemy attack waves works
+'--- Bug in the .mid tune loop? (freeze a bit)
+'---   is .mid the best suitable tune format?
+'---   (hard to convert to .mod or .xm accuracely)
+
+windowed=0
+ setdisplay(640,400,32,windowed)
+ autoback(-32):mousehide()
+ loadimage ("stage1.png",0)
+
+randomize
+
+dim tmx[4],tmy[4],tmf[4]
+dim tekix[4],tekiy[4],kakudo[4],tekiyp[4]
+
+ ScreenOpen (1,640,400,0,0,0,0,0)
+
+ Loadimage("st1kyara.png",1): pasteicon(0,0,1): Screen(1)
+    for y=0 to 4: For x=0 To 3
+       k=(y*4)+x: grab(1+k,x*50,y*50,50,50)
+     Next:next
+
+screen(0)
+
+ oxsp=32:oysp=32:rspn=1
+ curbm=0
+ trig1pr=0
+ tekix[0]=200:tekiy[0]=0:kakudo[0]=0:tekiyp[0]=50
+ tekix[1]=400:tekiy[1]=0:kakudo[1]=3:tekiyp[1]=90
+ tekix[2]=600:tekiy[2]=0:kakudo[2]=2:tekiyp[2]=60
+
+
+  'loadmusic ("st1.mid"):playmusic(-1)
+
+while(0=0)
+  tikcr=ticks
+  xoff=(tikcr/32)mod 128
+
+   for tlz=0 to 4
+       blt(0,xoff,0,128-xoff,320,(tlz*128),0)
+       blt(0,0,0,xoff,320,(tlz*128)+128-xoff,0)
+    next
+
+     rspn=1
+   if key(K_right) then :oxsp=oxsp+2:end if
+   if key(K_left) then :oxsp=oxsp-2:end if
+   if key(K_up) then :oysp=oysp-4:rspn=2:end if
+   oysp=oysp+2
+
+   if (key(K_SPACE) and tmf[curbm]=0 and trig1pr=0 )    then
+      trig1pr=1
+      tmx[curbm]=oxsp+20
+      tmy[curbm]=oysp+20
+      tmf[curbm]=1
+      curbm=(curbm+1)mod 4
+    end if
+
+  if not (key(K_SPACE)) then: trig1pr=0:end if
+
+   if oysp>256 then: oysp=256:end if
+   if oysp<16 then: oysp=16:end if
+   if oxsp>600 then: oxsp=600:end if
+   if oxsp<16 then: oxsp=16:end if
+
+    bob(32,oxsp,oysp,rspn)
+
+for i= 0 to 3
+   if tmf[i]=1 then: tmx[i]=tmx[i]+4:end if
+   if tmx[i]>600 then: tmf[i]=0:end if
+    bob(24+i,tmx[i],tmy[i],13)
+ next
+
+
+for i=0 to 2
+    bob(8+i,tekix[i],tekiy[i],5)
+      tekix[i]=tekix[i]-2
+      kakudo[i]=kakudo[i]+0.05
+      tekiy[i]=tekiyp[i]+sin(kakudo[i])*50
+
+      if tekix[i]<0 then:tekix[i]=600:tekiyp[i]=rnd(180)+50:end if
+   next
+
+
+   screenswap()
+   if key(27) then : end :end if
+end while
+

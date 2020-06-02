@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Strings:instr
+'
+'   Name:      instr.sdlbas
+'   Purpose:    returns position in source that target was found
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="hello roby "
+prints(instr(a$,"roby"))
+prints(instr(2,a$,"roby"))
+prints(instr(2,a$,"hello"))
+prints(instr(a$,"roy"))
+waitkey

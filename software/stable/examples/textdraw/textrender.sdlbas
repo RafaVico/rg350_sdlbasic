@@ -1,0 +1,20 @@
+'
+' sdlBasic example Text draw: textrender example
+' 
+'   Name:     textrender.sdlbas
+'   Purpose:   example of textrender function 
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'setautoback(25)
+
+a$="   ciao   "
+textrender(a$,16,1)
+pastebob(100,200,1)
+prints("press any key to exit")
+while inkey=0
+    bob(1,xmouse,20,1)
+    sprite(1,20,ymouse,1)
+end while    
+waitkey

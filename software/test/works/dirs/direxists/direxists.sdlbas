@@ -1,0 +1,29 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  direxists.sdlbas 
+'| date 1/01/2004 
+'|
+'| description: 
+'| verify the existance of a folder "prova" 
+'| if exist then remove
+'| else make
+'| keys : esc to exit
+'| 
+'|
+'| bugfix:
+'| 
+'| 
+'| Bug:
+'| 
+'| 
+'|------------------------------------------------------------------------------------------------------------
+if direxists("prova") then 
+    prints("removing the folder prova")
+    rmdir("prova")
+    screenswap
+else
+    mkdir("prova")
+    prints("making the folder prova")
+    screenswap
+end if    
+prints(dir)
+waitkey

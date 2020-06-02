@@ -1,0 +1,90 @@
+xedge=600:yedge=400
+
+setdisplay(xedge,yedge,32,1)
+paper (0xffffff):ink (0x000000):pen (0x000000):cls
+setautoback(-25)
+
+
+randomize
+c=0
+while c<1
+
+
+
+
+ x0=rnd(xedge):y0=rnd(yedge)
+ x1=rnd(xedge):y1=rnd(yedge)
+ x2=rnd(xedge):y2=rnd(yedge)
+ x3=rnd(xedge):y3=rnd(yedge)
+
+while c<1
+    if bmouse=0 then
+	m=-1
+    end if
+
+   cls
+
+ink (0x007FFF):line (x0,y0,x1,y1)
+ink (0x007FFF):line (x2,y2,x3,y3)
+
+ink (0x007FFF):box(x0-3,y0-3,x0+3,y0+3)
+ink (0x007FFF):box(x1-3,y1-3,x1+3,y1+3)
+ink (0x007FFF):box(x2-3,y2-3,x2+3,y2+3)
+ink (0x007FFF):box(x3-3,y3-3,x3+3,y3+3)
+
+ xa=(x3)-(3*x2)+(3*x1)-(x0):ya=(y3)-(3*y2)+(3*y1)-(y0)
+ xb=(3*x2)-(6*x1)+(3*x0):yb=(3*y2)-(6*y1)+(3*y0)
+ xc=(3*x1)-(3*x0):yc=(3*y1)-(3*y0)
+
+ for tw=0 to 100
+   t=tw/100
+ x=(((((xa*t)+xb)*t)+xc)*t)+x0: y=(((((ya*t)+yb)*t)+yc)*t)+y0
+  if tw=0 then:xold=x:yold=y:end if
+ink (0x000000)
+    line (xold,yold,x,y): xold=x:yold=y
+ next
+
+'   waitkey(k_space)
+'
+'waitkey
+
+screenswap
+while bmouse=0 and m=-1 :end while
+
+if mousezone(x0-3,y0-3,6,6)=1 or m=0 then
+    m=0
+    x0=xmouse
+    y0=ymouse
+end if
+
+if mousezone(x1-3,y1-3,6,6)=1 or m=1 then
+    m=1
+    x1=xmouse
+    y1=ymouse
+end if
+
+if mousezone(x2-3,y2-3,6,6)=1 or m=2 then
+    m=2
+    x2=xmouse
+    y2=ymouse
+end if
+
+if mousezone(x3-3,y3-3,6,6)=1 or m=3 then
+    m=3
+    x3=xmouse
+    y3=ymouse
+end if
+
+if bmouse>1 then
+    exit while
+end if
+
+
+
+wend
+
+wend
+
+locate(2,15):prints("press space to exit" )
+waitkey(k_space)
+

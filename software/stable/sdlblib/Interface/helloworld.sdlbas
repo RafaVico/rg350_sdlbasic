@@ -1,0 +1,15 @@
+' hello world
+
+include "interface.sdlblib"
+
+window1=newcontrol(window,0,20,20,320,200,"my window")
+label1=newcontrol(label,window1,100,30,160,20,"Hello world......")
+button1=newcontrol(button, window1,100,160,120,15," press me to exit ")
+draw
+while key(27)=0
+    waitevent(1)
+    if getparam(button1,_state)=activated then
+	exit while
+    end if
+end while
+destroyall

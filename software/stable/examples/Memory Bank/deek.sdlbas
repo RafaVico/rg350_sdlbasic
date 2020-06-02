@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Memory Bank:deek
+'
+'   Name:      deek.sdlbas
+'   Purpose:    read a 16bit value in memory bank at specific address
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

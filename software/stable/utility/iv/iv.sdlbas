@@ -1,0 +1,90 @@
+'
+' Image viewer 1.0 sdlBasic
+'___________________________________________________________________________________________________________________
+
+include "interface.sdlblib"
+setdisplay(640,400,32,1)
+
+
+'__________________________________________________________________________________________________________________
+
+' iv_readdir(listcontrol,path$): read directory path and get the file and subdirectory names in a listcontrol
+sub iv_readdir(listcontrol,path$)
+    mousehide
+    n=0
+    clearlist(listcontrol)
+    a$=dirfirst(path$)
+    while (a$<>"")
+	if direxists(path$+a$)<>0 then
+	    addlist(listcontrol,"(dir)"+trim(a$))
+	end if
+	if fileexists(path$+a$) then
+	    addlist(listcontrol,a$)
+	end if
+	a$=dirnext
+    end while
+    sortlist(listcontrol)
+    mouseshow
+end sub
+'__________________________________________________________________________________________________________________
+
+
+setcaption("Image View:")
+paper (_back_col):cls
+
+mypath$=dir()+"/"
+'mypath$=replacesubstr(mypath$,"\\","/")
+path=newcontrol(textentry,0,10,12,624,20,mypath$)
+listfile=newcontrol(list,0,5,30,200,360,0)
+iv_readdir(listfile,getparam(path,_value))
+image1=newcontrol(image,0,210,30,420,360,"")
+
+draw
+
+
+while key(27)=0
+    waitevent(1)
+
+    if was(listfile,activated)then
+	a$= getlist(listfile,getparam(listfile,_value))
+	if left$(a$,5)="(dir)" then
+	    a$=mid$(a$,6)
+	    select case(a$)
+		case "..":
+		    a$=getparam(path,_value)
+		    a$=left$(a$,len(a$)-1)
+		    a$=left$(a$,rinstr(a$,"/"))
+	    	    if a$="/" then: a$="//":end if
+		    setparam(path,_value,a$)
+		case ".":
+		    a$=getparam(path,_value)
+		    a$=left$(a$,instr(a$,"/"))
+		    if a$="/" then: a$="//":end if
+		    setparam(path,_value,a$)
+		case else
+		    setparam(path,_value,getparam(path,_value)+a$+"/")
+	    end select
+	    iv_readdir(listfile,getparam(path,_value))
+
+	else
+	    ext$=lcase$(right$(a$,4))
+	    if ext$=".bmp" or ext$=".png" or ext$=".jpg" or ext$=".tif" or ext$=".iff" or ext$=".gif" or ext$="jpeg" then
+		setparam(image1,_value,getparam(path,_value)+a$)
+		setcaption("Image View:"+a$)
+	    end if
+	end if
+	paper (_back_col):cls
+	refresh
+    end if
+
+    if was(path,activated)then
+	setparam(path,_state,1)
+	a$=getparam(path,_value)
+	if right$(a$,1)<>"/" then :a$+="/":setparam(path,_value,a$):end if
+	iv_readdir(listfile,a$)
+	'paper (_back_col):cls
+	refresh
+    end if
+end while
+
+destroyall

@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Strings:ltrim$
+'
+'   Name:      ltrim$.sdlbas
+'   Purpose:    returns string with left whitespace removed
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="    ciao ciao"
+prints(a$)
+prints(ltrim$(a$))
+waitkey

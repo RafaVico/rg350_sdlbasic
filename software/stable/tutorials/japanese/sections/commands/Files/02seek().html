@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>seek()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">seek()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			ファイルのポジションをさがす。ファイルの読み込み/書き込みポイントを指定のポジションに移す。
+			<br>
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">seek( </span><span class="syntax">stream </span><span class="syntax2">
+				, </span><span class="syntax">position </span><span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<span class="smallTitle">
+			<br>
+		</span><span class="syntax">stream</span><span class="text"> <a href="00open...For...As.html">
+				オープンコマンド</a>で指定された番号 </span>
+		<br>
+		</span><span class="syntax">position</span><span class="text"> 読み込み/書き込みするために移動したいポイント。 
+			このポジションはファイルの最初からのバイト単位で移動する。 </span><span class="text"></span>
+		<br>
+		<span class="smallTitle">
+			<br>
+			Example:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">open "myfile.txt" for input as 1</span>
+			<br class="code">
+			<span class="code"><span style="font-weight: bold;">seek(</span> 1,2 <span style="font-weight: bold;">
+					)</span></span>
+			<br class="code">
+			<span class="code">while eof(1)=0</span>
+			<br class="code">
+			<span class="code">fprints("loc:"+str$(loc(1))+" - ")</span>
+			<br class="code">
+			<span class="code">file input #1,a$</span>
+			<br class="code">
+			<span class="code">fprints(a$)</span>
+			<br class="code">
+			<span class="code">end while</span>
+			<br class="code">
+			<span class="code">close 1</span>
+			<br class="code">
+			<span class="code">waitKey </span>
+			<br>
+		</div>
+		<br>
+		<span class="text">参照:<a href="02loc%28%29.html"><span style="font-weight: bold;">loc()</span></a>
+		</span>
+	</body>
+</html>

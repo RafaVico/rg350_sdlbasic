@@ -1,0 +1,7 @@
+
+printS ("bug: print(asc(chr$(237)))")
+printS (asc(chr$(237)))
+printS("")
+
+
+waitkey

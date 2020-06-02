@@ -1,0 +1,39 @@
+'
+' alto basso
+'
+randomize
+setdisplay(400,280,32,0)
+paper(0x8080ff):cls
+screenopen(1,360,243,20,20,360,243,0)
+paper(0x0000ff):cls
+mousehide
+
+
+'locate(0,0):prints("0123456789012345678901234567890123456789")
+
+locate(15,2):prints("Alto/Basso")
+
+locate(10,3):prints("press any key to star")
+waitkey
+n=rnd(1000)
+v=-1
+
+while v<>n
+    a$=inputs("what is my number?","")
+    v=val(a$)
+
+    if  v>n then
+	prints("too big!!!")
+    end if
+    if v<n then
+	prints("little")
+    end if
+end  while
+
+
+
+
+
+
+
+waitkey

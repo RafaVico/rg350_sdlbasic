@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>rnd()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">rnd()
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">疑似乱数を求める。</span>
+		<br>
+		<span class="smallTitle">
+			<br>
+			書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">variable </span><span class="syntax2">
+				= rnd( { </span><span class="syntax">number </span><span class="syntax2">} )
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			乱数の範囲は１から<span class="syntax">number</span>の間。
+			<br class="text">
+			<span class="text">もし </span><span class="syntax">number</span><span class="text"> の値が 
+				与えられない場合求められる乱数の値の最大値は999999999。</span> <span class="smallTitle">
+				<br>
+				例:
+				<br>
+			</span></span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">while not key(27) ' loops until ESC key is pressed</span>
+			<br class="code">
+			<span class="code">print <span style="font-weight: bold;">rnd(</span> 100 <span style="font-weight: bold;">
+					)</span></span>
+			<br class="code">
+			<span class="code">wend</span><span class="syntax2"></span>
+			<br>
+			<span class="syntax2"></span>
+		</div>
+		<span class="syntax2"></span>
+		<br>
+		<span class="text">参照： <a href="randomize%28%29.html">randomize()</a></span>
+	</body>
+</html>

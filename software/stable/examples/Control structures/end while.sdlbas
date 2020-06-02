@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Control structures:end while
+'
+'   Name:      end while.sdlbas
+'   Purpose:    end while cycle
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+i=0
+while i<10
+    i+=1
+end while
+prints("press any key")
+waitkey

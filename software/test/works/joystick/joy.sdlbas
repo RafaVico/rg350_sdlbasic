@@ -1,0 +1,32 @@
+'
+' joystick
+'
+prints("num joysticks:"+str$(numjoysticks()))
+prints("name joystick0:"+namejoystick(0))
+prints("num axes joystick0:"+str$(numaxesjoystick(0)))
+prints("num hats joystick0:"+str$(numhatsjoystick(0)))
+prints("num buttons joystick0:"+str$(numbuttonsjoystick(0)))
+prints("num balls joystick0:"+str$(numballsjoystick(0)))
+
+a=0
+while key(27)=0
+    locate (0,10)
+    prints(a)
+    a=a+1
+
+    for i= 0 to numaxesjoystick(0)-1
+	prints("axis "+str$(i)+" joystick0:"+str$(getaxisjoystick(0,i))+"         ")
+    next
+    for i= 0 to numhatsjoystick(0)-1
+	prints("hat "+str$(i)+" joystick0:"+str$(gethatjoystick(0,i)))
+    next
+    for i= 0 to numbuttonsjoystick(0)-1
+	prints("buttons "+str$(i)+" joystick0:"+str$(getbuttonjoystick(0,i)))
+    next
+    for i= 0 to numballsjoystick(0)-1
+	prints("xball "+str$(i)+" joystick0:"+str$(xgetballjoystick(0,i)))
+	prints("yball "+str$(i)+" joystick0:"+str$(ygetballjoystick(0,i)))
+    next
+	prints("bjoy virtualized: "+str$(bjoy(numjoysticks())))
+    waitvbl
+end while

@@ -1,0 +1,16 @@
+'
+' sdlBasic example  Bob system:bobheight
+'
+'   Name:      bobheight.sdlbas
+'   Purpose:    give height of bob n
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+
+
+bob(1,100,100,1)
+prints("bob height = "+str$(bobheight(1)))
+waitkey
+

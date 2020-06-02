@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Strings:reverse
+'
+'   Name:      reverse.sdlbas
+'   Purpose:    reverse a string return the new string
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="foo"
+prints("a$=foo")
+prints("reverse(a$)="+reverse(a$))
+waitkey

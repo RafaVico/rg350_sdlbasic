@@ -1,0 +1,61 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  allchar.sdlbas
+'| date 17/01/2004
+'|
+'| description:
+'| print all character
+'|
+'|
+'| keys : esc to exit
+'|
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'| in linux char 240 may be crash
+'|
+'|------------------------------------------------------------------------------------------------------------
+setautoback(25)
+Common z[256*14]
+
+sub p(bx,by,c)
+    for y = 0 to 13
+	for x=0 to 10
+	    if andbit(z[c*14+y],1*(2^x)) then
+		dot((bx*10)+x,(by*14)+y)
+	    end if
+	next
+    next
+end sub
+
+
+for i = 0 to 255
+    cls
+    locate(10,0):prints(i)
+    locate(0,0)
+    prints (chr$(i)+" ")
+    for y=0 to 13
+	for x=0 to 10
+	    if point(x,y)<>0 then
+		z[i*14+y]=z[i*14+y]+(1*(2 ^ x))
+	    end if
+	next
+    next
+    print
+    wait (25)
+next
+
+
+x=0
+y=0
+for i = 0 to 255
+
+    p(x,y,i)
+    x=x+1
+    if x >10 then
+	x=0
+	y=y+1
+    end if
+next
+waitkey

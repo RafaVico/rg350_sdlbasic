@@ -1,0 +1,82 @@
+NEW INTERFACE
+
+COS'E'
+new interface e' la guisystem di sdlBasic. E'stata scritta per fornire un semplice e pratico supporto nella creazione di utilita'
+con appunto sdlBasic
+
+IMPLEMENTAZIONE
+new interface e' scrtto in sdlBasic e utilizza solo i comandi del linguaggio. non usa file esterni o eseguibili.
+Al momento e' sistemato in un modulo da includere nel progetto. I dati delle control sono contenuti nell' array _interface[256,8].
+Il primo parametro e' il numero massimo di control gestite, il secondo e' il numero di proprieta.
+Le proprieta' sono
+
+    type: il tipo di control
+    state: lo statu della control
+    parent: la control genitore(-1 nesuna)
+    x: la coordinata x sub al parent
+    y: la coordinata y sub al parent
+    w: larghczza
+    h: altezza
+
+    value: dipende dalla control puo essere il testo o l'oggetto selezionato o il valore corrente.
+
+ogni proprieta' ha una comoda variabile common per indice
+Il nome e' _proprieta(ex. _state). I comandi setnew setparam e getparam provvedono a fornire un comodo acesso all'array stesso.
+Il comando draw disegna l'interfaccia. In pratica legge l'array, stabilisce il tipo di control e chiama la rutine specifica
+che disegna la control. Questo sistema gerarchico permette (spero) un ottima espandibilita'
+Discorso complesso invece per le listbox e simili. Nel sistema ne sono supportate fino a 16 (sono l'array _list[16,259])e
+vanno collegate alla control con un comando dedicato che e' pero automatico e trasparente all'utente.
+Hanno ovviamente solo 256 entry. Per l'accesso alla list si usano i comadi getlist setlist addlist
+il comando draw altera la proprieta state. questa come vedremo in seguito e' la chiave della gestione eventi.
+
+CONTROLS
+qui di seguito sono riportate le control implementate.
+ogni control ha una variabile globale che contiene il numero di riferimento.
+
+window
+frame - staticbox (sono equivalenti )
+label
+button
+textentry
+check
+radio
+guage
+slider
+image
+listbox
+*combobox
+
+EVENTI
+La gestione degli eventi e gerarchica e ricalca lo schema del drawing system. gli eventi ntercettati sono al momento solo quelli del mouse. non esiste un callback e quindi e' cura del programma verificare quale e' l'evento intercettato ed eseguire le operazioni necessarie. il drawing dell'oggetto e invece gestito internamente.
+
+ESEMPI CONCRETI
+
+questo e' il codice del classicissimo "hello world" che in questo caso appare in una finestra con una control di tipo button per uscire.
+
+**-------------------------------------------------------------------
+' hello world
+
+include "interface.sdlblib"
+
+window1=newcontrol(window,0,20,20,320,200,"my window")
+label1=newcontrol(label,window1,100,30,160,20,"Hello world......")
+button1=newcontrol(button, window1,100,160,120,15," press me to exit ")
+draw
+while key(27)=0
+    waitevent(1)
+    if getparam(button1,_state)=activated then
+	exit while
+    end if
+end while
+destroycontrol(button1)
+destroycontrol(label1)
+destroycontrol(window1)
+**--------------------------------------------------------------------	
+
+
+
+
+
+
+
+

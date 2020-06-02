@@ -1,0 +1,11 @@
+option qbasic
+declare sub main(a$)
+
+
+main("ciao")
+
+
+sub main(a$)
+    prints (a$)
+    waitkey
+end sub

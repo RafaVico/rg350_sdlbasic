@@ -1,0 +1,234 @@
+'
+' sdlBasic library: PrintScreen  
+' 
+'   Name:      printscreen.sdlblib
+'   Purpose:   basic library to implements 
+'	
+'	
+'	
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' Bugs:
+' works only with linux because in windows fonts are in c:/[windows directory]/fonts
+' it was fixed with a fork but if your system use windows directory names different you must change it!!   
+'
+' Todo:
+' this library it's obsolente because i have ported all rutine in sdlEngine c core library
+' 
+' 
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+common flash=4
+Common size
+Common atx_soft
+Common aty_soft
+Common paper_color
+
+'_____________________________________________________________________________________________
+
+sub pen_soft (c)
+	ink(c)
+	size=13
+	if os="linux" then
+	    setfont("/usr/share/fonts/ttf/vera/VeraMono.ttf")	
+	else
+	    setfont("c:/windows/fonts/veramono.ttf")
+	end if	    	
+	 
+	for i =0 to 255
+		textrender(chr$(i),size-1,i)
+	next
+end sub
+'_____________________________________________________________________________________________
+
+sub paper_soft(c)
+	paper_color=c
+end sub
+'_____________________________________________________________________________________________
+
+sub createfont_soft
+	paper_soft(0)
+	pen_soft(rgb(255,255,255))
+	atx_soft=0
+	aty_soft=0
+end sub
+'_____________________________________________________________________________________________
+
+sub put_char_soft (n)
+	ink (paper_color)
+	xs=size/4*3
+	bar(atx_soft*xs,2+aty_soft*size,atx_soft*xs+xs,2+aty_soft*size+size)
+	pasteicon (atx_soft*xs,aty_soft*size,n)
+	
+	atx_soft=atx_soft+1 
+	if atx_soft>(screenwidth/xs) then
+		atx_soft=0
+		aty_soft=aty_soft+1
+	end if
+	
+	if n=13 then
+	    atx_soft=0
+	    aty_soft=aty_soft+1
+	end if
+end sub
+'_____________________________________________________________________________________________
+
+sub prints_soft (n$)
+	for i =1 to len (n$)
+		put_char_soft(asc(mid$(n$,i,1)))
+		
+	next
+	put_char_soft(13)
+	atx_soft=0:aty_soft=aty_soft+1
+end sub
+'_____________________________________________________________________________________________
+
+
+sub locate_soft(x,y)
+	atx_soft=x
+	aty_soft=y
+end sub
+
+'_____________________________________________________________________________________________
+
+function initcursor_soft
+	for i = 1 to 10
+		ink(rgb(i*25,i*25,i*25))
+		textrender("_",13,i)
+	next	
+end function
+'_____________________________________________________________________________________________
+
+function curson_soft
+	bob(1,atx_soft*9,aty_soft*13,flash/4)
+	flash=flash+1
+
+	if flash >40 then
+		flash=4
+	end if
+	screenswap
+end function
+'_____________________________________________________________________________________________
+
+function cursoff_soft
+	deletebob(1)
+	screenswap
+end function
+'_____________________________________________________________________________________________
+
+function inputs_soft(prompt$,def$)
+	x=atx_soft+len(prompt$)
+	y=aty_soft
+	prints_soft(prompt$)
+	r$=def$
+	cursx=x+len(r$)
+	cursy=y
+
+	locate_soft(x,y):prints_soft(r$+" ")
+
+	locate_soft(cursx,cursy)
+	curson_soft
+	while inkey<>0:end while
+
+	while (0=0)
+		a=inkey
+		'for debug
+		if a<>0 then
+			locate_soft (35,0) : prints_soft(str$(a)+" ")
+			locate_soft(cursx,cursy)
+		end if	
+	
+		'move cursor
+		if key(k_left) then
+			cursx=cursx-1			
+			if cursx<x then: cursx=x :end if
+			locate_soft(x,y)
+			prints_soft(r$+" ")
+			locate_soft(cursx,cursy)
+			while key(k_left)<>0:end while
+			a=0
+		end if
+	
+		if key(k_right) then
+			cursx=cursx+1
+			if cursx>(x+len(r$)) then :cursx=x+len(r$):end if
+			locate_soft(x,y)
+			prints_soft(r$+" ")
+			locate_soft(cursx,cursy)
+			while key(k_right)<>0:end while
+			a=0
+		end if
+
+		if key(k_end) then
+			cursx=x+len(r$)
+			locate_soft(x,y)
+			prints_soft(r$+" ")
+			locate_soft(cursx,cursy)
+			while key(k_right)<>0:end while
+			a=0
+		end if
+
+		if key(k_home) then
+			cursx=x
+			locate_soft(x,y)
+			prints_soft(r$+" ")
+			locate_soft(cursx,cursy)
+			while key(k_right)<>0:end while
+			a=0
+		end if
+
+
+		'hit return
+		if a=13 then
+			cursoff_soft
+			prints_soft("")
+			exit while
+			a=0
+		end if
+	
+		'backdel
+		if key(k_backspace) then 
+			if cursx >x then
+				r$= left$(r$,(cursx-x)-1)+ mid$(r$,(cursx-x)+1,len(r$)-(cursx-x)+1)
+				cursx=cursx-1
+			end if    
+			locate_soft(x,y)
+			prints_soft(r$+"  ")
+			locate_soft(cursx,cursy)
+			while key(k_backspace):end while
+			a=0
+		end if
+
+		'del
+		if key(k_delete) then
+			r$= left$(r$,(cursx-x))+ mid$(r$,(cursx-x)+2,len(r$)-((cursx-x)+1))
+			locate_soft(x,y)
+			prints_soft(r$+" ")
+			locate_soft(cursx,cursy)
+			while key(k_delete):end while
+			a=0
+		end if
+
+		if a<>0 then			
+			r$= left$(r$,(cursx-x))+chr$(a)+ mid$(r$,(cursx-x)+1,len(r$)-(cursx-x)+1)
+			cursx=cursx+1
+			locate_soft(x,y)
+			prints_soft(r$+" ")
+			locate_soft(cursx,cursy)
+			while inkey=a:end while
+			a=0
+		end if 
+	
+
+	'screenswap
+	end while
+	'
+	return r$
+	end function
+
+'_____________________________________________________________________________________________
+
+initcursor_soft
+createfont_soft 

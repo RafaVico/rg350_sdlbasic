@@ -1,0 +1,105 @@
+' 10 key un editor futuristico
+
+'tasti sinistra A S D F [ALT LEFT]  | [SPACE] H J K L"
+' A=1
+' S=2
+' D=4
+' F=8
+' H=16
+' J=32
+' K=64
+' L=128
+' ALT=EXEC FUNCTION
+' SPACE=PRESS KEY
+
+while key(27)=0
+    mykey=0
+    exec=0
+    press=0
+
+    if key(asc("a")) then
+	pen(0xffffff): locate(1,1):prints("A")
+	mykey+=1
+    else
+	pen(0xa0a0a0): locate(1,1):prints("A")
+    end if
+
+    if key(asc("s")) then
+	pen(0xffffff): locate(3,1):prints("S")
+	mykey+=2
+    else
+	pen(0xa0a0a0): locate(3,1):prints("S")
+    end if
+
+    if key(asc("d")) then
+	pen(0xffffff): locate(5,1):prints("D")
+	mykey+=4
+    else
+	pen(0xa0a0a0): locate(5,1):prints("D")
+    end if
+
+    if key(asc("f")) then
+	pen(0xffffff): locate(7,1):prints("F")
+	mykey+=8
+    else
+	pen(0xa0a0a0): locate(7,1):prints("F")
+    end if
+
+    if key(k_lalt) then
+	pen(0xffffff): locate(9,1):prints("ALT")
+	exec=1
+    else
+	pen(0xa0a0a0): locate(9,1):prints("ALT")
+    end if
+'=======================================================================
+    if key(k_space) then
+	pen(0xffffff): locate(15,1):prints("SPACE")
+	press=1
+    else
+	pen(0xa0a0a0): locate(15,1):prints("SPACE")
+    end if
+
+    if key(asc("h")) then
+	pen(0xffffff): locate(21,1):prints("H")
+	mykey+=16
+    else
+	pen(0xa0a0a0): locate(21,1):prints("H")
+    end if
+    if key(asc("j")) then
+	pen(0xffffff): locate(23,1):prints("J")
+	mykey+=32
+    else
+	pen(0xa0a0a0): locate(23,1):prints("J")
+    end if
+
+    if key(asc("k")) then
+	pen(0xffffff): locate(25,1):prints("K")
+	mykey+=64
+    else
+	pen(0xa0a0a0): locate(25,1):prints("K")
+    end if
+
+    if key(asc("l")) then
+	pen(0xffffff): locate(27,1):prints("L")
+	mykey+=128
+    else
+	pen(0xa0a0a0): locate(27,1):prints("L")
+    end if
+
+    if press=1 then
+	pen (0xffffff)
+	locate (1,2):prints(mykey)
+    else
+	locate (1,2):prints("      ")
+    end if
+
+    if exec=1 then
+	pen (0xff0000)
+	locate (1,3):prints(mykey)
+    else
+	locate (1,3):prints("      ")
+    end if
+
+
+    waitvbl
+end while

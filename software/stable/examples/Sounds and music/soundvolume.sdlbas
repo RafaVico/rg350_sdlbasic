@@ -1,0 +1,9 @@
+'
+' sdlBasic example Sounds and music:soundvolume
+'
+'   Name:      soundvolume.sdlbas
+'   Purpose:    change the volume of channel c (-1  all) at value v (0-128) without v or -1 give the current volume
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

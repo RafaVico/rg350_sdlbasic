@@ -1,0 +1,36 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  allchar.sdlbas
+'| date 17/01/2004
+'|
+'| description:
+'| print all character
+'|
+'|
+'| keys : esc to exit
+'|
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'| in linux char 240 may be crash
+'|
+'|------------------------------------------------------------------------------------------------------------
+setautoback(25)
+curson
+pen(0xffffff)
+x=-6
+y=0
+for i = 0x0 to (0xff)
+	x=x+6
+	if x>60 then
+		x=0
+		y=y+1
+	end if
+	locate(x,y)
+	'print "SDLfont_mono["+str$(i)+"] = TTF_RenderText_Solid(font_mono,\""+chr$(i)+"\",SDLcol);"
+	'fprints (str$(i)+" "+ chr$(i))
+	fprints (chr$(i)+" ")
+next
+prints("fine")
+ waitkey

@@ -1,0 +1,9 @@
+'
+' sdlBasic example Text draw:getfont
+'
+'   Name:      getfont.sdlbas
+'   Purpose:    restituisce il font corrente
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

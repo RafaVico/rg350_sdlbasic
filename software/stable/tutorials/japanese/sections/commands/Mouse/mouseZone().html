@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>mouseZone()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">mouseZone()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			マウスポインターが指定の四角形の範囲内にあるかチェック。
+			<br>
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">variable </span><span class="syntax2">
+				= mouseZone( </span><span class="syntax">x </span><span class="syntax2">, </span>
+			<span class="syntax">y </span><span class="syntax2">, </span><span class="syntax">width
+			</span><span class="syntax2">, </span><span class="syntax">hight </span><span class="syntax2">
+				)
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			枠内にあれば True (1)。
+			<br>
+			<br>
+		</span><span class="smallTitle">例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">bar(100,100,100+200,100+150)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">while not key(k_esc)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp;&nbsp;&nbsp; if <span style="font-weight: bold;">mouseZone(</span>
+				100, 100, 200, 150 <span style="font-weight: bold;">)</span> then</span><span class="syntax2"></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+				ink(rnd(rgb(255,255,255)))
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+				bar(100,100,100+200,100+150)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp;&nbsp;&nbsp; end if
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">wend
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

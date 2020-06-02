@@ -1,0 +1,8 @@
+setdisplay(640,480,32,1)
+
+while 0=0
+    if key(27) then : exit while :end if
+    ink(rgb(rnd(255),rnd(255),rnd(255)))
+    box(rnd(640),rnd(480) ,rnd(640),rnd(480))
+    screenswap()
+end while

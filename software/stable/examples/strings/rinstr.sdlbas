@@ -1,0 +1,14 @@
+'
+' sdlBasic example  Strings:rinstr
+'
+'   Name:      rinstr.sdlbas
+'   Purpose:    reverse Instr function, search from end to start
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="...# fooo #..."
+prints("a$="+a$)
+prints("mid$(a$,instr(a$,#))="+ mid$(a$,instr(a$,"#")))
+prints("mid$(a$,rinstr(a$,#))="+mid$(a$,rinstr(a$,"#")))
+waitkey

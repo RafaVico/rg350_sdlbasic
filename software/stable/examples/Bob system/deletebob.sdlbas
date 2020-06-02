@@ -1,0 +1,19 @@
+'
+' sdlBasic example  Bob system:deletebob
+'
+'   Name:      deletebob.sdlbas
+'   Purpose:    unset bob n
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+
+
+bob(1,100,100,1)
+prints("now i delete bob 1")
+wait(1500)
+deletebob(1)
+prints("bob 1 disable")
+prints("press any key")
+waitkey

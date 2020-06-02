@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Screen:directscreen
+'
+'   Name:      directscreen.sdlbas
+'   Purpose:    direct drawing on display like a screen(more fast but sprite and offset does not works)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

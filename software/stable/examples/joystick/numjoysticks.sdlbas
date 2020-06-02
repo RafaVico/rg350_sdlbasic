@@ -1,0 +1,18 @@
+'
+' sdlBasic example Joystick:numjoysticks
+'
+'   Name:      numjoysticks.sdlbas
+'   Purpose:    count available joysticks
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+while key(27)=0
+    locate (1,1)
+    if numjoysticks()>0 then
+	prints("numjoysticks() return:"+str$(numjoysticks()))
+    else
+	prints("not joystick found")
+    end if
+    waitvbl()
+end while

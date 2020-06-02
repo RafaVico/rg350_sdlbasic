@@ -1,0 +1,9 @@
+'
+' sdlBasic example Run Time:islinux
+'
+'   Name:      islinux.sdlbas
+'   Purpose:    restituisce 1 se il sistema operativo usato e' linux
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

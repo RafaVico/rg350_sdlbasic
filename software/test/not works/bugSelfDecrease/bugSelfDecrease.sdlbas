@@ -1,0 +1,12 @@
+autoback(1)
+dim n[1]
+n[1]=30
+do
+	n[1]-=1
+	prints(n[1])
+	waitVBL
+	if n[1]<=0 then:end :end if
+loop
+end
+-- bloccato in uscita ciclo
+--stesso esito per do...loop while...wend

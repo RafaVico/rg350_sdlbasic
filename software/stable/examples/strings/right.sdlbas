@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Strings:right
+'
+'   Name:      right.sdlbas
+'   Purpose:    returns rightmost chars in string
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="ciao pippo"
+prints(right(a$,5))
+waitkey

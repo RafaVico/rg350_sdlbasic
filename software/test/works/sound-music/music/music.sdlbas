@@ -1,0 +1,57 @@
+	'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  music.sdlbas
+'| date 21/12/2003
+'|
+'| description:
+'| test many function of music
+'| warning: need mp3 and ogg file!!!
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+'setdisplay (200,200,32,1)
+text (10,10,20,"1) play mod")
+text (10,30,20,"2) play ogg")
+text (10,50,20,"3) play mp3")
+text (10,70,20,"4) play midi")
+text (10,90,20,"5) play wav")
+text (10,110,20,"6) stop music")
+text (10,130,20,"7) pause music")
+text (10,150,20,"8) resume music")
+text (10,170,20,"9) rewind music")
+
+if fileexists("wav.wav") then
+    loadsound ("wav.wav",1)
+end if
+
+if key(32) then :print "ok": end if
+
+while (0=0)
+
+    if key(27) then : exit while : end if
+
+    if key(49) then : loadmusic ("mod.mod") : playmusic (1) : end if
+
+    if key(50) then : loadmusic ("ogg.ogg") : playmusic (1) : end if
+
+    if key(51) then : loadmusic ("mp3.mp3") : playmusic (1) : end if
+
+    if key(52) then : loadmusic ("midi.mid") : playmusic (1) : end if
+
+    if key(53) then : playsound (1,0) :end if
+
+    if key(54) then : stopmusic() :end if
+
+    if key(55) then : pausemusic() :end if
+
+    if key(56) then : resumemusic() :end if
+
+    if key(57) then : rewindmusic() :end if
+
+end while
+
+

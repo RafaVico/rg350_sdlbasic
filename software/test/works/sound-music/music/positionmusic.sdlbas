@@ -1,0 +1,36 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  positionmusic.sdlbas
+'| date 21/12/2003
+'|
+'| description:
+'| set the position of execute music
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'| position is virtual
+'| need getmusicposition
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+loadmusic ("mod.mod") : playmusic (1)
+p=0:t=0
+prints("Test for positionmusic:")
+locate(3,3):prints("position:")
+locate(3,5): prints("cursor commands - left=rewind : right= forward : up = begin")
+
+
+while (0=0)
+
+    if key(27) then : exit while : end if
+    if key(k_right) then : p=p+1 : positionmusic(p):end if
+    if key(k_left) then : p=p-1 :if p<0 then : p=0:end if: positionmusic(p):end if
+    if key(k_up) then : p=0 : positionmusic(p):end if
+
+    locate(15,3): prints(str$(p)+" ")
+    if timer > t then : p=p+1 :t=timer+4000  :     end if
+    wait (200)
+end while
+
+

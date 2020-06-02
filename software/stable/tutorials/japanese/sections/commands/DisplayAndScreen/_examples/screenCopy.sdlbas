@@ -1,0 +1,12 @@
+'***************
+'* bmp display *
+'***************
+
+loadImage("sdlBasic.png",1)
+pasteIcon(0,0,1)
+for i =401 to 0 step -1
+	screenCopy(0,0,0,200,200,0,200+i,0)
+	screenSwap()
+next
+
+waitKey(27)

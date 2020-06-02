@@ -1,0 +1,43 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test       setalpha.sdlbas 
+'| date 16/01/2004 
+'|
+'| description: 
+'| verify the alpha channel image changed
+'| 
+'| 
+'| keys : esc to exit
+'| 
+'|
+'| bugfix:
+'| 
+'| 
+'| Bug:
+'| 
+'| 
+'|------------------------------------------------------------------------------------------------------------
+setdisplay(640,480,32,1) 
+setautoback(0) 'maxautoscreenswap performing
+'mousehide 'no mouse on screen
+
+loadimage("Blue_E.png",1)
+hotspot(1,1,1)
+'paper (rgb(255,255,255))
+'cls
+for i= 0 to 100
+	ink(rgb(rnd(255),rnd(255),rnd(255)))
+	line(rnd(640),rnd(480),rnd(640),rnd(480))
+next
+i=0
+while inkey <>27
+    
+    i=(i+10)mod 360
+    copyimage(1,2)
+    rotozoomimage(2,(xmouse/8) mod 360,0.5+rnd(10)/10)
+    hotspot(2,1,1)
+    setalpha(2,180)'rnd(192)+64)
+    sprite(1,xmouse,ymouse,2)	
+    screenswap
+    if key(27) then:exit while:end if
+end while
+	

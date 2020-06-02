@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>tally(src$,sub$)</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">tally()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			文字列の中からある文字列の出現回数を戻す。
+			<br>
+		</span><span class="smallTitle">
+			<br>
+			書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">variable </span><span class="syntax2">
+				= tally( </span><span class="syntax">string </span><span class="syntax2">, </span>
+			<span class="syntax">substring </span><span class="syntax2">)
+				<br>
+			</span><span class="syntax">variable </span><span class="syntax2">= tally( </span>
+			<span class="syntax">start</span><span class="syntax"> </span><span class="syntax2">
+				,</span><span class="syntax"> string </span><span class="syntax2">, </span><span class="syntax">
+				substring </span><span class="syntax2">) </span>
+			<br>
+		</div>
+		<span class="smallTitle">
+			<br>
+		</span><span class="syntax">start</span><span class="text"> はオプションで文字列の探索開始位置を与える。</span><span class="smallTitle">
+			<br>
+			<br>
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">a$="ciao ciao ciao ciao"
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">prints("string: "+a$)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">prints( <span style="font-weight: bold;">tally(</span> a$, 
+				"ciao" <span style="font-weight: bold;">)</span> )</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">prints( <span style="font-weight: bold;">tally(</span> 5, 
+				a$, "ciao" <span style="font-weight: bold;">)</span> )</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">waitKey
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+'
+' sdlBasic example  Files:seek
+'
+'   Name:      seek.sdlbas
+'   Purpose:    seek file position/return current file position
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+open "seek.sdlbas" for input as 1
+seek(1,399)
+while eof(1)=0
+    fprints("loc:"+str$(loc(1))+" - ")
+    file input #1,a$
+    fprints(a$)
+end while
+close 1
+waitkey

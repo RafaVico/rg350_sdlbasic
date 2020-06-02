@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>lof()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">lof()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			ファイルのバイト数を返す。
+			<br>
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">lof( </span><span class="syntax">stream </span><span class="syntax2">
+				)
+				<br>
+			</span>
+		</div>
+		<span class="smallTitle">
+			<br>
+		</span><span class="syntax">stream</span><span class="text"> <a href="00open...For...As.html">
+				オープンコマンド</a>で指定された番号 </span>
+		<br>
+		<span class="smallTitle">
+			<br>
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">open "myfile.txt" for input as 1
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">prints( "the lenght of file \"myfile.txt\" is:"+str$( <span style="font-weight: bold;">
+					lof(</span> 1 <span style="font-weight: bold;">)</span> ) )&nbsp; </span>
+			<span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">close 1
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">waitKey
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+'
+' sdlBasic example Run Time:debug
+'
+'   Name:      debug.sdlbas
+'   Purpose:    work with option -debug at start or when you press ctrl+c key in interpretation of basic program
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

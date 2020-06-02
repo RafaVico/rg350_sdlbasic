@@ -1,0 +1,74 @@
+
+' Simple Sierpinski Snowflake
+
+' Generate different random numbers everytime program is run
+Randomize(timer)
+
+' Function to convert radians into degrees
+function rad2deg(radians)
+	const pi =  atan(1) * 4
+	return radians * pi / 180
+end function
+
+' Create a simple windowed display
+setdisplay(640, 480, 32, 1)
+
+' Set window title
+setcaption("Sierpinski Snowflake - Press Esc to Exit")
+
+' Black background
+paper(0)
+
+' Pick white ink
+ink(8^8-1)
+
+' Use black ink to draw with
+pen(0)
+
+' Clear screen
+cls
+
+' Variables & constants go here
+x = 1 : y = 0 : c = 0.5 / sqr(3) : r2  = sqr(3) / 2 : r3 = sqr(3) / 6
+
+' Depth location of snowflake
+ex = 400
+
+' Horizontal location of snowflake
+sx = 240
+
+' Vertical location of snowflake
+sy = 125
+
+' Update screen every 25ms
+setautoback(25)
+
+For i = 0 to 15000
+
+	' Generate a random number between 0 & 1
+	a = sin(rad2deg(rnd(45)))
+
+	if a > 0.5 then
+		x0 = (0.5 * x) + (r3 * y)
+		y0 = (r3 * x) - (0.5 * y)
+	else
+		x0 = (0.5 * x) - (r3 * y) + 0.5
+		y0 = (-r3 * x) - (0.5 * y) + r3
+	end if
+
+	x = x0
+	y = y0
+
+	' Plot the points on the screen
+	dot(x * (ex + sx), sy - (y * ex))
+		u = (0.5 * x) - (r2 * y)
+		v = (-r2 * x) - (0.5 * y)
+	dot(u * (ex + sx), sy - (v * ex))
+		u = (-0.5 * x) + (r2 * y) + 1
+		v = (-r2 * x) - (0.5 * y)
+	dot(u * (ex + sx), sy - (v * ex))
+
+next
+
+' Wait for Esc key to be pressed
+waitkey(k_esc)

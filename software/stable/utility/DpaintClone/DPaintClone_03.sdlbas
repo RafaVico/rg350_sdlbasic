@@ -1,0 +1,233 @@
+
+'- the most useless DPaint clone! ;-)
+
+'- ToDo: recode a complete hexvl function (same as val("&h"+a$))
+'- bug: Bar or Box from sdlbasic.exe still has bugs
+'- ToDo: making the toolbox minimally usable
+'- ToDo: making it more flexible on different screen modes
+
+setdisplay(320,240,32,1):cls
+waitvbl:waitvbl
+paper(0):ink(0):pen(0):cls
+setautoback(25)
+
+setcaption("DPaint clone")
+
+changemouse(2)
+
+clrik=22:clrpp=11
+
+dim clrpte[256]
+clrpte[00]=0x000000:clrpte[01]=0xAAAAAA:clrpte[02]=0xFF0000:clrpte[03]=0xCC0000
+clrpte[04]=0xAA0000:clrpte[05]=0x00DD00:clrpte[06]=0x00AA00:clrpte[07]=0x008800
+clrpte[08]=0x0000FF:clrpte[09]=0x0000CC:clrpte[10]=0x0000AA:clrpte[11]=0xFFFF44
+clrpte[12]=0xCCCC11:clrpte[13]=0x999911:clrpte[14]=0x00FFFF:clrpte[15]=0x00BBBB
+clrpte[16]=0x009999:clrpte[17]=0xEE0099:clrpte[18]=0xBB0077:clrpte[19]=0x990066
+clrpte[20]=0xDD4411:clrpte[21]=0xAA3311:clrpte[22]=0x882211:clrpte[23]=0x0099FF
+clrpte[24]=0x0066CC:clrpte[25]=0x004499:clrpte[26]=0x11CC88:clrpte[27]=0x119966
+clrpte[28]=0x447755:clrpte[29]=0xFFFFFF:clrpte[30]=0xCCCCCC:clrpte[31]=0x999999
+
+dim hbdmp$[60]
+hbdmp$[00]="fff080008000880082008000810080008100800080008000"
+hbdmp$[01]="fff080008000804080808100820084008800900080008000"
+hbdmp$[02]="fff08000820085008880904088808500860084009e008000"
+hbdmp$[03]="fff0800080209fc090c091c093c097c09fc09fc0a0008000"
+hbdmp$[04]="fff08000802080408f8091c0a3e097c08f809000a0008000"
+hbdmp$[05]="fff08000800098c09040800080008000904098c080008000"
+hbdmp$[06]="fff08000bfe0a220a220a220bfe0a220a220a220bfe08000"
+hbdmp$[07]="fff08000838084408820882088208c409f80b800b0008000"
+hbdmp$[08]="fff08000a520a5a0a56099208000b8c0a520a520b8c08000"
+hbdmp$[09]="fff0800080009800a4008200820082008220824081808000"
+hbdmp$[10]="fff080008000bc0083008080804080408020802080208000"
+hbdmp$[11]="fff0800080008140820084a0ba0084a08200814080008000"
+hbdmp$[12]="fff08000872098c090c0a1e0a3e0a7e09fc09fc0a7008000"
+hbdmp$[13]="fff0800082208540888091c0a3e097c08f809700a2008000"
+hbdmp$[14]="fff08000800086008f00998099809f809980998080008000"
+hbdmp$[15]="fff080008200850082009740ada097408200850082008000"
+hbdmp$[16]="fff08000bfe0a020afa0a8a0aaa0a8a0afa0a020bfe08000"
+hbdmp$[17]="fff080008000b4c0a4a0a4a0a4e0a4c0a4a0a4a0b6a08000"
+
+hbdmp$[18]="00007ff07ff077f07df07ff07ef07ff07ef07ff07ff07ff0"
+hbdmp$[19]="00007ff07ff07fb07f707ef07df07bf077f06ff07ff07ff0"
+hbdmp$[20]="00007ff07df07af077706fb077707af079f07bf061f07ff0"
+hbdmp$[21]="00007ff07ff060306fb06fb06fb06fb06fb060307ff07ff0"
+hbdmp$[22]="00007ff07ff07ff070706fb05fd06fb070707ff07ff07ff0"
+hbdmp$[23]="00007ff07ff067306fb07ff07ff07ff06fb067307ff07ff0"
+hbdmp$[24]="00007ff040105dd05dd05dd040105dd05dd05dd040107ff0"
+hbdmp$[25]="00007ff07c707bb077d077d077d073b0607047f04ff07ff0"
+hbdmp$[26]="00007ff05ad05a505a9066d07ff047305ad05ad047307ff0"
+hbdmp$[27]="00007ff07ff067f05bf07df07df07df07dd07db07e707ff0"
+hbdmp$[28]="00007ff07ff043f07cf07f707fb07fb07fd07fd07fd07ff0"
+hbdmp$[29]="00007ff07ff07eb07df07b5045f07b507df07eb07ff07ff0"
+hbdmp$[30]="00007ff078f067306fb05fd05fd05fd06fb0673078f07ff0"
+hbdmp$[31]="00007ff07df07af077706fb05fd06fb077707af07df07ff0"
+hbdmp$[32]="00007ff07ff079f070f0667066706070667066707ff07ff0"
+hbdmp$[33]="00007ff07df07af07df068b0525068b07df07af07df07ff0"
+hbdmp$[34]="00007ff040105fd0505057505550575050505fd040107ff0"
+hbdmp$[35]="00007ff07ff04b305b505b505b105b305b505b5049507ff0"
+hbdmp$[36]="00007ff07ff060306030603060306030603060307ff07ff0"
+hbdmp$[37]="00007ff07ff07ff0707060304010603070707ff07ff07ff0"
+hbdmp$[38]="00007ff078f0603060304010401040106030603078f07ff0"
+hbdmp$[39]="00007ff07df078f07070603040106030707078f07df07ff0"
+
+hbdmp$[40]="0000f000f000f000d000f000f000f000"
+hbdmp$[41]="0000f800f800d8008800d800f800f800"
+hbdmp$[42]="0000fe00c600820082008200c600fe00"
+hbdmp$[43]="0000ff00c70083000100010001008300c700"
+hbdmp$[44]="0000fe0082008200820082008200fe00"
+hbdmp$[45]="0000fc008400840084008400fc00"
+hbdmp$[46]="0000f800880088008800f800"
+hbdmp$[47]="0000f80098009800f800f800"
+hbdmp$[48]="0000ffe0fde0f7e0fde0ffe0ffe0"
+hbdmp$[49]="0000ffe0fde0ffe0efe0fda0ffe0fde0ffe00000"
+
+hbdmp$[50]="0ffe0ffe0ffe2ffe0ffe0ffe0ffefffe"
+hbdmp$[51]="07fe07fe27fe77fe27fe07fe07fefffe"
+hbdmp$[52]="01fe39fe7dfe7dfe7dfe39fe01fefffe"
+hbdmp$[53]="00fe38fe7cfefefefefefefe7cfe38fefffe"
+hbdmp$[54]="01fe7dfe7dfe7dfe7dfe7dfe01fefffe"
+hbdmp$[55]="03fe7bfe7bfe7bfe7bfe03fefffe"
+hbdmp$[56]="07fe77fe77fe77fe07fefffe"
+hbdmp$[57]="07fe67fe67fe07fe07fefffe"
+hbdmp$[58]="001e021e081e021e001e001efffe"
+hbdmp$[59]="001e021e001e101e025e001e021e001efffe4164"
+
+function hexvlq(a$)
+   e=asc(ucase$(a$))
+   hexvlq=abs(((e>=48 and e<=57)*(e-48))+((e>=65 and e<=70)*(e-55)))
+ end function
+
+sub BytePlotT(x,y,v,i)
+    ink(i)
+  for z=0 to 7:z2=7-z
+    if (((int(v/(2^z2)))mod 2) and (2^z2)) then
+      dot(x+z,y): end if:next
+ end sub
+
+sub bitmapbar(x,y,i,c,h$)
+     hln=1:rfc=0:pty=0
+   while hln<len(h$)
+      z$=mid$(h$,hln,2)
+      zv=hexvlq(mid$(z$,1,1))*16+hexvlq(mid$(z$,2,1))
+      BytePlotT(x+(rfc*8),y+pty,zv,i)
+      hln=hln+2
+      rfc=rfc+1:if rfc>(c-1) then:rfc=rfc-(c-0):pty=pty+1:end if
+    wend
+ end sub
+
+paper(clrpte[clrpp]):cls
+
+ink(8^8-1):bar(320-25,0,319,239)
+ink(0):box(320-25,0,319,239)
+
+for x=0 to 1:for y=0 to 8
+bitmapbar((320-25)+(x*12),21+y*12,0x000000,2,hbdmp$[y+(x*9)])
+next:next
+
+ink(0):box(295,129,319,141)
+ink(clrpte[clrpp]):box(296,130,318,140):paint(310,135)
+ink(clrpte[clrik]):box(301,132,312,138):paint(310,135)
+
+xlq=296:ylq=142:xsq=6:ysq=12.4
+for y=0 to 7:for x=0 to 3
+ink(clrpte[y+(x*8)])
+
+bar(xlq+x*6,ylq+y*ysq,xlq+6+x*6,ylq+ysq+y*ysq)
+
+next:next
+
+while 0=0
+
+ if mousebutton=1 then
+    ink(clrpte[clrik]):dot(xmouse,ymouse)
+  end if
+
+
+    if key(k_esc) then:end:end if
+
+wend
+
+'waitkey(k_esc)
+
+
+
+'keys:
+'s- dots
+'d- stream line
+'v- straight line
+'q- curved line
+'f- fill
+'?- ?????
+'r- rectangle
+'c- circle
+'e- ellipse
+'w- polygons
+'b- brush
+'t- type
+'g- grid
+'?- mirror
+'m- magnify
+'?- zoom in/out
+'?- undo
+'?- clear
+
+'menu:
+'.Picture
+'..Load
+'..Save
+'..Print
+'..Flip
+'..Change Colour
+'..Spare
+'..Page Size
+'..Show Page
+'..Screen Format
+'..About
+'..Quit
+'.Brush
+'..Load
+'..Save
+'..Restore
+'..Size
+'..Flip
+'..Edge
+'..Rotate
+'..Change Color
+'..Bend
+'..Handle
+'.Mode
+'..Matte
+'..Colour
+'..Replic
+'..Smear
+'..Shade
+'..Blend
+'..Cycle
+'..Smooth
+'..Tint
+'..Halfbrite
+'.Anim
+'..Load
+'..Save
+'..Move
+'..Frames
+'..Control
+'..Anim Brush
+'..Method
+'.Effect
+'..Stencil
+'..Background
+'..Perspective
+'.Prefs
+'..Coords
+'..Fast FB
+'..MultiCycle
+'..Be Square
+'..Workbench
+'..ExclBrush
+'..AutoTransp
+'..No Icons
+
+
+
+

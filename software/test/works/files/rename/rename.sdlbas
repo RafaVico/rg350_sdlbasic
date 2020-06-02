@@ -1,0 +1,4 @@
+
+fileCopy("aa bb", "aabb"&"_copy" )
+fileRename("aa bb", "aabb"&"_tmp" )
+

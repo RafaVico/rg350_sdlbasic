@@ -1,0 +1,46 @@
+
+
+'paint test
+
+setdisplay(320,320,32,1): 
+
+paper (0xffffff):ink (0x000000)
+pen (0x000000):cls
+
+setautoback(1)
+
+prints("esc to exit")
+prints("leftmouse to write")
+prints("right mouse to fill a close area")
+ink(0x000000)
+line(10,70,100,70)
+line(10,100,100,100)
+line(10,70,10,100)
+line(100,70,100,100)
+'screenswap
+
+ink(rgb(255,0,0))
+paint(50,90)
+'screenswap
+
+xnew=0
+ynew=0
+while(inkey()=0)
+    if bmouse()=1 then
+	ink(0x000000)
+	xold=xnew:yold=ynew
+	xnew=xmouse:ynew=ymouse
+	if xold=0 then
+	    xold=xnew:yold=ynew
+	end if
+        line(xold,yold,xnew,ynew)
+	'screenswap
+    elseif bmouse()>1 then
+	ink(rgb(255,0,0))
+        paint(xmouse,ymouse)
+'	screenswap
+	xnew=0
+	ynew=0
+    end if
+end while
+

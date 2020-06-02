@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>function</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">function ... end function&nbsp;</span>
+		</div>
+		<br>
+		<span class="text">ユーザー定義のファンクションを作成する。 
+			ファンクションとはプログラムのなかで何度も使われるインストラクションのシークエンスである。 
+			<!----
+			Create a user-defined function. A function is a sequence of 
+			instructions that is often used in several parts of your program.--->
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">function&nbsp;</span><span class="syntax">name </span><span class="syntax2">
+				( </span><span class="syntax">parmlist </span><span class="syntax2">{...} )
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; shared </span><span class="syntax">variable
+			</span><span class="syntax2">{, ..}
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; dim </span><span class="syntax">variable </span>
+			<span class="syntax2">{, ...}
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; <span style="color: rgb(102, 102, 102);">commands
+				</span></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; {exit function}
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; {return function}
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; { </span><span class="syntax">functionName </span>
+			<span class="syntax2">= </span><span class="syntax">expression </span><span class="syntax2">
+				}
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">end function
+				<br>
+			</span>
+		</div>
+		<span class="text"></span>
+		<br>
+		<span class="text"></span><span class="syntax">name</span> <span class="text">サブルーチンの名前,最初が数字以外の英文字で始まる文字列。 
+			たとえば: 1printString は正しくない。printString1 は正しい。<!---
+		is 
+			the user-defined function name, it's an alphanumeric string who must starts 
+			with a non numeric character. For example: <span style="font-style: italic;">1printString</span>
+			is incorrect while <span style="font-style: italic;">printString1</span> is 
+			correct. </span>
+		<br class="text">-->
+			<span class="text"></span>
+			<br>
+			<span class="syntax">args</span><span class="text"> ファンクションに引き渡す変数等のアーギュメント。 
+				represent the variables used to pass argument to the function. </span>
+			<br class="text">
+			<span class="text">{,...} はファンクションが不規則な数のアーギュメント を引き渡すことができるということ。<!---
+		indicates the the function can take a variable number of 
+			arguments.--->
+				<br>
+				<br class="text">
+			</span><span class="text">ファンクションのなかで使用される変数はローカル変数である。 
+				ということはメインプログラムのなかで同じ名前の変数が使用されていても他の変数へは影響しない。 Variables used inside the 
+				function are local variables, that means they will not influence other 
+				variables that happens to use the same variable name in your main program or in 
+				any other function. This is valid for arrays too. See <a style="font-weight: bold;" href="../Array/common.html">
+					common</a> statements for more details. </span>
+			<br class="text">
+			<span class="text">You can pass to the function a list of parameters containing the 
+				informations to be processed from the function itself. Functions that do not 
+				require input parameters can be called from your main program without using 
+				brackets. </span>
+			<br class="text">
+			<span class="text">Functions can optionally return values,specified by the <a style="font-weight: bold;" href="return.html">
+					return</a> statement. Returning values can be ignored by the calling 
+				instruction, in this case functions behave like subroutines. </span><span class="syntax2">
+				<br>
+				<span class="smallTitle"></span></span>
+			<br>
+			<span class="text"></span><span class="syntax2"><span class="smallTitle">書式:
+					<br>
+				</span></span>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="syntax2"></span><span class="code"><span style="font-weight: bold;">function</span>
+					myFunction(a,b)</span>
+				<br class="code">
+				<span class="code">&nbsp;&nbsp;&nbsp; return a*b</span>
+				<br class="code">
+				<span style="font-weight: bold;" class="code">end function</span>
+				<br class="code">
+				<span class="code">print myFunction(10,4)</span>
+				<br class="code">
+				<span class="code">print myFunction(3,5)</span>
+				<br class="code">
+				<span class="code">print myFunction(7,8) </span>
+				<br>
+				<span class="text"></span>
+			</div>
+			<span class="text">
+				<br>
+				You can mix required with optional args. The total number of arguments can be 
+				found by calling function <a href="argument%28%29.html"><span style="font-weight: bold;">
+						argument()</span></a> , and the function <a href="argument%28%29.html"><span style="font-weight: bold;">
+						argument(n)</span></a> returns a particular argument passed to the 
+				caller. </span><span class="syntax2"><span class="syntax2">
+					<br>
+				</span><span class="smallTitle"></span></span>
+			<br>
+			<span class="text"></span><span class="syntax2"><span class="smallTitle">例:
+					<br>
+				</span></span><span class="syntax2">
+				<div style="text-align: left; background-color: rgb(255, 255, 204); font-weight: normal;">
+					<span class="code">' sum the args passed
+						<br>
+					</span>
+				</div>
+				<div style="text-align: left; background-color: rgb(255, 255, 204); font-weight: normal;">
+					<span class="code"><span style="font-weight: bold;">function</span> sumNumbers( a )
+						<br>
+					</span>
+				</div>
+				<div style="text-align: left; background-color: rgb(255, 255, 204); font-weight: normal;">
+					<span class="code">&nbsp;&nbsp;&nbsp; total = 0
+						<br>
+					</span>
+				</div>
+				<div style="text-align: left; background-color: rgb(255, 255, 204); font-weight: normal;">
+					<span class="code">&nbsp;&nbsp;&nbsp; for i = 1 to argument() &nbsp;&nbsp;&nbsp;
+						<br>
+					</span>
+				</div>
+				<div style="text-align: left; background-color: rgb(255, 255, 204); font-weight: normal;">
+					<span class="code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; total = total + argument( 
+						i )
+						<br>
+					</span>
+				</div>
+				<div style="text-align: left; background-color: rgb(255, 255, 204); font-weight: normal;">
+					<span class="code">&nbsp;&nbsp;&nbsp; end for
+						<br>
+					</span>
+				</div>
+				<div style="text-align: left; background-color: rgb(255, 255, 204); font-weight: normal;">
+					<span class="code">&nbsp;&nbsp;&nbsp; return sum
+						<br>
+					</span>
+				</div>
+				<div style="text-align: left; background-color: rgb(255, 255, 204);">
+					<span style="font-weight: bold;" class="code">end function</span><span class="text code">
+						<br>
+					</span>
+				</div>
+			</span>
+			<br class="text">
+			<span class="text">参照： <a href="../Array/shared.html"><span style="font-weight: bold;">shared</span></a>
+				, <a href="../Array/dim.html"><span style="font-weight: bold;">dim</span></a> , <a href="exitFunction.html">
+					<span style="font-weight: bold;">exit function</span></a> , <a href="return.html">
+					<span style="font-weight: bold;">return</span></a> </span>
+	</body>
+</html>

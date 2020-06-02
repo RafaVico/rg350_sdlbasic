@@ -1,0 +1,64 @@
+' screen colorkey in actions
+
+loadimage("sdlBasic.png",1)
+hotspot(1,1,1)
+
+setdisplay (640,480,32,0)
+autoback(15)
+mousehide
+dualplayfield(0):' you can remove it
+
+'apro lo schermo sotto e disegno delle linee colorate
+screenopen(0,1280,960,0,0,640,480,0):'lo schermo sotto
+for i = 0 to 100
+    ink(rgb(rnd(255),rnd(255),rnd(255)))
+    line(rnd(1280),rnd(960),rnd(1280),rnd(960))
+next
+
+x1=0:y1=0
+offset(x1,y1)
+
+'apro lo schermo sopra e scrivo delle parole
+screenopen(1,2560-640,1920-480,0,0,640,480,2):'lo schermo sopra
+for i = 0 to 100
+    n=rnd(0xf0)+0xf
+    ink(rgb(n,n,n))
+    text(rnd(2560-320),rnd(1920-240),rnd(64),"screen colorkey: press cursor keys")
+next
+x2=0:y2=0
+offset (x2,y2)
+sprite(1,320,240,1)
+
+v=4
+
+while key(27)=0
+    if key(k_up) then
+	y1-=v*1
+	y2-=v*2
+	screen(0):offset(x1,y1)
+	screen(1):offset(x2,y2)
+    end if
+
+    if key(k_down) then
+	y1+=v*1
+	y2+=v*2
+	screen(0):offset(x1,y1)
+	screen(1):offset(x2,y2)
+    end if
+
+    if key(k_left) then
+	x1-=v*1
+	x2-=v*2
+	screen(0):offset(x1,y1)
+	screen(1):offset(x2,y2)
+    end if
+
+    if key(k_right) then
+	x1+=v*1
+	x2+=v*2
+	screen(0):offset(x1,y1)
+	screen(1):offset(x2,y2)
+    end if
+
+waitvbl
+end while

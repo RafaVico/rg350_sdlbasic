@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="ja">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>Arrays</title>
+		<meta content="zoiba" name="author">
+		<link rel="stylesheet" href="../style.css" type="text/css">
+	</head>
+	<body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="background-color: rgb(0, 0, 0); text-align: left;">
+			<span class="title">配列</span><span class="title">
+				<br class="text">
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			配列とは、ユニークなエンティティの中でひとつに結合された変数のリストを想像してください。 
+			配列は、配列の名前と配列が含むであろう要素の数を指定する、dimコマンドを使って、作成されます。 
+			<!-- unique entity って何本人もわかってない。-->
+			<!-- basic の文法で苦労するとは思わなかった。-->
+			<!-- 日本でこれ翻訳できる人、何人いる？      -->
+			<br>
+		</span><span class="text">
+			<br>
+		</span><span class="smallTitle">例題:</span><span class="text">
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">dim list[4]</span><span class="text"></span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text">
+			<br>
+		</span><span class="text">上記の例は5つの空の要素の配列エンティティを作成します：つまり (0、 0、 0、 0、 0) 
+			という０から４のインデックス値をもつ配列を作成します。なぜならsdlBasicのarrayはデフォルトで、1からではなく０で始まるからです。 
+			sdlBasicが配列定義においては丸かっこ()ではなく角括弧[ ]を使うことに注意してください。
+			<br>
+		</span><span class="text">
+			<br>
+		</span><span class="text">配列の中の要素にアクセスするために、配列名[index]とタイプしなければなりません。
+			<br>
+			<br>
+		</span><span class="smallTitle">例:</span><span class="text">
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">list[2]=10</span>
+			<br class="code">
+			<span class="code">print list[3]</span>
+			<br>
+		</div>
+		<span class="text">
+			<br>
+			配列は上記の例のような単次元であるか、あるいは多次元であるかもしれません。 この種類の配列を配列の配列と想像してください。 
+			多次元の配列はコンマによって区切られた一連のインデックスによって定義されます。
+			<br>
+			<br>
+		</span><span class="smallTitle">例:</span><span class="text">
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">dim list[2, 3]</span>
+			<br>
+		</div>
+		<span class="text">
+			<br>
+			上記の例では、4つの空の要素を含んでいる配列が3つ並ぶ配列エンティティを作成します： ((0、 0、 0、 0)、(0、 0、 0、 0)、(0、 0、 0、 
+			0))
+			<br>
+			多次元の配列において具体的な配列の要素にアクセスするには、配列名[数字、数字、、]とタイプします。
+			<br>
+		</span><span class="smallTitle">For example:</span><span class="text">
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">list[2, 3]=10</span>
+			<br class="code">
+			<span class="code">print list[1, 2]</span>
+			<br>
+		</div>
+		<span class="text">
+			<br>
+		</span><span class="text">
+			<br>
+		</span><span class="text"></span>
+		<div style="text-align: right;">
+			<span class="text">&nbsp;</span>
+		</div>
+		<div style="text-align: right;">
+			<span class="text">&nbsp;</span>
+		</div>
+	</body>
+</html>

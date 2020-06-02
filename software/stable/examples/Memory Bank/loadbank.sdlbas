@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Memory Bank:loadbank
+'
+'   Name:      loadbank.sdlbas
+'   Purpose:    load a file in memory bank (if omitted the current )
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

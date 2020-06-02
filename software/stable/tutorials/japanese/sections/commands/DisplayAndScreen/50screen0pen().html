@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>screenOpen()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">screenOpen()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			論理スクリーンを新たにオープンする。
+			<br>
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">screenOpen( </span><span class="syntax">num </span><span class="syntax2">
+				, </span><span class="syntax">width </span><span class="syntax2">, </span><span class="syntax">
+				hight </span><span class="syntax2">, </span><span class="syntax">vpx </span>
+			<span class="syntax2">, </span><span class="syntax">vpy </span><span class="syntax2">
+				, </span><span class="syntax">vpw </span><span class="syntax2">, </span><span class="syntax">
+				vph </span><span class="syntax2">,&nbsp;</span><span class="syntax2"></span><span class="syntax">flag</span><span class="syntax">
+			</span><span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<span class="text"></span><span class="syntax">
+			<br>
+		</span><span class="syntax">num</span> <span class="text">スクリーン番号(0-7) </span>
+		<br class="text">
+		<span class="text"></span><span class="syntax">width</span><span class="text"> スクリーンの横幅</span>
+		<br class="text">
+		<span class="text"></span><span class="syntax">hight</span><span class="text"> スクリーンの高さ</span>
+		<br class="text">
+		<span class="text"></span><span class="syntax">vpx</span><span class="text"> ディスプレービュウポートのx座標</span>
+		<br class="text">
+		<span class="text"></span><span class="syntax">vpy</span><span class="text"> ディスプレービュウポートのy座標</span>
+		<br class="text">
+		<span class="text"></span><span class="syntax">vpw</span><span class="text"> ビュウポートの横幅
+		</span>
+		<br class="text">
+		<span class="text"></span><span class="syntax">vph</span><span class="text"> ビュウポートの高さ
+		</span>
+		<br class="text">
+		<span class="text"></span><span class="syntax2"></span><span class="syntax">flag</span>
+		<span class="text">&nbsp; 透過性の可否
+			<br>
+		</span>
+		<div style="margin-left: 40px;">
+			<span class="text">0 = 不透過</span>
+			<br>
+			<span class="text">2 = 透過+ダブルプレーフィールドがアクティブでない</span>
+			<br>
+			<span class="text">3 = 透過+ダブルプレーフィールドがアクティブ</span><span class="syntax2"></span>
+			<br>
+		</div>
+		<span class="smallTitle">
+			<br>
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code"><span style="font-weight: bold;">screenOpen(</span> 2, 1280, 
+				480, 0, 0, 640, 480, 0 <span style="font-weight: bold;">)</span></span><span class="text code">
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="smallTitle">例:
+			<br>
+		</span><a href="_examples/screenOpen.sdlbas"><span style="font-weight: bold;" class="text">
+				screenOpen.sdlbas</span></a><span class="smallTitle"></span>
+	</body>
+</html>

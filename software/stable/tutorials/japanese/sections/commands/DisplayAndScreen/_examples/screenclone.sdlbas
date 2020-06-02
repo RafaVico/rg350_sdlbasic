@@ -1,0 +1,69 @@
+-- screen clone
+
+setdisplay(800,600,16,1)
+cls()
+screenopen(1,1000,1000,0,0,800,300,0)
+screenclone(2,1,0,310,800,300,0)
+screenswap()
+x=0
+y=0
+dx=5
+dy=3
+sx=0
+sy=0
+
+for i=0 to 1000 step 50
+	line(0,i,1000,i)
+	line(i,0,i,1000)
+next
+
+x=0
+y=0
+
+ink (rgb(255,0,0))
+textrender("o",20,0)
+
+ink(rgb(255,255,255))
+text (0,0,20,"upper left corner")
+text (0,500,20,"center - left")
+text (0,960,20,"lower left corner")
+
+text (500,0,20,"upper - center")
+text (500,500,20,"center")
+text (500,960,20,"lower - center")
+
+
+text (850,0,20,"upper right corner")
+text (850,500,20,"center right")
+text (850,960,20,"lower right corner")
+
+screenswap
+
+grab(1,0,0,1000,1000)
+
+
+while(key(k_esc)=0)
+	screen(1)
+	x=x+dx
+	y=y+dy
+	if x>1000 or x <1 then : dx=-dx :end if
+	if y>1000 or y <1 then : dy=-dy : end if
+	offset(x - 400,y - 150)
+
+	screen(2)
+	sx=xoffset
+	sy=yoffset
+	if key(k_up) then : sy=sy-5:end if
+	if key(k_down) then : sy=sy+5:end if
+	if key(k_left) then : sx=sx-5:end if
+	if key(k_right) then : sx=sx+5:end if
+	offset(sx,sy)
+
+
+	screen(2)
+	grab (1,x,y,32,32)
+	bob(1,x,y,0)
+	screenswap
+	ink (0)
+
+wend

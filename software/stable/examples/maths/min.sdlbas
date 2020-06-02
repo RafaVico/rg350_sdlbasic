@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Maths:min
+'
+'   Name:      min.sdlbas
+'   Purpose:    return min number of the operands
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("prints(min(10,12))")
+prints(min(10,12))
+prints("press any key")
+waitkey

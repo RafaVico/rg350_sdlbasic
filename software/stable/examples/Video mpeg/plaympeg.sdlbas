@@ -1,0 +1,37 @@
+'
+' sdlBasic example Video mpeg:plaympeg
+'
+'   Name:      plaympeg.sdlbas
+'   Purpose:    play a mpeg1 video: Warning work only in windows
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'  BUGS:
+' On windows not works with fullscreen
+' On linux not works the loop video
+' with xOrg works only if you use direct screen and autoback 0
+' The audio disable the standard audio that will be restarted at end of playng
+'
+' WARNING:
+' for size problems i not include the video mpg example.
+' Please copy a video in example root directory and renamed as "b.mpg"
+' Sorry
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+autoback(0)
+directscreen
+if not fileexists("b.mpg") then
+    prints("b.mpg not found:")
+    prints("sorry but for size reason i can't include a mpeg file")
+    prints("i suggest you to copy a mpeg file in this folder and rename as \"b.mpg\"")
+    prints("sorry again: press any key to exit")
+    screenswap
+    waitkey
+    end
+end if
+
+plaympeg("b.mpg",1)
+while key(27)=0
+end while
+stopmpeg
+end

@@ -1,0 +1,60 @@
+
+' Simple Sierpinski Triangle
+
+' Generate different random numbers everytime program is run
+Randomize(timer)
+
+' Create a simple windowed display
+setdisplay(640, 480, 32, 1)
+
+' Set window title
+setcaption("Sierpinski Triangle - Press Esc to Exit")
+
+' Black background
+paper(0)
+
+' Pick white ink
+ink(8^8-1)
+
+' Use black ink to draw with
+pen(0)
+
+' Clear screen
+cls
+
+' Variables & constants go here
+dim x[3] : dim y[3]
+
+' Horizontal position
+' Top point, left corner, right corner
+x[1] = 320 : x[2] = 0 : x[3] = 640
+
+' Vertical position
+' Top point, left corner, right corner
+y[1] = 0 : y[2] = 480 : y[3] = 480
+
+' Pick a random corner
+corner = int(rnd(4))
+px = x[corner]
+py = y[corner]
+
+' Update screen every 25ms
+setautoback(25)
+
+' Main loop
+For i = 0 to 15000
+
+    ' Pick a random corner
+    corner = int(rnd(4))
+
+    ' Move halfway towards the corner
+    px = px + (x [corner] - px) / 2
+    py = py + (y [corner] - py) / 2
+
+    ' Plot our points on the screen
+    dot(px,  py)
+
+Next
+
+' Wait for Esc key to be pressed
+waitkey(k_esc)

@@ -1,0 +1,9 @@
+'
+' sdlBasic example CD support:cdcurtrack
+'
+'   Name:      cdcurtrack.sdlbas
+'   Purpose:    return the current track in cd
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

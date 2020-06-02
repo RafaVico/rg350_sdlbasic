@@ -1,0 +1,20 @@
+'
+' sdlBasic example  Graphics:color
+'
+'   Name:      color.sdlbas
+'   Purpose:    set  palette color c with value v se missing give the current color c
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+for i =0 to 16
+    ink(color(i))
+    bar (0,i*4,640,i*4+4)
+next
+
+for i =0 to 16
+    color(i,i*16)
+    ink(color(i))
+    bar(0,i*4+64,640,i*4+4+64)
+next
+waitkey

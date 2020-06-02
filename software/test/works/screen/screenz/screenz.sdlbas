@@ -1,0 +1,26 @@
+'
+' zorder in all screen
+'
+setdisplay(640,480,32,0)
+
+for i =0 to 7
+    screenopen(i,320,200,20*i,20*i,320,200,0)
+    paper(color(i)):cls
+    curson
+    pen(color(7-i))
+    fprints("screen "+str$(i))
+    wait(100)
+next
+prints("")
+prints("press (0-7) to change the fornt screen")
+prints("esc to terminate")
+while key(27)=0
+    if key(asc("0")) then: screenz(0,8):end if
+    if key(asc("1")) then: screenz(1,8):end if
+    if key(asc("2")) then: screenz(2,8):end if
+    if key(asc("3")) then: screenz(3,8):end if
+    if key(asc("4")) then: screenz(4,8):end if
+    if key(asc("5")) then: screenz(5,8):end if
+    if key(asc("6")) then: screenz(6,8):end if
+    if key(asc("7")) then: screenz(7,8):end if
+end while

@@ -1,0 +1,9 @@
+'
+' sdlBasic example Run Time:iswin32
+'
+'   Name:      iswin32.sdlbas
+'   Purpose:    restituisce 1 se il sistema operativo usato e' windows
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

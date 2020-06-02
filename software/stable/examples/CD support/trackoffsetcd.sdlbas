@@ -1,0 +1,27 @@
+'
+' sdlBasic example CD support:trackoffsetcd
+'
+'   Name:      trackoffsetcd.sdlbas
+'   Purpose:    return the offset to the beginning of this track in frames
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+'this is alternative method for select the channel:
+'you can specificate or the system in automatic use and return the first free
+cd=opencd(0)
+while indrivecd(cd)=0
+    prints("please insert cd")
+    wait(500)
+end while
+prints("tracks:"+str$(trackscd(cd)))
+
+t=trackscd(cd)-1
+prints("track "+str$(t))
+prints("offset "+str$(trackoffsetcd(cd,t)))
+waitkey
+
+stopcd(cd)
+ejectcd(cd)
+closecd(cd)

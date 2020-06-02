@@ -1,0 +1,16 @@
+'
+' sdlBasic example  Maths:rnd
+'
+'   Name:      rnd.sdlbas
+'   Purpose:    return an random number
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+for i =0 to 10
+    n=rnd(50)
+    prints(n)
+next
+prints("in this examples the random number are ever equals because randomize was not initialized")
+prints("press any key to exit")
+waitkey

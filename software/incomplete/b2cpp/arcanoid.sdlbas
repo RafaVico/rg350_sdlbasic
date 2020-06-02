@@ -1,0 +1,311 @@
+'#!/usr/local/bin/sdlBasic
+'
+' sdlBasic game: Arcanoid
+'
+'   Name:      arcanoid.sdlbas
+'   Purpose:   simple clone of breakout
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+'  audio part
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setdisplay(640,480,16,0)
+autoback(-15)
+mousehide()
+cursoff()
+
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub renderbackground
+	screenopen(7,33,17,0,0,0,0,0)
+	ink(rgb(40,192,80))
+	bar(0,0,33,17)
+	ink(rgb(255,255,255))
+	line(0,0,4,0)
+	line(4,0,12,8)
+	line(12,8,20,8)
+	line(20,8,28,0)
+	line(28,0,32,0)
+	line(0,16,4,16)
+	line(4,16,12,8)
+	line(20,8,28,16)
+	line(28,16,32,16)
+	grab(10,1,1,32,16)
+	screenclose(7)
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub renderpallina
+	dim i
+	screenopen(7,32,32,0,0,0,0,0)
+	for i= 0 to 5
+		ink(rgb(64+(i*18),64+(i*18),64+(i*18)))
+		fillcircle(10-i,10-i,10-i*2)
+	next
+	grab(1,0,0,20,20)
+	hotspot(1,1,1)
+	screenclose(7)
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub renderRacchetta
+	screenopen(7,64,16,0,0,0,0,0)
+	ink(rgb(192,192,0))
+	bar(0,1,64,15)
+	ink(rgb(255,255,0))
+	bar(0,1,64,3)
+	bar(0,1,4,15)
+	ink(rgb(128,128,0))
+	bar(0,12,64,15)
+	bar(60,2,64,15)
+	grab(2,0,0,64,16)
+	hotspot(2,1,0)
+	screenclose(7)
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub renderBlocco (number n,number c)
+'sub renderBlocco (n,c)
+	screenopen(7,64,48,0,0,0,0,0)
+	ink(c)
+	bar(0,8,64,40)
+	ink(c+(c/4))
+	bar(0,8,64,10)
+	bar(0,8,2,40)
+	ink(c-(c/4))
+	bar(0,38,64,40)
+	bar(62,8,64,40)
+	grab(n,0,0,64,48)
+	hotspot(n,1,1)
+	screenclose(7)
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub init
+	renderbackground()
+	renderpallina()
+	renderracchetta()
+	renderBlocco(3 ,rgb(192,0,0))
+	renderBlocco(4 ,rgb(0,192,0))
+	renderBlocco(5 ,rgb(0,0,192))
+	renderBlocco(6 ,rgb(192,192,0))
+	renderBlocco(7 ,rgb(192,0,192))
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub rendercampo
+    dim x
+    dim y
+    dim n
+	paper(rgb(40,160,40))
+	cls()
+	for y=0 to 480 step 16
+		for x=0 to 500 step 32
+			pasteicon(x,y,10)
+		next
+	next
+
+	ink(rgb(255,255,255))
+	bar(0,0,640,2)
+	bar(0,0,2,480)
+	bar(514,0,516,480)
+
+
+	n=3
+	for x= 0 to 7
+		for y=0 to 3
+			n=n+1
+			sprite(n,x*64+2+32,y*32+24,(rnd(5)+2))
+		next
+	next
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub game
+    dim palline
+    dim punti
+    dim x
+    dim y
+    dim vx
+    dim vy
+    dim vivo
+    dim i
+
+	palline=3
+	punti=0
+	rendercampo()
+	while palline >0
+	x=250
+	y=460
+	vx=0
+	vy=0
+
+	sprite (1,320,445,1)
+	sprite (2,320,460,2)
+
+	while ysprite(1)<460
+		if key(k_esc)then
+			exit while
+		end if
+
+		if key(k_left)then
+			x=x-4
+			if x<34 then
+				x=34
+			end if
+		end if
+		if key(k_right)then
+			x=x+4
+			if x>482 then
+				x=482
+			end if
+		end if
+		if key(k_space) or key(k_up)then
+			if vx=0 and vy=0 then
+				vx=2
+				vy=-2
+			end if
+		end if
+
+		if vx=0 and vy=0 then
+			sprite(1,x,ysprite(1),1)
+		end if
+
+
+		if xsprite(1)<12 then
+			vx=abs(vx)
+		end if
+		if xsprite(1)>504 then
+			vx=-abs(vx)
+		end if
+
+		if ysprite(1)< 12 then
+			vy=abs(vy)
+		end if
+
+
+
+		if spritehit(1,2) then
+			  vx=fix((xsprite(1)-xsprite(2))/10)
+			  if abs(vx)>3 then :vx=3*sgn(vx):end if
+			vy=abs(vx)-4
+			'while key(k_space)=0
+			'end while
+		end if
+
+		vivo=0
+		for i =3 to 35
+			if spritehit(1,i) then
+				if abs(xsprite(i))-abs(xsprite(1))<32 then
+				    if ysprite(i)<ysprite(1) then
+					vy=abs(vy)
+				    end if
+				    if ysprite(i)>ysprite(1) then
+					vy=-abs(vy)
+				    end if
+				else
+				    if xsprite(i)<xsprite(1) then
+					vx=abs(vx)
+				    end if
+				    if xsprite(i)>xsprite(1) then
+					vx=-abs(vx)
+				    end if
+				end if
+
+				deletesprite(i)
+				punti=punti +100
+				i=44
+			end if
+		next
+		for i =3 to 35
+			if livesprite(i)then
+				vivo=vivo+1
+			end if
+		next
+		if vivo=0 then
+			rendercampo()
+			x=250
+			y=460
+			vx=0
+			vy=0
+			sprite (1,320,445,1)
+			sprite (2,320,460,2)
+		end if
+
+		sprite(1,xsprite(1)+vx,ysprite(1)+vy,1)
+		sprite (2,x,y,2)
+		locate (60,1):prints("balls")
+		locate (62,3):prints(str$(palline))
+
+		locate (60,5):prints("score")
+		locate (62,6):prints(str$(punti))
+
+
+
+		locate (60,8):fprints( "vx:" + str$(vx)) : prints("  ")
+		locate (60,9):fprints( "vy:" + str$(vy)) : prints("  ")
+
+		screenswap()
+	end while
+	palline=palline -1
+	end while
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub titolo
+    dim i as integer
+    dim y
+    dim x
+	for i=1 to 35:deletesprite(i):next
+	'paper(0)
+	screenopen(0,640+32,480+32,0,0,640,480,0)
+	ink(rgb(0,255,0))
+	bar (50,50,200,200)
+	for y=0 to 480+32 step 16
+		for x=0 to 640+32 step 32
+			pasteicon(x,y,10)
+		next
+	next
+
+	screenopen(1,640,480,0,0,640,480,2)
+	ink(rgb(255,0,0))
+	Text(50,210,64,"Arcanoid")
+	text(420,240,32,"sdlBasic")
+	text (200,350,12,"press enter to start")
+	ink(rgb(255,255,255))
+	line(10,280,630,280)
+	screen(0)
+
+	i=0
+	while inkey()<>13
+		offset(i,i)
+		screenswap()
+		i=(i+1)
+		if i>32 then :i=i-32 :end if
+		if key(k_esc) then :end():end if
+	end while
+	screenclose(1)
+	screenopen(0,640,480,0,0,640,480,0)
+	cls()
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub mymain
+	init()
+	while inkey()<>27
+
+		titolo()
+		game()
+	'	score
+
+
+	end while
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mymain()

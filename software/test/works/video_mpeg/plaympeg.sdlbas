@@ -1,0 +1,36 @@
+'video mpeg
+setdisplay(800,600,32,1)
+if not fileexists("b.mpg") then
+    prints("b.mpg not found:")
+    prints("sorry but for size reason i can't include a mpeg file")
+    prints("i suggest you to copy a mpeg file in this folder and rename as \"b.mpg\"")
+    prints("sorry again: press any key to exit")
+    screenswap
+    waitkey
+    end
+end if
+loadmpeg("b.mpg",1)
+directscreen()
+autoback(0)
+'screenopen(1,320,240,5,200,320,240,0)
+plaympeg(0)
+'seekmpeg(5000000)
+'screen(0)
+i=0
+while key(27)=0
+    'prints(i)
+    i+=1
+    'screenswap
+    if key(asc("p"))then
+	pausempeg()
+	while key(asc("p"))<>0 :end while
+    end if
+
+    if key(asc("r"))then
+	rewindmpeg()
+    end if
+    if statusmpeg=0 then: exit while:end if
+end while
+stopmpeg()
+deletempeg()
+end

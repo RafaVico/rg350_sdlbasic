@@ -1,0 +1,20 @@
+'
+' sdlBasic example Text draw:textrender
+'
+'   Name:      textrender.sdlbas
+'   Purpose:    make an image slot n with the text  write with a current font and size s if n is omitted use and return first free The type of render can be default=solid 1=Shaded 2=blended
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'setautoback(25)
+
+a$="   ciao   "
+textrender(a$,16,1)
+pastebob(100,200,1)
+prints("press any key to exit")
+while inkey=0
+    bob(1,xmouse,20,1)
+    sprite(1,20,ymouse,1)
+end while
+waitkey

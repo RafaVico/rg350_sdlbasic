@@ -1,0 +1,24 @@
+'
+' sdlBasic example  Graphics:colorcycling
+'
+'   Name:      colorcycling.sdlbas
+'   Purpose:    stop the multitasking colorcycling
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+setdisplay(640,480,8,0)
+enablepalette(1)
+
+pen(255)
+prints(" this command works only with 8bit fullscreen display (on linux in many distro you must restart x)")
+
+
+for i= 1 to 127
+    color(i,rgb(i,127,0))
+    ink(i)
+    line(0,32+i,640,64+i)
+next
+
+   colorcycling(1,127,1,25)
+waitkey

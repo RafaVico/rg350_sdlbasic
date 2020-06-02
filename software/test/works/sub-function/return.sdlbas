@@ -1,0 +1,18 @@
+setDisplay(640,480,32,1)
+ink(rgb(255,255,255))
+pen(rgb(255,255,255))
+cls
+
+function mySub(a)
+mySub=""
+if a>25 then
+exit function
+end if
+Return a
+end function
+
+for a = 1 to 27
+prints(mySub(a))
+next
+
+waitkey()

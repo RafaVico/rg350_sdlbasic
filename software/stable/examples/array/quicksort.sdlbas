@@ -1,0 +1,14 @@
+'
+' sdlBasic example  Array:quicksort
+'
+'   Name:      quicksort.sdlbas
+'   Purpose:    sort an array
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' BUG: not implemented
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+prints ("not implemented yet: sorry!!!")
+waitkey

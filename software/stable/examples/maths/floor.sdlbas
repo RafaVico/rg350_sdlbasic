@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Maths:floor
+'
+'   Name:      floor.sdlbas
+'   Purpose:    truncate fractional number, rounding down towards zero
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("n=3.14:prints(floor(n))")
+n=3.14:prints(floor(n))
+prints("n=3.84:prints(floor(n))")
+n=3.84:prints(floor(n))
+prints("press any key")
+waitkey

@@ -1,0 +1,27 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  speedmusic.sdlbas
+'| date 21/12/2003
+'|
+'| description:
+'| change the speed of music execution
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'| does not work!!!
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+loadmusic ("mod.mod") : playmusic (1)
+v=1
+while (0=0)
+
+    if key(27) then : exit while : end if
+    if key(asc("a")) then : v=v+1 : speedmusic(v):end if
+    if key(asc("s")) then : v=v-1 : speedmusic(v):end if
+    prints(v)
+    waitvbl
+end while
+
+

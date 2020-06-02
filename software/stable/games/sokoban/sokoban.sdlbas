@@ -1,0 +1,624 @@
+'
+' sdlBasic game: Sokoban
+'
+'   Name:      sokoban.sdlbas
+'   Purpose:   simple clone of sokoban media used is gnome version
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+'  add more level
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+include "filegraphics.sdlblib"
+setdisplay(640,480,32,0)
+screenopen(0,640,480,0,0,640,480,0)
+autoback(-15)
+mousehide()
+common  mappa$[  50]
+common  map[ 64,64]
+common mapw , maph
+
+common gnomex,gnomey
+common level
+common lastlevel
+common move,anim
+common mosse
+
+common hc,fhc
+common historyX[1000,256]
+common historyY[1000,256]
+
+common k
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub init
+	loadimages_soft("media/empty.png",32,32,10)
+	loadimages_soft("media/wall.png",32,32,15)
+	loadimages_soft("media/gnome.png",32,32,100)
+	loadimage("media/crate.png",1)
+	loadimage("media/sdlBasic.png",2)
+
+	loadsound("media/born.wav",1)
+	loadsound("media/win.wav",2)
+	loadsound("media/reset.wav",3)
+	loadmusic("media/kollaps-tron.mod")
+
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sub mapload(liv)
+
+	select case (liv)
+		case 0
+		mapw=16
+		maph=16
+		mappa$ [0]=	"5555555555555555"
+		mappa$ [1]=	"5000000000000005"
+		mappa$ [2]=	"5000000040000005"
+		mappa$ [3]=	"5000000000000005"
+		mappa$ [4]=	"5000000000000005"
+		mappa$ [5]=	"5000000000000005"
+		mappa$ [6]=	"5000000000000005"
+		mappa$ [7]=	"5000000000000005"
+		mappa$ [8]=	"5000000000000005"
+		mappa$ [9]=	"5000000000000005"
+		mappa$ [10]=	"5000300001000005"
+		mappa$ [11]=	"5000000000000005"
+		mappa$ [12]=	"5000300001000005"
+		mappa$ [13]=	"5000000000000005"
+		mappa$ [14]=	"5000000000000005"
+		mappa$ [15]=	"5555555555555555"
+
+            case 1
+		mapw=32
+		maph=16
+		mappa$ [0]=	"55555555555555555555555555555555"
+		mappa$ [1]=	"50000000000000000000000000000005"
+		mappa$ [2]=	"50010000400010000000000000000005"
+		mappa$ [3]=	"50000000000000000000000000000005"
+		mappa$ [4]=	"55555555555555555555555555005555"
+		mappa$ [5]=	"50000000000000000000000000000005"
+		mappa$ [6]=	"50000000000000000000000000000005"
+		mappa$ [7]=	"50000000000000000000000000000005"
+		mappa$ [8]=	"50000000000000000000000000000005"
+		mappa$ [9]=	"50000000000000000000000000000005"
+		mappa$ [10]=	"50000000000000000000300000000005"
+		mappa$ [11]=	"50000000000000000000300000000005"
+		mappa$ [12]=	"50003000000000000000000001000005"
+		mappa$ [13]=	"50000000000000000000000000000005"
+		mappa$ [14]=	"50000000000000000000000000000005"
+		mappa$ [15]=	"55555555555555555555555555555555"
+
+           case 2
+		mapw=20
+		maph=20
+		mappa$ [0]=	"00000000000000000000"
+		mappa$ [1]=	"00000000000000000000"
+		mappa$ [2]=	"00000000000000000000"
+		mappa$ [3]=	"00000000000000000000"
+		mappa$ [4]=	"00000000000000000000"
+		mappa$ [5]=	"00000000000000000000"
+		mappa$ [6]=	"00005555500000000000"
+		mappa$ [7]=	"00005000500000000000"
+		mappa$ [8]=	"00005100500000000000"
+		mappa$ [9]=	"00555001550000000000"
+		mappa$ [10]=	"00500101050000000000"
+		mappa$ [11]=	"55505055050000555555"
+		mappa$ [12]=	"50005055055555500335"
+		mappa$ [13]=	"50100100000000000335"
+		mappa$ [14]=	"55555055505455000335"
+		mappa$ [15]=	"00055000005555555555"
+		mappa$ [16]=	"00055555555000000000"
+		mappa$ [17]=	"00000000000000000000"
+		mappa$ [18]=	"00000000000000000000"
+		mappa$ [19]=	"00000000000000000000"
+		mappa$ [20]=	"00000000000000000000"
+
+           case 3
+		mapw=20
+		maph=20
+		mappa$ [0]=	"00000000000000000000"
+		mappa$ [1]=	"00000000000000000000"
+		mappa$ [2]=	"00555555555555000000"
+		mappa$ [3]=	"00533005000005550000"
+		mappa$ [4]=	"00533005010010050000"
+		mappa$ [5]=	"00533005155550050000"
+		mappa$ [6]=	"00533000040550050000"
+		mappa$ [7]=	"00533005050010550000"
+		mappa$ [8]=	"00555555055101050000"
+		mappa$ [9]=	"00005010010101050000"
+		mappa$ [10]=	"00005000050000050000"
+		mappa$ [11]=	"00005555555555550000"
+		mappa$ [12]=	"00000000000000000000"
+		mappa$ [13]=	"00000000000000000000"
+		mappa$ [14]=	"00000000000000000000"
+		mappa$ [15]=	"00000000000000000000"
+		mappa$ [16]=	"00000000000000000000"
+		mappa$ [17]=	"00000000000000000000"
+		mappa$ [18]=	"00000000000000000000"
+		mappa$ [19]=	"00000000000000000000"
+		mappa$ [20]=	"00000000000000000000"
+
+           case 4
+		mapw=20
+		maph=20
+		mappa$ [0]=	"00000000000000000000"
+		mappa$ [1]=	"00000000000000000000"
+		mappa$ [2]=	"00000000000000000000"
+		mappa$ [3]=	"00000000000000000000"
+		mappa$ [4]=	"00000000000000000000"
+		mappa$ [5]=	"00000000000000000000"
+		mappa$ [6]=	"00000000000000000000"
+		mappa$ [7]=	"00000000055555555000"
+		mappa$ [8]=	"00000000050000045000"
+		mappa$ [9]=	"00000000050151055000"
+		mappa$ [10]=	"00000000050100150000"
+		mappa$ [11]=	"00000000055101050000"
+		mappa$ [12]=	"05555555550105055500"
+		mappa$ [13]=	"05333300550100100500"
+		mappa$ [14]=	"05533300001001000500"
+		mappa$ [15]=	"05333300555555555500"
+		mappa$ [16]=	"05555555500000000000"
+		mappa$ [17]=	"00000000000000000000"
+		mappa$ [18]=	"00000000000000000000"
+		mappa$ [19]=	"00000000000000000000"
+		mappa$ [20]=	"00000000000000000000"
+
+            case 5
+		mapw=20
+		maph=20
+		mappa$ [0]=	"00000000000000000000"
+		mappa$ [1]=	"00000000000000000000"
+		mappa$ [2]=	"00000000000000000000"
+		mappa$ [3]=	"00000000000000000000"
+		mappa$ [4]=	"00000000000000000000"
+		mappa$ [5]=	"00000000000555555550"
+		mappa$ [6]=	"00000000000500333350"
+		mappa$ [7]=	"55555555555500333350"
+		mappa$ [8]=	"50000500101000333350"
+		mappa$ [9]=	"50111510010500333350"
+		mappa$ [10]=	"50010000010500333350"
+		mappa$ [11]=	"50110510101555555550"
+		mappa$ [12]=	"50010500000500000000"
+		mappa$ [13]=	"55055555555500000000"
+		mappa$ [14]=	"50000500005500000000"
+		mappa$ [15]=	"50000010005500000000"
+		mappa$ [16]=	"50110511004500000000"
+		mappa$ [17]=	"50000500005500000000"
+		mappa$ [18]=	"55555555555500000000"
+		mappa$ [19]=	"00000000000000000000"
+		mappa$ [20]=	"00000000000000000000"
+
+            case 6
+		mapw=20
+		maph=20
+		mappa$ [0]=	"00000000000000000000"
+		mappa$ [1]=	"00000000000000000000"
+		mappa$ [2]=	"00000000000000000000"
+		mappa$ [3]=	"00000000000000000000"
+		mappa$ [4]=	"00000000000000000000"
+		mappa$ [5]=	"00000000555550000000"
+		mappa$ [6]=	"00000000500055555000"
+		mappa$ [7]=	"00000000505155005000"
+		mappa$ [8]=	"00000000500000105000"
+		mappa$ [9]=	"55555555505550005000"
+		mappa$ [10]=	"53333005501001555000"
+		mappa$ [11]=	"53333000010110550000"
+		mappa$ [12]=	"53333005510010450000"
+		mappa$ [13]=	"55555555500100550000"
+		mappa$ [14]=	"00000000501010050000"
+		mappa$ [15]=	"00000000555055050000"
+		mappa$ [16]=	"00000000005000050000"
+		mappa$ [17]=	"00000000005555550000"
+		mappa$ [18]=	"00000000000000000000"
+		mappa$ [19]=	"00000000000000000000"
+		mappa$ [20]=	"00000000000000000000"
+
+            case 7
+		mapw=20
+		maph=20
+		mappa$ [0]=	"00000000000000000000"
+		mappa$ [1]=	"00000000000000000000"
+		mappa$ [2]=	"00000000000000000000"
+		mappa$ [3]=	"00055555500555000000"
+		mappa$ [4]=	"00053300505545500000"
+		mappa$ [5]=	"00053300555000500000"
+		mappa$ [6]=	"00053300000110500000"
+		mappa$ [7]=	"00053300505010500000"
+		mappa$ [8]=	"00053355505010500000"
+		mappa$ [9]=	"00055550105100500000"
+		mappa$ [10]=	"00000050015010500000"
+		mappa$ [11]=	"00000050100100500000"
+		mappa$ [12]=	"00000050055000500000"
+		mappa$ [13]=	"00000055555555500000"
+		mappa$ [14]=	"00000000000000000000"
+		mappa$ [15]=	"00000000000000000000"
+		mappa$ [16]=	"00000000000000000000"
+		mappa$ [17]=	"00000000000000000000"
+		mappa$ [18]=	"00000000000000000000"
+		mappa$ [19]=	"00000000000000000000"
+		mappa$ [20]=	"00000000000000000000"
+
+          case 8
+		mapw=20
+		maph=20
+		mappa$ [0]=	"00000000000000000000"
+		mappa$ [1]=	"00000000000000000000"
+		mappa$ [2]=	"00000000005555500000"
+		mappa$ [3]=	"00005555555000550000"
+		mappa$ [4]=	"00055050455011050000"
+		mappa$ [5]=	"00050000100000050000"
+		mappa$ [6]=	"00050010055500050000"
+		mappa$ [7]=	"00055505555515550000"
+		mappa$ [8]=	"00050100555033500000"
+		mappa$ [9]=	"00050101010333500000"
+		mappa$ [10]=	"00050000555333500000"
+		mappa$ [11]=	"00050110505333500000"
+		mappa$ [12]=	"00050055505555500000"
+		mappa$ [13]=	"00055550000000000000"
+		mappa$ [14]=	"00000000000000000000"
+		mappa$ [15]=	"00000000000000000000"
+		mappa$ [16]=	"00000000000000000000"
+		mappa$ [17]=	"00000000000000000000"
+		mappa$ [18]=	"00000000000000000000"
+		mappa$ [19]=	"00000000000000000000"
+		mappa$ [20]=	"00000000000000000000"
+
+         case 9
+		mapw=20
+		maph=20
+		mappa$ [0]=	"00055550000000000000"
+		mappa$ [1]=	"00050055555555555000"
+		mappa$ [2]=	"00050000100010105000"
+		mappa$ [3]=	"00050150105001005000"
+		mappa$ [4]=	"00050010100500005000"
+		mappa$ [5]=	"05550150500555505000"
+		mappa$ [6]=	"05451010100550005000"
+		mappa$ [7]=	"05000010515000505000"
+		mappa$ [8]=	"05000100001010105000"
+		mappa$ [9]=	"05555500555555555000"
+		mappa$ [10]=	"00050000005000000000"
+		mappa$ [11]=	"00050000005000000000"
+		mappa$ [12]=	"00053333335000000000"
+		mappa$ [13]=	"00053333335000000000"
+		mappa$ [14]=	"00053333335000000000"
+		mappa$ [15]=	"00055555555000000000"
+		mappa$ [16]=	"00000000000000000000"
+		mappa$ [17]=	"00000000000000000000"
+		mappa$ [18]=	"00000000000000000000"
+		mappa$ [19]=	"00000000000000000000"
+		mappa$ [20]=	"00000000000000000000"
+
+         case 10
+		mapw=20
+		maph=20
+		mappa$ [0]=	"00000000000055555550"
+		mappa$ [1]=	"00000000000050033350"
+		mappa$ [2]=	"00000000555550033350"
+		mappa$ [3]=	"00000000500000035350"
+		mappa$ [4]=	"00000000500550033350"
+		mappa$ [5]=	"00000000550550033350"
+		mappa$ [6]=	"00000005550555555550"
+		mappa$ [7]=	"00000005011105500000"
+		mappa$ [8]=	"00055555001010555550"
+		mappa$ [9]=	"00550005101000500050"
+		mappa$ [10]=	"00540100100001001050"
+		mappa$ [11]=	"00555555011010555550"
+		mappa$ [12]=	"00000005000000500000"
+		mappa$ [13]=	"00000005555555500000"
+		mappa$ [14]=	"00000000000000000000"
+		mappa$ [15]=	"00000000000000000000"
+		mappa$ [16]=	"00000000000000000000"
+		mappa$ [17]=	"00000000000000000000"
+		mappa$ [18]=	"00000000000000000000"
+		mappa$ [19]=	"00000000000000000000"
+		mappa$ [20]=	"00000000000000000000"
+
+	end select
+        lastlevel=10
+	n=2
+
+	for y=0 to maph - 1
+		for x=0 to mapw - 1
+			a$=mid$(mappa$[y],x+1,1)
+			if val(a$)=1 then
+				a$="0"
+				bob (n,x*32,y*32,1)
+				n=n+1
+			end if
+
+			if val(a$)= 4 then
+				a$="0"
+				bob (1,x*32,y*32,100)
+				gnomex=x
+				gnomey=y
+			end if
+
+			map[x,y]=val(a$)
+		next
+	next
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sub drawmap
+
+	screenopen(0,32 * mapw,32 * maph,0,0,640,480,0)
+	cls
+	for y=0 to maph-1
+		for x=0 to mapw-1
+			pasteicon(x*32,y*32,10+map[x,y])
+		next
+	next
+
+end sub
+
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function barile(n,x,y)
+    if map[(xbob(n)/32)+x,(ybob(n)/32)+y]>4 then
+        return -1
+    else
+        bob(n,xbob(n)+(x*32),ybob(n)+(y*32),1)
+    end if
+    for i = 2 to 64
+
+        if xbob(i)/32=xbob(n)/32 and ybob(i)/32=ybob(n)/32 and n<>i then
+                bob(n,xbob(n)-(x*32),ybob(n)-(y*32),1)
+                return -1
+        end if
+    next
+    return 0
+end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub gnome
+    move=0
+
+    if key(k_left)then
+        gnomex=gnomex-1
+        mosse=mosse +1
+        move=28
+        if map[gnomex,gnomey]>4 then
+            gnomex=gnomex+1
+        end if
+        for i = 2 to 64
+            if xbob(i)/32=gnomex and ybob(i)/32=gnomey then
+                if barile(i,-1,0)=-1 then
+                   gnomex=gnomex+1
+                end if
+            end if
+        next
+    end if
+
+    if key(k_right)then
+        gnomex=gnomex+1
+        mosse=mosse +1
+        move=24
+        if map[gnomex,gnomey]>4 then
+            gnomex=gnomex-1
+        end if
+        for i = 2 to 64
+            if xbob(i)/32=gnomex and ybob(i)/32=gnomey then
+                if barile(i,1,0)=-1 then
+                   gnomex=gnomex-1
+                end if
+            end if
+        next
+    end if
+
+    if key(k_up)then
+        gnomey=gnomey-1
+        mosse=mosse +1
+        move=31
+        if map[gnomex,gnomey]>4 then
+            gnomey=gnomey+1
+        end if
+        for i = 2 to 64
+            if xbob(i)/32=gnomex and ybob(i)/32=gnomey then
+                if barile(i,0,-1)=-1 then
+                    gnomey=gnomey+1
+                end if
+            end if
+        next
+    end if
+
+    if key(k_down)then
+        gnomey=gnomey+1
+         mosse=mosse +1
+        move=31
+        if map[gnomex,gnomey]>4 then
+            gnomey=gnomey-1
+        end if
+        for i = 2 to 64
+            if xbob(i)/32=gnomex and ybob(i)/32=gnomey then
+                if barile(i,0,1)=-1 then
+                    gnomey=gnomey-1
+                end if
+            end if
+        next
+    end if
+
+	bob(1,gnomex*32,gnomey*32,100+move+(anim/4))
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function verifica_lavoro
+    n=0
+    for i=2 to 64
+       if livebob(i)=0 then
+               n=n+1
+        else
+            if map[ xbob(i)/32,ybob(i)/32]=3 then
+                n=n+1
+            end if
+        end if
+    next
+    return n
+end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub updatehistory
+        'locate (0,0):prints("hist"+str$(hc))
+	for i=1 to 255
+		historyX[hc,i]=xbob(i)
+		historyY[hc,i]=ybob(i)
+	next
+	hc=hc+1
+	if hc>1000 then :hc=0:fhc=1:end if
+
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub undo
+	hc=hc-1
+	if hc<0 then
+		if fhc=0 then
+			hc=0
+		else
+			hc=1000
+		end if
+	end if
+        'locate (0,0):prints("undo"+str$(hc))
+	for i=1 to 254
+		if livebob(i) then
+			bob(i,historyX[hc,i],historyY[hc,i],frbob(i))
+		end if
+	next
+	gnomex=xbob(1)/32
+	gnomey=ybob(1)/32
+
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub game
+	level=0
+	while  key(27)=0
+		cls
+		for i=0 to 64:deletebob(i):next
+		screenopen(1,640,480,0,0,640,480,0)
+		text(200,220,32,"LEVEL "+str$(level))
+               screenswap
+
+		wait (1000)
+		screenclose(1)
+		cls
+		mapload(level)
+		drawmap
+		hc=0:fhc=0
+  		move=0:anim=0:mosse=0
+		playsound(1,1)
+		while key(27)=0
+                        k=inkey
+                        if key(k_up)then :k=k_up:end if
+                        if key(k_down)then :k=k_down:end if
+                        if key(k_left)then :k=k_left:end if
+                        if key(k_right)then :k=k_right:end if
+			if k=asc("u")then
+                                while key(asc("u"))<>0
+                                    undo
+                                    screenswap
+                                    wait(50)
+                                end while
+			end if
+			if k=asc("r")then
+				playsound(3,-1)
+				exit  while
+			end if
+                        if k=asc("n")then
+                            level=level+1
+                            IF level >lastlevel THEN :level=lastlevel:end if
+                            exit while
+                        end if
+                        if k=asc("p")then
+                            level=level-1
+                            IF level <0 THEN :level=0:end if
+                            exit while
+                        end if
+			if k=asc("q") then
+                            exit while
+			end if
+
+			gnome
+			if k<>asc("u") and k<>0 then
+                            updatehistory
+			end if
+
+			if verifica_lavoro=63 then
+				exit  while
+			end if
+			offset(((gnomex*32)  mod  (mapw * 32))-320,((gnomey*32)  mod (maph*32))-240)
+                        screenswap
+
+			t=timer+65
+			while t>timer
+
+				anim=(anim+1)mod 16
+				bob(1,gnomex*32,gnomey*32,100+move+(anim/4))
+			        screenswap
+			end while
+                        i=500
+                        while inkey<>0
+                            if i=0 then :exit while:end if
+                            waitvbl
+                            i=i-1
+                        end while
+		end while
+		if key(asc("q")) then : exit while : end if
+		if key(27) then: exit while:end if
+		if k<>asc("r")and k<>asc("n") and k<>asc("p") then
+			cls
+			for i=0 to 64:deletebob(i):next
+			screenopen(1,640,480,0,0,640,480,0)
+			text(200,220,32,"LEVEL "+str$(level)+" COMPLETE")
+			text(200,260,16,"moves "+str$(mosse))
+			playsound(2,-1)
+                        level=level+1
+                        IF level >lastlevel THEN :level=lastlevel:end if
+                        screenswap
+                        wait(2000)
+			screenclose(1)
+		end if
+		cls
+
+	end while
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub titolo
+	screenopen(6,640,480,0,0,640,480,0)
+	text(128,200,64,"sokoban")
+	pasteicon(28, 20,2)
+	locate (10,25)
+
+	pen(rgb(255,255,0)):prints("commands:")
+	pen (rgb(255,255,255))
+	prints("     return =    start game")
+	prints("     u      =    undo")
+	prints("     r      =    restart level")
+	prints("     n      =    next level")
+	prints("     p      =    previews(?) level")
+	prints("     q      =    quit game")
+	prints("     esc    =    exit to system")
+	screenswap
+	while key(13)=0:
+		if key(27) then
+			end
+		end if
+	    screenswap
+	end while
+	screenclose(6)
+        screenswap
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+'main loop
+sub main
+	init
+	playmusic(-1)
+	while key(27)=0
+		titolo
+		game
+	end while
+end sub
+main

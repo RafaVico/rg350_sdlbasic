@@ -1,0 +1,11 @@
+'
+' sdlBasic example  Keyboard:waitkey
+'
+'   Name:      waitkey.sdlbas
+'   Purpose:    wait a key pression (0 =any key)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("i wait that you press esc to exit")
+waitkey(k_esc)

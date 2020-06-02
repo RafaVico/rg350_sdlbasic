@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Mouse:mousezone
+'
+'   Name:      mousezone.sdlbas
+'   Purpose:    give 1 if the mouse pointer is in rectangle(xy with size wh)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

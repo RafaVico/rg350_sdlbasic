@@ -1,0 +1,18 @@
+-----------------------------------------------------------------------------------------------------------
+-- screenViewport.sdlbas
+-- author: nitrofurano
+------------------------------------------------------------------------------------------------------------
+
+setdisplay(320,200,32,1):paper(0xFFFFFF):ink(0x000000):pen(0x000001):cls
+screenopen(1,160,100,160,100,160,100,0):paper(0x77FFFF):ink(0x000000):pen(0x000001):cls
+locate(1,1):prints("screen 1")
+screenopen(2,160,100,0,100,160,100,0):paper(0xFF77FF):ink(0x000000):pen(0x000001):cls
+locate(1,1):prints("screen 2")
+screenopen(3,320,100,0,0,320,100,0):paper(0xFFFF77):ink(0x000000):pen(0x000001):cls
+locate(1,1):prints("screen 3")
+while key(27)=0
+   b=int(rnd(4)):screen(b)
+   screenViewport(rnd(320),rnd(200),rnd(160),rnd(100),0)
+   waitvbl:wait(250)
+ wend
+

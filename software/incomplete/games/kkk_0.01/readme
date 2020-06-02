@@ -1,0 +1,90 @@
+KKK 0.01 (First Public Release)
+readme
+
+1. introduction
+2. why this was written
+3. How to launch
+4. How to play
+5. Thanks
+6. Bugs
+
+1. Introduction
+---------------------------------------------------------------
+
+Shadow has destroyed Tails's computer and then Tails want to kill he
+
+(Stupid story, eh?)
+
+2. Why this was written
+---------------------------------------------------------------
+
+1) I written this because there are too few sonic fan games for Linux
+(Not too few... there are only one! It's called Sonic Desert Run)
+BUT: I founded Sonic Robo Blast 2. Very cool!
+
+2) For fun
+
+3) For learn better sdlBasic programming
+
+3. How to launch
+----------------------------------------------------------------
+
+This game is cross-platform because is written in an interpetred language (sdlBasic)
+
+
+Linux:
+If you have the sdlBasic executable in your PATH, just open a terminal
+and write ( in this directory ):
+
+chmod +x ./kkk
+./kkk
+
+Windows:
+Not tested. Put the sdlBasic exe into this directory and try from
+a DOS box (in this directory):
+
+sdlBasic kkk.sdlbas
+
+I haven't tested this but i think that KKK probably starts.
+Make modifications to the code if necessary.
+If it starts, tell me at ( gsan92 at libero dot it )
+
+Mac OS X:
+
+Anyone want to test KKK on it?
+
+4. How to play
+---------------------------------------------------------------
+ 
+You control Shadow and you must escape from Tails
+If you collide with Tails... game over!
+If you jump on Tails ... +1 of score (Bump)!
+If you reach 15 bumps you won!
+
+Controls:
+Up Arrow = Jump
+Left Arrow = Move Left
+Right Arrow = Move Right
+
+5. Thanks
+---------------------------------------------------------------
+
+SDL [http://libsdl.org]
+sdlBasic [http://sdlbasic.sourceforge.net]. vroby thank you!
+Linus Torvalds
+Buzzer MOD Archive [http://www.kameli.net/buzzer/]
+Mystic Fox [http://www.mysticfox.com]
+gifsicle [http://www.lcdf.org/gifsicle/]
+The GIMP [http//gimp.org]
+SEGA [http://www.sega.com]
+
+P.S: If you haven't the (proprietary) Macromedia Flash (like me) you can (partially) access the Sega of America web site
+specifying a web address like http://www.sega.com/WXYZOUPIO
+
+6. Bugs
+---------------------------------------------------------------
+
+Background collision is absent (not really a bug)
+Buggy game engine
+No velocity implemented, how to implement it?
+

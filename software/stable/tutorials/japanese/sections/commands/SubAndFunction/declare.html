@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>declare [sub | function][name]as[type]</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">declare
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">前方参照のための functionName や subNameを作成。 前方参照の Function や Sub 
+			を実際のコードを定義する前に参照出来るようになる。 </span>
+		<br class="text">
+		<span class="text"><span class="text"></span>
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">declare </span><span class="syntax">function functionName ( 
+				args ... )</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">declare </span><span class="syntax">sub subName ( args ... ) </span>
+			<span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text"></span><span class="text">実際にコードが定義されるまで実行は出来ない。 
+			前方参照で問題が起こった場合はOption QBasicを試してみること。
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">option qBasic
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">declare</span> function 
+				mySub()
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">' option qBasic causes these statements to be deferred
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">mySub()
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">end
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">function mySub()
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp;&nbsp;&nbsp; print "This is my function"
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">end function
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">参照： <a href="../Runtime/optionQbasic.html"><span style="font-weight: bold;">
+					option qbasic</span></a></span>
+	</body>
+</html>

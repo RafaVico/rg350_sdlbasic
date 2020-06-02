@@ -1,0 +1,26 @@
+'##################################################'
+'#                                                #'
+'# 256 Color test for palette mode                #'
+'#                                                #'
+'##################################################'
+
+setdisplay(640,256,8,0)
+enablepalette(1)
+'autoback(0)
+
+for i= 0 to 255
+    color(i,rgb(i,0,0))
+    ink(color(i))
+    line(0,i,640,i)
+next
+
+color(128,0xffffff)
+screenswap
+waitkey
+   'colorcycling(1,256,0,25)
+while key(27)=0
+   colorcycling(200,245,0)
+   colorcycling(1,199,1)
+   waitvbl
+    'screenswap
+end while

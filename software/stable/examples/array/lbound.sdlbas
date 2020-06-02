@@ -1,0 +1,20 @@
+'
+' sdlBasic example  Array:lbound
+'
+'   Name:      lbound.sdlbas
+'   Purpose:    returns lower bound of array
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' BUG:
+' not sure that work
+'
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dim a$[10]
+
+prints(lbound(a$[],1))
+
+prints(a$[0])
+prints(lbound(a$[],1))
+waitkey

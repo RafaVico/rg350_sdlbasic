@@ -1,0 +1,12 @@
+setdisplay(640,480,32,1)
+setcaption ("Bananas are blue Apples")
+'SetFont("c:/Windows/Fonts/verdana.ttf")
+autoback(-8)
+
+common score=100
+while key(27)=0
+cls
+text(0,0,18,"SCORE " & score)  ' the variable score has not the value 100 !
+screenswap
+wait(20)
+wend

@@ -1,0 +1,23 @@
+# make targz module v0.2
+#-----------------------------
+cd ../
+
+Package=sdlbrt-linux-i386
+Version=$(date --rfc-3339 date)
+Source=linux
+
+rm -rf PACKAGE
+mkdir PACKAGE
+
+cp -R ${Source}/* PACKAGE
+
+rm ${Package}-${Version}.tar.gz
+
+cd PACKAGE
+tar zcvf ${Package}-${Version}.tar.gz *
+mv ${Package}-${Version}.tar.gz ..
+cd ..
+
+rm -rf PACKAGE
+
+

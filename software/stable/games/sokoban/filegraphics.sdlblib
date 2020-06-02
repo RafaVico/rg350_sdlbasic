@@ -1,0 +1,80 @@
+'
+' sdlBasic library: fileGraphics  
+' 
+'   Name:      filegraphics.sdlblib
+'   Purpose:   basic library to implements 
+'	loadimages 100%
+'	
+'	
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+' 
+' 
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+' loadimages     carica da un immagine con piu'frames tutti i frames a partiredal banco startbank
+function loadimages_soft(file$,w,h,startbank)
+	if fileexists(file$)=0 then
+		return -1
+	end if
+
+	loadimage(file$,startbank)
+        'prints(str$(imagewidth(startbank))+":"+str$(imageheight(startbank)))
+	screenopen(7,imagewidth(startbank),imageheight(startbank),0,0,0,0,0)
+	'screen(7)
+	pasteicon(0,0,startbank)
+	x=0:y=0:s=startbank
+	while (y+h)<=screenheight
+		grab(s,x,y,w,h)
+		s=s+1
+		x=x+w
+		if (x+w)>screenwidth then
+			x=0
+			y=y+h
+		end if
+	end while
+	screenclose(7)
+	return s-1
+	
+
+end function
+'_______________________________________________________________________________________
+
+' saveimages     salva la parte del banco sprite a partire da startbank fino a endbank nell'imagine file
+function saveimages_soft(file$,startbank,endbank)
+    dim ws,hs,w,h,wfile,hfile
+    w=0:h=0
+    wfile=0:hfile=0
+ 
+    'preserva le dimensioni dell'immagine startbank
+    ws=imagewidth(startbank)
+    hs=imageheight(startbank)
+    
+    'determina le dimensioni dell'immagine da grabbare
+    for i= startbank to endbank
+        w=imagewidth(i)
+        h=imageheight(i)
+        wfile=wfile+w
+        if h>hfile then :hfile=h:end if
+    next
+    w=0:h=0
+    'apre lo schermo 
+    screenopen(7,wfile,hfile,0,0,0,0,0)
+    'pasta le immagini
+    for i= startbank to endbank
+        pasteicon(w,h,i)
+        w=w+imagewidth(i)
+    next    
+    'ritaglia e salva l'immagine complessiva
+    grab(startbank,0,0,wfile,hfile)
+    saveimage(file$,startbank)
+    'ripristina il frame startbank
+    grab(startbank,0,0,ws,hs)
+    'chiude lo screen
+    screenclose(7)
+end function

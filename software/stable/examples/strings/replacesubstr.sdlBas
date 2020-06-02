@@ -1,0 +1,17 @@
+'
+' sdlBasic example Strings: ReplaceSubstr example
+' 
+'   Name:     replacesubstr.sdlbas
+'   Purpose:   example partial replace string function  
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+a$="ciao ciao roby"
+prints("string:"+a$)
+prints("replacesubstr(a$,\"ciao\",\"bye\"):"+str$(replacesubstr(a$,"ciao","bye")))
+
+waitkey

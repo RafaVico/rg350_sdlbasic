@@ -1,0 +1,47 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  sound.sdlbas
+'| date 21/12/2003
+'|
+'| description:
+'| many sound command
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+setdisplay (200,200,32,1)
+text (10,10,20,"1) play sound")
+text (10,30,20,"2) play looped sound")
+text (10,50,20,"3) stop sound")
+text (10,70,20,"4) pause sound")
+text (10,90,20,"5) resume sound")
+
+if fileexists("shot.wav") then
+    shot=loadsound ("shot.wav")
+end if
+
+if fileexists("click26.wav") then
+    loadsound ("click26.wav",2)
+end if
+
+
+while key(27)=0
+
+
+    if key(49) then : playsound (shot,1) : end if
+
+    if key(50) then :  playsound (shot,1,-1): end if
+
+    if key(51) then : stopsound(1) : end if
+
+    if key(52) then : pausesound (1) :end if
+
+    if key(53) then : resumesound(1) :end if
+
+
+end while
+
+

@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Maths:orbit
+'
+'   Name:      orbit.sdlbas
+'   Purpose:    return the logic or of the operands
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints(orbit(127,128))
+prints("press any key to exit")
+waitkey

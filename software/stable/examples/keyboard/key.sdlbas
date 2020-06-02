@@ -1,0 +1,14 @@
+'
+' sdlBasic example  Keyboard:key
+'
+'   Name:      key.sdlbas
+'   Purpose:    give 1 if is press the key keycode
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("press key a")
+while(key(asc("a"))=0):end while
+prints("key a pressed!!")
+prints("press esc to exit")
+waitkey(27)

@@ -1,0 +1,1655 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<!-- $id: htmlconvert.sdlbas,v 1.2 2005/07/09 22:52:22 vroby exp $ --> <!-- $id: htmlconvert.sdlbas,v 1.2 2005/07/09 22:52:22 vroby exp $ -->  <!-- $id: htmlconvert.sdlbas,v 1.2 2005/07/09 22:52:22 vroby exp $ --> <!-- $id: htmlconvert.sdlbas,v 1.2 2005/07/09 22:52:22 vroby exp $ -->  <!-- $id: htmlconvert.sdlbas,v 1.2 2005/07/09 22:52:22 vroby exp $ --> <!-- $id: htmlconvert.sdlbas,v 1.2 2005/07/09 22:52:22 vroby exp $ -->
+		<link href="style.css" rel="stylesheet" type="text/css">
+			<meta http-equiv="content-type" content="text/html; charset=Shift-JIS">
+			<title>sdlbasic quickhelp</title>
+	</head>
+	<body background="pattern.png" bgcolor="#ffffff">
+		<a href="http://sourceforge.net/"><img src="motd.png" alt="[sourceforge]" align="left" border="0"></a>
+		<a href="http://sdlbasic.sourceforge.net/"><img src="logo.jpg" alt="[sdlbasic]" align="middle" border="0"></a>
+		<h1>
+			<center>
+				sdlbasic quick help
+			</center>
+		</h1>
+		<hr>
+		sdlBasic は２ｄゲームを作成するための小さなBASICです。
+		<br>
+		sdlBasic is a little basic for make simple games in 2d
+		<br>
+		This basic run on :
+		<br>
+		linux(with a reasonable recent version)
+		<br>
+		windows (9x and nt-XP based)
+		<br>
+		macOSX
+		<br>
+		FreeBSD
+		<br>
+		OpenBSD
+		<br>
+		MorphOS
+		<br>
+		AmigaOS
+		<br>
+		<br>
+		This basic is another demostration to the GPL's power
+		<br>
+		the basic interpreter come from wxbasic by David Cuny 
+		("http://wxbasic.sourceforge.net") distribuited under lGPL
+		<br>
+		The graphic system is based uppon SDL graphics libraries 
+		family("http://www.libsdl.org")distribuited under GPL
+		<br>
+		The graphics engine was initially based on the aliens demo game 
+		("http://www.libsdl.org/projects/aliens")
+		<br>
+		written in c and distribuited on GPL, later graphic engine was re-written from 
+		scratch.
+		<br>
+		putpixel and getpixel routines are derivated from SDL tutorial and was improved 
+		with Gigi Davassi suggestions
+		<br>
+		The original line rutine was imported from Alvyn Basic with Author's write 
+		permission.
+		<br>
+		I used also the source of sdldraw library ("http://sdl-draw.sourceforge.net/") 
+		ever lGPL
+		<br>
+		<br>
+		I cut, pasted and adapted code distribuited under lGPL.
+		<br>
+		This software is subject to lGPL license and is free as every program used to 
+		create it
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b></b>
+		<br>
+		sdlBasic comands and syntax list:
+		<br>
+		<br>
+		i suggest to read full documentation for more details
+		<br>
+		<br>
+		sections:
+		<br>
+		Run time
+		<br>
+		Sub and function
+		<br>
+		Control structures
+		<br>
+		Operator
+		<br>
+		Array
+		<br>
+		Strings
+		<br>
+		Maths
+		<br>
+		Files
+		<br>
+		Dirs
+		<br>
+		Data function
+		<br>
+		console output
+		<br>
+		Date and time
+		<br>
+		Memory Bank
+		<br>
+		<br>
+		Screen
+		<br>
+		Graphics
+		<br>
+		File graphics input output
+		<br>
+		Image manipulation
+		<br>
+		Blitting
+		<br>
+		Sprite system
+		<br>
+		Bob system
+		<br>
+		Text draw
+		<br>
+		Print screen
+		<br>
+		Sounds and music
+		<br>
+		CD support
+		<br>
+		Video Mpeg
+		<br>
+		Keyboard
+		<br>
+		Mouse
+		<br>
+		Joystick
+		<br>
+		SDLtime
+		<br>
+		Socket
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b></b>
+		<br>
+		notes:
+		<br>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						* it don't works
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<table bgcolor="#ff8000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						** it don't works and need to be tested
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b></b>
+		<table bgcolor="#ffff00" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						? it don't work well: unresolved bug
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<table bgcolor="#ff00ff" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						-&gt; to be deleted
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Run Time</b>
+		<br>
+		<br>
+		command line arguments
+		<br>
+		<b>--nodefaults :</b> disable the default setting display
+		<br>
+		<b>--nosound :</b> disable sound
+		<br>
+		<b>--nosocket :</b> disable socket support
+		<br>
+		<b>--debug :</b> start sdlBasic in step to step mode
+		<br>
+		<b>--version :</b> display the version (iso date)
+		<br>
+		<b>--license :</b> display license type
+		<br>
+		<b>--copyright :</b> display copyright ( ;-) absolutelly free software )
+		<br>
+		<b>--help :</b> display a run option list
+		<br>
+		<br>
+		<br>
+		<b>const :</b> declaration of numeric constant
+		<br>
+		<b>option explicit :</b> must declare variable
+		<br>
+		<b>option qbasic :</b> qbasic mode you can use a function before create in a 
+		code
+		<br>
+		<b>include(filename) :</b> inclusion of extern source file
+		<br>
+		<b>argc :</b> return number of args in caller
+		<br>
+		<b>argv(index) :</b> return arg in caller
+		<br>
+		<b>command [param] :</b> returns requested arg from command line
+		<br>
+		<b>command$ [param] :</b> returns requested arg from command line
+		<br>
+		<b>argument(optional n) :</b> returns the arguments sends to sub/function with 
+		n=0 or without parameter will be return the arguments count
+		<br>
+		<b>argument$(optional n) :</b> returns the arguments sends to sub/function with 
+		n=0 or without parameter will be return the arguments count
+		<br>
+		<b></b>
+		<table bgcolor="#ffff00" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						?setenv(varname,value) : set a enviremont variable in currently os. if variable 
+						exist it will be overwrite
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b>getenv(varname) :</b> return the value of enviremont variable in currently 
+		os
+		<br>
+		<b></b>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						*run : run command on new thread
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b>shell :</b> execute command, wait until finished
+		<br>
+		<b>end :</b> terminate program and exit
+		<br>
+		<b>stop :</b> breakpoint and start debug
+		<br>
+		<br>
+		<b>os :</b> return the operative system in work (linux windows macosx etc...)
+		<br>
+		<b>isfbsd :</b> return 1 if the current os is FreeBSD
+		<br>
+		<b>isosx :</b> return 1 if the current os is MacOSX
+		<br>
+		<b>islinux :</b> return 1 if the current os is linux
+		<br>
+		<b>iswin32 :</b> return 1 if the current os is windows
+		<br>
+		<b>ismos :</b> return 1 if the current os is MorphOS
+		<br>
+		<b>isnetbsd :</b> return 1 if the current os is NetBSD
+		<br>
+		<b>isamigaos :</b> return 1 if the current os is AmigaOS
+		<br>
+		<br>
+		<b>debug :</b> work with option --debug at start or when you press ctrl+c key 
+		in interpretation of basic program
+		<br>
+		if you press F5 you continue the normal execution
+		<br>
+		with F6 you advanced in execution of one step
+		<br>
+		with F4 you can see the vale of the prompted variable. For see the value of an 
+		array you must enter the name
+		<br>
+		of array without the square bracket and at the request you must enter the 
+		indexes of record requested.
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Sub and Function</b>
+		<br>
+		<br>
+		<b>declare [sub | function][name] :</b> declare a subrutine/function in qbasic 
+		mode
+		<br>
+		<b>sub [name](args...) :</b> start a subrutine
+		<br>
+		<b>exit sub :</b> break a subrutine
+		<br>
+		<b>end sub :</b> terminate a subrutine
+		<br>
+		<br>
+		<b>function [name](args...) :</b> start a function
+		<br>
+		<b>exit function :</b> break a function
+		<br>
+		<b>end function :</b> terminate a function
+		<br>
+		<b>return [value | variable] :</b> set the result of a function(can substituite 
+		funcname=x)
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Control Structures</b>
+		<br>
+		<br>
+		<b>while [condition expression] :</b> start while cycle
+		<br>
+		<b>wend :</b> end while cycle
+		<br>
+		<b>end while :</b> end while cycle
+		<br>
+		<b>exit while :</b> stop while cycle
+		<br>
+		<b>continue :</b> terminate the last while cycle
+		<br>
+		<br>
+		<b>if [condition expression] :</b> classic if control structure
+		<br>
+		<b>then :</b> then must be terminate a command
+		<br>
+		<b>else :</b> classic else:it must be a single command
+		<br>
+		<b>elseif :</b> elseif is support in sdlBasic
+		<br>
+		<b>end if :</b> must terminate a if structure
+		<br>
+		<br>
+		<b>select case [condition expression] :</b> similar to c switch (syntax like 
+		pascal)
+		<br>
+		<b>case :</b> control condition
+		<br>
+		<b>case else :</b> default condition
+		<br>
+		<b>end select :</b> end select case structure
+		<br>
+		<br>
+		<b>for[var]=[val1]to[val2][step[vals]] :</b> classic for-next well implemented
+		<br>
+		<b>for each [var] in [array] :</b> for each are well supported warning: report 
+		the indexes of array not the value
+		<br>
+		<b>continue :</b> force the exit of for next cycle (work only with for each)
+		<br>
+		<b>exit for :</b> force the exit of for next cycle
+		<br>
+		<b>next :</b> end for loop
+		<br>
+		<b>end for :</b> sdlBasic accept end for
+		<br>
+		<br>
+		<b>do :</b> start a do-loop cycle
+		<br>
+		<b>loop :</b> the bottom of do-loop cycle
+		<br>
+		<b>exit do :</b> the exit of a do-loop cycle
+		<br>
+		<br>
+		<b></b>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						*repeat : not implemented yet
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b></b>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						*until : not implemented yet
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<b>or :</b> condition in espression logic or
+		<br>
+		<b>and :</b> condition in espression logic and
+		<br>
+		<b>xor :</b> condition in espression logic xor
+		<br>
+		<b>not :</b> condition in espression logic not
+		<br>
+		<br>
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Operator</b>
+		<br>
+		<br>
+		<b>[+] :</b> addtional operator
+		<br>
+		<b>[-] :</b> substraction operator
+		<br>
+		<b>[*] :</b> multiply operator
+		<br>
+		<b>[/] :</b> division operator
+		<br>
+		<b>[^] :</b> exponetial operator
+		<br>
+		<b>mod :</b> rest of division operator
+		<br>
+		<b>shl :</b> shift left
+		<br>
+		<b>shr :</b> shift right
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Array</b>
+		<br>
+		<br>
+		<b>dim [name][[index of array]] :</b> declare an array note: array use [] for 
+		parentesis
+		<br>
+		<b></b>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						*redim [name][[index of array]] : redeclare an array
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b>shared [variable] :</b> declare variable extern in a subrutine
+		<br>
+		<b>common [variable] :</b> declare variable or array global
+		<br>
+		<b>lbound [array] :</b> returns lower bound of array
+		<br>
+		<b></b>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						*quicksort [array] : sort an array
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b>ubound [array] :</b> upperbound of array
+		<br>
+		<b>erase [array] :</b> free an array
+		<br>
+		<hr>
+		<br>
+		<b>Strings</b>
+		<br>
+		<br>
+		<b>asc(char) :</b> returns ascii value of first char in string
+		<br>
+		<b>chr(v) :</b> return string corresponding to ascii key value
+		<br>
+		<b>chr$(v) :</b> return string corresponding to ascii key value
+		<br>
+		<b></b>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						*format() : returns formatted string with embedded args
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b></b>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						*format$() : returns formatted string with embedded args
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b>insert(source$,target$,position) :</b> insert source string to target at 
+		index
+		<br>
+		<b>insert$(source$,target$,position) :</b> insert source string to target at 
+		index
+		<br>
+		<b>instr(optional start,source$,target$) :</b> returns position in source that 
+		target was found
+		<br>
+		<b>lcase(string$) :</b> convert string to lower case
+		<br>
+		<b>lcase$(string$) :</b> convert string to lower case
+		<br>
+		<b>left(string$,number) :</b> returns leftmost chars in string
+		<br>
+		<b>left$(string$,number) :</b> returns leftmost chars in string
+		<br>
+		<b>len(string$) :</b> return length of string
+		<br>
+		<b>length(string$) :</b> return length of string
+		<br>
+		<b>ltrim(string$) :</b> returns string with left whitespace removed
+		<br>
+		<b>ltrim$(string$) :</b> returns string with left whitespace removed
+		<br>
+		<b>mid(string$,start,optional end) :</b> returns string with chars 1..n from 
+		source
+		<br>
+		<b>mid$(string$,start,optional end) :</b> returns string with chars 1..n from 
+		source
+		<br>
+		<b>replace(opt index,source$,replace$) :</b> replace string from source with 
+		replace starting at index
+		<br>
+		<b>replace$(opt index,source$,replace$) :</b> replace string from source with 
+		replace starting at index
+		<br>
+		<b>replacesubstr(source$,rep$) :</b> replace substring in source with 
+		withstring return the new string
+		<br>
+		<b>replacesubstr$(source$,rep$) :</b> replace substring in source with 
+		withstring return the new string
+		<br>
+		<b>reverse(string$) :</b> reverse a string return the new string
+		<br>
+		<b>reverse$(string$) :</b> reverse a string return the new string
+		<br>
+		<b>right(string$,number) :</b> returns rightmost chars in string
+		<br>
+		<b>right$(string$,number) :</b> returns rightmost chars in string
+		<br>
+		<b>rinstr(optional start,source$,target$) :</b> reverse Instr function, search 
+		from end to start
+		<br>
+		<b>rtrim(string$) :</b> right trim string
+		<br>
+		<b>rtrim$(string$) :</b> right trim string
+		<br>
+		<b>space(n) :</b> return string with n spaces in it
+		<br>
+		<b>space$(n) :</b> return string with n spaces in it
+		<br>
+		<b>str(value) :</b> return string representation of numeric expression
+		<br>
+		<b>str$(value) :</b> return string representation of numeric expression
+		<br>
+		<b>strf(value) :</b> converts a floating point or number value to a string
+		<br>
+		<b>strf$(value) :</b> converts a floating point or number value to a string
+		<br>
+		<b>string(n,string$) :</b> returns string m chars wide with n in it
+		<br>
+		<b>string$(n,string$) :</b> returns string m chars wide with n in it
+		<br>
+		<b>tally(src$,sub$) :</b> returns number of occurances of matchstring
+		<br>
+		<b>trim(string$) :</b> trim string
+		<br>
+		<b>trim$(string$) :</b> trim string
+		<br>
+		<b>typeof(variable) :</b> returns string with datatype
+		<br>
+		<b>typeof$(variable) :</b> returns string with datatype
+		<br>
+		<b>ucase(string$) :</b> convert string to upper case
+		<br>
+		<b>ucase$(string$) :</b> convert string to upper case
+		<br>
+		<b>val(string$) :</b> returns closest numeric representation of number
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Maths</b>
+		<br>
+		<br>
+		<b>abs(value) :</b> returns absolute value of number
+		<br>
+		<b>acos(value) :</b> returns arccos of number
+		<br>
+		<b>asin(value) :</b> returns arcsin of number
+		<br>
+		<b>atan(value) :</b> returns arctan of number
+		<br>
+		<b>bin(value) :</b> returns binary representation of number
+		<br>
+		<b>bin$(value) :</b> returns binary representation of number
+		<br>
+		<b>cos(value) :</b> returns cos of number
+		<br>
+		<b>exp(value) :</b> returns exponential function
+		<br>
+		<b>fix(value) :</b> truncate fractional number, rounding down towards zero
+		<br>
+		<b>floor(value) :</b> truncate fractional number, rounding down towards zero
+		<br>
+		<b>frac(value) :</b> return fractional portion of number
+		<br>
+		<b>hex(value) :</b> returns hexidecimal representation of number
+		<br>
+		<b>hex$(value) :</b> returns hexidecimal representation of number
+		<br>
+		<b>int(value) :</b> convert to 32 bit integer, truncating decimals
+		<br>
+		<b>log(value) :</b> returns natural log of expression
+		<br>
+		<b>randomize(value) :</b> reseed the random number generator
+		<br>
+		<b>rnd(optional upper) :</b> return an random number
+		<br>
+		<b>round(value) :</b> round to nearest integer
+		<br>
+		<b>sgn(value) :</b> returns sign of numeric expression
+		<br>
+		<b>sin(value) :</b> returns sine of given angle in radians
+		<br>
+		<b>sqr(value) :</b> return square root - make sure it's non-negative
+		<br>
+		<b>tan(value) :</b> return tanget of given angle in radians
+		<br>
+		<b>min(value1,value2) :</b> return min number of the operands
+		<br>
+		<b>max(value1,value2) :</b> return max number of the operands
+		<br>
+		<b>bitwiseand(value1,value2) :</b> return the logic and of the operands
+		<br>
+		<b>andbit(value1,value2) :</b> return the logic and of the operands
+		<br>
+		<b>bitwiseor(value1,value2) :</b> return the logic or of the operands
+		<br>
+		<b>orbit(value1,value2) :</b> return the logic or of the operands
+		<br>
+		<b>bitwisexor(value1,value2) :</b> return the logic xor of the operands
+		<br>
+		<b>xorbit(value1,value2) :</b> return the logic xor of the operands
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Files</b>
+		<br>
+		<br>
+		<b>open[filename]for{input|output|append}as[stream]:</b> open file stream
+		<br>
+		<b>file input [stream] :</b> read a line from file stream
+		<br>
+		<b>input [stream] :</b> read a line from file stream
+		<br>
+		<b>file output [stream] :</b> print a line in file stream
+		<br>
+		<b>print [stream] :</b> print a line in file stream
+		<br>
+		<b>close [stream] :</b> close file stream
+		<br>
+		<br>
+		<b>eof(stream) :</b> returns nonzero if Eof
+		<br>
+		<b>fileexists(filename) :</b> returns true if the file exists
+		<br>
+		<b>filecopy(source,dest) :</b> copy a file
+		<br>
+		<b>filemove(source,dest) :</b> move a file
+		<br>
+		<b>filerename(filename,newname) :</b> rename a file
+		<br>
+		<b>freefile() :</b> return the handle of the next free file
+		<br>
+		<b>kill(filename) :</b> delete filename. filename can be then path+filename
+		<br>
+		<b>filedelete(filename) :</b> delete filename. filename can be then 
+		path+filename
+		<br>
+		<b>loc(stream) :</b> returns position in file
+		<br>
+		<b>lof(stream) :</b> returns length of file
+		<br>
+		<b>readbyte(stream) :</b> return a byte from the file
+		<br>
+		<b>rename(filename,newname) :</b> rename file
+		<br>
+		<b>seek(stream) :</b> seek file position/return current file position
+		<br>
+		<b>writebyte(stream,byte) :</b> write a byte in the file
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Dirs</b>
+		<br>
+		<br>
+		<b>chdir(path) :</b> change directory
+		<br>
+		<b>dir dir$ :</b> returns current path
+		<br>
+		<b>direxists(path) :</b> returns true if directory exists
+		<br>
+		<b>dirfirst(path) :</b> returns first entry in path dir
+		<br>
+		<b>dirnext :</b> returns next entry in path dir
+		<br>
+		<b>mkdir(path) :</b> create a new directory
+		<br>
+		<b>rmdir(path) :</b> remove directory
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Data Function</b>
+		<br>
+		<br>
+		<b>data(optional 0-255 param) :</b> store the data
+		<br>
+		<b>read(optional pointer) :</b> without parameter read a data record with point 
+		change the next data loaded
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Console Output</b>
+		<br>
+		<br>
+		<b>print [text|variable|number] :</b> Print in standard output a espression (i 
+		use it for debugging output)
+		<br>
+		<hr>
+		<br>
+		<b>Date and Time</b>
+		<br>
+		<br>
+		<b>date() :</b> returns date in MM-DD-YYYY format
+		<br>
+		<b>date$() :</b> returns date in MM-DD-YYYY format
+		<br>
+		<b>time() :</b> return time in HH:MM:SS format
+		<br>
+		<b>time$() :</b> return time in HH:MM:SS format
+		<br>
+		<b>ticks() :</b> returns current timer value
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Memory Bank</b>
+		<br>
+		<br>
+		<br>
+		<b>reservebank(bank,size) :</b> make a raw memory bank. there are 256 bank ( 0 
+		- 255)
+		<br>
+		<b>baseimage(bank,image) :</b> link a memorybank from a imagebank bitmap access
+		<br>
+		<b>baseimageCC(bank,image) :</b> link a memorybank from a imagebank bitmap 
+		access with colorkey trasparency
+		<br>
+		<b>basescreen(bank,image) :</b> link a memorybank from a screen bitmap access
+		<br>
+		<b>basesound(bank,sound) :</b> link a memory bank with soundb bank
+		<br>
+		<br>
+		<b>freebase(bank) :</b> unconnect a memory bank with a image or screen
+		<br>
+		<b>freebank(bank) :</b> destroy a memory bank
+		<br>
+		<br>
+		<b>copybank(s,d) :</b> copy the bank s in d
+		<br>
+		<br>
+		<b>loadbank(filename,optional bank) :</b> load a file in memory bank (if 
+		omitted the current )
+		<br>
+		<b>savebank(filename,optional bank) :</b> save memory bank in a file
+		<br>
+		<br>
+		<b>setbank(optional bank) :</b> set the current bank (if omitted return the 
+		current)
+		<br>
+		<b>currentbank(optional bank) :</b> set the current bank (if omitted return the 
+		current)
+		<br>
+		<b>sizebank(optional bank) :</b> return the bank memory size (if omitted return 
+		the value of current bank)
+		<br>
+		<b>banksize(optional bank) :</b> return the bank memory size (if omitted return 
+		the value of current bank)
+		<br>
+		<br>
+		<b>poke(optional bank,address,value) :</b> write a byte value in memory bank at 
+		specific address
+		<br>
+		<b>doke(optional bank,address,value) :</b> write a 16bit value in memory bank 
+		at specific address
+		<br>
+		<b>loke(optional bank,address,value) :</b> write a 32bit value in memory bank 
+		at specific address
+		<br>
+		<br>
+		<b>peek(optional bank,address) :</b> read a byte value in memory bank at 
+		specific address
+		<br>
+		<b>deek(optional bank,address) :</b> read a 16bit value in memory bank at 
+		specific address
+		<br>
+		<b>leek(optional bank,address) :</b> read a 32bit value in memory bank at 
+		specific address
+		<br>
+		<br>
+		<b>memcopy(sbank,s,dbank,d,size) :</b> copy a part of bank memory s in d
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Screen</b>
+		<br>
+		<br>
+		<b>setdefaults(w,h,bpp,m) :</b> open the display, perform initializations on 
+		cursor and fonts and sets default values on sprites, bobs and screens system.
+		<br>
+		<b>setdisplay(w,h,bpp,m) :</b> open the screen/window in double buffer. 
+		0=fullscreen|1=window|2=resizable|3=fullscreen software (provvisory)
+		<br>
+		<b>setcaption(title) :</b> change the display window title
+		<br>
+		<b>setalphachannel(bool) :</b> activate or deactivate alpha channel trasparency
+		<br>
+		<b>caption() :</b> return the display window title
+		<br>
+		<b>displaymode :</b> return the display mode
+		<br>
+		<b>displaywidth :</b> return the display width
+		<br>
+		<b>displayheight :</b> return the display height
+		<br>
+		<b>displaybpp :</b> return the display color depth
+		<br>
+		<br>
+		<b>screen(n) :</b> set the logic screen n without parameter return the current 
+		screen
+		<br>
+		<b>screenz(n,z) :</b> set the zorder position of screen if z =-1 report actual 
+		z position
+		<br>
+		<b>lastscreen :</b> return the last screen open
+		<br>
+		<b>directscreen :</b> direct drawing on display like a screen(more fast but 
+		sprite and offset does not works)
+		<br>
+		<b>screenopen(n,w,h,dx,dy,dw,dh,flag) :</b> open the logic screen n of 
+		dimension w,h in display coordinates dx,dy,dw,dh
+		<br>
+		<b>screenclose(n) :</b> close the logic screen n
+		<br>
+		<br>
+		<b>screenclone(n,s,x,y,w,h,flag) :</b> create a new viewport in logic screen s
+		<br>
+		<b>screencopy(n,x,y,w,h,nd,xd,yd) :</b> copy a portion of screen n in a screen 
+		nd
+		<br>
+		<b>screenfade(n,t) :</b> fade the screen n in t time in multitasking without 
+		parameter return 0 if terminate
+		<br>
+		<b>screenfadeout(n,t) :</b> fade the screen n in t time in multitasking without 
+		parameter return 0 if terminate
+		<br>
+		<b>screenfadein(n,otional i,optional t) :</b> fade the screen n to image i in t 
+		time in multitasking without parameter return 0 if terminate
+		<br>
+		<b>screencrossfade(n,i,t) :</b> fade the screen n from current screen to image 
+		i in t time in multitasking without parameter return 0 if terminate
+		<br>
+		<b>screenalpha(n,a) :</b> set alpha(trasparency) of screen n
+		<br>
+		<b>screenlock(n) :</b> lock the screen n for direct graphics access
+		<br>
+		<b>screenunlock(n) :</b> unlock the screen n for direct graphics access
+		<br>
+		<br>
+		<b>screenrect(x,y,w,h,flag) :</b> change the display output coordinates of the 
+		current screen
+		<br>
+		<b>screenviewport(x,y,w,h,flag) :</b> change the display output coordinates of 
+		the current screen
+		<br>
+		<b>xscreenrect :</b> give the x coordinate of current screen viewport
+		<br>
+		<b>screenviewportx :</b> give the x coordinate of current screen viewport
+		<br>
+		<b>yscreenrect :</b> give the y coordinate of current screen viewport
+		<br>
+		<b>screenviewporty :</b> give the y coordinate of current screen viewport
+		<br>
+		<b>wscreenrect :</b> give the w value of current screen viewport
+		<br>
+		<b>screenviewportw :</b> give the w value of current screen viewport
+		<br>
+		<b>hscreenrect :</b> give the h value of current screen viewport
+		<br>
+		<b>screenviewporth :</b> give the h value of current screen viewport
+		<br>
+		<b>flagscreenrect :</b> give the flag value of current screen viewport
+		<br>
+		<b>screenviewportflag :</b> give the flag value of current screen viewport
+		<br>
+		<br>
+		<b>screenwidth :</b> give the current screen width
+		<br>
+		<b>screenheight :</b> give the current screen height
+		<br>
+		<br>
+		<b>offset(x,y) :</b> set the logical current screen position
+		<br>
+		<b>screenoffset(x,y) :</b> set the logical current screen position
+		<br>
+		<b>xoffset :</b> give the x coordinate offset in current screen
+		<br>
+		<b>screenoffsetx :</b> give the x coordinate offset in current screen
+		<br>
+		<b>yoffset :</b> give the y coordinate offset in current screen
+		<br>
+		<b>screenoffsety :</b> give the y coordinate offset in current screen
+		<br>
+		<br>
+		<b>cls :</b> clear the current logic screen
+		<br>
+		<br>
+		<b>screenswap :</b> update display,bobsystem,spritesystem
+		<br>
+		<b>autoback(m) :</b> enable / disable automatic screenswap m=0 disable m&gt;0 
+		wait m milliseconds and perform screenswap m&lt;0 perform the invocate in code 
+		screenswap after m milliseconds
+		<br>
+		<b>setautoback(m) :</b> enable / disable automatic screenswap m=0 disable 
+		m&gt;0 wait m milliseconds and perform screenswap m&lt;0 perform the invocate 
+		in code screenswap after m
+		<br>
+		<b>dualplayfield(optional m) :</b> set/unset automatic update of a screen upper 
+		sprite
+		<br>
+		<b>waitvbl :</b> wait automatic screenswap
+		<br>
+		<b>fps(optional n) :</b> set/unset or give the current frame rate counter 
+		(0/1/none)
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Graphics</b>
+		<br>
+		<br>
+		<b>rgb(r,g,b) :</b> give current color in Uint32 format
+		<br>
+		<b>enablepalette(optional state) :</b> enable disable and check the palettemode 
+		in 8 bit display
+		<br>
+		<b>color (c,optional v) :</b> set palette color c with value v se missing give 
+		the current color c
+		<br>
+		<b>palette(optional 0-255 param) :</b> set all palettes 
+		color(0,0xff,0xff00,....)
+		<br>
+		<b>colorcycling(s,e,d=0|1,optional delay) :</b> move the palette color one 
+		color forward or back work only in 8bit display
+		<br>
+		if you set delay automatically colorcycling work on multitasking
+		<br>
+		<b>colorcycling() :</b> stop the multitasking colorcycling
+		<br>
+		<b>ink(c) :</b> select the current color in Uint32 format
+		<br>
+		<br>
+		<b>point(x,y) :</b> give the color of x,y point
+		<br>
+		<b>getpixel(x,y) :</b> give the color of x,y point
+		<br>
+		<b>dot(x,y) :</b> write x,y point with a current color
+		<br>
+		<b>setpixel(x,y) :</b> write x,y point with a current color
+		<br>
+		<b>putpixel(x,y) :</b> write x,y point with a current color
+		<br>
+		<b>plot(x,y,c) :</b> write x,y point with a c color
+		<br>
+		<b>line(x,y,x1,y1) :</b> write a line
+		<br>
+		<b>box(x,y,x1,y1) :</b> write a empty rettangle
+		<br>
+		<b>bar(x,y,x1,y1) :</b> write a fill rettangle
+		<br>
+		<b>circle(x,y,r) :</b> write a circle
+		<br>
+		<b>fillcircle(x,y,r) :</b> write a fill circle
+		<br>
+		<b>ellipse(x,y,rx,ry) :</b> write a ellipse
+		<br>
+		<b>fillellipse(x,y,rx,ry) :</b> write a fill ellipse
+		<br>
+		<b>paint(x,y) :</b> fill a close area
+		<br>
+		<b>triangle(xa,ya,xb,yb,xc,yc) :</b> draw a fill triangle
+		<br>
+		<b>polyline(xa,ya,xb,yb,xc,yc,.....) :</b> draw an empty polygon
+		<br>
+		<b>polygon(xa,ya,xb,yb,xc,yc,.....) :</b> draw a fill polygon
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>File Graphics Input Output</b>
+		<br>
+		<br>
+		<b>loadimage(filename,optional n) :</b> load a graphics file in a slot n if 
+		omitted n is the first free return n
+		<br>
+		<b>loadzipimage(zipfile,filename,opt n) :</b> load a zipped graphics file in a 
+		slot n if omitted n is the first free return n
+		<br>
+		<b>saveimage(filename,n) :</b> save slot n in a graphics file(only bmp)
+		<br>
+		<b>loadsound(filename,opt n) :</b> load a wave file in a sound slot n
+		<br>
+		<b>loadzipsound(zipfile,filename,opt n) :</b> load a zipped wave file in a 
+		sound slot n
+		<br>
+		<b></b>
+		<table bgcolor="#ffff00" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						?savesound(filename,n) : save a wave file from sound slot n (low quality 
+						result)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b>loadmusic(filename) :</b> load a music module (mod family,ogg,mp3 and midi)
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Image Manipulation</b>
+		<br>
+		<br>
+		<b>hotspot(n,x,y) :</b> select the point of coordinates in a imageslot 
+		(n,0,0=up left(default) | n,1,1=center | n,2,2 =down right)n= image
+		<br>
+		<b>setcolorkey(c) :</b> set the colorkey for bitmap transparency if set -1 
+		(default ) will be used the left-up corner color.
+		<br>
+		<b>colorkey(c) :</b> set the colorkey for bitmap transparency if set -1 
+		(default ) will be used the left-up corner color.
+		<br>
+		<b>imageexists(n) :</b> give 1 if the image buffer n exist 0 if empty
+		<br>
+		<b>imagewidth(n) :</b> give the image n width or error if image n if empty
+		<br>
+		<b>imageheight(n) :</b> give the image n height or error if image n if empty
+		<br>
+		<b>deleteimage(n) :</b> erase the image n of the memory
+		<br>
+		<b>copyimage(s,d) :</b> copy image s to image d
+		<br>
+		<b>setalpha(n,a) :</b> set trasparency in image n
+		<br>
+		<b>imagealpha(n,a) :</b> set trasparency in image n
+		<br>
+		<b>zoomimage(n,zoomx,zoomy) :</b> zoom image
+		<br>
+		<b>rotateimage(n,angle) :</b> rotate image
+		<br>
+		<b>rotozoomimage(n,angle,zoom) :</b> rotate and zoom image
+		<br>
+		<b>mirrorimage(n,x,y) :</b> vertical-orizontal mirror
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Blitting</b>
+		<br>
+		<br>
+		<b>blt(n,sx,sy,sw,sh,dx,dy) :</b> copy a part of graphics slot in screen
+		<br>
+		<b>pastebob(x,y,n) :</b> copy on screen image n at x,y performing clip
+		<br>
+		<b>pasteicon(x,y,n) :</b> copy on screen image n at x,y without colorkey 
+		trasparency
+		<br>
+		<b>grab(n,x,y,w,h) :</b> grab a a selectarea and copy it in slot n
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Sprite System</b>
+		<br>
+		<br>
+		In this implementation there are 512 sprites software that are indipendent from 
+		the screens
+		<br>
+		<br>
+		<b>spriteclip(x,y,w,h) :</b> set the visibilty area of sprites
+		<br>
+		<b>sprite(n,x,y,fr) :</b> set or move the sprite n at x,y with image fr
+		<br>
+		<b>deletesprite(n) :</b> unset sprite n
+		<br>
+		<b>xsprite(n) :</b> give the x of sprite n
+		<br>
+		<b>spritex(n) :</b> give the x of sprite n
+		<br>
+		<b>ysprite(n) :</b> give the y of sprite n
+		<br>
+		<b>spritey(n) :</b> give the y of sprite n
+		<br>
+		<b>spritewidth(n) :</b> give the width of sprite n
+		<br>
+		<b>spriteheight(n) :</b> give the height of sprite n
+		<br>
+		<b>frsprite(n) :</b> give the frame of sprite n
+		<br>
+		<b>spriteimage(n) :</b> give the frame of sprite n
+		<br>
+		<b>livesprite(n) :</b> give 1 if sprite n is "live"
+		<br>
+		<b>spriteexist(n) :</b> give 1 if sprite n is "live"
+		<br>
+		<b>spritehit(n,optional x) :</b> give 1 if sprite n have a collission with 
+		sprite x if x=-1 with any
+		<br>
+		<b>spritez(n,z) :</b> set the zorder position of sprite if z omitted or-1 
+		report actual z position
+		<br>
+		<b>lastsprite :</b> return the last sprite active
+		<br>
+		<b>autoupdatesprite(m) :</b> set/ unset automatic sprites update at screenswap
+		<br>
+		<b>updatesprite :</b> manual sprites updates at next screenswap
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Bob System</b>
+		<br>
+		<br>
+		In this implementation there are 512 bobs software that are dipendent from the 
+		screens and performs
+		<br>
+		background preserve
+		<br>
+		<br>
+		<b>setbob(n,scr) :</b> set bob n at logic screen scr
+		<br>
+		<b>bob(n,x,y,fr) :</b> set or move bob n at x,y with frame fr
+		<br>
+		<b>deletebob(n) :</b> unset bob n
+		<br>
+		<b>xbob(n) :</b> give x of bob n
+		<br>
+		<b>bobx(n) :</b> give x of bob n
+		<br>
+		<b>ybob(n) :</b> give y of bob n
+		<br>
+		<b>boby(n) :</b> give y of bob n
+		<br>
+		<b>bobwidth(n) :</b> give width of bob n
+		<br>
+		<b>bobheight(n) :</b> give height of bob n
+		<br>
+		<b>frbob(n) :</b> give the frame of bob n
+		<br>
+		<b>bobimage(n) :</b> give the frame of bob n
+		<br>
+		<b>livebob(n) :</b> give 1 if bob n is "live"
+		<br>
+		<b>bobexist(n) :</b> give 1 if bob n is "live"
+		<br>
+		<b>bobhit(n,optional x) :</b> give 1 if bob n have a collision with bob x if 
+		x=-1 with any
+		<br>
+		<b>bobz(n,z) :</b> set the zorder position of bob if z =-1 report actual z 
+		position
+		<br>
+		<b>lastbob :</b> return the last bob active
+		<br>
+		<b>autoupdatebob(m) :</b> set/ unset automatic bobs update at screenswap
+		<br>
+		<b>updatebob :</b> manual bobs updates at next screenswap
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Text Draw</b>
+		<br>
+		<br>
+		<b>text(x,y,s,testo,optional type) :</b> print the text testo on current screen 
+		with s size The type of render can be default=solid 1=Shaded 2=blended
+		<br>
+		<b>setfont(path) :</b> select the font
+		<br>
+		<b>getfont() :</b> return the current font
+		<br>
+		<b>textrender(testo,s,optional n,optional type) :</b> make an image slot n with 
+		the text write with a current font and size s if n is omitted use and return 
+		first free The type of render can be default=solid 1=Shaded 2=blended
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Print Screen</b>
+		<br>
+		<br>
+		<b>pen(c) :</b> set prints color (without parameter give the current color)
+		<br>
+		<b>paper(c) :</b> set caractere back color (without parameter give the current 
+		color)
+		<br>
+		<b>fprints(testo) :</b> print a text monospace without cariage return
+		<br>
+		<b>prints(testo) :</b> print a text monospace
+		<br>
+		<b>locate(x,y) :</b> move the cursor at x y
+		<br>
+		<b>atx :</b> give x of cursor
+		<br>
+		<b>aty :</b> give y of cursor
+		<br>
+		<b>curson :</b> show the text cursor on screen at(atx,aty)
+		<br>
+		<b>cursoff :</b> hide the text cursor
+		<br>
+		<b>inputs(prompt,defs) :</b> give the string insert to keyboard(default is 
+		default text)
+		<br>
+		<b>zoneinputs(x,y,l,default) :</b> give the string insert to keyboard in x,y 
+		coordinates with l lenght
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Sounds and Music</b>
+		<br>
+		<br>
+		<b>isenabledsound() :</b> return 1 if sdlsound was enabled
+		<br>
+		<b>soundenabled() :</b> return 1 if sdlsound was enabled
+		<br>
+		<br>
+		<b>soundexists(n) :</b> give 1 if the sound buffer n exist 0 if empty
+		<br>
+		<b>deletesound(n) :</b> delete from memory sound n
+		<br>
+		<b>copysound(s,d) :</b> copy sound bank s in sound bank d
+		<br>
+		<br>
+		<b>musicexists() :</b> give 1 if the music is load 0 if empty
+		<br>
+		<br>
+		<b>playsound(n,c,optional l) :</b> play the sound n in channel c l loops
+		<br>
+		<b>playfreqsound(n,c,pitch,optional l) :</b> play the sound n in channel with 
+		pitch resampling frequency c l loops
+		<br>
+		<b>volumesound(c,optional v) :</b> change the volume of channel c (-1 all) at 
+		value v (0-128) without v or -1 give the current volume
+		<br>
+		<b>soundvolume(c,optional v) :</b> change the volume of channel c (-1 all) at 
+		value v (0-128) without v or -1 give the current volume
+		<br>
+		<b>stopsound(optional c) :</b> stop the wave play in channel c (-1 or none 
+		=all)
+		<br>
+		<b>pausesound(optional c) :</b> paused channel c (-1 or none =all)
+		<br>
+		<b>resumesound(optional c) :</b> unpaused channel c (-1 or none =all)
+		<br>
+		<b></b>
+		<table bgcolor="#ffff00" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						?vumetersound(optional c) : give the current state of sound channel (-1 or 
+						none=all)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b>sound3d(c,angle,dist) :</b> position sound in 3d space
+		<br>
+		<b>positionsound(c,angle,dist) :</b> position sound in 3d space
+		<br>
+		<b>soundchannels(n) :</b> dinamically change the number of channells managed by 
+		sdlBasic
+		<br>
+		<br>
+		<b>playmusic(n) :</b> play track xm,mod,ogg,mp3 n=number of ripetition(-1 
+		always)
+		<br>
+		<b>positionmusic(p) :</b> move the execution at p second
+		<br>
+		<b>stopmusic :</b> terminate the music play
+		<br>
+		<b>pausemusic :</b> set pause of the current music
+		<br>
+		<b>resumemusic :</b> unset pause of musica
+		<br>
+		<b>rewindmusic :</b> report at start the music
+		<br>
+		<b>fademusic(t) :</b> music fade
+		<br>
+		<b>volumemusic(optional v) :</b> change the volume of music (0-128) -1 or none 
+		give the current volume
+		<br>
+		<b>musicvolume(optional v) :</b> change the volume of music (0-128) -1 or none 
+		give the current volume
+		<br>
+		<b>speedmusic(v) :</b> change the speed of music
+		<br>
+		<b>musicspeed(v) :</b> change the speed of music
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>CD Support</b>
+		<br>
+		<br>
+		<b>numdrivescd() :</b> returns the number of cd-rom drives on the system.
+		<br>
+		<b>countcddrives() :</b> returns the number of cd-rom drives on the system.
+		<br>
+		<b>namecd(drive) :</b> returns a human-readable, system-dependent identifier 
+		for the cd-rom.
+		<br>
+		<b>cdname(drive) :</b> returns a human-readable, system-dependent identifier 
+		for the cd-rom.
+		<br>
+		<b>opencd(n,drive) :</b> opens a cd-rom drive for access.
+		<br>
+		<b>indrivecd(n) :</b> return 1 if cd is in driver
+		<br>
+		<b>cdinserted(n) :</b> return 1 if cd is in driver
+		<br>
+		<b>trackscd(n) :</b> return the number of tracks in cd
+		<br>
+		<b>countcdtracks(n) :</b> return the number of tracks in cd
+		<br>
+		<b>curtrackcd(n) :</b> return the current track in cd
+		<br>
+		<b>cdcurtrack(n) :</b> return the current track in cd
+		<br>
+		<b>curframecd(n) :</b> return the current frame in cd
+		<br>
+		<b>cdcurframe(n) :</b> return the current frame in cd
+		<br>
+		<b>playcd(n,s,l) :</b> play a cd
+		<br>
+		<b>playtrackscd(n,trk1,fr1,ntrks,nfrs) :</b> play the given cd track(s) from 
+		frame fr1 of trrack trk1 for ntrks/nfrs
+		<br>
+		<b>playtrackscd(n,trk1,ntrks) :</b> play the given cd track(s)from trk1 for 
+		ntracks
+		<br>
+		<b>playtrackscd(n) :</b> play all cd track(s)
+		<br>
+		<b>playcdtracks(n,trk1,fr1,ntrks,nfrs) :</b> play the given cd track(s) from 
+		frame fr1 of trrack trk1 for ntrks/nfrs
+		<br>
+		<b>playcdtracks(n,trk1,ntrks) :</b> play the given cd track(s)from trk1 for 
+		ntracks
+		<br>
+		<b>playcdtracks(n) :</b> play all cd track(s)
+		<br>
+		<b>pausecd(n) :</b> pauses a cdrom
+		<br>
+		<b>resumecd(n) :</b> resumes a cdrom
+		<br>
+		<b>stopcd(n) :</b> stops a cdrom
+		<br>
+		<b>ejectcd(n) :</b> ejects a cdrom
+		<br>
+		<b>closecd(n) :</b> closes a cd handle
+		<br>
+		<b>tracktypecd(n,t) :</b> return SDL_AUDIO_TRACK(0...) or SDL_DATA_TRACK(1...)
+		<br>
+		<b>cdtracktype(n,t) :</b> return SDL_AUDIO_TRACK(0...) or SDL_DATA_TRACK(1...)
+		<br>
+		<b>tracklengthcd(n,t) :</b> return the length of track t
+		<br>
+		<b>cdtracklength(n,t) :</b> return the length of track t
+		<br>
+		<b>trackoffsetcd(n,t) :</b> return the offset to the beginning of this track in 
+		frames
+		<br>
+		<b>cdtrackoffset(n,t) :</b> return the offset to the beginning of this track in 
+		frames
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Video Mpeg</b>
+		<br>
+		<br>
+		<b>loadmpeg(fname,usesound) :</b> load a mpeg video
+		<br>
+		<b>plaympeg(optional loop) :</b> play a mpeg1 video
+		<br>
+		<b>stopmpeg() :</b> terminate the video play
+		<br>
+		<b>deletempeg() :</b> unload mpeg video
+		<br>
+		<b>pausempeg() :</b> Pause/Resume playback of an SMPEG object
+		<br>
+		<b>rewindmpeg() :</b> Rewind the play position of an SMPEG object to the 
+		beginning of the MPEG
+		<br>
+		<b>seekmpeg(p) :</b> Seek 'bytes' bytes in the MPEG stream
+		<br>
+		<b>skipmpeg(s) :</b> Skip 'seconds' seconds in the MPEG stream
+		<br>
+		<b>statusmpeg() :</b> return 1 if plaympeg work or 0 in other case
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Keyboard</b>
+		<br>
+		<br>
+		<b>key(keycode) :</b> give 1 if is press the key keycode
+		<br>
+		<b>inkey :</b> give ascii code of key press
+		<br>
+		<b>waitkey(optional keycode) :</b> wait a key pression (0 =any key)
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Mouse</b>
+		<br>
+		<br>
+		<b>xmouse :</b> give mouse x coordinate on display
+		<br>
+		<b>ymouse :</b> give mouse y coordinate on display
+		<br>
+		<b>mousex :</b> give mouse x coordinate on display
+		<br>
+		<b>mousey :</b> give mouse y coordinate on display
+		<br>
+		<b>xmousescreen(n) :</b> give mouse x coordinate on screen
+		<br>
+		<b>ymousescreen(n) :</b> give mouse y coordinate on screen
+		<br>
+		<b>mousescreenx(n) :</b> give mouse x coordinate on screen
+		<br>
+		<b>mousescreeny(n) :</b> give mouse y coordinate on screen
+		<br>
+		<b>bmouse :</b> give the buttonclick on the mouse
+		<br>
+		<b>mousebutton :</b> give the buttonclick on the mouse
+		<br>
+		<b>changemouse(optional n) :</b> change mouse from default(0) to emulate with 
+		sprite 0 - image 0 (1,2,3)without n return current pointer
+		<br>
+		<b>mousepointer(optional n) :</b> change mouse from default(0) to emulate with 
+		sprite 0 - image 0 (1,2,3)without n return current pointer
+		<br>
+		<b>locatemouse(x,y) :</b> move mouse at x y coordinates
+		<br>
+		<b>placemouse(x,y) :</b> move mouse at x y coordinates
+		<br>
+		<b>mouseshow :</b> show the mouse cursor
+		<br>
+		<b>howmouse :</b> show the mouse cursor
+		<br>
+		<b>mousehide :</b> hide the mouse cursor
+		<br>
+		<b>hidemouse :</b> hide the mouse cursor
+		<br>
+		<b>mousezone(x,y,w,h) :</b> give 1 if the mouse pointer is in rectangle(xy with 
+		size wh)
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Joystick</b>
+		<br>
+		<br>
+		<b>numjoysticks :</b> count available joysticks
+		<br>
+		<b>namejoystick(index) :</b> get joystick name
+		<br>
+		<b>numaxesjoystick(i) :</b> get the number of joystick axes
+		<br>
+		<b>numballsjoystick(i) :</b> get the number of joystick trackballs
+		<br>
+		<b>numhatsjoystick(i) :</b> get the number of joystick hats
+		<br>
+		<b>numbuttonsjoystick(i) :</b> get the number of joysitck buttons
+		<br>
+		<b>getaxisjoystick(i,a) :</b> get the current state of an axis
+		<br>
+		<b>gethatjoystick(i,a) :</b> get the current state of a joystick hat
+		<br>
+		<b>getbuttonjoystick(i,a) :</b> get the current state of a given button on a 
+		given joystick
+		<br>
+		<b>xgetballjoystick(i,a) :</b> get relative x trackball motion
+		<br>
+		<b>ygetballjoystick(i,a) :</b> get relative y trackball motion
+		<br>
+		<b>joy(i) :</b> return joystick boolean coordinate
+		<br>
+		<b>bjoy(i) :</b> return joystick buttons pressed in boolean expression
+		<br>
+		<b>joybuttons(i) :</b> return joystick buttons pressed in boolean expression
+		<br>
+		<b>fire(i) :</b> return joystick buttons pressed in boolean expression
+		<br>
+		<b>waitbjoy(optional i) :</b> wait for pressed joystick button (even in 
+		emulated joystick)
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>SDLtime</b>
+		<br>
+		<br>
+		<b>wait(t) :</b> wait t milliseconds
+		<br>
+		<b>timer :</b> give the current tick
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b>Socket</b>
+		<br>
+		<br>
+		<b>isenabledsock() :</b> return 1 if sdlnet was enabled
+		<br>
+		<br>
+		<b>sock=getfreesock() :</b> return the first free sock in sdlSocket array
+		<br>
+		<b>sock=OpenSock(port) :</b> Server side socket sock is the stream. in sdlBasic 
+		there are 256 stream and
+		<br>
+		sintax is very similar of file open close.
+		<br>
+		<b>clientsock=AcceptSock(serversock) :</b> Accept the client connection
+		<br>
+		<b>IsServerReady(Sock) :</b> True/False if server is sending 
+		data&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>
+		<b>sock=ConnectSock(ServerName,port) :</b> client side socket connection
+		<br>
+		<b></b>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						*ConnectionReadySock(sock) : the server have accepted the connection
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b>IsClientReady(Sock) :</b> True/False if client is sending data
+		<br>
+		<b>CloseSock(sock) :</b> Close the socket connection. Works for client and 
+		server
+		<br>
+		<b></b>
+		<table bgcolor="#ff0000" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						*PeekSock(Sock, NumBytes) : Peek information coming from socket, but do not 
+						clear.
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<b>ReadSock(Sock, NumBytes) :</b> Read NumBytes
+		<br>
+		<b>ReadByteSock(Sock) :</b> Read a single 
+		byte&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<br>
+		<b>ReadLineSock(Sock) :</b> Read complete line
+		<br>
+		<b>WriteSock(Sock, Message, NumBytes) :</b> Sends NumBytes from Message
+		<br>
+		<b>WriteByteSock(Sock, Byte) :</b> Sends a single byte
+		<br>
+		<b>WriteLineSock(Sock, Message) :</b> Send Message
+		<br>
+		<b>getremoteip(sock) :</b> return the ip address of remote client connetted
+		<br>
+		<b>getremoteport(sock) :</b> return the port address of remote client connetted
+		<br>
+		<b></b>
+		<table bgcolor="#ffff00" width="100%">
+			<tbody>
+				<tr>
+					<td>
+						?getlocalip() : return the local ip (not work on windows)
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<br>
+		<hr>
+		<br>
+		<b></b>
+		<br>
+		<hr>
+		<p align="right">
+			generated with <b>sdlbasic</b>
+			<br>
+			graphics <b>zoiba</b>
+			<br>
+		</p>
+	</body>
+</html>

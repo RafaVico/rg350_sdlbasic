@@ -1,0 +1,9 @@
+'
+' sdlBasic example Run Time:command$
+'
+'   Name:      command$.sdlbas
+'   Purpose:    ritorna gli argomenti della riga di comando
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

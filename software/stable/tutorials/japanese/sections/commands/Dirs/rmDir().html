@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>rmDir()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">rmDir()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			ディレクトリーを削除する。
+			<br>
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">variable </span><span class="syntax2">
+				= rmDir( </span><span class="syntax">dirpath </span><span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<span class="smallTitle">
+			<br>
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code"><span style="font-weight: bold;">rmDir(</span> "test" <span style="font-weight: bold;">
+					)</span></span>
+			<br class="code">
+			<span class="code">if not dirExists("test") then</span>
+			<br class="code">
+			<span class="code">&nbsp; &nbsp; prints("dir test removed")</span>
+			<br class="code">
+			<span class="code">else</span>
+			<br class="code">
+			<span class="code">&nbsp; &nbsp; prints("can't remove dir test")</span>
+			<br class="code">
+			<span class="code">end if</span>
+			<br class="code">
+			<span class="code">waitKey </span>
+			<br>
+		</div>
+		<br>
+		<span class="text">参照： <a href="mkDir%28%29.html"><span style="font-weight: bold;">mkDir()</span></a>
+		</span>
+	</body>
+</html>

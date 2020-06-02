@@ -1,0 +1,19 @@
+file						resource
+back.png					xhedgehog 0.2.0
+ground.gif					xhedgehog 0.2.0
+syntax.mod					Buzzer MOD Archive - http://www.kameli.net/buzzer/
+						Title: Syntax Error?
+images/shadow_standing.gif			Based on a Sonic 3 image. Created by gsan92
+shadow_run0.gif					Extracted from an animated gif. Resource unknown
+shadow_run1.gif					Read Above
+shadow_run2.gif					R.A
+shadow_run3.gif					R.A
+shadow_run4.gif					R.A
+shadow_run5.gif					R.A
+shadow_run6.gif					R.A
+tails_run0.gif					From Mystic Fox's Tails animated gifs collection
+a_tailsw.gif					R.A
+sounds/falling.wav				Wav file from OpenOffice.org 1.1.2
+sounds/sonkill.wav				Dumped from xhedgehog 0.2.0
+sounds/applause.wav				Wav file from OpenOffice.org 1.1.2
+scode.pas					Pascal code to retrieve key scan code

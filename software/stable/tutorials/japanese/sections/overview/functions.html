@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="ja">
+<head>
+
+  <meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+  <title>Functions</title>
+
+
+  <meta content="zoiba" name="author">
+
+  <link rel="stylesheet" href="../style.css" type="text/css">
+
+</head>
+
+
+<body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+
+<div style="background-color: rgb(0, 0, 0); text-align: left;"><span class="title">Functions</span><span class="title"><br class="text">
+
+</span></div>
+
+<span class="text"><br>
+
+</span><span class="text">
+プログラムを作る時に、プログラムのある部分で同じ手順を繰り返す場合があります。sdlBasicでは、1回の手順連続をかけば、同じ手続きをプログラムのあらゆる部分からそれを呼び出すことができます。
+
+</span><br class="text">
+
+<span class="text">
+ファンクションの中で使われる変数はローカル変数で、それらはメイン・プログラムの中で、またはどのような他のファンクションの中の同じ名前の変数に、影響しないであろうということを意味しています。これは配列でも同じです。
+
+</span><br class="text">
+
+<span class="text">
+詳細についてGlobal Shared Dimの項を見てください。
+</span><br class="text">
+
+<span class="text">
+ファンクションには、処理すべき情報を含むパラメータのリストを引き渡すことができます。
+パラメータリストが必要でないファンクションは、ブラケットなしでメイン・プログラムから呼びだすことが出来ます。
+から 機能は、帰りのステートメントによって指定されて、オプションで値を戻すことができます。オプションとしての戻り値は、Return statementで指定してください。
+
+</span><br class="text">
+
+<span class="text">
+BASICの標準方式に加えて、sdlBasicは戻り値のステートメントをCから借りています：
+
+<br>
+<br>
+</span><span class="text">
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">function add( a, b )</span><br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; add = a
++ b</span><br class="code">
+
+<span class="code">end function</span><br>
+
+<span class="text"></span></div>
+
+<span class="text"><br>
+また次のように書くことができます:<br>
+<br>
+
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">function add( a, b )</span><br class="code">
+
+<span class="code">&nbsp;&nbsp;&nbsp; Return a
++ b</span><br class="code">
+
+<span class="code">end function</span><br>
+
+<span class="text"></span></div>
+
+<span class="text"><br>
+sdlBasicはreturnのステートメントのあと、ファンクションからでます。
+<br>
+以下のステートメントによってもファンクションを呼ぶことができます：
+
+<br>
+
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">newSumm= add( 3, 4)</span><br>
+
+<span class="text"></span></div>
+
+<span class="text"><br>
+この例においては、変数のnewSummはbuyのfunctionから戻ったとき戻り値として7が設定されるでしょう。
+<br>
+単純にfunctionの結果を無視し、サブルーチンのようにそれを扱うことにもできます：
+
+<br>
+<br>
+
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">' Ignore the return value of Len()</span><br class="code">
+
+<span class="code">len("123")</span><br>
+
+<span class="text"></span></div>
+
+<span class="text"><br>
+戻り値は失われるます。
+
+
+<br>
+<br>
+function名はプログラム中の同じスコープのなかの変数または配列の名前と同じであってはいけません。 
+これは、以下のコードを使うことができないのを意味しています：
+
+<br>
+<br>
+
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">myVariable = 1</span><br class="code">
+
+<span class="code">function myVariable()</span><br class="code">
+
+<span class="code">&nbsp;&nbsp; &nbsp;...</span><br class="code">
+
+<span class="code">end function</span><br>
+
+<span class="text"></span></div>
+
+<span class="text"><br>
+しかし、これは許されます：
+<br>
+<br>
+
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="code">function myFuntion()</span><br class="code">
+
+<span class="code">&nbsp;&nbsp;
+&nbsp;myVariable=1</span><br class="code">
+
+<span class="code">end function<br>
+
+<br class="code">
+
+</span><span class="code">function myVariable()</span><br class="code">
+
+<span class="code">&nbsp;&nbsp; &nbsp;...</span><br class="code">
+
+<span class="code">end function</span><br>
+
+<span class="text"></span></div>
+
+</body>
+</html>

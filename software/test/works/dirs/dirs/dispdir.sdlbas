@@ -1,0 +1,19 @@
+' dispdir
+' test dirfirst dirnext
+'---------------------------
+function dispdir(path$)
+    a$=dirfirst(path$+"/*")
+    while a$<>""
+	if left$(a$,1)<>"." then
+	    prints(a$)
+	    if direxists(path$+"/"+a$) then
+		prints(path$+"/"+a$)
+		dispdir(path$+"/"+a$)
+	    end if
+	end if
+	a$=dirnext()
+    end while
+end function
+'----------------------------
+dispdir("./../..")
+waitkey

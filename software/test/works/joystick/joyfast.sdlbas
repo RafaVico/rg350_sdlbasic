@@ -1,0 +1,9 @@
+' joyfast.sdlbas
+
+while key(27)=0
+    locate (1,1)
+    prints(str$(joy(0))+"   ")
+    locate (1,3)
+    prints(str$(bjoy(0))+"   ")
+    waitvbl
+end while

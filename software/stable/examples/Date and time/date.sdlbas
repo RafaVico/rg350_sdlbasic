@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Date and time:date
+'
+'   Name:      date.sdlbas
+'   Purpose:    returns date in MM-DD-YYYY format
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+prints("today ="+str$(date))
+waitkey

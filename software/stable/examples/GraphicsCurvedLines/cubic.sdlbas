@@ -1,0 +1,88 @@
+xedge=600:yedge=400
+setdisplay(xedge,yedge,32,1)
+paper (0xffffff):ink (0x000000):pen (0x000000):cls
+setautoback(25)
+
+x0=rnd(xedge):y0=rnd(yedge)
+x1=rnd(xedge):y1=rnd(yedge)
+x2=rnd(xedge):y2=rnd(yedge)
+
+
+for d=0 to 1: d=0
+
+cls
+
+if bmouse=0 then
+    m=-1
+end if
+
+dv=y1-y0
+dh=x2-x1
+
+
+ink (0xff0000):box(x0-3,y0-3,x0+3,y0+3)
+ink (0x00ff00):box(x1-3,y1-3,x1+3,y1+3)
+ink (0x0000FF):box(x2-3,y2-3,x2+3,y2+3)
+
+
+  xr=x1-x0:yr=y2-y1
+
+ink (0x7f7f7f)
+line(x0,y0,x1,y1):line(x1,y1,x2,y2)
+
+
+    stepv=90
+for i=0 to stepv
+
+xc=x0+x2-x1
+yc=y0+y2-y1
+
+'  xc=(((x0+x2-x1)*i)+(x0*(stepv-i)))/stepv
+'  yc=(((y0+y2-y1)*(stepv-i))+(y2*i))/stepv
+
+
+
+
+    ir=i* (1.570796/stepv)
+
+
+'- bug: a correccao deve estar nas coordenadas finais
+
+
+
+
+
+  xi=xc+xr*sin(ir)
+  yi=yc+yr*(cos(ir)*-1)
+ink (0x000000)
+    dot(xi,yi)
+next
+
+
+'waitkey
+screenswap
+while bmouse=0 and m=-1 :end while
+
+if mousezone(x0-3,y0-3,6,6)=1 or m=0 then
+    m=0
+    x0=xmouse
+    y0=ymouse
+end if
+
+if mousezone(x1-3,y1-3,6,6)=1 or m=1 then
+    m=1
+    x1=xmouse
+    y1=ymouse
+end if
+
+if mousezone(x2-3,y2-3,6,6)=1 or m=2 then
+    m=2
+    x2=xmouse
+    y2=ymouse
+end if
+
+
+next
+
+
+

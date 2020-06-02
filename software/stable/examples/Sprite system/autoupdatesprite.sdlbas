@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Sprite system:autoupdatesprite
+'
+'   Name:      autoupdatesprite.sdlbas
+'   Purpose:    set/ unset automatic sprites update at screenswap
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

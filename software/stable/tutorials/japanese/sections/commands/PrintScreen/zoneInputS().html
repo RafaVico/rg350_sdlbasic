@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>zoneInputS()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">zoneInputS()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			プロンプトを表示してキーボードからユーザーの入力を待つ。 テキストは(x,y)位置に表示される。 
+			<!---
+			
+			Prompts the user for input and receive data from keyboard until return key is 
+			pressed. Text is printed inside the area wide length characters at the x , y 
+			coordinates . --->
+			<br>
+			&nbsp;</span><span class="syntax2"></span><span class="syntax2">
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">variable</span><span class="syntax2">
+			</span><span class="syntax2">= zoneInputS( </span><span class="syntax">x</span><span class="syntax2">
+			</span><span class="syntax2">, </span><span class="syntax">y</span><span class="syntax2">
+			</span><span class="syntax2">, </span><span class="syntax">length</span><span class="syntax2">
+			</span><span class="syntax2">, </span><span class="syntax">defaultText</span><span class="syntax2">
+			</span><span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+		</span><span class="syntax">x</span><span class="text">,</span><span class="syntax">
+			y</span><span class="text">テキストの入力位置
+			<br>
+		</span><span class="text"></span><span class="syntax">Length</span><span class="text">
+			入力を待つ最大文字数、テキストがあふれたら自動的にスクロールされる。 </span><span class="syntax2">
+			<br>
+		</span><span class="text"></span><span class="syntax">defaultText</span><span class="text">
+			ユーザーに示されるモデル的なテキスト。
+			<br>
+			<br>
+		</span><span class="syntax2"></span><span class="syntax2"></span><span class="smallTitle">
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">a$ = <span style="font-weight: bold;">zoneInputS(</span> 20, 
+				20, 5, "" <span style="font-weight: bold;">)</span>
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">cls
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">fPrintS("you typed : ")
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">printS( a$ )
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">wait(500)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">waitKey
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

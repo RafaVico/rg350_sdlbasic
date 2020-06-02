@@ -1,0 +1,9 @@
+'
+' sdlBasic example Mouse:mousepointer
+'
+'   Name:      mousepointer.sdlbas
+'   Purpose:    change mouse from default(0) to emulate with sprite 0 - image 0 (1,2,3)without n return current pointer
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

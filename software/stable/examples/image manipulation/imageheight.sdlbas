@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Image manipulation:imageheight
+'
+'   Name:      imageheight.sdlbas
+'   Purpose:    give the image n height or error if image n if empty
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+prints("image height="+str$(imageheight(1)))
+waitkey

@@ -1,0 +1,96 @@
+'ld2004 demo
+setdisplay(800,600,32,0)
+mousehide
+
+presentazione$="Ben venuti al Linux Day 2004........organizzato a Pavia dal {TILUG (Ticinum Linux User Group)} in Collegio Ghislieri...."
+ldlogobase=1
+testoscorrevole=2
+start=3
+sponsor1=4
+sponsor2=5
+sdlbasic=6
+ldlogo=10
+
+ink(0x2fff2f)
+textrender(presentazione$,36,testoscorrevole)
+
+'loadmusic("penguinplanet.ogg")
+loadimage("ldlogo.jpg",ldlogobase)
+loadimage("start.jpg",start)
+loadimage("sponsor1.jpg",sponsor1)
+loadimage("sponsor2.jpg",sponsor2)
+loadimage("sdlbasic.png",sdlbasic)
+
+paper(0xffffff)
+pen (0)
+cls
+
+prints("please wait ")
+ink(0):box(10,20,57,30)
+pastebob(250,50,start)
+waitvbl
+
+x=10
+for i =0.1 to 1 step 0.1
+    copyimage(ldlogobase,ldlogo+1000+(i*10))
+    zoomimage(ldlogo+1000+(i*10),i,i)
+    hotspot(ldlogo+1000+(i*10),1,1)
+    line (x,20,x,30):x+=1
+    waitvbl
+next
+
+setcolorkey(0xffffff)
+for i =0 to 360 step 10
+    copyimage(ldlogobase,ldlogo+i)
+    rotateimage(ldlogo+i,i)
+    'rotozoomimage(ldlogo+i,i,1)
+    hotspot(ldlogo+i,1,1)
+    line (x,20,x,30):x+=1
+    waitvbl
+next
+tsx=800
+y=-210
+'playmusic(-1)
+cls
+pastebob(250,50,start)
+waitvbl
+'wait (7000)
+cls
+for i =0.1 to 1 step 0.1
+    sprite(9,400,300,ldlogo+1000+(i*10))
+    sprite(sponsor1,10,y,sponsor1)
+    sprite(sponsor2,500,y,sponsor2)
+    sprite(sdlbasic,700-y,550,sdlbasic)
+    y+=25
+    waitvbl
+next
+
+while key(27)=0
+    for x=-10 to 10 step 2
+	for i =0 to 359 step 10
+	    sprite(9,400,325,ldlogo+i)
+	    sprite(10,tsx,450,testoscorrevole)
+	    sprite(sponsor1,10+(rnd(4)-2),y+(rnd(4)-2),sponsor1)
+	    sprite(sponsor2,500+(rnd(4)-2),y+(rnd(4)-2),sponsor2)
+	    sprite(sdlbasic,700-y+(rnd(4)-2),550+(rnd(4)-2),sdlbasic)
+	    tsx-=2:if tsx< -imagewidth(testoscorrevole) then :tsx=800:end if
+	    waitvbl
+	next
+	if key(27) then :exit for:end if
+    next
+end while
+
+
+
+for i =255 to 0 step -10
+    setalpha(ldlogo,i)
+    setalpha(testoscorrevole,i)
+    setalpha(sponsor1,i/4)
+    setalpha(sponsor2,i/4)
+    hotspot(ldlogo,1,1)
+    sprite(9,400,300,ldlogo)
+    sprite(10,tsx,450,testoscorrevole)
+    sprite(sdlbasic,700-y+(rnd(4)-2),550+(rnd(4)-2),sdlbasic)
+    waitvbl
+next
+

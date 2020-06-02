@@ -1,0 +1,67 @@
+' sdlBasic buble sort simple tutorial this code was placed in public domain
+'
+' welcome!! In this really simple tutorial i think to learn a simple sdlBasic code for sort an array
+' this can be need as reorder a list of items or in classical hit score rutine for a game.
+'
+'
+' well begin!!
+'
+' now we first set the display as a windows of width 300 and height 400 with 32 bpp (16 millions of color)
+' because is a windows the bpp was ignored and the windows use the screen resolution but if you change the last parameter in 0
+' will be start as fullscreen and the bpp will be changed in 32 bit
+setdisplay(300,400,32,1)
+
+' now we declaring array named a. sdlBasic for array use square brackets like wxBasic
+dim a[10]
+
+
+'#load a randomnumber in array
+'##############################
+
+' randomize generate a new sequence of random number. if you use a specific number the sequnce not change.
+' if you want a really random sequence unpredicable i suggest to use randomize(timer)
+randomize(10)
+
+' in this for next cycle we load a random sequence in array a and print it.
+ for i= 0 to 10
+	a[i]=rnd(100)
+	prints (a[i])
+next
+
+' print separator
+prints("-----")
+
+' the core of tutorial this is the bubble sort algoritm !!
+' this code execute 2 for-next idented. The first is from 0 to number of elements in array
+' and the sub cycle is from the position of current element selected from first cycle to position of last elemnts in array.
+' The "if" structure control, verify if the value of array elements at position of the first cycle was minor of the value of array
+' elements at position of second array. if this is true then simple swap the elements. if in your code you want use a conbined list
+' simple add code for swap other elements in other array. Because var swap is not implemented we use a tmp var for temporaney store
+' the value of one elements. after will be placed in other elemenst in array. Like 3 card games ;-)
+
+for i=0 to 10
+	for i1= i to 10
+		if a[i1]<a[i] then
+		'	swap elements
+			tmp=a[i]
+			a[i]=a[i1]
+			a[i1]=tmp
+		end if
+	next
+next
+
+' very well the last things to do is the printing of the result
+
+ for i= 0 to 10
+	prints (a[i])
+next
+
+' and wait the pression of a key for exit from this tutorial
+waitkey
+
+
+' there are many way to obtain this result still this is the more easy and at today with power of our pc is not need
+' more complex rutine. from this code is easy make a subrutine for your code.........
+' happy code
+'										sdlBasic team
+

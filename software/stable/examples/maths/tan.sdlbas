@@ -1,0 +1,17 @@
+'
+' sdlBasic example Maths: tan example
+'
+'   Name:     tan.sdlbas
+'   Purpose:   example tan functions
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("command: prints(str$(tan(10))")
+prints(str$(tan(10)))
+prints("command: prints(str$(tan(90))")
+prints(str$(tan(90)))
+prints("command: prints(str$(tan(0))")
+prints(str$(tan(0)))
+prints("press any key to exit")
+waitkey

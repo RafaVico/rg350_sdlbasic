@@ -1,0 +1,11 @@
+' to fix: print cursor wil be reset at setdisplay
+'
+'
+'
+do
+	setdisplay(320,200,0,0)
+	cls
+	prints("ciao")
+	wait (200)
+	waitvbl
+loop

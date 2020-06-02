@@ -1,0 +1,12 @@
+'
+' sdlBasic example  File graphics input output:loadimage
+'
+'   Name:      loadimage.sdlbas
+'   Purpose:    load a graphics file in a slot n if omitted n is the first free return n
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+image=loadimage("../sprites.png")
+pastebob(10,10,image)
+waitkey

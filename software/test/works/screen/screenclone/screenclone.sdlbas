@@ -1,0 +1,83 @@
+'screen clone
+
+setdisplay(800,600,16,0)
+cls()
+screenopen(1,1000,1000,0,0,800,300,0)
+screenclone(2,1,0,310,800,300,0)
+screenswap()
+x=0
+y=0
+dx=5
+dy=3
+sx=0
+sy=0
+
+
+'for y = 0 to 1000 step 50
+'    for x = 0 to 1000 step 50
+'
+'	    box(x,y,x+50,y+50)
+'    next
+'next
+
+fillcircle(0,0,50)
+for i=0 to 1000 step 50
+    line(0,i,1000,i)
+    line(i,0,i,1000)
+next
+
+x=0
+y=0
+
+ink (rgb(255,0,0))
+textrender("o",20,1)
+
+ink(rgb(255,255,255))
+text (0,0,20,"alto sinistra")
+text (0,500,20,"centro sinistra")
+text (0,960,20,"basso sinistra")
+
+text (500,0,20,"alto centro")
+text (500,500,20,"centro centro")
+text (500,960,20,"basso centro")
+
+
+text (850,0,20,"alto destra")
+text (850,500,20,"centro destra")
+text (850,960,20,"basso destra")
+
+screenswap
+'while(inkey()=0):end while
+
+'grab(1,0,0,1000,1000)
+
+
+while(key(k_esc)=0)
+screen(1)
+'blt (1,0,0,1000,1000,0,0)
+x=x+dx
+y=y+dy
+if x>1000 or x <1 then : dx=-dx :end if
+if y>1000 or y <1 then : dy=-dy : end if
+offset(x - 400,y - 150)
+
+screen(2)
+sx=xoffset
+sy=yoffset
+if key(k_up) then : sy=sy-5:end if
+if key(k_down) then : sy=sy+5:end if
+if key(k_left) then : sx=sx-5:end if
+if key(k_right) then : sx=sx+5:end if
+offset(sx,sy)
+
+
+screen(2)
+'grab (1,x,y,32,32)
+bob(1,x,y,1)
+screenswap
+ink (0)
+'bar(x,y,x+32,y+32)
+'blt(1,0,0,32,32,x,y)
+'pasteicon(x,y,1)
+'pastebob(x,y,1)
+End  while

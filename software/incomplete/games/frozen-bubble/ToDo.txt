@@ -1,0 +1,17 @@
+to do:
+- 'Hurry' message
+- screen wipe on stage transition
+- bubbles flashing in intervalls
+- the penguin controlling the cannon
+- more accuraced inertia and gravity motion from falling balls
+- fix bug from append balls
+- keys option
+- high score table
+- weird bubble transparencies
+- loading .fblevels folder
+- .xvpics folder is not needed
+- document thumbs.db is not needed (WdozNT crap...)
+
+fixed:
+- y distance between bubbles (28 instead of 32, like original Perl version)
+(it provided weird situations like distance from pressing bar, and bubble queue limit, would have to be fixed)

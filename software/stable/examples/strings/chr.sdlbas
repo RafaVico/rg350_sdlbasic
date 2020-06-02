@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Strings:chr
+'
+'   Name:      chr.sdlbas
+'   Purpose:    return string corresponding to ascii key value
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("prints(chr$(98))")
+prints(chr$(98))
+prints("press any key")
+waitkey

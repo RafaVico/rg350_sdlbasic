@@ -1,0 +1,269 @@
+'______________________________________________________________________________________________________________________________________________________________
+'______________________________________________________________________________________________________________________________________________________________
+'
+'        LA SFIDIA
+'
+'______________________________________________________________________________________________________________________________________________________________
+'______________________________________________________________________________________________________________________________________________________________
+
+'dispalay di default
+setdisplay(320,240,16,1)
+autoback(-15)
+mousehide()
+paper(0)
+cls
+
+'variabili comuni
+common name$[255]
+common x,y,frame,direzione
+common v,vmax,accelerazione,frenata,sterzo,tenuta,virata,lastdir,collisione
+common xpart,ypart,framepart,sgommata
+common rf,rr,gosth,np,nomep$
+common best_time[5],nomep[5]
+common gameover,quitgame
+
+'______________________________________________________________________________________________________________________________________________________________
+'
+'rutines principali
+'______________________________________________________________________________________________________________________________________________________________
+'
+'initialize
+sub initialize
+	'caricamento grafica
+	'loadimage("images/macchina.gif",1)
+	'saveimage("images/macchina0.bmp",1+i)
+	'hotspot(1,1,1)
+	'for i = 1 to 36
+	'	copyimage(1,i+1)
+	'	rotateimage(i+1,i*10)
+	'	hotspot(i+1,1,1)
+	'	saveimage("images/macchina"+str$(i)+".bmp",1+i)
+	'next
+	for i =0 to 36
+		loadimage("images/macchina"+str$(i)+".bmp",1+i)
+		hotspot(i+1,1,1)
+	next
+
+	i=0
+	loadimage("images/gomme.gif",100)
+	saveimage("images/gomme0.bmp",100+i)
+	hotspot(1,1,1)
+	for i = 1 to 36
+		copyimage(100,i+100)
+		rotateimage(i+100,i*10)
+		hotspot(i+100,1,1)
+		saveimage("images/gomme"+str$(i)+".bmp",100+i)
+	next
+	for i =0 to 36
+		loadimage("images/gomme"+str$(i)+".bmp",100+i)
+		hotspot(i+100,1,1)
+	next
+
+
+
+	'caricamento musica
+
+
+	'caricamento lista piste
+	name$[0]="00_demo"
+
+
+	quitgame=0
+end sub
+'______________________________________________________________________________________________________________________________________________________________
+'titolo
+sub titolo
+	screenopen (0,320,240,0,0,3240,240,0)
+	cls
+	text(100,80,32,"la sfida")
+	screenswap
+	waitbjoy(0)
+	screenfade(0,1)
+	while(screenfade(0)):screenswap():end while
+	gameover=0
+end sub
+'______________________________________________________________________________________________________________________________________________________________
+'presentazione
+sub presentazione
+	loadimage("piste/"+name$[0]+"/pista.gif",1000)
+end sub
+'______________________________________________________________________________________________________________________________________________________________
+'partenza
+sub partenza
+	screenopen(1,100,25,10,10,100,25,2)
+	screenopen(0,imagewidth(1000),imageheight(1000),0,0,320,240,0)
+
+	pasteicon(0,0,1000)
+	offset(0,100)
+	ink(255)
+	bar (0 ,270,100,275)
+	x=50
+	y=300
+	frame=0
+	v=0
+	vmax= 2
+	accelerazione=0.1
+	sterzo=0.35
+	tenuta=0.20
+	virata=tenuta
+	direzione=0
+	lastdir=""
+	sgommata=0
+	screenswap
+
+end sub
+'______________________________________________________________________________________________________________________________________________________________
+'race
+sub race
+	do
+		screen(0)
+		virata=tenuta
+		c=point(x,y)
+		pvx=(16*sin(ang))+(16*cos(ang))
+		pvy=(16*sin(ang))-(16*cos(ang))
+		px=x-pvx
+		py=y+pvy
+		c1=point(px,py)
+		'erba
+		if c=0x309800 then
+			v=v-(v/8)
+			virata=tenuta*3/4
+			if v <0 then: v=0 :end if
+		end if
+
+		'muro
+		if c1=0x60c860 then
+			if collisione= 0 then
+				v=0-(v)
+				collisione=1
+			end if
+		else
+			collisione =0
+		end if
+
+		if collisione=0 then
+			j=bjoy(0)
+
+			if andbit(j,gp2x_b ) then
+				v=v+accelerazione
+				if v >vmax then: v=vmax: end if
+				if v <(vmax/2) then
+					virata=virata*3/4
+					sgommata=1
+				else
+					sgommata=0
+
+				end if
+
+			else
+				v=v-(accelerazione/5)
+				if v <0 then: v=0: end if
+			end if
+
+			if andbit(j,gp2x_x ) then
+				v=v-accelerazione*2
+				if v <0 then: v=0: end if
+			end if
+
+
+
+			if andbit(j,gp2x_west )then
+				lastdir="west"
+				frame=frame+sterzo
+				if frame >36 then: frame=frame-36: end if
+			end if
+
+			if andbit(j,gp2x_east ) then
+				lastdir="east"
+				frame=frame-sterzo
+				if frame <0 then: frame=frame+36: end if
+			end if
+
+			if direzione <> frame then
+
+				if lastdir="west"  then
+					if frame < (direzione+virata) then
+						direzione=frame
+					else
+						direzione=direzione+virata
+						if direzione >36 then: direzione=direzione-36: end if
+					end if
+				end if
+
+				if  lastdir="east" then
+					if frame > (direzione-virata) then
+						direzione=frame
+					else
+						direzione=direzione-virata
+						if direzione <0 then: direzione=direzione+36: end if
+					end if
+				end if
+			else
+				lastdir=""
+			end if
+
+		end if
+
+		ang= 6.28*((int(direzione)*10)-45)/360
+		vx=(v*sin(ang))+(v*cos(ang))
+		vy=(v*sin(ang))-(v*cos(ang))
+		x=x-vx
+		y=y+vy
+
+
+
+		if  x<0 then: v=0: x=0: end if
+		if x>screenwidth then: v=0: x=screenwidth: end if
+
+		if  y<0 then: v=0: y=0: end if
+		if y>screenheight then: v=0: y=screenheight: end if
+
+		if  sgommata=1 then
+			pastebob(x,y,frame+100)
+		end if
+		bob(1,x,y,frame+1)
+
+
+		offset (x-160,y-120)
+
+		screen(1)
+		cls: locate(0,0): fprints(hex(int(c)+" collisione"+str$(collisione)))
+
+		screenswap
+		if key(27) then: end: end if
+
+	loop
+end sub
+'______________________________________________________________________________________________________________________________________________________________
+'raceover
+sub raceover
+	screenclose(0)
+	screenopen(0,320,240,0,0,320,240,0)
+end sub
+
+'______________________________________________________________________________________________________________________________________________________________
+'gameover
+
+'______________________________________________________________________________________________________________________________________________________________
+'main
+sub main()
+	initialize
+	do
+		titolo
+		a=0
+		do
+		cls
+			presentazione
+			partenza
+			race
+			raceover
+			if gameover=1 then :exit do :end if
+		loop
+		if bjoy(0)=gp2x_start then: _quitgame=1:end if
+		'gameover
+		if quitgame=1 then :exit do :end if
+	loop
+end sub
+'______________________________________________________________________________________________________________________________________________________________
+
+main

@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Strings:format
+'
+'   Name:      format.sdlbas
+'   Purpose:    returns formatted string with embedded args
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("not implemented yet: sorry")
+prints("press any key")
+waitkey

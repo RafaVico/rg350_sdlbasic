@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Files:lof
+'
+'   Name:      lof.sdlbas
+'   Purpose:    returns length of file
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+open "lof.sdlbas" for input as 1
+prints(" the lenght of file \"lof.sdlbas\" is:"+str$(lof(1)))
+close 1
+waitkey

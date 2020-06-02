@@ -1,0 +1,26 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  vumeter.sdlbas
+'| date 21/12/2003
+'|
+'| description:
+'| show a vumeter of sound c
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'| does not work at this time!!!
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+'if fileexists("click26.wav") then
+    loadmusic ("mod.mod")
+'end if
+'playsound(1,1)
+playmusic(-1)
+while key(27)=0
+    prints(vumetersound(1))
+    if key(k_space) then
+	stopsound()
+    end if
+end while

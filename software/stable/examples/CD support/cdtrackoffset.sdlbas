@@ -1,0 +1,9 @@
+'
+' sdlBasic example CD support:cdtrackoffset
+'
+'   Name:      cdtrackoffset.sdlbas
+'   Purpose:    return the offset to the beginning of this track in frames
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,29 @@
+'
+' sdlBasic example CD support:curframecd
+'
+'   Name:      curframecd.sdlbas
+'   Purpose:    return the current frame in cd
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+opencd(0,0)
+while indrivecd(0)=0
+    prints("please insert audio cd")
+    wait(500)
+end while
+cls
+prints("tracks:"+str$(trackscd(0)))
+
+playtrackscd(0,trackscd(0)/2,1)
+
+while inkey=0
+    locate(0,4)
+    ' this function return the current frame in cd
+    prints(" curframecd="+str$(curframecd(0)))
+    prints(" press any key to exit")
+    waitvbl
+end while
+
+stopcd(0)
+ejectcd(0)

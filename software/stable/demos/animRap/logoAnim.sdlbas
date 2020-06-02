@@ -1,0 +1,175 @@
+ '*******************************
+ 'SDLBASIC LOOPING LOGO ANIMATION
+ 'Freecode
+ 'begin_else
+ '*******************************
+ 
+ '********************
+ 'VARIABLE DECLARATION
+ '********************
+ executing=0
+ render_text=0
+ logo_animate=0
+ delete_animation=0
+ animation_state=0
+ allways_execute=0
+ check_keystate=0
+ start_music=0
+ 
+ '*******************
+ 'EXECUTE FIRST
+ 'ini
+ '*******************
+ if executing=0 then
+ executing=1
+ cls
+ setdisplay(640,480,32,1)
+ 'screen(1)
+ mousehide
+ 'load and set volume for wav rap
+ loadmusic("logorap.wav")
+ volumemusic(128)
+ loadimage ("anim/sdlbasic_lo001.gif",3 )
+ loadimage ("anim/sdlbasic_lo002.gif",4 )
+ loadimage ("anim/sdlbasic_lo003.gif",5 )
+ loadimage ("anim/sdlbasic_lo004.gif",6 )
+ loadimage ("anim/sdlbasic_lo005.gif",7 )
+ loadimage ("anim/sdlbasic_lo006.gif",8 )
+ loadimage ("anim/sdlbasic_lo007.gif",9 )
+ loadimage ("anim/sdlbasic_lo008.gif",10 )
+ loadimage ("anim/sdlbasic_lo009.gif",11 )
+ loadimage ("anim/sdlbasic_lo010.gif",12 )
+ loadimage ("anim/sdlbasic_lo011.gif",13 )
+ loadimage ("anim/sdlbasic_lo012.gif",14 )
+ loadimage ("anim/sdlbasic_lo013.gif",15 )
+ loadimage ("anim/sdlbasic_lo014.gif",16 )
+ loadimage ("anim/sdlbasic_lo015.gif",17 )
+ loadimage ("anim/sdlbasic_lo016.gif",18 )
+ loadimage ("anim/sdlbasic_lo017.gif",19 )
+ loadimage ("anim/sdlbasic_lo018.gif",20 )
+ loadimage ("anim/sdlbasic_lo019.gif",21 )
+ loadimage ("anim/sdlbasic_lo020.gif",22 )
+ loadimage ("anim/sdlbasic_lo021.gif",23 )
+ loadimage ("anim/sdlbasic_lo022.gif",24 )
+ loadimage ("anim/sdlbasic_lo023.gif",25 )
+ loadimage ("anim/sdlbasic_lo024.gif",26 )
+ loadimage ("anim/sdlbasic_lo025.gif",27 )
+ loadimage ("anim/sdlbasic_lo026.gif",28 )
+ loadimage ("anim/sdlbasic_lo027.gif",29 )
+ loadimage ("anim/sdlbasic_lo028.gif",30 )
+ loadimage ("anim/sdlbasic_lo029.gif",31 )
+ loadimage ("anim/sdlbasic_lo030.gif",32 )
+ loadimage ("anim/sdlbasic_lo031.gif",33 )
+ loadimage ("anim/sdlbasic_lo032.gif",34 )
+ 
+ end if
+ 
+ '**************************************
+ ' MAIN LOOP
+ ' Executes while some key is´nt pressed
+ '**************************************
+ 'execute while escape key isn´t pressed.
+ while key(27) = 0
+if start_music=0 then
+start_music=1
+'Initialize only once music .wav loop "after" it´s
+'loaded... otherwise, if it´s loaded and initialized
+'in only one executin pass, the sound will start out
+'distorted and user may have to reeboot PC. Please,
+'Change the implementation of the following command
+'in my Helloworld 3 code example accordingly.
+playmusic(-1)
+end if
+
+'Check for user num.1 keyboard keypress and send new
+'values for variables only once even if user maintains
+'the key preesed. This is to prevent slower execution
+'and garbling of the sounds.
+if key(asc("1")) then
+if check_keystate=0 then
+check_keystate=1
+animation_state=1
+else
+check_keystate=0
+end if
+end if
+
+'looping animation code
+if animation_state=0 then
+if logo_animate>-1 then
+bob(3,150,100,3+logo_animate)
+logo_animate=logo_animate+1
+if logo_animate>31 then
+logo_animate=0
+end if
+end if
+end if
+
+'delete only 31 of the 32 sdlbasic logo .gifs
+'from memory,leave gif num.34 for exit screen display.
+if animation_state=1 and delete_animation=0 then
+delete_animation=1
+for i =3 to 33
+deletebob(i)
+next
+end if
+
+'render exit to desktop instructions once
+if animation_state=0 and render_text=0 then
+render_text=1
+'inform user on how to continue
+text(205,430,15,"Hit The 1 Key To Continue !!")
+end if
+
+'render farewell exit text instr. only once
+if animation_state=1 and render_text=1 then
+render_text=2
+allways_execute=0
+cls
+bob(34,150,100,34)
+text(275,430,15,"GOOD BY !!")
+end if
+
+if allways_execute=0 then
+allways_execute=1
+text(230,415,15,"begin_else: Freecode !")
+text(210,445,15,"Hit The Escape Key to Exit")
+end if
+
+screenswap()'continually update screen in main
+end while
+
+'*******************
+'EXECUTE LAST
+'*******************
+'Fade music on the way out. Delete all 32 logo .gif
+'images if the user has not presssed the continue
+'num 1 key. Delete only last exit screen .gif if that key
+'has been pressed.
+while (volumemusic(-1)>0)
+
+    fademusic(2)
+    wait(100)
+ 
+    'delete all 32 logo .gifs if num 1 key has not been pressed.
+    if animation_state=0 then
+        for i =3 to 34
+            deletebob(i)
+        next
+    else
+    ' otherwise delete only last .gif used for exit screen
+    deletebob(34)
+    end if
+    cls 'clear screen on the way out.
+    screenswap()'update screen for clear to take effect.
+ end while
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

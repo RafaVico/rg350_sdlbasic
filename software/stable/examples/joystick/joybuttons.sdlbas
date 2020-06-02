@@ -1,0 +1,9 @@
+'
+' sdlBasic example Joystick:joybuttons
+'
+'   Name:      joybuttons.sdlbas
+'   Purpose:    return joystick buttons pressed in boolean expression
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

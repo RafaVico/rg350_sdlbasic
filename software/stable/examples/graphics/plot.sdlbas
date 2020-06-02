@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Graphics:plot
+'
+'   Name:      plot.sdlbas
+'   Purpose:    write x,y point with a c color
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+for i=0 to 255 step 2
+    plot(10,i,0xffff00+i)
+next
+waitkey

@@ -1,0 +1,17 @@
+autoUpdateSprite().html
+CVS
+deleteSprite().html
+index.html
+index.txt
+sectionName.txt
+spriteClip().html
+spriteExist().html
+spriteHeight().html
+spriteHit().html
+sprite().html
+spriteImage().html
+spriteWidth().html
+spriteX().html
+spriteY().html
+spriteZ().html
+updateSprite.html

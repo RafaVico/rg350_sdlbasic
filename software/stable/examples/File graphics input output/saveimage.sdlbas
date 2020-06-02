@@ -1,0 +1,15 @@
+'
+' sdlBasic example  File graphics input output:saveimage
+'
+'   Name:      saveimage.sdlbas
+'   Purpose:    save slot n in a graphics file(only bmp)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+image=loadimage("../sprites.png")
+pastebob(10,10,image)
+saveimage("spritecopy.bmp",image)
+copy=loadimage("spritecopy.bmp")
+pastebob(50,50,copy)
+waitkey

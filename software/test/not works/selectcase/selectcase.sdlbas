@@ -1,0 +1,7 @@
+do
+a$=chr$(inkey)
+select case a$
+        case chr$(27)
+                end
+end select
+loop

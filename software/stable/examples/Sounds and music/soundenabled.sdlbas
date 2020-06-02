@@ -1,0 +1,9 @@
+'
+' sdlBasic example Sounds and music:soundenabled
+'
+'   Name:      soundenabled.sdlbas
+'   Purpose:    return 1 if sdlsound was enabled
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

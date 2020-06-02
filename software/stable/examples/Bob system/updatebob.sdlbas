@@ -1,0 +1,23 @@
+'
+' sdlBasic example  Bob system:updatebob
+'
+'   Name:      updatebob.sdlbas
+'   Purpose:     manual bobs updates at next screenswap
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+autoback(0)
+autoupdatebob(0)
+
+bob(1,100,100,1)
+prints("bob not update: press any key for oupdate the bobs")
+screenswap
+waitkey
+
+updatebob
+prints("now bob are update: press esc for exit")
+screenswap
+waitkey(27)
+

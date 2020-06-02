@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Strings:len
+'
+'   Name:      len.sdlbas
+'   Purpose:    return length of string
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="ciao ciao"
+prints(len(a$))
+waitkey

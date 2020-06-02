@@ -1,0 +1,26 @@
+'
+' sdlBasic example  Memory Bank:basescreen
+'
+'   Name:      basescreen.sdlbas
+'   Purpose:    link a memorybank from a screen bitmap access
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+setdisplay(640,480,32,0)
+
+loadimage("../sprites.png",1)
+baseimage(1,1)
+for z=1 to 8
+    n=0
+    cls
+    for y=0 to imageheight(1)-1
+	for x=0 to imagewidth(1)-1
+	    ink(leek(1,n))
+	    dot(x*z,y*z)
+	    n=n+4
+	next
+    next
+    wait(500)
+next
+waitkey

@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Sprite system:updatesprite
+'
+'   Name:      updatesprite.sdlbas
+'   Purpose:    manual sprites updates at next screenswap
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

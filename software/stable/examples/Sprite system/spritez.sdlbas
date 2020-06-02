@@ -1,0 +1,9 @@
+'
+' sdlBasic example Sprite System:spritez
+'
+'   Name:      spritez.sdlbas
+'   Purpose:    set the zorder position of sprite if z was omitted return the actual z position
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

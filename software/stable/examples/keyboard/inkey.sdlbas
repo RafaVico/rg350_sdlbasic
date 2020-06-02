@@ -1,0 +1,19 @@
+'
+' sdlBasic example  Keyboard:inkey
+'
+'   Name:      inkey.sdlbas
+'   Purpose:    return the key pressed (0 =notiting)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("press esc to exit")
+while (0=0)
+   locate (0,2)
+   k$=str$(inkey)+"    "
+   prints(k$)
+   if k$="27"+"    " then : exit while: end if
+   wait(10)
+ wend
+ prints("pressed esc")
+wait(1000)

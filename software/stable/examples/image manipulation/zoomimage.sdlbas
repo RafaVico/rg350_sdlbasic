@@ -1,0 +1,23 @@
+'
+' sdlBasic example  Image manipulation:zoomimage
+'
+'   Name:      zoomimage.sdlbas
+'   Purpose:    zoom image
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+a=0:b=0
+while key(27)=0
+    copyimage(1,2)
+    zoomimage(2,b/90+0.1,a/90+0.1)
+    hotspot(2,1,1)
+
+    bob(1,320,240,2)
+    a+=0.1
+    b+=0.2
+    if a>360 then :a=0:end if
+    if b>240 then :b=0:end if
+end while
+waitkey

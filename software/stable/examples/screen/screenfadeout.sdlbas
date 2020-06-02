@@ -1,0 +1,9 @@
+'
+' sdlBasic example Screen:screenfadeout
+'
+'   Name:      screenfadeout.sdlbas
+'   Purpose:    fade the screen n in t time in multitasking without parameter return 0 if terminate
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+'
+' sdlBasic example  Strings:typeof
+'
+'   Name:      typeof.sdlbas
+'   Purpose:    returns string with datatype
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a=10
+b="foo"
+prints(typeof(a))
+prints(typeof(b))
+waitkey

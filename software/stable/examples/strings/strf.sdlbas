@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Strings:strf
+'
+'   Name:      strf.sdlbas
+'   Purpose:    converts a floating point or number value to a string
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a=2.272834
+prints("number is "+strf(a))
+waitkey

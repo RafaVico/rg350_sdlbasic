@@ -1,0 +1,10 @@
+paper(0xffffff)
+colorkey(0xffffff)
+cls
+pen(0)
+prints("ciao: press 1 to continue")
+waitkey(k_1)
+paper(0xff)
+cls
+prints("ciao press esc to exit")
+waitkey(27)

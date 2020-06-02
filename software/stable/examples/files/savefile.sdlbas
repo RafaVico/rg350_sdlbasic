@@ -1,0 +1,42 @@
+'
+' sdlBasic example files: savefile
+'
+'   Name:     savefile.sdlbas
+'   Purpose:   example of save file  text
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+prints("this program create the base head of the sdlBasic code")
+
+file$=inputs("insert file name(.sdlbas):","foo.sdlbas")
+type$=inputs("insert file type(examples demos runtest esp):","esp")
+description$=inputs("insert file description:","")
+author$=inputs("insert author name:","__vroby__")
+author_mail$=inputs("insert author mail:","__vroby__@libero.it")
+licence$=inputs("insert licence:","LGPL")
+
+prints("now writing "+file$+" header intestation")
+open file$ for output as 1
+    prints("'")
+    print #1,"'"
+    prints("' sdlBasic "+type$+":" +left$(file$,len(file$)-7))
+    print #1,"' sdlBasic "+type$+":" +left$(file$,len(file$)-7)
+    prints("'")
+    print #1,"'"
+    prints("'   Name:     "+file$)
+    print #1,"'   Name:     "+file$
+    prints("'   Purpose:   "+description$)
+    print #1,"'   Purpose:   "+description$
+    prints("'  Author:     "+author$+"    ( "+author_mail$+" )")
+    print #1,"'  Author:     "+author$+"    ( "+author_mail$+" )"
+    prints("'  Licence:    "+licence$)
+    print #1,"'  Licence:    "+licence$
+    prints("'")
+    print #1,"'"
+    prints("'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+    print #1,"'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+close 1
+prints("press space to exit")
+waitkey(k_space)

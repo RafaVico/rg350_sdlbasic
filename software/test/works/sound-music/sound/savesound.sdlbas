@@ -1,0 +1,29 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  savesound.sdlbas
+'| date 29/04/2004
+'|
+'| description:
+'| savesound command
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+'loadsound("shot.wav",1)
+loadsound("mysound.wav",1)
+'wait(50)
+copysound(1,2)
+'wait(50)
+if soundexists(2) then
+    prints("play sound 2")
+    playsound(2,1)
+    savesound("mysound.wav",2)
+else
+    prints("play sound 1:copy failed!!")
+    playsound(1,1)
+end if
+waitkey(27)

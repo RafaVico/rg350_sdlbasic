@@ -1,0 +1,9 @@
+'
+' sdlBasic example CD support:countcddrives
+'
+'   Name:      countcddrives.sdlbas
+'   Purpose:    returns the number of cd-rom drives on the system.
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

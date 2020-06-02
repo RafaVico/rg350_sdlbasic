@@ -1,0 +1,9 @@
+'
+' sdlBasic example Sprite system:spriteexist
+'
+'   Name:      spriteexist.sdlbas
+'   Purpose:    give 1 if sprite n is "live"
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

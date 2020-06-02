@@ -1,0 +1,9 @@
+'
+' sdlBasic example Run Time:argument$
+'
+'   Name:      argument$.sdlbas
+'   Purpose:    ritorna gli argomenti mandatia una sub/function con n=0 o senza parametri ritorna il numero argomenti
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

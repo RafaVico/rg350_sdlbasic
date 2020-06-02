@@ -1,0 +1,14 @@
+'
+' sdlBasic example  Strings:replacesubstr$
+'
+'   Name:      replacesubstr$.sdlbas
+'   Purpose:    replace substring in source with withstring return the new string
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="ciao pippo"
+prints(a$)
+b$=replacesubstr$(a$,"pippo","pluto")
+prints(b$)
+waitkey

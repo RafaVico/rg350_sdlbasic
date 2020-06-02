@@ -1,0 +1,16 @@
+'
+' sdlBasic example Sounds and music:playfreqsound
+'
+'   Name:      playfreqsound.sdlbas
+'   Purpose:    play the sound n in  channel with rate frequency c l loops (not works!!)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    loadsound("../wav.wav",i)
+
+for i=1 to 100
+    playfreqsound(i,1,i*100)
+    wait(150)
+next
+waitkey

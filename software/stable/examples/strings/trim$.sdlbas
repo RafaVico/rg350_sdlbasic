@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Strings:trim$
+'
+'   Name:      trim$.sdlbas
+'   Purpose:    trim string
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="    ciao   "
+b$="fine"
+prints(a$+b$)
+prints(trim$(a$)+b$)
+prints(trim$(a$+b$))
+waitkey

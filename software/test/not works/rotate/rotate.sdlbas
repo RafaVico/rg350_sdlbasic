@@ -1,0 +1,18 @@
+loadImage("./images/Ring.png",2):hotspot(2,1,1) 'Sprite 2 is Ring
+loadImage("./images/Gun.png",1):hotspot(1,1,1) 'Sprite 1 is Gun
+copyimage(1,3):hotspot(3,1,1)
+Gun1 = 1
+
+function Rotate1
+copyimage(1,3) 'Copy image 1 to sprite 3
+if Gun1 = 0 then : GunX1=750:end if
+if key(k_right) then
+degrees = degrees + 1
+if degrees>360 then : degrees = degrees - 360 : end if
+elseif key(k_left) then
+degrees = degrees - 1
+if degrees<0 then : degrees = degrees + 360 : end if
+end if
+rotateimage(3,degrees) 'Rotate Sprite 3 and put it on
+sprite(1,GunX1,150,3):hotspot(3,1,1)
+end function

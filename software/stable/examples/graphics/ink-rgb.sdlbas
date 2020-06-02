@@ -1,0 +1,21 @@
+' sdlBasic example Graphics: ink-rgb example
+'   Name:     ink-rgb.sdlbas
+'   Purpose:   example ink and rgb functions  
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+
+setdisplay(320,240,32,1)
+  paper (0xffffff):ink (0x000000)
+  pen (0x000000):cls
+setautoback(25)
+prints("dot a pixel with blue")
+  ink(255):dot(150,100)
+prints("press return to continue" )
+  waitkey(13)
+  while inkey<>0:end while
+prints("dot a pixel with green")
+prints("used function rgb(red,green,blue)")
+  ink(rgb(0,255,0)):dot(160,110)
+locate(2,15):prints("press space to exit" )
+  waitkey(k_space)
+

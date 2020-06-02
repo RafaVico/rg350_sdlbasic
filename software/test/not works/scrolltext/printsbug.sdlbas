@@ -1,0 +1,11 @@
+'
+' bug prints
+'
+setdisplay(320,200,0,1)
+for i = 1 to 100
+    s$=inputs(">","")
+    prints(s$)
+next
+waitkey
+
+

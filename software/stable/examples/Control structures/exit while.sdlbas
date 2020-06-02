@@ -1,0 +1,16 @@
+'
+' sdlBasic example  Control structures:exit while
+'
+'   Name:      exit while.sdlbas
+'   Purpose:    stop while cycle
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+i=0
+while i<100
+    i+=1
+    if i>50 then : exit while :end if
+    prints(i)
+end while
+waitkey

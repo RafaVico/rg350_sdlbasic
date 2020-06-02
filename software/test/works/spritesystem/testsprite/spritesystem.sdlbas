@@ -1,0 +1,58 @@
+Setdisplay ( 640, 480, 32, 1)
+setautoback(-25)
+autoupdatebob(0)
+autoupdatesprite(1)
+
+loadimage ("bidone.bmp",1)
+loadimage ("sfondo.gif",0)
+mousehide
+
+dim dx[num_sprites],dy[num_sprites]
+
+for y=0 to 600 step 32
+	for x= 0 to 800 step 32
+		blt (0,0,0,32,32,x,y)
+	    next
+next
+
+n=0
+f=1
+while(0=0)
+	for i = 0 to n
+		sprite( i,xsprite(i)+dx[i],ysprite(i)+dy[i],1)
+		if xsprite(i)>600 then : dx[i]=-(1+1) : end if
+		if xsprite(i)<10 then : dx[i]=(1+1) : end if
+		if ysprite(i)>450 then : dy[i]=-(1+1) : end if
+		if ysprite(i)<10 then : dy[i]=(1+1) : end if
+	next
+
+
+	if key(27)then : exit while : end if
+	if key(asc("1")) then
+		f=1
+		if f1=0 then : n=n + 1 :f1=0:end if
+		if n >num_sprites-1 then : n=num_sprites-1 : end if
+	else
+		f1=0
+	end if
+
+	if key(asc("2")) then
+		f=1
+		if f2=0 then :deletesprite (n): n=n-1:f2=0:end if
+		if n<0 then : n=0 : end if
+	else
+		f2=0
+	end if
+
+	if f=1 then
+	    ink (0): bar (5,10,430,70)
+	    ink (rgb(255,0,0))
+	    text (10,10,15," numero sprite "+str$(n+1)+" premi 1 per aumentare - 2 per diminuire")
+	    text (10,30,15," coordinate sprite "+str$(xsprite(n))+str$(ysprite(n)))
+	    text (10,50,15," sprite "+str$(frsprite(n))+str$(livesprite(n)))
+	    f=0
+	end if
+	screenswap()
+	'waitvbl
+	'wait(5)
+end while

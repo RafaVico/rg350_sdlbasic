@@ -1,0 +1,44 @@
+'open the display at full screen with 8bpp colorkey not work: if you change with 16,24 or 32 bit work
+setdisplay (800,600,32,0)
+
+'enable mode palette: if enable palette mode it works
+'enablepalette(1)
+
+changemouse(2)
+
+loadimage ("bidone.bmp",1)
+
+'set color in palette
+color(25,0xff00ff)
+
+
+'if you use the palette mode use directly the number of color
+ink(color(25))
+'if palette enabled you must indicate the color number in palette not the rgb
+'ink(25)
+
+print hex$(color(25))
+
+bar(10,10,42,42)
+
+Pastebob(10,10,1)
+
+
+grab (2,10,10,32,32)
+blt (2,0,0,64,64,50,50)
+
+'setcolorkey require ever the rgb color
+setcolorkey(0xff00ff)
+
+grab (2,10,10,32,32)
+
+
+
+
+while (key(27)=0)
+    pastebob (100+rnd(256),100+rnd(256),2)
+    grab (4,100,100,256+32,256+32)
+    blt(4,0,0,256+32,256+32 ,512,100)
+    screenswap()
+end while
+

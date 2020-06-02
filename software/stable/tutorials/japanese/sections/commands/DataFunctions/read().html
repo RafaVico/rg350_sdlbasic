@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>read()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">read()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			ポインターが示すポジションからデータ値を読み込む。 
+			<!--Read data values, at given pointer position, from inline data structure.->
+			<br>
+		</span><span class="smallTitle">
+			<br>
+			書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">read( </span><span class="syntax">{pointer} </span><span class="syntax2">
+				)
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			ポインターポジションを示さない場合、リードコマンドは現在のポジションからデータを読み込み、 ポジションを次のデータに移す。 
+			<!--If you don't pass pointer, read command reads current data values and move 
+			pointer position to next data value.--->
+			<br>
+		</span><span class="smallTitle">
+			<br>
+			例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">data(1,2,3,4,5,6,7,8)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">for i = 0 to 7
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp; &nbsp; fprints( <span style="font-weight: bold;">read()</span>&amp; 
+				" - " )&nbsp; </span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">next
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">prints(chr(13))
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">for i =0 to 20
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp; &nbsp; n=rnd(7)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">&nbsp;&nbsp;&nbsp; prints( <span style="font-weight: bold;">read(</span>
+				n <span style="font-weight: bold;">)</span> )</span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">next
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">waitKey
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			参照： <a href="data%28%29.html">data()</a> </span><span class="syntax2">
+			<br>
+		</span>
+	</body>
+</html>

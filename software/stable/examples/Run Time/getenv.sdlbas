@@ -1,0 +1,9 @@
+'
+' sdlBasic example Run Time:getenv
+'
+'   Name:      getenv.sdlbas
+'   Purpose:    ritorna il valore di una variabile d'ambiente
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

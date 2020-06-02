@@ -1,0 +1,14 @@
+setdisplay(640,480,32,1)
+'autoback (0)
+prints(os)
+prints(islinux)
+prints(iswin32)
+prints(isosx)
+while key(27)=0
+    if key(asc("o"))then
+	box(100,100,50,50)
+    end if
+    box(100,100,50,50)
+    waitvbl
+    screenswap
+end while

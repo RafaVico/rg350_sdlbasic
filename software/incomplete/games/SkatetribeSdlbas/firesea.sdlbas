@@ -1,0 +1,72 @@
+windowed=0
+ setdisplay(320,200,16,windowed)
+ autoback(0):mousehide()
+ loadimage ("backgrounds/firesea.png",0)
+
+open "data/lev2.bin" for input as #1:sz=lof(1)
+    dim obstk[(sz/2)+10,2]: a=0
+  while not eof(1)
+     v0=readbyte(1):v1=readbyte(1)
+     obstk[a,1]=v1:obstk[a,0]=v0
+     a=a+1
+   end while
+close #1
+
+ ScreenOpen (1,320,200,0,0,0,0,0)
+
+ Loadimage("sprites/spcr.png",1): pasteicon(0,0,1): Screen(1)
+    x=0:y=8:k=8: grab(1+k,x*8,y*8,48,48)
+
+ Loadimage("sprites/skater1.png",1):pasteicon(0,0,1): Screen(1)  
+    x=0:y=0:k=0: grab(1+k,x*48,48+y*64,48,64)
+    x=2:y=1:k=1: grab(1+k,x*48,48+y*64,48,64)
+
+screen(0)
+  loadmusic ("tunes/lament.mod"):playmusic(-1)
+  bbspn=2
+
+ oxsp=160:oysp=108:xdrc=0:ydrc=0
+
+while(0=0)
+  tikcr=ticks
+
+  y0=0
+  y1=(tikcr/4)mod 200
+  y2=(tikcr/8)mod 200
+  y3=(tikcr/16)mod 200
+  y4=(tikcr/32)mod 200
+
+  blt(0,0,y4,64,200-y4,0,0)
+   blt(0,0,0,64,y4,0,200-y4)
+  blt(0,64,y0,192,200-y0,64,0)
+   blt(0,64,0,192,y0,64,200-y0)
+  blt(0,256,y4,64,200-y4,256,0)
+   blt(0,256,0,64,y4,256,200-y4)
+
+
+     screenswap()
+     if key(27) then : end :end if
+
+   tikcnt=int(tikcr/32)
+    tikcnt2=tikcnt mod ((int(sz/2))-128)
+
+
+  for n=0 to 11
+     bob(1+n,     obstk[tikcnt2+n,0]-20,obstk[tikcnt2+n,1]+(n*4)-64,9)
+     bob(12+n,320-obstk[tikcnt2+n,0]-20,obstk[tikcnt2+n,1]+(n*4)-64,9)
+   next
+
+   if key(K_right) then :xdrc=xdrc+2:bbspn=2:end if
+   if key(K_left) then :xdrc=xdrc-2:bbspn=1:end if
+   if xdrc<-32 then: xdrc=-32:end if
+   if xdrc>32 then: xdrc=32:end if
+      oxsp=oxsp+(xdrc/16)   
+   if oxsp<80 then:oxsp=80:end if
+   if oxsp>200 then:oxsp=200:end if
+
+    bob(25,oxsp,oysp,bbspn)
+
+
+end while
+
+   

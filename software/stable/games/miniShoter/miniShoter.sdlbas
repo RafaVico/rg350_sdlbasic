@@ -1,0 +1,227 @@
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'                           mini shoter    by zoiba
+'                use left and right arrows key to move spaceship
+'                  and spacebar ro fire asteroids, good luck!
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+setDisplay(320,240,32,1)
+randomize(timer)
+autoback(-15)
+fps(1)
+
+'variables
+spacebarFlag=0
+myTimer=0
+difficulty=70
+score=0
+'------------------------------------------------------------------------------------------
+'------------------------------------------------------------------------------------------
+' loading graphics
+shipImage = loadImage("data/ship.gif")
+hotSpot(shipImage,1,1)
+
+dim explosionImage[4]
+explosionImage[0]=3
+explosionImage[1]= loadImage("data/xplosion01.gif")
+hotSpot(explosionImage[1],1,1)
+explosionImage[2]= loadImage("data/xplosion02.gif")
+hotSpot(explosionImage[2],1,1)
+explosionImage[3]= loadImage("data/xplosion03.gif")
+hotSpot(explosionImage[3],1,1)
+
+bulletImage = loadImage("data/bullet.bmp")
+hotSpot(bulletImage,1,1)
+
+asteroidImage = loadImage("data/asteroid.gif")
+hotSpot(asteroidImage,1,1)
+
+'------------------------------------------------------------------------------------------
+'------------------------------------------------------------------------------------------
+' loading sounds
+'common phaserSound = loadSound("data/phaser.wav")
+common kapowSound = loadSound("data/kapow.wav")
+common xplosionSound = loadSound("data/boom.wav")
+'------------------------------------------------------------------------------------------
+'------------------------------------------------------------------------------------------
+' pseudoObject definition
+
+' ship
+common ship[]
+ship["image"]	= shipImage
+ship["sprite"]	=1
+ship["x"]	=160
+ship["y"]	=210
+ship["velocity"]=4
+ship["state"]="running"
+sprite(ship["sprite"],ship["x"],ship["y"],ship["image"])
+
+' bullets
+common bullet[]
+bullet["counter"]=10
+for n = 1 to bullet["counter"]
+    bullet["image",n]	= bulletImage
+    bullet["sprite",n]=1+n
+    bullet["x",n]	=0
+    bullet["y",n]	=-100
+    bullet["state",n]="idle"
+    sprite(bullet["sprite",n],bullet["x",n],bullet["y",n],bullet["image",n])
+next
+
+' asteroids
+common asteroid[]
+asteroid["counter"]=20
+for n = 1 to asteroid["counter"]
+    asteroid["image",n]	= asteroidImage
+    asteroid["sprite",n]=20+n
+    asteroid["x",n]	=0
+    asteroid["y",n]	=-30
+    asteroid["Vel",n]	=0
+    asteroid["state",n]	="idle"
+    asteroid["timer",n]	=0
+    sprite(asteroid["sprite",n],asteroid["x",n],asteroid["y",n],asteroid["image",n])
+next
+
+'------------------------------------------------------------------------------------------
+'------------------------------------------------------------------------------------------
+' functions
+
+function asteroidsHandler() '                              asteroids handler
+    for n = 1 to asteroid["counter"]
+	select case asteroid["state",n]
+	case "run"
+	    asteroid["y",n]+=asteroid["Vel",n]
+	    if  asteroid["y",n]>280 then : asteroid["state",n]="idle" : end if
+	    ' ceck collisions with bullets
+	    for m = 1 to bullet["counter"]
+		if spriteHit(asteroid["sprite",n], bullet["sprite",m]) then
+		    playSound(xplosionSound,3)
+		    explosionImage[explosionImage[0]+1]=1
+		    asteroid["image",n]=explosionImage[explosionImage[explosionImage[0]+1]]
+		    asteroid["state",n]="exploding"
+		    asteroid["timer",n]=timer
+		    bullet["state",m]="idle"
+		    bullet["y",m]=-100
+		    sprite(bullet["sprite",m],bullet["x",m],bullet["y",m],bullet["image",m])
+		    score+=asteroid["Vel",n]*10
+		end if
+	    next
+	case "exploding"
+	    if timer-asteroid["timer",n]>1000 then
+		asteroid["state",n]="idle"
+		asteroid["image",n]=asteroidImage
+		asteroid["y",n]=-50
+                deletesprite(asteroid["sprite",n])
+	    else
+		explosionImage[explosionImage[0]+1]+=.2
+		if explosionImage[explosionImage[0]+1]>explosionImage[0] then : explosionImage[explosionImage[0]+1]=1 : end if
+		asteroid["image",n]=explosionImage[explosionImage[explosionImage[0]+1]]
+	    end if
+	end select
+	sprite(asteroid["sprite",n],asteroid["x",n],asteroid["y",n],asteroid["image",n])
+    next
+end function
+
+function asteroidBorn()'                              asteroids born function
+    for n = 1 to asteroid["counter"]
+	if asteroid["state",n]="idle" then
+	    asteroid["x",n] = rnd(320)
+	    asteroid["y",n] = -10
+	    asteroid["Vel",n]=rnd(20)/5
+	    asteroid["state",n]="run"
+	    exit for
+	end if
+    next
+end function
+
+function bulletsHandler()'                              bullet handler
+    for n = 1 to bullet["counter"]
+	if bullet["state",n]="run" then
+	    bullet["y",n]-=5
+	    if  bullet["y",n]<-10 then
+		bullet["state",n]="idle"
+		bullet["y",n]=-100
+                deletesprite(bullet["sprite",n])
+	    end if
+	    sprite(bullet["sprite",n],bullet["x",n],bullet["y",n],bullet["image",n])
+	end if
+    next
+end function
+
+function bulletBorn()'                              bullet born function
+    for n = 1 to bullet["counter"]
+	if bullet["state",n]="idle" then
+	    bullet["x",n] = ship["x"]
+	    bullet["y",n] = ship["y"]
+	    bullet["state",n]="run"
+	    playSound(kapowSound,1)
+	    exit for
+	end if
+    next
+end function
+
+function shipHandler()'                              player ship handler
+    select case ship["state"]
+    case "running"
+	if key(k_left) then ''''''''''''''''' <- go left
+	    ship["x"]-=ship["velocity"]
+	end if
+	if key(k_right) then '''''''''''''''' -> go right
+	    ship["x"]+=ship["velocity"]
+	end if
+	if key(k_space) then : spacebarFlag=1 : end if
+	if spacebarFlag and key(k_space)=0 then '''''''''''''''' |  fire
+	    spacebarFlag=0
+	    bulletBorn()
+	end if
+
+	' ceck collisions with asteroids
+	for n = 1 to asteroid["counter"]
+	    if spriteHit(ship["sprite"], asteroid["sprite",n]) then
+		explosionImage[explosionImage[0]+1]=1
+		ship["image"]=explosionImage[explosionImage[0]+1]
+		ship["state"]="dead"
+		myTimer=timer
+		playSound(xplosionSound,2)
+	    end if
+	next
+
+    case "dead"
+	if timer-myTimer>1500 then ' waiting 1,5 secs
+	    ship["state"]="running"
+	    ship["image"]=shipImage
+	else
+	    explosionImage[explosionImage[0]+1]+=.2
+	    if explosionImage[explosionImage[0]+1]>explosionImage[0] then : explosionImage[explosionImage[0]+1]=1 : end if
+	    ship["image"]=explosionImage[explosionImage[explosionImage[0]+1]]
+	end if
+
+    end select
+    'let's update the ship sprite
+    sprite(ship["sprite"],ship["x"],ship["y"],ship["image"])
+end function
+
+function overlay()
+    deletesprite(256)
+    deletesprite(255)
+    diff=textRender(score,16)
+    sprite(256,10,4,diff)
+    fff=textRender(fps(),16)
+    sprite(255,280,4,fff)
+end function
+
+'------------------------------------------------------------------------------------------
+'------------------------------------------------------------------------------------------
+' main loop
+while 0=0
+    shipHandler()
+    bulletsHandler()
+    asteroidsHandler()
+    overlay()
+    if rnd(difficulty)=1 then : asteroidBorn(): end if
+    if rnd(100)=1 and difficulty>10 then : difficulty-=2 : end if
+    if key(k_esc) then
+			exit while
+		end if
+    screenswap
+    waitvbl
+end while

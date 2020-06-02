@@ -1,0 +1,15 @@
+'
+' sdlBasic example Sounds and music:isenabledsound
+'
+'   Name:      isenabledsound.sdlbas
+'   Purpose:    return 1 if sdlsound was enabled
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+if isenabledsound then
+    prints("the sound system was enabled")
+else
+    prints("sdl_mixer can't enble sound system")
+end if
+waitkey

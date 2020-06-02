@@ -1,0 +1,21 @@
+'
+' sdlBasic example  Graphics:rgb
+'
+'   Name:      rgb.sdlbas
+'   Purpose:    give current color in Uint32 format
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a=rgb(255,255,255)
+pen(a): prints("this is white "+str$(a)+" "+ hex$(a))
+a=rgb(255,0,0)
+pen(a): prints("this is red "+str$(a)+" "+ hex$(a))
+a=rgb(0,255,0)
+pen(a): prints("this is green "+str$(a)+" "+ hex$(a))
+a=rgb(0,0,255)
+pen(a): prints("this is bleu "+str$(a)+" "+ hex$(a))
+a=rgb(255,255,0)
+pen(a): prints("this is yellow "+str$(a)+" "+ hex$(a))
+pen (0xffffff):prints("press any key")
+waitkey

@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:WriteByteSock
+'
+'   Name:      WriteByteSock.sdlbas
+'   Purpose:    Sends a single byte
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

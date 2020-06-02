@@ -1,0 +1,27 @@
+'
+' sdlBasic example  Array:erase
+'
+'   Name:      erase.sdlbas
+'   Purpose:    free an array
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dim a$[10]
+
+for i =0 to 10
+    a$[i]=str$(i)
+next
+
+for i =0 to 10
+    prints(a$[i])
+next
+
+prints("now erasing array with command: erase a$")
+
+erase a$
+
+for i =0 to 10
+    prints(a$[i])
+next
+waitkey

@@ -1,0 +1,22 @@
+'
+' sdlBasic example  Bob system:setbob
+'
+'   Name:      setbob.sdlbas
+'   Purpose:    set bob n at logic screen scr
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("screen 0")
+loadimage("../sprites.png",1)
+bob(1,100,100,1)
+screenopen(1,320,200,260,100,320,200,0)
+paper(0xff000):cls
+prints("screen 1")
+wait(1550)
+setbob(1,1)
+for i = 100 to 330
+    bob(1,i,100,1)
+    waitvbl
+next
+

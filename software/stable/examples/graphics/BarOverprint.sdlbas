@@ -1,0 +1,39 @@
+' Bar Overprint graphics example
+' Paulo Silva - april 04 - GPL
+' writed over a template coded from Vroby
+
+sub BarOverprint(x1,y1,x2,y2,c,a)
+' alpha is from 0 to 255
+      if x2<x1 then: tmpr=x1:x1=x2:x2=tmpr: end if
+      if y2<y1 then: tmpr=y1:y1=y2:y2=tmpr: end if
+   for y=y1 to y2: for x=x1 to x2
+      r0=(int(point(x,y)/0x10000))mod 256
+      g0=(int(point(x,y)/0x100))mod 256
+      b0=(point(x,y))mod 256
+      r1=(int(c/0x10000))mod 256
+      g1=(int(c/0x100))mod 256
+      b1=c mod 256
+
+      r2=255-((255-r0)+((255-r1)*(a/255))):if r2<0 then:r2=0:end if
+      g2=255-((255-g0)+((255-g1)*(a/255))):if g2<0 then:g2=0:end if
+      b2=255-((255-b0)+((255-b1)*(a/255))):if b2<0 then:b2=0:end if
+
+        c2=(r2*0x10000)+(g2*0x100)+b2
+        ink(c2):dot (x,y)
+    next:next
+ end sub
+
+setdisplay(320,240,32,1)
+paper (0xffffff):ink (0x000000)
+pen (0x000000):cls
+setautoback(25)
+prints("draw some overprint bars ")
+
+     BarOverprint(20,20,80,80,0xFFFF00,255)
+     BarOverprint(50,30,100,90,0xFF00FF,255)
+     BarOverprint(30,40,90,100,0x00FFFF,255)
+
+locate(2,15):prints("press space to exit" )
+waitkey(k_space)
+
+

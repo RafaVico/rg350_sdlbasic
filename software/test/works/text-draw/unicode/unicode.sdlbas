@@ -1,0 +1,12 @@
+'Text new UNICODE
+paper(0xffffff)
+cls
+ink(0)
+for a=0 to 15
+a$=""
+for i =0 to 16
+    a$=a$+chr$(208)+chr$(a*16+i)
+next
+Text(0,24*a,24,a$,1)
+next
+waitkey

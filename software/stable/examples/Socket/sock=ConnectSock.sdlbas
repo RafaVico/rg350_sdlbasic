@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:sock=ConnectSock
+'
+'   Name:      sock=ConnectSock.sdlbas
+'   Purpose:    client side socket connection
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

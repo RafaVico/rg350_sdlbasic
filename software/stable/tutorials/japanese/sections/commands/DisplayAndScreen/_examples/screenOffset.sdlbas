@@ -1,0 +1,13 @@
+screenopen(0,1280,480,0,0,640,480,0)
+
+for i = 0 to 100
+	ink(rgb(rnd(255),rnd(255),rnd(255)))
+	line(rnd(1280),rnd(480),rnd(1280),rnd(480))
+next
+
+x=0
+while x<640
+	x+=2
+	screenoffset(x,0)
+	waitvbl
+end while

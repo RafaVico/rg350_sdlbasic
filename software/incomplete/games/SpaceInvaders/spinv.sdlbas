@@ -1,0 +1,75 @@
+'-- bug: weird behaviour with bobhit collision (transparency also counts)
+
+windowed=0
+ setdisplay(320,200,32,windowed)
+   ScreenOpen (1,320,200,0,0,0,0,0)
+ Loadimage("sprites.png",1): pasteicon(0,0,1): Screen(1)
+    for y=0 to 3: For x=0 To 3
+       k=(y*4)+x: grab(1+k,x*16,y*8,16,8)
+     Next:next
+  screen(0):paper(8^8-1):ink(0):pen(0):cls
+
+'-- all enemies actived
+  dim enem[6,6]
+    for y=0 to 5:for x=0 to 5: enem[x,y]=1:next:next
+
+'-- some variables
+  xpos=32:ypos=8:dctn=2
+  xtk=128:tikct=0:tikic=0:tiktk=256
+  xbul=0:ybul=0:fbul=0
+  enmam=36
+
+'-- game loop
+
+while(key(27)=0)
+
+'-- refresh enemies
+   ek1=(int(xpos/2))mod 2
+for y1=0 to 5:for x1=0 to 5
+   ek2=int(y1/2):l1=(y1*6)+x1
+     if enem[x1,y1]=1 then
+        bob (l1,xpos+(x1*32),ypos+(y1*16),1+ek1+(ek2*2))
+      else
+        bob (l1,0,0,1+ek1+(ek2*2))
+      end if
+ next:next
+
+'- check ticks and move enemies
+  tikcr=ticks
+if (tikic+tiktk)<tikcr then
+  tikic=tikic+tiktk
+    xpos=xpos+dctn
+      if xpos>128 then:xpos=128: ypos=ypos+16:dctn=-2:end if
+      if xpos<16 then: xpos=16: ypos=ypos+16:dctn=2:end if
+      if ypos>100 then:ypos=16:end if
+end if
+
+'- check keyboard and move tank
+   bob(48,xtk,184,9)
+     if key(K_left) and xtk>0 then:xtk=xtk-2:end if
+     if key(K_right) and xtk<320-16 then:xtk=xtk+2:end if
+
+'- check keyboard and move bullet
+   bob(47,xbul,ybul,12)
+     if fbul=0 and key(K_SPACE) then
+       fbul=1:xbul=xtk:ybul=176:end if
+     if fbul=1 then
+       ybul=ybul-8
+         if ybul<0 then:fbul=0:end if
+      end if
+
+'-- check collisions
+
+for y=0 to 5:for x=0 to 5:k=(y*6)+x
+  if bobhit(k,47) then
+     enem[x,y]=0:fbul=0:xbul=0:ybul=32:enmam=enmam-1:end if
+ next:next
+
+if enmam<1 then
+   enmam=36
+   for y=0 to 5:for x=0 to 5: enem[x,y]=1:next:next
+   xpos=32:ypos=8:dctn=2
+ end if
+
+    wait(64)
+ wend

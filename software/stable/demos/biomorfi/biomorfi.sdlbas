@@ -1,0 +1,122 @@
+'biomorfi
+'
+' g1 lunghezza corrente (0-10)
+' g2 accorciamento a ogni ciclo (0 -5)
+' g3 cambio angolo a ogni cilco (0-180)
+' g4 numero cicli (1-x)
+'---------------------------------------------------------------------------------------
+setdisplay(256*3+1,220*3+1,32,1)
+
+'---------------------------------------------------------------------------------------
+-- drawline (x,y,l,a)  : disegna una linea di l lunghezza inclinata di a angolo
+sub drawline(x,y,l,a)
+	a1=((a+315) mod 360)
+	if a1<>0 then :ad=a1*6.28 /360:end if
+	xe= x+(l*sin(ad))+(l*cos(ad))
+	ye=y-(l*cos(ad))+(l*sin(ad))
+	line (x,y,xe,ye)
+end sub
+
+
+
+'---------------------------------------------------------------------------------------
+-- drawbiomorfo (x,y,a,g1,g2,g3,g4)  : disegna un biomorfo partendo dai geni dati
+sub drawbiomorfo(x,y,a,g1,g2,g3,g4)
+	'drawline(x,y,g1,a)
+	a1=((a+315) mod 360)
+	if a1<>0 then :ad=a1*6.28 /360:end if
+	xe= x+(g1*sin(ad))+(g1*cos(ad))
+	ye=y-(g1*cos(ad))+(g1*sin(ad))
+	line (x,y,xe,ye)
+	'wait(500)
+
+		g4-=1
+	if  g4>0 then
+		_g1=g1:	_g2=g2:	_g3=g3:	_g4=g4
+		drawbiomorfo(xe,ye,(a+g3)mod 360,(g1-(g2*g1/100)),g2,g3,_g4)
+		_g1=g1:	_g2=g2:	_g3=g3:	_g4=g4
+		drawbiomorfo(xe,ye,(a-g3)mod 360 ,(g1-(g2*g1/100)),g2,g3,_g4)
+		_g1=g1:	_g2=g2:	_g3=g3:	_g4=g4
+	end if
+end sub
+'---------------------------------------------------------------------------------------
+
+--generazione (g1,g2,g3,g4)
+sub generazione(g1,g2,g3,g4)
+	-- disegna griglia
+	for  i= 0 to 4
+		line( i*256,0,i*256,768)
+	next
+	for  i= 0 to 3
+		line( 0,i*220,800,i*220)
+	next
+
+	g0=35
+	-- disegna il genitore
+
+	_g1=g1:	_g2=g2:	_g3=g3:	_g4=g4
+	ink(0xff0000)
+	drawbiomorfo(128,110+g0,0,_g1,_g2,_g3,_g4)
+	ink(0xffffff)
+	_g1=g1:	_g2=g2:	_g3=g3:	_g4=g4
+	text(64, 5,12,str$(g1)+":"+str$(g2)+":"+str$(g3)+":"+str$(g4))
+
+
+
+	--disegna i figli mutanti
+		_g1=g1-1:	_g2=g2:	_g3=g3:	_g4=g4
+	drawbiomorfo(256*1+128,220*0+110+g0,0,_g1,_g2,_g3,_g4)
+		_g1=g1+1:	_g2=g2:	_g3=g3:	_g4=g4
+	drawbiomorfo(256*2+128,220*0+110+g0,0,_g1,_g2,g3,_g4)
+		_g1=g1:	_g2=g2-1:	_g3=g3:	_g4=g4
+	drawbiomorfo(256*0+128,220*1+110+g0,0,_g1,_g2,_g3,_g4)
+		_g1=g1:	_g2=g2+1:	_g3=g3:	_g4=g4
+	drawbiomorfo(256*1+128,220*1+110+g0,0,_g1,_g2,_g3,_g4)
+		_g1=g1:	_g2=g2:	_g3=g3-1:	_g4=g4
+	drawbiomorfo(256*2+128,220*1+110+g0,0,_g1,_g2,_g3,_g4)
+		_g1=g1:	_g2=g2:	_g3=g3+1:	_g4=g4
+	drawbiomorfo(256*0+128,220*2+110+g0,0,_g1,_g2,_g3,_g4)
+		_g1=g1:	_g2=g2:	_g3=g3:	_g4=g4-1
+	drawbiomorfo(256*1+128,220*2+110+g0,0,_g1,_g2,_g3,_g4)
+		_g1=g1:	_g2=g2:	_g3=g3:	_g4=g4+1
+	drawbiomorfo(256*2+128,220*2+110+g0,0,_g1,_g2,_g3,_g4)
+		_g1=g1:	_g2=g2:	_g3=g3:	_g4=g4
+
+end sub
+'---------------------------------------------------------------------------------------
+
+--evoluzione
+sub evoluzione(g1,g2,g3,g4)
+	do
+		waitvbl
+		cls
+		_g4=g4
+		generazione(g1,g2,g3,_g4)
+
+
+	'	while bmouse<>0:end while
+		while bmouse=0
+			if key(27) then: exit do:end if
+			waitvbl
+		end while
+
+
+		x= int(xmouse/256)
+		y=int(ymouse/256)
+
+		if x=1 and y=0 then :g1=g1-1:end if
+		if x=2 and y=0 then :g1=g1+1:end if
+		if x=0 and y=1 then :g2=g2-1:end if
+		if x=1 and y=1 then :g2=g2+1:end if
+		if x=2 and y=1 then :g3=g3-1:end if
+		if x=0 and y=2 then :g3=g3+1:end if
+		if x=1 and y=2 then :g4=g4-1:end if
+		if x=2 and y=2 then :g4=g4+1:end if
+	loop
+
+end sub
+
+
+evoluzione(15,5,45,2)
+
+

@@ -1,0 +1,28 @@
+'
+' sdlBasic example Strings: trim example
+'
+'   Name:     trim.sdlbas
+'   Purpose:   example trim ltrim rtrim string functions
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+a$="   ciao   "
+prints("original: prints(\":\"+a$+\":\")")
+prints(":"+a$+":")
+prints("^          ^"+ "for margin string")
+prints("")
+prints("ltrim$: prints(\":\"+ltrim$(a$)+\":\")")
+prints(":"+ltrim$(a$)+":")
+prints("")
+prints("rtrim$: prints(\":\"+rtrim(a$)+\":\")")
+prints(":"+rtrim(a$)+":")
+prints("")
+prints("trim$: prints(\":\"+trim(a$)+\":\")")
+prints(":"+trim(a$)+":")
+
+
+waitkey

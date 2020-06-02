@@ -1,0 +1,41 @@
+' Simple Spirograph image 1
+
+' Create a simple windowed display
+setdisplay(640,480,32,1)
+
+' White background
+paper(8^8-1)
+
+' Pick black ink
+ink(0)
+
+' Use black ink to draw with
+pen(0)
+
+' Clear screen
+cls
+
+' Update screen every 25ms
+setautoback(25)
+
+' Variables & constants go here
+angle = 1.0 : centreX = 320 : centreY = 240 : radius = 50 : pi = 3.14
+
+for i = 0 to 20100
+
+	radius = sin(angle / 100.0) * 200.0
+	na = ((radius * 2 * pi) / 360.0) * angle
+
+	x = (cos(na / radius) * radius) + centreX
+	y = (sin(na / radius) * radius) + centreY
+
+	' Plot our points on the screen
+	dot(x, y)
+
+	' Update angle
+	angle = angle + 0.25
+
+next
+
+' Wait for Esc key to be pressed
+waitkey(k_esc)

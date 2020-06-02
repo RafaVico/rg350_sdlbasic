@@ -1,0 +1,5 @@
+
+prints(systemwidth())
+prints(systemheight())
+
+waitkey

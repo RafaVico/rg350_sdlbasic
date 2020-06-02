@@ -1,0 +1,23 @@
+
+'bin function				:return a string that rappresent the number in binary format
+'
+'function _bin(value)
+'    r$=""
+'    v=value
+'    while v<>0
+'	if (v mod 2)=0 then
+'	    r$="0"+r$
+'	else
+'	    r$="1"+r$
+'	end if
+'	v=int(v/2)
+'    end while
+'    if r$="" then:r$="0":end if
+'    _bin=r$
+'end function
+'______________________________________________________________________________________
+
+
+for i= 0 to 16
+print i;"  ";bin(i)
+next

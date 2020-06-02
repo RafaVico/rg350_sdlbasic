@@ -1,0 +1,196 @@
+'
+' sdlBasic library: Graphics
+'
+'   Name:      graphics.sdlblib
+'   Purpose:   basic library to implements missing Graphics command
+'
+'
+'  Author:     __vroby__    ( __vroby__@libero.it ) Paulo Silva ()
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+' Original code of paint ported in c in SDLengine
+' __vroby__
+'
+function paint_soft(x,y)
+	dim paintmap[screenwidth(),screenheight()]
+
+	xstart=x
+	ystart=y
+    src_col=point(x,y)
+    dot(x,y)
+    col=point(x,y)
+    pm=2
+    if col=src_col then : return -1 :end if
+
+    while(0=0)
+	if point(x,y)=src_col then
+		ink(col)
+		dot(x,y)
+		 paintmap[x,y]=pm
+    	end if
+
+	if point(x+1,y)=src_col  and x+1 < screenwidth then
+		    x=x+1
+		    pm=1
+	elseif point(x-1,y)=src_col  and x-1 > 0 then
+		    x=x-1
+		    pm=2
+	elseif point(x,y+1)=src_col and y+1 < screenheight then
+		    y=y+1
+		    pm=3
+	elseif point(x,y-1)=src_col  and y-1 > 0 then
+		    y=y-1
+		    pm=4
+	else
+	    if x=xstart and y=ystart then
+		exit while
+	    end if
+
+	    if paintmap[x,y]=1 then
+		x=x-1
+	    elseif paintmap[x,y]=2 then
+		x=x+1
+	    elseif paintmap[x,y]=3 then
+		y=y-1
+	    elseif paintmap[x,y]=4 then
+		y=y+1
+	    end if
+	end if
+    end while
+    return 0
+end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+' Fillcircle Alpha graphics example
+' Paulo Silva - april 04 - GPL
+' writed over a template coded from Vroby
+
+sub FillcircleAlpha(x,y,r,c,a)
+' alpha is from 0 to 255
+
+'--- bug: middle horizontal line is drawn twice - please try light opacities :FIXED!!!
+    for yd=0 to r
+        xl=(sin(acos(yd/r)))*r
+      for xd=-xl to xl
+        xp=x+xd:yp=y+yd
+      r0=(int(point(xp,yp)/0x10000))mod 256
+       g0=(int(point(xp,yp)/0x100))mod 256
+       b0=(point(xp,yp))mod 256
+      r1=(int(c/0x10000))mod 256
+       g1=(int(c/0x100))mod 256
+       b1=c mod 256
+      r2=((r1*a)+(r0*(255-a)))/255
+      g2=((g1*a)+(g0*(255-a)))/255
+      b2=((b1*a)+(b0*(255-a)))/255
+        c2=(r2*0x10000)+(g2*0x100)+b2
+        ink(c2):dot (xp,yp)
+    next
+    next
+    for yd=1 to r
+        xl=(sin(acos(yd/r)))*r
+      for xd=-xl to xl
+        xp=x+xd:yp=y-yd
+      r0=(int(point(xp,yp)/0x10000))mod 256
+       g0=(int(point(xp,yp)/0x100))mod 256
+       b0=(point(xp,yp))mod 256
+      r1=(int(c/0x10000))mod 256
+       g1=(int(c/0x100))mod 256
+       b1=c mod 256
+      r2=((r1*a)+(r0*(255-a)))/255
+      g2=((g1*a)+(g0*(255-a)))/255
+      b2=((b1*a)+(b0*(255-a)))/255
+        c2=(r2*0x10000)+(g2*0x100)+b2
+        ink(c2):dot (xp,yp)
+    next
+    next
+ end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+' Bar Alpha graphics example
+' Paulo Silva - april 04 - GPL
+' writed over a template coded from Vroby
+
+sub BarAlpha(x1,y1,x2,y2,c,a)
+' alpha is from 0 to 255
+      if x2<x1 then: tmpr=x1:x1=x2:x2=tmpr: end if
+      if y2<y1 then: tmpr=y1:y1=y2:y2=tmpr: end if
+   for y=y1 to y2: for x=x1 to x2
+      r0=(int(point(x,y)/0x10000))mod 256
+      g0=(int(point(x,y)/0x100))mod 256
+      b0=(point(x,y))mod 256
+      r1=(int(c/0x10000))mod 256
+      g1=(int(c/0x100))mod 256
+      b1=c mod 256
+      r2=((r1*a)+(r0*(255-a)))/255
+      g2=((g1*a)+(g0*(255-a)))/255
+      b2=((b1*a)+(b0*(255-a)))/255
+        c2=(r2*0x10000)+(g2*0x100)+b2
+        ink(c2):dot (x,y)
+    next:next
+ end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+' Bar Overprint graphics example
+' Paulo Silva - april 04 - GPL
+' writed over a template coded from Vroby
+
+sub BarOverprint(x1,y1,x2,y2,c,a)
+' alpha is from 0 to 255
+      if x2<x1 then: tmpr=x1:x1=x2:x2=tmpr: end if
+      if y2<y1 then: tmpr=y1:y1=y2:y2=tmpr: end if
+   for y=y1 to y2: for x=x1 to x2
+      r0=(int(point(x,y)/0x10000))mod 256
+      g0=(int(point(x,y)/0x100))mod 256
+      b0=(point(x,y))mod 256
+      r1=(int(c/0x10000))mod 256
+      g1=(int(c/0x100))mod 256
+      b1=c mod 256
+
+      r2=255-((255-r0)+((255-r1)*(a/255))):if r2<0 then:r2=0:end if
+      g2=255-((255-g0)+((255-g1)*(a/255))):if g2<0 then:g2=0:end if
+      b2=255-((255-b0)+((255-b1)*(a/255))):if b2<0 then:b2=0:end if
+
+        c2=(r2*0x10000)+(g2*0x100)+b2
+        ink(c2):dot (x,y)
+    next:next
+ end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'--- another cubic (spline) curved line example
+'---   (in the way as used on DeluxePaint, from Dan Silva (a cousin? =) ))
+'--- Paulo Silva - june '04 - gpl
+
+sub arc(x0,y0,x5,y5,x2,y2) 'i suggest xstart,ystart,xmidle,ymidle,xend,yend
+    x4=(x2+x0)/2:y4=(y2+y0)/2
+    xd45=x5-x4:yd45=y5-y4
+    xd34=xd45*2.414328:yd34=yd45*2.414328
+    x3=x4-xd34:y3=y4-yd34
+    x1=x4+xd34:y1=y4+yd34
+    xr1=x1-x0:yr1=y2-y1
+    xr2=x2-x1:yr2=y3-y2
+
+    'stepv=180 :'30 'i heve changed because if use big screen the error accuracy increase
+    ' when i porting in c core probably increase *2 the param stepv
+    stepv=(displaywidth+displayheight)
+
+
+    ' well!!! your math skill is very good!!!
+    for i=0 to stepv
+	ir=i*(1.570796/stepv)
+	xsn=(xr1*sin(ir))-(xr2*cos(ir))
+	ycs=(yr1*(cos(ir)*-1))-(yr2*sin(ir))
+	xi=x3+xsn:yi=y3+ycs
+	if i=0 then:xold=xi:yold=yi:end if
+	line (xold,yold,xi,yi): xold=xi:yold=yi
+    next
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+'
+' sdlBasic library: Maths
+'
+'   Name:      Maths.sdlblib
+'   Purpose:   basic library to implements missing maths commands
+'
+'
+'
+'  Author:    Paulo Silva
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function bitwiseand_soft(a,b)
+'--- this function is also known as andbits(a,b)
+      c=0:while ((2^c)<a) or ((2^c)<b):c=c+1:end while
+  tmpr=0:for d=0 to c
+    a0=(int(a/(2^d)))mod 2:b0=(int(b/(2^d)))mod 2
+    n0=a0 and b0:tmpr=tmpr+(n0*(2^d)):next
+      bitwiseand=tmpr
+ end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function bitwiseor_soft(a,b)
+'--- this function is also known as orbits(a,b)
+      c=0:while ((2^c)<a) or ((2^c)<b):c=c+1:end while
+  tmpr=0:for d=0 to c
+    a0=(int(a/(2^d)))mod 2:b0=(int(b/(2^d)))mod 2
+    n0=a0 or b0:tmpr=tmpr+(n0*(2^d)):next
+      bitwiseor=tmpr
+ end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function bitwisexor_soft(a,b)
+'--- this function is also known as xorbits(a,b)
+      c=0:while ((2^c)<a) or ((2^c)<b):c=c+1:end while
+  tmpr=0:for d=0 to c
+    a0=(int(a/(2^d)))mod 2:b0=(int(b/(2^d)))mod 2
+    n0=a0 xor b0:tmpr=tmpr+(n0*(2^d)):next
+      bitwisexor=tmpr
+ end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function min_soft(a,b)
+   min=a:if b<a then:min=b:end if
+ end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function max_soft(a,b)
+   max=a:if b>a then:max=b:end if
+ end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

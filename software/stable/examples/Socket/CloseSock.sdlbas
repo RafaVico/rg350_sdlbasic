@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:CloseSock
+'
+'   Name:      CloseSock.sdlbas
+'   Purpose:    Close the socket connection. Works for client and server
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

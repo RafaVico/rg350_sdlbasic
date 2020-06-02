@@ -1,0 +1,27 @@
+'memorybank
+
+reservebank(1,400)
+prints ("bank "+str$(setbank())+" size = "+str$(sizebank()))
+
+for i =0 to 40
+    poke(1,i,0)
+    x=peek(1,i)
+next
+
+
+for i = 0 to 36  step 4
+    doke(1,i,i*100)
+    prints(i*100)
+next
+savebank("test.raw",1)
+
+freebank(2)
+loadbank("test.raw",2)
+reservebank(3,40)
+memcopy(2,4,3,0,20)
+
+for i =0 to 36 step 4
+prints(deek(3,i))
+next
+
+waitkey

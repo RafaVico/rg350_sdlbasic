@@ -1,0 +1,19 @@
+windowed=0
+ setdisplay(320,200,16,windowed)
+ autoback(0):mousehide()
+ loadimage ("backgrounds/railroad.png",0)
+screen(0)
+  loadmusic ("tunes/cag.mod"):playmusic(-1)
+while(0=0)
+  tikcr=ticks
+  y1=(tikcr/4)mod 200
+   y2=200-((tikcr/8)mod 200)
+  blt(0,0,y1,288,200-y1,0,0)
+   blt(0,0,0,288,y1,0,200-y1)
+  blt(0,288,y2,32,200-y2,288,0)
+   blt(0,288,0,32,y2,288,200-y2)
+     screenswap()
+     if key(27) then : end :end if
+end while
+
+   

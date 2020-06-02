@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=SHift-JIS" http-equiv="content-type">
+		<title>if</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">if ... then ... end if
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">条件により別のコードを実行する。
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">if </span><span class="syntax">condition expression</span><span class="syntax2">
+				then </span>
+			<br class="syntax2">
+		</div>
+		<div class="syntax2" style="text-align: left; background-color: rgb(239, 239, 255);">
+			&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<span style="color: rgb(102, 102, 102);"> 条件が真のとき実行されるコマンド
+			</span>
+			<br>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">end if </span><span class="syntax2"></span>
+			<br>
+			<span class="syntax2"></span>
+		</div>
+		<span class="syntax2"><span class="text"></span></span>
+		<br>
+		<span class="text"></span><span class="text"><span style="font-weight: bold;">if</span>
+			ステートメントは条件が真の場合だけにあるオペレーションの実行を許します。 このことにより、 プログラムが意味をもったものになります。 
+			<!--- statement 
+			allow the execution of certain operations only if determinate conditions are 
+			true, this allow your program to make decisions. 
+			-->
+		</span>
+		<br class="text">
+		<span class="text">意味をもったプログラムということは、if ステートメントの結果がどうであれ 条件式を評価するということです。つまり 
+			<!-------
+			To make decision the if statement evaluate the condition 
+			expression that is any expression that results in either true or false , for 
+			-->
+			5&gt;1=true と 10&lt;3=false のような例</span>
+		<br class="text">
+		<span class="text">もし評価式が真ならば end ifまでのステートメントを実行し、そうでないならばそれは スキップされます。 
+			<!---
+			If the expression is true the commands between statement then 
+			and statement end if will be executed otherwise, if the expression is false, it 
+			will be skipped. 
+			-->
+		</span><span class="syntax2"><span class="syntax2">
+				<br>
+			</span><span class="smallTitle"></span></span>
+		<br>
+		<span class="text"></span><span class="syntax2"><span class="smallTitle">例:
+				<br>
+			</span></span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">for n = 1 to 20 </span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; a=rnd(10) </span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; print a </span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">if</span> a&gt;5
+				<span style="font-weight: bold;">then</span></span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; print "random number is 
+				greater than five" </span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; <span style="font-weight: bold;">end if</span></span>
+			<br class="code">
+			<span class="code">next </span>
+			<br>
+		</div>
+		<br>
+		<span class="text">参照：<a href="11else.html"><span style="font-weight: bold;">else</span></a>,
+			<a href="12elseIf.html"><span style="font-weight: bold;">elseif</span></a>, <a href="80and.html">
+				<span style="font-weight: bold;">and</span></a>, <a href="81or.html"><span style="font-weight: bold;">
+					or</span></a>, <a href="82not.html"><span style="font-weight: bold;">not</span></a>
+			<a style="font-weight: bold;" href="83xor.html">xor</a></span>
+	</body>
+</html>

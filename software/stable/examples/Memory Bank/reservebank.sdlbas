@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Memory Bank:reservebank
+'
+'   Name:      reservebank.sdlbas
+'   Purpose:    make a raw memory bank. there are 256 bank ( 0 - 255)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

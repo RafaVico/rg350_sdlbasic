@@ -1,0 +1,9 @@
+'
+' sdlBasic example CD support:cdinserted
+'
+'   Name:      cdinserted.sdlbas
+'   Purpose:    return 1 if cd is in driver
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

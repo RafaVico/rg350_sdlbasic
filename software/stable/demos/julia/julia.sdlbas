@@ -1,0 +1,167 @@
+
+' sdlBasic demos: julia
+'
+'   Name:      julia.sdlbas
+'   Purpose:   simple fractal julia
+'  Author:   amiga amos exaamples  ported on sdlBaic __vroby__
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+'
+'
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'*******************************************************
+'*                                                     *
+'* AMOS Professional Procedure Library                 *
+'*                                                     *
+'* Procedure: Julia set fractals                       *
+'*                                                     *
+'*    Author: John Miaoulis                            *
+'*                                                     *
+'*******************************************************
+' **************************************************************************
+' * xss=xsize of fract ; yss=ysize of fract
+' * lt#,rt#,bm#,tp#=range of julia set
+' * it=number of iterations  bb#=bounary
+' * inv=inverse mode on/off 0=off 1=on
+' * ins-inside struct mode on/off 0=off 1=on FAC=factor of inside struc 1>20
+' * dx=xstart position   dy=ystart position
+' * ci#/cr#=julia set seed numburs (pick these your self or get a fractal
+' * book for interesting areas!)
+' **************************************************************************
+'
+common  R,I,X,Y
+
+'Screen Open 0,320,256,32,Lowres Palette
+setdisplay(1024,768,32,0)
+'enablepalette
+setautoback(0)
+
+
+
+for iT =0 to 32
+    color(iT,rgb(iT*8,it*12,iT*8))
+next
+
+'Curs Off : Flash Off
+'Hide : Cls 0
+mousehide()
+'colorcycling(1,255,0,5)
+
+' **************************************************************************
+
+sub _INVERSE_WORK
+   D=X*X+Y*Y
+
+   If D=0.0 then
+       R=100000.0 : X=R : I=R : Y=R
+   Else
+       R=R/D : X=R : I=I/D : Y=I
+   End if
+
+End sub
+' **************************************************************************
+
+sub _INSIDE_STRUC_WORK (D,FAC,Z,IT)
+   'I=Abs(Ln(D))*FAC
+   I=Abs(Log(D))*FAC
+'   print D#
+   If Z=IT Then: Ink (color(I)) : Else: Ink (color(0) ):end if
+End sub
+' **************************************************************************
+
+sub _JULIA_INIT (XSS,YSS,LT,RT,BM,TP,IT,BB,_INV,INS,FAC,DX,DY,CI,CR)
+   DXPP=(RT-LT)/XSS
+   DYPP=(TP-BM)/YSS
+
+   R=BM
+   For XR=0 To XSS
+      I=LT
+      For YR=0 To YSS
+         X=R : Y=I
+         B=X : M=Y
+
+         If _INV=1 Then :_INVERSE_WORK :end if
+         XS=X*X : YS=Y*Y
+
+	 'Z:
+	while key(27)=0
+
+	    Y=X*Y : Y=Y+Y-CR : X=XS-YS-CI
+	    XS=X*X : YS=Y*Y
+	    D=XS+YS
+
+	    if (D<BB) and (Z<IT) then
+		'Inc Z
+		Z=Z+1
+		 'Goto Z
+	    else
+		exit while
+	    end if
+	end while
+	if key(27) then:end:end if
+
+	If INS=0 then
+	    Ink (color(Z))
+	Else
+	    _INSIDE_STRUC_WORK(D,FAC,Z,IT)
+	end if
+
+	'locate 1,1 : paper 4 : print z
+
+	dot (XR+DX,YR+DY)
+
+         Z=0
+         R=B : I=M
+         I=I+DYPP
+      Next
+      R=R+DXPP
+      screenunlock(0)
+      screenswap()
+      screenlock(0)
+
+   Next
+End sub
+' **************************************************************************
+
+
+' ********************
+'  julia set generator
+' ********************
+
+LT=-2.0 : RT=2.0
+BM=-2.0 : TP=2.0
+
+' define julia range (RT)
+screenlock(0)
+
+'_JULIA_INIT(4*80,4*64,LT,RT,BM,TP,20,30.0,0,0,0,160,64,-0.35,-0.004)
+'_JULIA_INIT(1024,768,LT,RT,BM,TP,20,30.0,0,0,0,1,1,-0.35,-0.004)
+' draw julia 80*64 for range RT at 20 iterations and boundery=30.0
+' and cr#=-0.004,ci#=-0.35 and draw it at 160,64
+
+
+'_JULIA_INIT(80,64,LT,RT,BM,TP,20,30.0,1,0,0,80,64,-0.35,-0.004)
+'_JULIA_INIT(1024,768,LT,RT,BM,TP,20,30.0,1,0,0,1,1,-0.35,-0.004)
+' draw julia 80*64 for range RT at 20 iterations and boundery=30.0
+' at cr#=-0.004,ci#=-0.35 with inverse mode on and draw it at 80,64
+
+
+'_JULIA_INIT(80,64,LT,RT,BM,TP,20,30.0,0,1,5,80,128,-0.32,-0.043)
+'_JULIA_INIT(1024,768,LT,RT,BM,TP,20,30.0,0,1,5,1,1,-0.32,-0.043)
+' draw julia 80*64 for range RT at 20 iterations and boundery=30.0
+' at cr#=-0.043.ci#=-0.32 with inside structure mode on and draw
+' it at 80,128
+
+
+'_JULIA_INIT(80,64,LT,RT,BM,TP,20,30.0,1,1,5,160,128,-0.32,-0.043)
+_JULIA_INIT(1024,768,LT,RT,BM,TP,20,30.0,1,1,5,1,1,-0.32,-0.043)
+' draw julia 80*64 for range RT at 20 iterations and boundery=30.0
+' at cr#=-0.043,ci#=-0.32with inside structure mode on and inverse
+' mode on and draw it at 160,128
+'
+screenunlock(0)
+waitkey

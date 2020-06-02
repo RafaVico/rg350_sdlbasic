@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Sprite system:spritehit
+'
+'   Name:      spritehit.sdlbas
+'   Purpose:    give 1 if sprite n have a collission with sprite x if x=-1 with any
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

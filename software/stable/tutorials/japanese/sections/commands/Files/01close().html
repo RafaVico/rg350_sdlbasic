@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>close()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">close()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			ファイルストリームをクローズする。ストリームが指定されていないときは全部がクローズされる。
+			<br>
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">close </span><span class="syntax">stream </span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">close
+				<br>
+			</span>
+		</div>
+		<span class="smallTitle">
+			<br>
+		</span><span class="syntax">stream</span><span class="text"> は先に<a href="00open...For...As.html">オープンコマンド</a>でオープンされたファイル</span>
+		<br>
+		<span class="smallTitle">
+			<br>
+			例:</span>
+		<br>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">print "Hello, sdlBasic" to the file "temp"</span>
+			<br class="code">
+			<span class="code">open "temp" for output as 1</span>
+			<br class="code">
+			<span class="code">Print 1, "Hello, sdlBasic"</span>
+			<br class="code">
+			<span class="code"><span style="font-weight: bold;">close</span> #1</span>
+			<br>
+		</div>
+		<br>
+	</body>
+</html>

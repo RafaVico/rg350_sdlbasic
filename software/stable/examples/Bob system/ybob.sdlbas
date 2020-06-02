@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Bob system:ybob
+'
+'   Name:      ybob.sdlbas
+'   Purpose:    give y of bob n
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+
+
+bob(1,100,89,1)
+prints("ybob = "+str$(ybob(1)))
+waitkey

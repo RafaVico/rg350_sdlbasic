@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>file input</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">file input #
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			ファイルストリームから一行分読み込む。指定されたストリームから文字列を変数に読み込む。 ラインフィードは自動的に取り去られる。
+			<br>
+			<span class="smallTitle">
+				<br>
+				書式:
+				<br>
+			</span>
+			<div style="text-align: left; background-color: rgb(239, 239, 255);">
+				<span class="syntax2">file Input #</span><span class="syntax">stream</span><span class="syntax2">
+				</span><span class="syntax2">, </span><span class="syntax2"></span><span class="syntax">
+					data</span><span class="syntax2"> </span><span class="syntax2">
+					<br>
+				</span>
+			</div>
+			<span class="text">
+				<br>
+			</span><span class="text"></span><span class="text"></span><span class="syntax">stream</span><span class="text">
+				オープンコマンドでオープンされたストリーム番号</span><span class="syntax2">
+				<br>
+			</span><span class="syntax">data</span><span class="text">文字列を格納すべき変数。
+				<br>
+				<br>
+			</span><span class="smallTitle">例:
+				<br>
+			</span>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">' open a text file
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">open "myfile.txt" for input as 1
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">' read until end of file
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">while not eof( 1 )
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">' read a line from the file and print it
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code"><span style="font-weight: bold;">file input &nbsp;#</span>1, 
+					data$&nbsp;</span><span class="syntax2">
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">print data$
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">end while
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">' close the file
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">close( 1 )
+					<br>
+				</span>
+			</div>
+			<br>
+			<span class="text">参照: <a href="04fileOutput.html"><span style="font-weight: bold;">file 
+						output #</span></a></span>
+	</body>
+</html>

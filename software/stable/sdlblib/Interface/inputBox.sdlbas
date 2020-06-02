@@ -1,0 +1,12 @@
+'
+' sdlBasic New_interface.sdlblib
+'   inputBox demo test v.0.1
+'_____________________________________________________________________________________________________________________
+
+include "interface.sdlblib"
+
+'test
+paper(0xffffff):cls
+
+prints(inputBox("testo","prova","default"))
+waitkey

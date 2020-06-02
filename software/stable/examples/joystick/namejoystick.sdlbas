@@ -1,0 +1,18 @@
+'
+' sdlBasic example Joystick:namejoystick
+'
+'   Name:      namejoystick.sdlbas
+'   Purpose:    get joystick name
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+while key(27)=0
+    locate (1,1)
+    if numjoysticks()>0 then
+	prints("namejoystick(0) return:"+str$(namejoystick(0)))
+    else
+	prints("not joystick found")
+    end if
+    waitvbl()
+end while

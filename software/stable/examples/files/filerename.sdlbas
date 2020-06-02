@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Files:filerename
+'
+'   Name:      filerename.sdlbas
+'   Purpose:    rename a file
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+filerename("filerename.sdlbas","renamefile.sdlbas")
+a$=dirfirst("./*")
+while a$<>""
+    prints(a$)
+    a$=dirnext
+end while
+filerename("renamefile.sdlbas","filerename.sdlbas")
+waitkey

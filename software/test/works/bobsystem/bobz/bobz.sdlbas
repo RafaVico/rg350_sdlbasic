@@ -1,0 +1,30 @@
+'bobz first test
+loadimage("sdlBasic.png",1)
+loadimage("sdlnow.gif",2)
+
+while (key(27)=0)
+for i= 1 to 640+240 step 2
+    bob(1,i-240,40,1)
+    bob(2,i*2-320,20,2)
+    bob(3,i*3-480,40,2)
+    bob(4,i*4-640,50,2)
+    waitvbl
+    if key(27) then:i=640+240:end if
+next
+'print bobz(1)
+if (bobz(1)=1) then
+    bobz(1,1024)
+else
+    bobz(1,1)
+end if
+
+end while
+
+deletebob(4)
+wait(1000)
+bob(4,310,230,2)
+wait(1000)
+for i= 4 to 1 step -1
+    deletebob(i)
+    wait(1000)
+next

@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Screen:yscreenrect
+'
+'   Name:      yscreenrect.sdlbas
+'   Purpose:    give the y coordinate of current screen viewport
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

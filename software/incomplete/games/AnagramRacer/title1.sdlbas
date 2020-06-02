@@ -1,0 +1,39 @@
+windowed=1
+ setdisplay(640,256,32,windowed)
+ autoback(0):mousehide()
+ ink(0):pen(0):paper(8^8-1):cls
+
+ Loadimage("TitleSprites.png",0)
+ pasteicon(0,0,0)
+ Screen(0)
+    yp=0:ys=1:xs=10:grab(1,0,yp*16,xs*16,ys*16)
+    yp=1:ys=1:xs=10:grab(2,0,yp*16,xs*16,ys*16)
+    yp=4:ys=3:xs=26:grab(3,0,yp*16,xs*16,ys*16)
+    yp=7:ys=3:xs=26:grab(4,0,yp*16,xs*16,ys*16)
+    yp=2:ys=1:xs=12:grab(5,0,yp*16,xs*16,ys*16)
+  cls
+screen(0)
+
+while(0=0)
+  tikcr=ticks
+  tpx1=(tikcr/64)mod 64
+
+    if tpx1>32 then: tpx1=64-tpx1:end if
+
+  tpx2=32-tpx1
+
+     bob(3,100+tpx1,100,3)
+     bob(4,100+tpx2,100,4)
+
+     bob(1,250+(tpx2/4),200,1)
+     bob(2,250+(tpx1/4),200,2)
+
+     bob(5,200,16,5)
+
+
+     screenswap()
+     if key(k_space) then : end :end if
+
+wend
+
+

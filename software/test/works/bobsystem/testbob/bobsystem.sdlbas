@@ -1,0 +1,76 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  bobsystem.sdlbas
+'| date 1/01/2004
+'|
+'| description:
+'| test bobsystem with autoback and auto update performer
+'| bobsystem work in screen and use the background removing
+'| keys: 1 add bob 2 remove a bob esc exit
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'| performance are not at the top and there are problem with a screencopy or text printing under a bob
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+setdisplay (640,480,32,1)
+setautoback(-12)
+autoupdatesprite(0)
+autoupdatebob(1)
+f=1
+
+loadimage ("bidone.bmp",1)
+loadimage ("sfondo.gif",0)
+mousehide()
+dim dx[num_bobs],dy[num_bobs]
+
+for y=0 to 600 step 32
+	for x= 0 to 800 step 32
+		blt (0,0,0,32,32,x,y)
+	    next
+next
+
+n=0
+while(0=0)
+	for i = 0 to n
+		bob( i,xbob(i)+dx[i],ybob(i)+dy[i],1)
+		if xbob(i)>600 then : dx[i]=-(1+1) : end if
+		if xbob(i)<10 then : dx[i]=(1+1) : end if
+		if ybob(i)>450 then : dy[i]=-(1+1) : end if
+		if ybob(i)<10 then : dy[i]=(1+1) : end if
+	next
+
+
+	if key(27)then : exit while : end if
+	if key(asc("1")) then
+		if f1=0 then : n=n + 1 :f1=0:end if
+		if n >num_bobs-1 then : n=num_bobs-1 : end if
+		f=1
+	else
+		f1=0
+	end if
+
+	if key(asc("2")) then
+		if f2=0 then : deletebob (n): n=n-1:f2=0:end if
+		if n<0 then : n=0 : end if
+		f=1
+	else
+		f2=0
+	end if
+
+
+if f=1 then
+	ink (0): bar (5,10,450,70)
+	ink (rgb(255,0,0))
+	text (10,10,15," number of bobs "+str$(n+1)+" press 1 for increase - 2 for reduce")
+	text (10,30,15," coordinate bobs "+str$(xbob(n))+str$(ybob(n)))
+	text (10,50,15," bob "+str$(frbob(n))+str$(livebob(n)))
+	f=0
+end if
+	'updatebob
+	screenswap()
+	'waitvbl
+	wait(5)
+end while

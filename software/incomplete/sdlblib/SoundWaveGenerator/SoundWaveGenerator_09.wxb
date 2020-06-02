@@ -1,0 +1,98 @@
+'--- Paulo Silva - October'03 (GPL)
+'--- sound wave random generator
+ common wvfat=0,xscnv=256,yscnv=128:randomize
+Common frame= new wxFrame(Null,-1," ",wxPoint(0,0),wxSize(256,240),wxSIMPLE_BORDER|wxCAPTION|wxSYSTEM_MENU|wxMINIMIZE_BOX)
+ frame.Centre():gauge=new wxGauge(frame,-1,1,wxPoint(4,240),wxSize(20,20))
+Function mdle(a,b)
+   mdle=((a/b)-(int(a/b)))*b
+ End Function
+Function wvf(a,k)
+  if k=0 then:wvf=sin(a*6.283184):End If
+  if k=1 then
+      tmpr=(mdle(a+.75,1))*4
+    if tmpr >= 2 then:tmpr=4-tmpr:end if
+      tmpr=tmpr-1: wvf=tmpr*(-1)
+   End If
+  if k=2 then
+      tmpr=-1
+    if (mdle(a,1))>=.5 then:tmpr=1:end if
+      wvf=tmpr*(-1)
+   End If
+ End Function
+function hexvl(a$)
+   e=asc(a$)
+   hexvl=abs(((e>=48 and e<=57)*(e-48))+((e>=65 and e<=70)*(e-55))+((e>=97 and e<=102)*(e-87)))
+ end function
+function hexvpr(a$)
+    lngta=len(a$):i=1
+  while i<=lngta
+    m1$=mid$(a$,i,1):m2$=mid$(a$,i+1,1):b=(hexvl(m1$)*16)+hexvl(m2$):WriteByte(1,b):i+=2
+  end while
+ end function
+function clpam(v1,cl,am)
+   if abs(v1)>abs(cl) then:v1=(abs(cl))*(sgn(v1)):end if
+      v1=v1*am
+   if abs(v1)>1 then:v1=1*(sgn(v1)):end if
+      clpam=v1
+ end function
+      Common bmp=wxEmptyBitmap(256,192),bmpDC=wxMemoryDC()
+      bmpDC.SelectObject(bmp):bmpDC.SetBackground(wxBrush(wxColor(100,100,200),wxSOLID)) 
+      bmpDC.SetPen(wxPenFromColor(wxColor(100,200,100),1,wxTRANSPARENT)) 
+      bmpDC.Clear():bmpDC.SetBrush(wxBrush(wxColor(200,100,100),wxSOLID))
+  common radio1= new wxRadioButton(frame,-1,"",wxPoint(4,192))
+  common radio2= new wxRadioButton(frame,-1,"",wxPoint(24,192))
+  common radio3= new wxRadioButton(frame,-1,"",wxPoint(44,192))
+  common slider1=new wxSlider(frame,-1,25,0,96,wxPoint(4,132),wxSize(160,20))
+  common slider2=new wxSlider(frame,-1,30,0,96,wxPoint(4,152),wxSize(160,20))
+  common slider3=new wxSlider(frame,-1,35,0,96,wxPoint(4,172),wxSize(160,20))
+  common slidercl=new wxSlider(frame,-1,95,0,100,wxPoint(84,192),wxSize(80,20))
+  common slideram=new wxSlider(frame,-1,75,0,1000,wxPoint(164,192),wxSize(80,20))
+Sub ButtonToSquarePosControl(event)
+  bmpDC.SetBackground(wxBrush(wxColor(200,200,200),wxSOLID))
+  bmpDC.SetPen(wxPenFromColor(wxColor(50,50,50),1,wxSOLID))
+  bmpDC.Clear() 
+   n1=slider1.GetValue():n2=slider2.GetValue():n3=slider3.GetValue()
+  f1=2^(5+(n1/12)): f2=2^(5+(n2/12)): f3=2^(5+(n3/12))
+  ws=xscnv:hs=yscnv/2:vo=hs
+    for i=1 to ws
+      wsp=32:k=(abs(radio2.GetValue()))+(2*(abs(radio3.GetValue())))
+      a1=wvf((i/ws)*(f1/wsp),k):a2=wvf((i/ws)*(f2/wsp),k):a3=wvf((i/ws)*(f3/wsp),k)
+      clpn=(slidercl.GetValue())/100:ampr=(slideram.GetValue())/100
+      am=hs+(hs*(clpam(((a1+a2+a3)/3),clpn,ampr)))
+      bmpDC.DrawLine(i,vo,i+1,am):vo=am
+    next
+  dc=wxClientDC(frame):dc.Blit(0,0,xscnv,yscnv,bmpDC,0,0):dc.EndDrawing()  
+ End Sub
+    Connect(slider1,wxEVT_COMMAND_SLIDER_UPDATED,"ButtonToSquarePosControl")
+    Connect(slider2,wxEVT_COMMAND_SLIDER_UPDATED,"ButtonToSquarePosControl")
+    Connect(slider3,wxEVT_COMMAND_SLIDER_UPDATED,"ButtonToSquarePosControl")
+    Connect(radio1, wxEVT_COMMAND_RADIOBUTTON_SELECTED,"ButtonToSquarePosControl" )
+    Connect(radio2, wxEVT_COMMAND_RADIOBUTTON_SELECTED,"ButtonToSquarePosControl" )
+    Connect(radio3, wxEVT_COMMAND_RADIOBUTTON_SELECTED,"ButtonToSquarePosControl" )
+    Connect(slidercl,wxEVT_COMMAND_SLIDER_UPDATED,"ButtonToSquarePosControl")
+    Connect(slideram,wxEVT_COMMAND_SLIDER_UPDATED,"ButtonToSquarePosControl")
+   button1=new wxButton(frame,-1,"",wxPoint(64,192),wxSize(16,16))
+Sub waveout (event)
+  open "test.wav" for output as #1
+      a$="524946464417000057415645666D74201000000001000100112B0000112B000001000800646174612017000000000000"
+      u=hexvpr(a$)
+      n1=slider1.GetValue():n2=slider2.GetValue():n3=slider3.GetValue()
+      f1=2^(5+(n1/12)):f2=2^(5+(n2/12)):f3=2^(5+(n3/12)):ws=5916:hs=127
+    for i=1 to ws
+      wsp=1:k=(abs(radio2.GetValue()))+(2*(abs(radio3.GetValue())))
+      a1=wvf((i/ws)*(f1/wsp),k):a2=wvf((i/ws)*(f2/wsp),k):a3=wvf((i/ws)*(f3/wsp),k)
+      clpn=(slidercl.GetValue())/100:ampr=(slideram.GetValue())/100
+      am=hs+(hs*(clpam(((a1+a2+a3)/3),clpn,ampr)))
+      am=(0*(abs(am<0)))+(255*(abs(am>255)))+(am*((am>=0)and(am<=255)))
+      WriteByte(1,am)
+    next
+  close #1
+ End Sub
+    connect (button1,wxEVT_COMMAND_BUTTON_CLICKED,"waveout")
+Sub onPaint( event )
+  Dim dc
+    dc=wxPaintDC(frame)
+    dc.BeginDrawing():dc.Blit(0,0,xscnv,yscnv,bmpDC,0,0):dc.EndDrawing()
+ End Sub
+    Connect(frame,-1,wxEVT_PAINT,"onPaint" )
+frame.Show(True)

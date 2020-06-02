@@ -1,0 +1,58 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  text.sdlbas 
+'| date 1/12/2002 
+'|
+'| description: 
+'| variant of a classic hello world   
+'|
+'| bugfix:
+'| 
+'| 
+'| Bug:
+'| 
+'| 
+'|------------------------------------------------------------------------------------------------------------
+
+'*************************
+ '****HELLO WORLD**********
+ 'freecode by begin_else***
+ '*************************
+
+
+ 'select the screen resolution
+ setdisplay(640,480,32,1)
+
+ 'hide the mouse
+'mousehide()
+
+ 'execute while this key isn´t pressed.
+ while (key(27) = 0)
+
+ 'change the ink color to red
+ink (rgb(255,0,0))
+
+ 'print the user instructions.
+
+text(0,0,25,"FREECODE BY: begin_else !!!")
+text(0,40,15,"Hit the escape key to quit !!!")
+text(0,55,15,"Hit the the keyboard number 1 key to print sumthingt !!!")
+
+ 'if the user hits the number 1 key then print to screen.
+
+if key(asc("1")) then 
+	text (0,100,20,"OK! GOOD GOING !!" )
+end if 
+
+'print to the screen the main message
+
+text(205,240,35,"HELLO WORLD !!!")
+
+
+'update the screen
+screenswap()
+
+'finish the while loop      
+end while
+
+
+

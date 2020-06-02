@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Dirs:direxists
+'
+'   Name:      direxists.sdlbas
+'   Purpose:    returns true if directory exists
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+if direxists("../../examples") then
+    prints("ok")
+else
+    prints("error")
+end if
+waitkey

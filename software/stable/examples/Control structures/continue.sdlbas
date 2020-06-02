@@ -1,0 +1,16 @@
+'
+' sdlBasic example  Control structures:continue
+'
+'   Name:      continue.sdlbas
+'   Purpose:    terminate the last while cycle
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+i=0
+while i<100
+    i+=1
+    if i>50 then : continue :end if
+    prints(i)
+end while
+waitkey

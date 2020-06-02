@@ -1,0 +1,5 @@
+do
+	prints("funziona")
+	waitvbl
+	if key(27) then : exit do :end if
+loop

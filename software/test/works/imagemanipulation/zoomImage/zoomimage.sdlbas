@@ -1,0 +1,55 @@
+#!/usr/local/bin/sdlBasic
+' zoom
+sub mouse_key_move
+	'mouse key move
+	x=xmouse()
+	y=ymouse()
+	if key(k_up) then: y=y-1:locatemouse(x,y):end if
+	if key(k_down) then: y=y+1:locatemouse(x,y):end if
+	if key(k_left) then: x=x-1:locatemouse(x,y):end if
+	if key(k_right) then: x=x+1:locatemouse(x,y):end if
+	'--------------------------------
+
+end sub
+
+
+autoback(-15)
+loadimage("sdlBasic.png",1)
+hotspot(1,1,1)
+
+for i= 0 to 100
+	ink(rgb(rnd(255),rnd(255),rnd(255)))
+	line(rnd(640),rnd(480),rnd(640),rnd(480))
+next
+
+
+while inkey<>27
+
+	i=1
+	copyimage(1,2)
+
+	for i=0 to 2 step 0.01
+		locate(0,0):prints(i)
+		copyimage(1,2)
+		zoomimage (2,i,i)
+		hotspot(2,1,1)
+
+		sprite (1,xmouse,ymouse,2)
+		if key(27) then: exit while :end if
+		screenswap
+		mouse_key_move
+		waitvbl()
+	next
+	for i=2 to 0 step -0.01
+		locate(0,0):prints(i)
+		copyimage(1,2)
+		zoomimage (2,2+(2-i),i)
+		hotspot(2,1,1)
+
+		sprite (1,xmouse,ymouse,2)
+		if key(27) then: exit while :end if
+		screenswap
+		mouse_key_move
+		waitvbl()
+	next
+end while

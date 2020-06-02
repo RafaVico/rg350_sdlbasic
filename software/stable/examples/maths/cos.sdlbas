@@ -1,0 +1,21 @@
+'
+' sdlBasic example Maths: cos example
+'
+'   Name:     cos.sdlbas
+'   Purpose:   example cosin functions
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+
+prints("command: prints(str$(cos(10))")
+prints(str$(cos(10)))
+prints("command: prints(str$(cos(90))")
+prints(str$(cos(90)))
+prints("command: prints(str$(cos(0))")
+prints(str$(cos(0)))
+prints("press any key to exit")
+waitkey

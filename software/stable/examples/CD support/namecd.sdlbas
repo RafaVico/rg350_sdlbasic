@@ -1,0 +1,16 @@
+'
+' sdlBasic example CD support:namecd
+'
+'   Name:      namecd.sdlbas
+'   Purpose:    returns a human-readable, system-dependent identifier for the cd-rom.
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+opencd(0,0)
+while indrivecd(0)=0
+    prints("please insert audio cd")
+    wait(500)
+end while
+prints("cd name is :"+namecd(0))
+waitkey

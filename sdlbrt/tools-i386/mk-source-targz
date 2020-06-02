@@ -1,0 +1,24 @@
+# make targz module v0.2
+#-----------------------------
+cd ../
+
+Package=sdlbrt-source
+Version=$(date --rfc-3339 date)
+Source=src
+
+rm -rf PACKAGE
+mkdir PACKAGE
+
+cp -R ${Source}/*  PACKAGE
+
+rm ${Package}-${Version}.tar.gz
+
+cd PACKAGE
+find . -name "*.o" -print0 | xargs -0 rm -rf
+tar zcvf ${Package}-${Version}.tar.gz *
+mv ${Package}-${Version}.tar.gz ..
+cd ..
+
+rm -rf PACKAGE
+
+

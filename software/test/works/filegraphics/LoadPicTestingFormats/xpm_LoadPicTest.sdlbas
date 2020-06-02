@@ -1,0 +1,19 @@
+'- Maybe .xpm is the most flexible picture format to edit
+'-  as it is a mere .txt file based on C string syntax
+'-  just please take a look at it, if you don't know this format
+'- The only lack on .xpm format as text file is it mostly 
+'-  handling text lines more than with 512 characters
+'-  (some basic interpreters doesn't support it, and may 
+'-  crash both wxBasic and sdlBasic - if someone know some 
+'-  text-based picture format with broken text lines please let
+'-  us know) 
+  finp$="xpm.xpm"
+xedge=256:yedge=212
+  setdisplay(xedge,yedge,32,1)
+  paper (0xffffff):ink (0x000000): pen (0x000000):cls
+  loadimage(finp$,1):pasteicon(0,0,1)
+  waitkey
+
+
+
+

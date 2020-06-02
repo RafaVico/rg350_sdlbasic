@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>Running sdlBasic Programs</title>
+		<meta content="zoiba" name="author">
+		<link rel="stylesheet" href="../style.css" type="text/css">
+	</head>
+	<body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(0, 0, 0);">
+			<span class="title">プログラムの起動方法</span><span class="title"></span>
+			<br class="text">
+			<span class="title"></span>
+		</div>
+		<span class="title"></span><span class="text">
+			<br>
+			sdlBasicのプログラムは単なるテキストファイルです。 プレインテキスト（.TXT)のタイプで保存できるエディターであればどんなエディターでも使えます。 
+			sdlBasicで書かれたプログラムを起動には、sdlBasicの実行可能ファイル 
+			sdlbasic.exe(リーナっクスの場合sdlBasic）がカレントディレクトリーまたはパスのどこかにあればよい。 
+			インクルードファイルが必要な場合はソースと同じディレクトリーになければいけません。
+			<br>
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 255);">
+			<span class="subTitle">コマンドラインからのsdlBasic起動方法</span><span class="text"></span>
+			<br>
+		</div>
+		<span class="text">ウインドウズまたはリーナックスのシェルから単に：
+			<br>
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">sdlbasic filename</span><span class="text"></span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text">
+			<br>
+			とタイプします。 filenameのところにはあなたが走らせたいファイルの名前が入ります。
+			<br>
+			例えばmyprog.sdlbasという名のプログラムを走らせるのには、
+			<br>
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">sdlbasic myprog.sdlbas</span><span class="text"></span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text">
+			<br>
+			とタイプしてください。
+			<br>
+			<br>
+			プログラムの起動の際に、インタープリターにいくつかのスイッチを渡すことができます。
+			<br>
+			<br>
+		</span>
+		<table style="text-align: left; width: 100%;" border="0" cellpadding="2" cellspacing="2">
+			<tbody>
+				<tr>
+					<td style="width: 110px;">
+						<span class="text">--nosound</span>
+					</td>
+					<td style="width: 702px;">
+						<span class="text">: SDLのサウンドシステムを止める</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 110px;">
+						<span class="text">--nosocket</span>
+					</td>
+					<td style="width: 702px;">
+						<span class="text">: SDLのソケットを止める</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 110px;">
+						<span class="text">--debug</span>
+					</td>
+					<td style="width: 702px;">
+						<span class="text">: デバッグモードにする。</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 110px;">
+						<span class="text">--nodefaults</span>
+					</td>
+					<td style="width: 702px;">
+						<span class="text">: デフォルトのディスプレイの起動を止める </span>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 110px;">
+						<span class="text">--version</span>
+					</td>
+					<td style="width: 702px;">
+						<span class="text">: バージョンナンバーをプリントする</span>
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 110px;">
+						<span class="text">--help</span>
+					</td>
+					<td class="text" style="width: 702px;">
+						: sdlBrt のパラメータリストをプリントする
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="text">--copyright</span>
+					</td>
+					<td class="text">
+						: コピーライトをプリントする
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="text">--license</span>
+					</td>
+					<td class="text">
+						: ライセンスをプリントする
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<span class="text">
+			<br>
+			コマンドラインは次のようなものになるでしょう：
+			<br>
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">sdlbasic myprog.sdlbas --nosound</span><span class="text"></span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text">
+			<br>
+			いくつかのリーナックスマシンで、サウンドデバイスにトラブルがある場合があります。 
+			他のアプリケーションで問題のない場合、解決するには次の方法を試してみてください。
+			<br>
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">artsdsp -m sdlbasic myprog.sdlbas</span><span class="text"></span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text"></span>
+		<br>
+		<span class="text"></span><span class="subTitle">ウインドウズまたはKDEからの プログラム起動
+			<br>
+		</span><span class="text">
+			<br>
+			一番簡単な方法はイクステンションを関連付けることです。 （つまり、.sdlbasをsdlBrt.exeとを関連付ける。） 
+			そうすればダブルクリックすることによりsdlBasicのインタープリターを 自動的に起動することができます。 </span>
+	</body>
+</html>

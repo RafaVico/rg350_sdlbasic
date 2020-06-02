@@ -1,0 +1,16 @@
+' sdlBasic example Graphics: bar example
+'   Name:     bar.sdlbas
+'   Purpose:   example bar function  
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+
+setdisplay(320,240,32,1)
+paper (0xffffff):ink (0x000000)
+pen (0x000000):cls
+setautoback(25)
+prints("draw a bar ")
+ink(rgb(20,20,20)):bar(10,20,110,120)
+locate(2,15):prints("press space to exit" )
+waitkey(k_space)
+

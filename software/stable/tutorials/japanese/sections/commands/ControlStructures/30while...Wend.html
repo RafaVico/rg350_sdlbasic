@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>while ... wend</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">while ... wend
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">while式が真である間ブロックのコマンドを実行する。
+			<br>
+		</span>
+		<br>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">while</span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="color: rgb(102, 102, 102);">
+					commands</span></span>
+			<br style="color: rgb(102, 102, 102);" class="syntax2">
+			<span style="color: rgb(102, 102, 102);" class="syntax2">&nbsp;&nbsp;&nbsp; 
+				&nbsp;&nbsp;&nbsp; {exit while}</span>
+			<br class="syntax2">
+			<span class="syntax2">wend </span><span class="smallTitle"></span>
+			<br>
+			<span class="smallTitle"></span>
+		</div>
+		<span class="smallTitle"></span><span class="syntax2"><span class="text"></span></span>
+		<br>
+		<span class="text"><span style="font-weight: bold;">while</span>宣言はループされるブロックコマンドのスタート位置を規定する。
+			<br>
+			<span style="font-weight: bold;">wend</span>宣言はブロックの終了位置を示す。
+			<br>
+			また<span style="font-weight: bold;">end while</span> も同様に使用可。 </span>
+		<br>
+		<br>
+		<span class="text"></span><span class="syntax2"><span class="smallTitle">例: </span></span>
+		<span class="syntax2">
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">setautoback(50)</span>
+			<br class="code">
+			<span class="code">i=0</span>
+			<br class="code">
+			<span class="code"><span style="font-weight: bold;">while</span> inkey &lt;&gt; 
+				k_esc ------------------------ will loop until esc key is pressed</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; i=i+1</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; prints(i)</span>
+			<br class="code">
+			<span class="code"><span style="font-weight: bold;">wend</span> <span style="font-style: italic;">
+					----------------------------------------------- you can use indifferently wend 
+					or end while</span></span>
+			<br>
+		</div>
+		<br>
+		<span class="text">参照： <a href="31exitWhile.html"><span style="font-weight: bold;">exit 
+					while</span></a> </span>
+	</body>
+</html>

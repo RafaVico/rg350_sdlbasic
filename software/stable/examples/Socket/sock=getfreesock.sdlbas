@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:sock=getfreesock
+'
+'   Name:      sock=getfreesock.sdlbas
+'   Purpose:    return the first free sock in sdlSocket array
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

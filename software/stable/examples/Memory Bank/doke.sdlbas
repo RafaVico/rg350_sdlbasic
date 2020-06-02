@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Memory Bank:doke
+'
+'   Name:      doke.sdlbas
+'   Purpose:    write a 16bit value in memory bank at specific address
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

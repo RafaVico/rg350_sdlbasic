@@ -1,0 +1,10 @@
+'argument
+
+sub prova(...)
+    for i= 1 to argument
+	prints(argument$(i))
+    next
+end sub
+prova
+prova("prova1","prova2")
+waitkey

@@ -1,0 +1,19 @@
+'
+' sdlBasic example Joystick: bjoy
+'
+'   Name:       bjoy.sdlbas
+'   Purpose:    give joystick button pressed
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+while key(27)=0
+    locate (1,1)
+    if numjoysticks()>0 then
+	prints("bjoy(0) return:"+str$(bjoy(0)))
+    else
+	prints("not joystick found")
+    end if
+    waitvbl()
+end while
+

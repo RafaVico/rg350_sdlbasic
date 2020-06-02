@@ -1,0 +1,15 @@
+'
+' sdlBasic example Socket:isenabledsock
+'
+'   Name:      isenabledsock.sdlbas
+'   Purpose:    return 1 if sdlnet was enabled
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+if isenabledsock then
+    prints("the socket system was enabled")
+else
+    prints("sdl_net can't enble socket system")
+end if
+waitkey

@@ -1,0 +1,25 @@
+'
+' sdlBasic New_interface.sdlblib
+'   MSGBox demo test v.0.5.0 time to devel 35 min !!!
+'_____________________________________________________________________________________________________________________
+
+include "interface.sdlblib"
+
+
+    'Test
+
+    prints (msgbox("prova 0",okonly,"titolo"))
+    prints ("press 1 to continue")
+    while key(asc("1"))=0 :end while
+
+    prints (msgbox("prova 1",okcancel,"titolo"))
+    prints ("press 2 to continue")
+    while key(asc("2"))=0 :end while
+
+    prints (msgbox("prova 2",yesno,"titolo"))
+    prints ("press 3 to continue")
+    while key(asc("3"))=0 :end while
+
+    prints (msgbox("prova 3",yesnocancel,"titolo"))
+    prints ("press esc to exit")
+    while key(27)=0 :end while

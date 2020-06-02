@@ -1,0 +1,9 @@
+'
+' sdlBasic example Graphics:rectangle
+'
+'   Name:      rectangle.sdlbas
+'   Purpose:    disegna un rettangolo usando  w come larghezza e h come altezza il mode=0 e' il bordo 1=riempimento
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

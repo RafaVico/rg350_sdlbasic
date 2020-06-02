@@ -1,0 +1,50 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  parallattic stars.sdlbas
+'| date 1/01/2004
+'|
+'| description:
+'| create a parallattic scroll of stars
+'|
+'|
+'| keys : esc to exit
+'|
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+fps(1)
+setdisplay(800,600,32,0)
+directscreen()
+setautoback(0)
+'mousehide
+
+numstars=2500
+dim x[numstars]
+dim y[numstars]
+dim s[numstars]
+
+for i =0 to numstars
+    x[i]=rnd(800)
+    y[i]=rnd(600)
+    s[i]=rnd(9)+1
+next
+
+ink(color(15))
+while inkey=0
+    cls
+    screenlock(0)
+    for i= 0 to numstars
+        x[i]=x[i]-s[i]
+        if x[i]<0 then
+            x[i]=x[i]+800
+        end if
+        dot(x[i],y[i])
+    next
+    screenunlock(0)
+    locate(0,0):prints("fps:"+str$(fps()))
+    screenswap
+end while

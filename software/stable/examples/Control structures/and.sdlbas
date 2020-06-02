@@ -1,0 +1,21 @@
+'
+' sdlBasic example  Control structures:and
+'
+'   Name:      and.sdlbas
+'   Purpose:    condition in espression logic and
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+x=10:y=5
+
+if x=10 and y=0 then
+    prints("and function not work!!")
+end if
+
+
+if x=10 and y=5 then
+    prints("and function work!!")
+end if
+waitkey
+

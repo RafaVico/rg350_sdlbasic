@@ -1,0 +1,368 @@
+'_________________________________________________________________________________________________________________
+'
+'  IO pre beta
+'_________________________________________________________________________________________________________________
+'
+setdisplay(320,200,32,0)
+autoback(-15)
+mousehide
+
+common stellax[100],stellay[100]
+common pos
+common player_state,fire_state
+'_________________________________________________________________________________________________________________
+'
+'INIT SECTION
+'_________________________________________________________________________________________________________________
+
+sub init_stelle
+    'make a stars coordinates
+    for i=0 to 50
+	stellax[i]=rnd(320)
+	stellay[i]=rnd(160)
+    next
+
+end sub
+'_________________________________________________________________________________________________________________
+
+sub init_bgimages
+' this rutine make the screen background images
+
+'stage 1
+'    loadimage("media/BackgroundStage1.png",1)
+'    screenopen(7,1280,800,0,0,0,0,0)
+'    pasteicon(0,0,1)
+'    grab(11,0,0,1280,160)
+'    grab(12,0,160,1280,320)
+'    grab(13,0,320,1280,480)
+'    grab(14,0,480,1280,640)
+'    grab(15,0,640,1280,800)
+'    screenclose(7)
+'    screenopen(7,1280*5,160,0,0,0,0,0)
+'    pasteicon(0,0,11)
+'    pasteicon(1280*1,0,12)
+'    pasteicon(1280*2,0,13)
+'    pasteicon(1280*3,0,14)
+'    pasteicon(1280*4,0,15)
+'    grab(1,0,0,1280*5,160)
+'    saveimage("level1.bmp",1)
+'    screenclose(7)
+
+'stage 2
+'    loadimage("media/BackgroundStage2.png",2)
+'    screenopen(7,1280,800,0,0,0,0,0)
+'    pasteicon(0,0,2)
+'    grab(11,0,0,1280,160)
+'    grab(12,0,160,1280,320)
+'    grab(13,0,320,1280,480)
+'    grab(14,0,480,1280,640)
+'    grab(15,0,640,1280,800)
+'    screenclose(7)
+'    screenopen(7,1280*5,160,0,0,0,0,0)
+'    pasteicon(0,0,11)
+'    pasteicon(1280*1,0,12)
+'    pasteicon(1280*2,0,13)
+'    pasteicon(1280*3,0,14)
+'    pasteicon(1280*4,0,15)
+'    grab(2,0,0,1280*5,160)
+'    saveimage("level2.bmp",2)
+'    screenclose(7)
+
+'stage 3
+'    loadimage("media/BackgroundStage3.png",3)
+'    screenopen(7,1280,800,0,0,0,0,0)
+'    pasteicon(0,0,3)
+'    grab(11,0,0,1280,160)
+'    grab(12,0,160,1280,320)
+'    grab(13,0,320,1280,480)
+'    grab(14,0,480,1280,640)
+'    grab(15,0,640,1280,800)
+'    screenclose(7)
+'    screenopen(7,1280*5,160,0,0,0,0,0)
+'    pasteicon(0,0,11)
+'    pasteicon(1280*1,0,12)
+'    pasteicon(1280*2,0,13)
+'    pasteicon(1280*3,0,14)
+'    pasteicon(1280*4,0,15)
+'    grab(3,0,0,1280*5,160)
+'    saveimage("level3.bmp",3)
+'    screenclose(7)
+
+loadimage("media/backgroundlevel1.png",1)
+loadimage("media/backgroundlevel2.png",2)
+loadimage("media/backgroundlevel3.png",3)
+
+ end sub
+'_________________________________________________________________________________________________________________
+
+sub init_spimages
+    loadimage("media/Sprites.png",10)
+    screenopen(7,2560,531,0,0,0,0,0)
+    pasteicon(0,0,10)
+
+    'title
+    grab(10,284,215,96,48)
+    grab(11,168,239,112,20)
+
+    'player
+    grab( 100,  0, 0,24,24)
+    grab( 101, 24, 0,24,24)
+    grab( 102, 48, 0,24,24)
+    grab( 103, 72, 0,24,24)
+    grab( 104, 96, 0,24,24)
+    grab( 105,120, 0,24,24)
+    grab( 106,144, 0,24,24)
+
+    'mather
+    grab( 107,244, 24,144,24)
+
+    'explosion
+    grab( 110,168, 0,24,24)
+    grab( 111,192, 0,24,24)
+    grab( 112,216, 0,24,24)
+    grab( 113,240, 0,24,24)
+    grab( 114,264, 0,24,24)
+    grab( 115,288, 0,24,24)
+    grab( 116,312, 0,24,24)
+
+    'bullet
+    grab(108,144,215,24,24)
+
+
+
+
+    screenclose(7)
+
+end sub
+'_________________________________________________________________________________________________________________
+
+sub init_sound
+    loadsound("media/sfx/sndLevelStart.wav",1)
+    loadsound("media/sfx/sndPlayerEnter.wav",2)
+    loadsound("media/sfx/sndPlayerDeath.wav",3)
+
+end sub
+'_________________________________________________________________________________________________________________
+
+
+
+
+sub init
+    init_stelle
+    init_bgimages
+    init_sound
+    loadimage("media/IoDisplay.png",5)
+    init_spimages
+    screenopen(2,320,50,0,160,320,50,0)
+    pasteicon(0,0,5)
+
+
+end sub
+'_________________________________________________________________________________________________________________
+
+' COMMON SECTION
+'_________________________________________________________________________________________________________________
+
+sub stelle
+	for i =0 to 10
+	    if point(stellax[i],stellay[i])=0xfffffe then
+		ink(0)
+		dot(stellax[i],stellay[i])
+	    end if
+	    stellax[i]+=0.5
+	    '((i/400)+0.1)
+	    'if stellax[i]<0+xoffset then:stellax[i]+=320+xoffset:end if
+
+	    if point(stellax[i],stellay[i])=0 then
+		ink(0xfffffe)
+		dot(stellax[i],stellay[i])
+	    end if
+	next
+end sub
+'_________________________________________________________________________________________________________________
+
+'GAME SECTION
+'_________________________________________________________________________________________________________________
+
+sub init_level(level)
+    cls
+    pasteicon(320,0,level)
+    init_stelle
+
+end sub
+'_________________________________________________________________________________________________________________
+
+sub player_start
+    playsound(1,1)
+    for i=0 to 40 step 0.4
+	sprite(2,40,40-i*1.6,107)
+
+	sprite(1,80,40+i,100+(i/10))
+	stelle
+	pos+=0.5
+	offset(pos,0)
+	screenswap
+    next
+    sprite(1,80,80,103)
+    deletesprite(2)
+    playsound(2,2)
+    for i =0 to 40
+	sprite(1,80+i,80,103)
+	screenswap
+    next
+end sub
+'_________________________________________________________________________________________________________________
+
+sub player_move
+    if player_state=1 then
+	x=xsprite(1)
+	y=ysprite(1)
+	fr=frsprite(1)
+	if key(k_up) then : y-=1:fr=106:end if
+	if key(k_down) then : y+=1:fr=99:end if
+	if key(k_left) then : x-=1:end if
+	if key(k_right) then : x+=1:end if
+	if fr<103 then : fr+=1 :end if
+	if fr>103 then : fr-=1 :end if
+
+	sprite(1,x,y,fr)
+    end if
+end sub
+'_________________________________________________________________________________________________________________
+
+sub player_collision
+    c=0
+    c+= point(xsprite(1)+xoffset+12,ysprite(1)+4)
+    c+= point(xsprite(1)+xoffset+4,ysprite(1)+12)
+    c+= point(xsprite(1)+xoffset+12,ysprite(1)+20)
+    c+= point(xsprite(1)+xoffset+20,ysprite(1)+12)
+    if player_state=1 and c<>0 and c < 0xfffffe then
+	playsound(3,1)
+	player_state=2
+    end if
+
+    if player_state >1 then
+	sprite(1,xsprite(1),ysprite(1),110+player_state -2)
+	player_state+=1
+	if player_state >8 then :player_state=0:deletesprite(1) :end if
+    end if
+end sub
+'_________________________________________________________________________________________________________________
+
+sub player_fire
+
+    if fire_state=0 and key(k_lctrl) then
+	fire_state=1
+    end if
+
+    if fire_state=1 then
+	sprite(2,xsprite(1),ysprite(1),108)
+	fire_state=2
+    end if
+
+    if fire_state=2 then
+	sprite(2,xsprite(2)+8,ysprite(2),108)
+	if (xsprite(2)>332) then
+	    fire_state=0
+	    deletesprite(2)
+	end if
+    end if
+
+
+end sub
+'_________________________________________________________________________________________________________________
+
+sub game
+    score=0
+    lives=4
+    level=1
+    spriteclip(0,0,320,160)
+    stelle
+    while(key(27)=0)
+	init_level(level)
+	pos=0
+	if lives<1 then : exit while:end if
+	player_start
+	lives-=1
+	player_state=1
+	fire_state=0
+	while(key(27)=0)
+	    if player_state=0 then : exit while:end if
+	    player_move
+	    player_fire
+	    player_collision
+
+	    stelle
+
+	    pos+=0.5
+	    offset(pos,0)
+	    screenswap
+	end while
+    end while
+end sub
+'_________________________________________________________________________________________________________________
+
+
+'TITLE SECTION
+'_________________________________________________________________________________________________________________
+
+
+
+sub title
+    loadmusic("media/IO-theme.xm")
+    screenopen(0,1280*5,160,0,0,320,160,0)
+
+    pastebob(320,0,1)
+    playmusic(-1)
+    i=0
+    s=1
+    sprite(1,110,50,10)
+
+    setalpha(10,0)
+    while(key(27)=0)
+	stelle
+	i=i+0.5
+	if i<255 then
+	    setalpha(10,i)
+	else
+	    sprite(2,100,100,11)
+	end if
+	if i>1100-320 then
+	    deletesprite(2)
+    	    setalpha(10,0)
+	    i=0
+	    s=s+1
+	    if s>3 then :s=1:end if
+	    cls
+	    pastebob(320,0,s)
+	    init_stelle
+	end if
+	offset(i,0)
+	screenswap
+	if key(k_space) then:exit while :end if
+    end while
+    stopmusic
+    deletesprite(0)
+    deletesprite(1)
+
+end sub
+'_________________________________________________________________________________________________________________
+'MAIN SECTION
+'_________________________________________________________________________________________________________________
+
+sub main
+    init
+
+    while key(27)=0
+	title
+	game
+    end while
+end sub
+'_________________________________________________________________________________________________________________
+
+main
+
+
+
+
+

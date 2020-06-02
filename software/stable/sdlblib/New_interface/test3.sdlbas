@@ -1,0 +1,48 @@
+'
+' TEST3 Test advanced of interface: file select
+'
+'_________________________________________________________________________________________________________________
+
+include "interface.sdlblib"
+setdisplay( 320,400,0,1)
+paper(_back_col):cls
+
+list1=newcontrol(list,0,0,0,320,370,0)
+button1=newcontrol(button,0,10,380,60,15,"refresh")
+button2=newcontrol(button,0,80,380,80,15,"run")
+
+clearlist(list1)
+a$=dirfirst("./*.sdlbas")
+while a$<>""
+    addlist(list1,a$)
+    a$=dirnext
+end while
+
+draw
+while key(27)=0
+
+    waitevent(1)
+
+    if getparam(list1,_state)=activated then
+	refresh
+    end if
+
+    if getparam(button1,_state)=activated then
+	clearlist(list1)
+	a$=dirfirst("./*.sdlbas")
+	while a$<>""
+	    addlist(list1,a$)
+	    a$=dirnext
+	end while
+	wait(50)
+	setparam(button1,_state,1)
+	refresh
+    end if
+
+    if getparam(button2,_state)=activated then
+	shell("sdlBasic "+getlist(list1,getparam(list1,_value)))
+	wait (50)
+	setparam(button2,_state,1)
+	refresh
+    end if
+end while

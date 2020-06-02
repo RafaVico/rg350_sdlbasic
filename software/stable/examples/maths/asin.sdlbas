@@ -1,0 +1,21 @@
+'
+' sdlBasic example Maths: asin example
+'
+'   Name:     asin.sdlbas
+'   Purpose:   example asin functions
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+
+prints("command: prints(str$(asin(10))")
+prints(str$(asin(10)))
+prints("command: prints(str$(asin(90))")
+prints(str$(asin(90)))
+prints("command: prints(str$(asin(0))")
+prints(str$(asin(0)))
+prints("press any key to exit")
+waitkey

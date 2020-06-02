@@ -1,0 +1,8 @@
+setdisplay(640,480,32,1)
+autoback(0)
+
+while 0=0
+    if key(27) then : exit while :end if
+    plot(rnd(640),rnd(480),rgb(rnd(255),rnd(255),rnd(255)))
+    screenswap()
+end while

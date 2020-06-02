@@ -1,0 +1,47 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  bmp.sdlbas
+'| date 21/12/2003
+'|
+'| description:
+'| show a picture and display the press key
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+zipinclude "zipfile.zip","screen.sdlbas"
+'autoback(1)
+vroby=loadzipimage("zipfile.zip","images/Vroby.jpg")
+sdlbasic=loadzipimage("zipfile.zip","images/sdlBasic.bmp")
+shot=loadzipsound("zipfile.zip","shot.wav")
+'loadzipmusic("zipfile.zip","mp3.mp3")
+loadmusic("mp3.mp3")
+playmusic(-1)
+playsound(shot,1)
+
+pasteicon(0,0,vroby)
+if imageExists(sdlbasic) then
+    bob(1,0,100,sdlbasic)
+end if
+
+'screenswap()
+
+'waitkey()
+
+a=0
+while a<>27
+    a=inkey
+    locate(0,0):prints(str$(a)+"  ")
+    'screenswap
+    waitvbl
+end while
+deletebob(1)
+screenswap
+waitkey
+screenfade(0,3)
+while (screenfade(0)):end while
+
+

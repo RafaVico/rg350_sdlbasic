@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+<head>
+
+
+  
+  <meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+
+  
+
+
+  
+  <title>rinStr(optional start,source$,target$)</title>
+  <link rel="stylesheet" href="../../style.css" type="text/css">
+
+
+  
+  <meta content="zoiba" name="author">
+</head>
+
+
+<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+
+
+<div style="text-align: left; background-color: rgb(204, 204, 255);">
+<span class="subTitle">rinStr()<br>
+
+
+</span>
+</div>
+
+
+<span class="text"><br>
+
+
+</span>
+<span class="text">ある文字列を後ろ側からサーチして文字の位置を戻す。reverse inStr()の意。<br>
+マッチしないときはゼロを戻す。
+<br>
+
+
+</span><span class="syntax2"></span><span class="text"></span><br>
+
+
+<span class="smallTitle"><br>
+
+
+文形式:
+<br>
+
+
+</span>
+<div style="text-align: left; background-color: rgb(239, 239, 255);"><span class="syntax2">
+</span><span class="syntax">
+position
+</span><span class="syntax2"> = rinStr(&nbsp;</span><span class="syntax">string
+</span><span class="syntax2">
+, </span>
+<span class="syntax">substring
+</span><span class="syntax2"> )<br>
+</span><span class="syntax">
+position
+</span><span class="syntax2"> = rinStr(&nbsp;</span><span class="syntax">start</span><span class="syntax">
+</span><span class="syntax2">
+, </span>
+<span class="syntax"></span><span class="syntax">string
+</span><span class="syntax2">
+, </span>
+<span class="syntax">substring
+</span><span class="syntax2"> )</span><br>
+
+</div>
+
+
+<span class="text">
+</span><span class="syntax"><br>
+
+start</span><span class="text"> はオプションでサーチを始める位置がセットされる。
+</span><span class="syntax2"><br>
+
+
+</span>
+<span class="smallTitle"><br>
+
+
+例;
+<br>
+
+
+</span>
+<div style="text-align: left; background-color: rgb(255, 255, 204);"><span class="text code">
+a$ = "picture.png"
+<br>
+
+
+</span>
+</div>
+
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">n = <span style="font-weight: bold;">rinStr(</span> a$, "." <span style="font-weight: bold;">)</span></span><span class="syntax2"><br>
+
+
+</span>
+</div>
+
+
+<div style="text-align: left; background-color: rgb(255, 255, 204);">
+<span class="text code">print mid( a$, 1, n-1)
+<br>
+
+
+</span>
+</div>
+
+
+<span class="text">
+</span>
+<br>
+
+
+<span class="text">参照&nbsp;:<a href="inStr%28%29.html"><span style="font-weight: bold;">inStr()</span></a></span>
+</body>
+</html>

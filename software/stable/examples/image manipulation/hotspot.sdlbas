@@ -1,0 +1,33 @@
+'
+' sdlBasic example  Image manipulation:hotspot
+'
+'   Name:      hotspot.sdlbas
+'   Purpose:    select the point of coordinates in a imageslot (n,0,0=up left(default) | n,1,1=center | n,2,2 =down right)n= image
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+loadimage("../sprites.png",0)
+text(10,10,15,"hotspot(0,0,0)")
+hotspot(0,0,0)
+bob( 1,100,100,0)
+screenswap
+while(inkey=0):end while
+while(inkey<>0):end while
+
+cls
+text(10,10,15,"hotspot(0,1,1)")
+hotspot(0,1,1)
+bob( 1,100,100,0)
+screenswap
+while(inkey=0):end while
+while(inkey<>0):end while
+
+cls
+text(10,10,15,"hotspot(0,2,2)")
+hotspot(0,2,2)
+bob( 1,100,100,0)
+screenswap
+while(inkey=0):end while
+while(inkey<>0):end while

@@ -1,0 +1,25 @@
+'
+' sdlBasic example Video mpeg:stopmpeg
+'
+'   Name:      stopmpeg.sdlbas
+'   Purpose:    terminate the video play
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+autoback(0)
+directscreen
+if not fileexists("b.mpg") then
+    prints("b.mpg not found:")
+    prints("sorry but for size reason i can't include a mpeg file")
+    prints("i suggest you to copy a mpeg file in this folder and rename as \"b.mpg\"")
+    prints("sorry again: press any key to exit")
+    screenswap
+    waitkey
+    end
+end if
+plaympeg("../b.mpg",1)
+while key(27)=0
+end while
+stopmpeg
+end

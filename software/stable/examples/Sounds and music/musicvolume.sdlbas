@@ -1,0 +1,9 @@
+'
+' sdlBasic example Sounds and music:musicvolume
+'
+'   Name:      musicvolume.sdlbas
+'   Purpose:    change the volume of music (0-128) -1 or none give the current volume
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

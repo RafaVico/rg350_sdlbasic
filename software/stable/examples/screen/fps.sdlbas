@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Screen:fps
+'
+'   Name:      fps.sdlbas
+'   Purpose:    set/unset or give the current frame rate counter (0/1/none)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

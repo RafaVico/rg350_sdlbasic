@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Files:filemove
+'
+'   Name:      filemove.sdlbas
+'   Purpose:    move a file
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+filemove("filemove.sdlbas","movefile.sdlbas")
+a$=dirfirst("./*")
+while a$<>""
+    prints(a$)
+    a$=dirnext
+end while
+filemove("movefile.sdlbas","filemove.sdlbas")
+waitkey

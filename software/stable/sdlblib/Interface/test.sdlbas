@@ -1,0 +1,129 @@
+'
+'test
+'--------------------------------
+setdisplay(580,340,32,1)
+include "interface.sdlblib"
+paper(_back_col):cls
+
+win1=newcontrol(window,0,15,20,320,280,"Dialog1")
+label2=newcontrol(label,win1,105,5,87,20,"menu1")
+menu1=newcontrol(menu,win1,105,25,80,60,0)
+addlist(menu1,"menu1")
+addlist(menu1,"menu2")
+addlist(menu1,"menu3")
+addlist(menu1,"menu4")
+addlist(menu1,"menu5")
+addlist(menu1,"menu6")
+addlist(menu1,"--------")
+addlist(menu1,"exit")
+
+radio1=newcontrol(radio,win1,147,70,144,20,"TextVersion1")
+radio2=newcontrol(radio,win1,147,90,144,20,"TextVersion2")
+label1=newcontrol(label,win1,7,118,284,12,"StaticText")
+
+list1=newcontrol(list,win1,7,6,90,80,0)
+for i= 0 to 15
+    addlist(list1,"prova"+str$(i))
+next
+setparam(list1,_value,3)
+
+button1=newcontrol(button,win1,7,138,87,20,"Button1..fsel..................................................")
+button2=newcontrol(button,win1,105,138,89,20,"Button2..fdir")
+button3=newcontrol(button,win1,203,138,89,20,"Button3")
+b1=newcontrol(button,win1,115,34,29,30,"1")
+b2=newcontrol(button,win1,154,34,28,30,"2")
+b3=newcontrol(button,win1,190,34,28,30,"3")
+b4=newcontrol(button,win1,231,34,28,30,"4")
+check1=newcontrol(check,win1,231,168,40,20,"check1")
+xbutton=newcontrol(button,win1,304,-14,12,12,"X")
+
+frame1=newcontrol(frame,win1,20,168,120,100,"StaticBox1")
+slider1=newcontrol(slider,frame1,10,20,100,10,50)
+textentry1=newcontrol(textentry,frame1,10,42,96,40,"TextEntry1")
+
+gauge1=newcontrol(gauge,win1,170,188,96,0,32)
+
+
+
+draw
+
+
+while(0=0)
+	waitevent(0)
+
+	'press esc for stop the program
+	if key(27)=1 then
+		end
+	end if
+
+
+	' slider / gauge
+	if getparam(slider1,_state)=clicked then
+	    setparam(gauge1,_value,getparam(slider1,_value))
+	    drawobject(gauge1)
+	end if
+
+
+	'list event
+	if getparam(list1,_state)=activated then
+	    setparam(label1,_value,getlist(list1,getparam(list1,_value)))
+	    'refresh
+	end if
+	if getparam(list1,_state)=clicked then
+	    'setparam(label1,_value,getlist(list1,getparam(list1,_value)))
+	    'refresh
+	end if
+
+	'menu event gestion : very similar at list. label event enabled and disabled menu box
+	if getparam(label2,_state)=activated then
+	    'getmenu is the function that interrogate the events control menu
+	    evt=getmenu(menu1)
+	    setparam(label1,_value,evt)
+	    'if you select exit then end program
+	    if evt="exit" then
+		if msgbox("Are you sure?",YesNo,"exit program")=_yes then:end:end if
+	    end if
+	    hidemenu(menu1)
+	    refresh
+	end if
+
+
+	if getparam(xbutton,_state)=activated then
+	    end
+	end if
+
+	if getparam(button1,_state)=activated then
+	    setparam(label1,_value,fsel("./","","","open file"))
+	    setparam(win1,_value,"Title 1")
+	    refresh
+	end if
+
+	if getparam(button2,_state)=activated then
+	    setparam(label1,_value,fdir("./","","","open file"))
+	    setparam(win1,_value,"Title 2")
+	    refresh
+	end if
+
+
+	if getparam(button3,_state)=activated then
+	    setparam(win1,_value,"Title 3")
+	    refresh
+	end if
+
+	if getparam(b1,_state)=activated then
+	    setparam(label1,_value,"pressed 1")
+	    drawobject(label1)
+	end if
+	if getparam(b2,_state)=activated then
+	    setparam(label1,_value,"pressed 2")
+	    drawobject(label1)
+	end if
+	if getparam(b3,_state)=activated then
+	    setparam(label1,_value,"pressed 3")
+	    drawobject(label1)
+	end if
+	if getparam(b4,_state)=activated then
+	    setparam(label1,_value,"pressed 4")
+	    drawobject(label1)
+	end if
+wend

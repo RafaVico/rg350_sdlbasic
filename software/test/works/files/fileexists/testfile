@@ -1,0 +1,27 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  direxists.sdlbas 
+'| date 1/01/2004 
+'|
+'| description: 
+'| verify the existance of a file "testfile" 
+'| if not exist then create
+'| 
+'| keys : esc to exit
+'| 
+'|
+'| bugfix:
+'| 
+'| 
+'| Bug:
+'| 
+'| 
+'|------------------------------------------------------------------------------------------------------------
+setautoback(50)
+if fileexists("testfile") then 
+    prints ("testfile exist")
+else
+    prints ("testfile not exist")    
+    filecopy("fileexists.sdlbas","testfile")
+    prints ("testfile now exist")    
+end if
+waitkey

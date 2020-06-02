@@ -1,0 +1,24 @@
+'
+' sdlBasic example  Bob system:autoupdatebob
+'
+'   Name:      autoupdatebob.sdlbas
+'   Purpose:    set/ unset automatic bobs update at screenswap
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+
+autoupdatebob(0)
+
+bob(1,100,100,1)
+prints("bob not update: press any key for reable the autoupdate of bobs")
+waitkey
+autoupdatebob(1)
+
+prints("now bob are update: press esc for exit")
+waitkey(27)
+
+
+
+

@@ -1,0 +1,45 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  cd.sdlbas
+'| date 13/08/2004
+'|
+'| description:
+'|
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+prints(str$(numdrivescd))
+ prints(namecd(0))
+
+opencd(0,0)
+while indrivecd(0)=0
+    prints("please insert cd")
+    wait(500)
+end while
+prints("tracks:"+str$(trackscd(0)))
+t=0
+while key(27)=0
+    if t>trackscd(0)-1 then: t=trackscd(0)-1 : end if
+    if t<0 then :t=0 :end if
+    prints("traccia:"+str$(t+1))
+    prints( tracktypecd(0,t))
+    prints( tracklengthcd(0,t))
+    prints(" ")
+    playtrackscd(0,t,1)
+
+    while 0=0
+	locate(0,aty-1)
+	prints(" "+str$(curframecd(0)))
+	if key(k_up) then : t=t+1 : exit while : end if
+	if key(k_down) then : t=t-1 : exit while : end if
+	if key(27)then :exit while :end if
+    end while
+    wait(500)
+end while
+stopcd(0)
+ejectcd(0)

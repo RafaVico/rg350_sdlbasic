@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Image manipulation:imagewidth
+'
+'   Name:      imagewidth.sdlbas
+'   Purpose:    give the image n width or error if image n if empty
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+prints("image width="+str$(imagewidth(1)))
+waitkey

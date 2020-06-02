@@ -1,0 +1,4 @@
+C:\devel\basic\sdlBasic\sdlBasicSoftware\samples\screensaver\testoinnevato\testoinnevato.scr
+testoinnevato.scr.sdlbas
+/S
+

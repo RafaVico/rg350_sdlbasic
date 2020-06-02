@@ -1,0 +1,14 @@
+'
+' sdlBasic example  Strings:replace$
+'
+'   Name:      replace$.sdlbas
+'   Purpose:    replace string from source with replace starting at index
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="ciao  ciao"
+prints(a$)
+b$=replace$(a$,"hello")
+prints(b$)
+waitkey

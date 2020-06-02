@@ -1,0 +1,24 @@
+
+
+function bobhit_soft(bob1,bob2)
+	if bob2<>0 then
+		if abs(xbob(bob1)-xbob(bob2))<16 then
+			if abs(ybob(bob1)-ybob(bob2))<16 then
+				return 1
+			end if
+		end if
+	else
+		for i=0 to 256
+			if bob1<>i then
+				if livebob(i)=1 then
+					if abs(xbob(bob1)-xbob(i))<16 then
+						if abs(ybob(bob1)-ybob(i))<16 then
+							return 1
+						end if
+					end if
+				end if
+			end if
+		next
+	end if
+	return 0
+end function

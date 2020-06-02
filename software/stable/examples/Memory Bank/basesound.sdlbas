@@ -1,0 +1,25 @@
+'
+' sdlBasic example Memory Bank:basesound
+'
+'   Name:      basesound.sdlbas
+'   Purpose:    link a  memory bank with soundb bank
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadsound("../wav.wav",1)
+basesound(1,1)
+oldx=0: oldy=128
+for i = 0 to sizebank(1) step ( sizebank(1)/640)
+    y=peek(1,i)
+    if y>=128 then
+	y=128-(255-y)
+    else
+	y=128+y
+    end if
+    x=oldx+1
+    line(oldx,oldy,x,y)
+    oldx=x
+    oldy=y
+next
+waitkey

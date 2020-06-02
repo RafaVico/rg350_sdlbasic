@@ -1,0 +1,460 @@
+'b2cpp
+'----------------------------
+
+common stack[64]
+common sp
+common funcname
+common commonvar
+
+commonvar=""
+funcname=""
+sf$=argv(2)
+'sf$="test.sdlbas"
+df$=left$(sf$,rinstr(sf$,".")-1)+".cpp"
+'------------------------------------------------------------------------------------------------------------------------------------------
+
+function removestack(n)
+    for i=n to sp
+	stack[i]=stack[i+1]
+    next
+    sp=sp-1
+end function
+'------------------------------------------------------------------------------------------------------------------------------------------
+
+function replacediv(a$)
+
+    if left$(a$,1)<>"'" then
+	if instr(a$,chr$(34))=0 then
+	    a$=replacesubstr(a$,":",chr$(10))
+	else
+	    b$=a$
+	    a$=""
+	    for i  = 1 to len(b$)
+		tmp$=mid$(b$,i,1)
+		if tmp$=":" then : tmp$=chr$(10):end if
+		if tmp$=chr$(34) then
+		    ignore=1
+		    while(tmp$<>chr$(34) or ignore<>0)
+			ignore=0
+			a$=a$+tmp$
+			i=i+1
+			tmp$=mid$(b$,i,1)
+			if tmp$="\\" then
+			    a$=a$+tmp$
+			    i=i+1
+			    tmp$=mid$(b$,i,1)
+			    ignore=1
+			end if
+		    end while
+		end if
+		a$=a$+tmp$
+	    next
+	end if
+    end if
+    replacediv=a$
+end function
+'------------------------------------------------------------------------------------------------------------------------------------------
+
+sub head
+    print #2,"//b2c.sdlbas:"+sf$+"->"+df$
+    print #2,"#include \"lib/core.h\""
+    print #2,"#include \"lib/SDLengine.h\""
+    print #2,""
+end sub
+'------------------------------------------------------------------------------------------------------------------------------------------
+
+sub footer
+    print #2,""
+    print #2,""
+    print #2,"// main"
+    print #2,"int cmdArgc;"
+    print #2,"char *cmdArgv[32];"
+    print #2,"int main(int argc,char *argv[]){"
+    print #2,"int r;int r1;int audio;int socket;"
+    print #2,"audio=1;socket=1;"
+    print #2,"/* the command line param */"
+    print #2,"r1=0;"
+    print #2,"for (r=0;r<argc;r++){cmdArgv[r1]=setvar(argv[r]);"
+    print #2,"#ifdef UNIX"
+    print #2,"if (strcasecmp(cmdArgv[r1],\"--nosound\")==0)audio=0;"
+    print #2,"if (strcasecmp(cmdArgv[r1],\"--nosocket\")==0)socket=0;"
+    print #2,"#else"
+    print #2,"if (stricmp(cmdArgv[r1],\"--nosound\")==0)audio=0;"
+    print #2,"if (stricmp(cmdArgv[r1],\"--nosocket\")==0)socket=0;"
+    print #2,"#endif"
+    print #2,"if (cmdArgv[r1][0]!='-')r1++;"
+    print #2,"else free(cmdArgv[r1]);"
+    print #2,"}cmdArgc=r1;"
+    print #2,"initialize(audio,socket);"
+    print #2,"b2cmain();"
+    print #2,"terminate();}"
+end sub
+'------------------------------------------------------------------------------------------------------------------------------------------
+function lctrim(t$)
+    lctrim=lcase$(trim(t$))
+end function
+'------------------------------------------------------------------------------------------------------------------------------------------
+
+function rebuildline()
+	s$=""
+	for i = 1 to sp
+	    s$=s$+" "+stack[i]
+	next
+	rebuildline=s$
+end function
+'------------------------------------------------------------------------------------------------------------------------------------------
+
+function translate(s$)
+
+    'resetta lo stack del parser
+    for i = 0 to 32 :stack[i]="":next
+
+    'sostituzioni che facilitano il parsing o lo annullano prorprio
+    s$=replacesubstr$(s$,"'","//")
+    s$=replacesubstr$(s$,"$","S")
+
+    sp=1
+    for i = 1 to len(s$)
+	a$=mid$(s$,i,1)
+	if a$=chr$(9) then :a$="":end if
+	if a$=chr$(10) or a$=chr$(13) then : a$="" : end if
+	if a$="," then: if stack[sp]<>"" then:sp+=1:end if: stack[sp]=a$: sp+=1: a$="": end if
+	if a$="(" then: if stack[sp]<>"" then:sp+=1:end if: stack[sp]=a$: sp+=1: a$="": end if
+	if a$=")" then: if stack[sp]<>"" then:sp+=1:end if: stack[sp]=a$: sp+=1: a$="": end if
+	if a$="=" then: if stack[sp]<>"" then:sp+=1:end if: stack[sp]=a$: sp+=1: a$="": end if
+	if a$="&" then: if stack[sp]<>"" then:sp+=1:end if: stack[sp]=a$: sp+=1: a$="": end if
+	if a$="+" then: if stack[sp]<>"" then:sp+=1:end if: stack[sp]=a$: sp+=1: a$="": end if
+
+	if a$=chr$(34) then
+	    if stack[sp]<>"" then:sp+=1:end if:
+	    b$=""
+	    while (b$<>chr$(34))
+		stack[sp]=stack[sp]+a$
+		i=i+1
+		a$=mid$(s$,i,1)
+		b$=a$
+	    end while
+	    stack[sp]=stack[sp]+a$
+	    sp+=1
+	    a$=""
+	end if
+
+	stack[sp]=stack[sp]+a$
+	    if a$=" " then : sp+=1
+	    if left$(stack[sp-1],1)=" " then:sp=sp-1:stack[sp]="": end if
+	end if
+    next
+
+    for i = 1 to sp: print str$(i)+":"+stack[i]+":";: next: print
+
+    ' caso c precompiler (#)
+    if left$(s$,1)="#" then
+	translate=s$
+	return
+    end if
+
+    ' caso di comonvar
+    if lctrim(stack[1])="common" then
+	if lctrim(stack[sp-1])="as" then
+	    stack[1]=lctrim(stack[sp])
+	    stack[sp]="":sp-=1
+	    stack[sp]="":sp-=1
+	    s$=rebuildline()+";"
+	else
+	    if right$(trim(stack[2]),1)="S" then
+		stack[1]="string"
+		s$=rebuildline()+";"
+	    else
+		stack[1]="number"
+		s$=rebuildline()+";"
+	    end if
+	end if
+	commonvar=commonvar + s$
+	stack[1]="//common"
+	s$=rebuildline()
+    end if
+
+
+
+    'caso dim "" as type
+    if lctrim(stack[1])="dim" then
+	if lctrim(stack[sp-1])="as" then
+	    stack[1]=lctrim(stack[sp])
+	    stack[sp]="":sp-=1
+	    stack[sp]="":sp-=1
+	    s$=rebuildline()+";"
+	else
+	    if right$(trim(stack[2]),1)="S" then
+		stack[1]="string"
+		s$=rebuildline()+";"
+	    else
+		stack[1]="number"
+		s$=rebuildline()+";"
+	    end if
+	end if
+    end if
+
+    ' caso di &/+ (addizione tra stringhe)
+    for i = sp to 1 step -1
+	if stack[i]="&" then:stack[i]="+":end if
+	if stack[i]="+" then
+	    if stack[i-1]=")" then
+		stack[i]=","+stack[i+1]
+		removestack(i+1)
+		a=i
+		while (stack[a]<>"(" and a<>0) :a=a-1:end while
+		a=a-1
+		stack[a]="add("+stack[a]
+		i=i+1
+	    else
+		stack[i-1]="add(" + stack[i-1]+","+stack[i+1]
+		removestack(i)
+		removestack(i)
+	    end if
+
+	    if stack[i]<>"(" and right$(stack[i-1],1)<>"(" then
+		    stack[i-1]=stack[i-1]+")"
+	    else
+		while stack[i]<>")"
+		    stack[i-1]=stack[i-1]+stack[i]
+		    removestack(i)
+		end while
+		stack[i-1]=stack[i-1]+")"
+	    end if
+	    s$=rebuildline()
+	    if right$(s$,1)<>";" then: s$=s$+";":end if
+	end if
+    next
+
+
+    ' caso classico di funzione che non ritorna nulla
+    if stack[2]="(" then
+	stack[1]=lcase$(stack[1])
+	s$=rebuildline()+";"
+    end if
+
+    ' caso classico di funzione che ritorna un valore
+    if stack[2]="=" then
+	stack[2]="= setvar("
+	stack[3]=lcase$(stack[3])
+	stack[sp]=stack[sp]+")"
+	s$=rebuildline()
+	s$=s$+";"
+    end if
+
+    ' caso if
+    if lctrim(stack[1])="if" then
+	s$=replacesubstr$(s$,"if","if(")
+	s$=replacesubstr$(s$,"=","==")
+	s$=replacesubstr$(s$,"<>","!=")
+	s$=replacesubstr$(s$,"then","){")
+    end if
+
+    ' caso else
+    if lctrim(stack[1])="else" then
+	s$="}else{"
+    end if
+
+    'caso end if
+    if lctrim(stack[1])="end" and stack[2]="if" then
+	s$="}"
+    end if
+
+    'caso while
+    if lctrim(stack[1])="while" then
+	s$=replacesubstr$(s$,"while","while(")
+	s$=replacesubstr$(s$,"=","==")
+	s$=replacesubstr$(s$,"<>","!=")
+	s$=s$+"){"
+    end if
+
+    'caso end while
+    if lctrim(Stack[1])="end" and lctrim(stack[2])="while" then: s$="}":end if
+
+    'caso wend
+    if lctrim(Stack[1])="wend" then: s$="}":end if
+
+    'caso exit while
+    if lctrim(Stack[1])="exit" and lctrim(stack[2])="while" then: s$="break;":end if
+
+
+    'caso for con 6 sp
+    if lctrim(stack[1])="for" and sp=6 then
+	s$="for("+stack[2]+"="+stack[4]+";"+stack[2]+"<="+stack[6]+";"+stack[2]+"++){"
+    end if
+
+    'caso for con 8 sp
+    if lctrim(stack[1])="for" and sp=8 then
+	if val(stack[8])>0 then
+	    s$="for("+stack[2]+"="+stack[4]+";"+stack[2]+"<="+stack[6]+";"+stack[2]+"+="+stack[8]+"){"
+	else
+	    s$="for("+stack[2]+"="+stack[4]+";"+stack[2]+">="+stack[6]+";"+stack[2]+"+="+stack[8]+"){"
+	end if
+    end if
+
+    'caso next
+    if lctrim(Stack[1])="next" then: s$="}":end if
+
+
+' caso sub
+    if lctrim(stack[1])="sub" then
+	stack[1]="void "
+	stack[2]=lcase$(stack[2])
+	s$=rebuildline()
+	if right$(trim(s$),1)<>")" then
+	    s$=s$+"()"
+	else
+	    '(a as int,c as char)
+	end if
+	s$=s$+"{"
+    end if
+
+    ' caso end sub
+    if lctrim(Stack[1])="end" and lctrim(stack[2])="sub" then: s$="}":end if
+
+    ' caso exit sub
+    if lctrim(Stack[1])="exit" and lctrim(stack[2])="sub" then: s$="return;":end if
+
+
+    ' caso function
+    if lctrim(stack[1])="function" then
+	stack[2]=lcase$(stack[2])
+	funcname=lcase$(stack[2])
+	stack[1]=stack[sp]
+	sp=sp-2
+	s$=rebuildline()
+	if right$(lctrim(s$),1)<>")" then :s$=s$+"()":end if
+	s$=s$+"{ "+stack[1]+" _"+funcname+";"
+    end if
+
+    ' end function
+    if lctrim(Stack[1])="end" and lctrim(stack[2])="function" then: s$= "return _" + funcname + " ;}":funcname="":end if
+
+    ' exit function
+    if lctrim(Stack[1])="exit" and lctrim(stack[2])="function" then: s$= "return _" + funcname + " ;":end if
+
+    ' il valore ritornato da una funzione e' il nome con un _ davanti
+    if lctrim(Stack[1])=funcname and funcname<>""then
+	Stack[1]="_"+funcname
+	s$=rebuildline()+";"
+    end if
+
+    ' main non serve
+    if lctrim(stack[1])="main" then
+	stack[1]="//main "
+	s$=rebuildline()
+    end if
+
+
+    'post replace
+    s$=replacesubstr$(s$,"[","[(int)")
+
+
+
+
+    translate=s$
+end function
+'------------------------------------------------------------------------------------------------------------------------------------------
+
+sub main
+
+
+
+'------------------------------------------------------------------------------------------------------------------------------------
+' stage 1
+' one operation for line
+    open sf$ for input as #1
+    open sf$+".1" for output as #2
+    while eof(1)=0
+	file input #1,a$
+	if left$(lctrim(a$),7)="include" then
+	    incfile$=mid$(a$,instr(a$,chr$(34))+1)
+	    incfile$=left$(incfile$,instr(a$,chr$(34))-2)
+
+	    open incfile$ for input as 3
+	    while eof(3)=0
+		file input #3,a$
+		a$=replacediv(a$)
+		print #2,a$
+	    end while
+	    a$=""
+	end if
+	a$=replacediv(a$)
+	print #2,a$
+    end while
+    close 2
+    close 1
+'-----------------------------------------
+'stage 2 riordino rutine
+
+    open sf$+".2" for output as #2
+    'preleva tutte le dir e le scrive in testa
+    open sf$+".1" for input as #1
+    while eof(1)=0
+	file input #1,ls$
+	if left$(lctrim(ls$),8)="function" or left$(lctrim(ls$),3)="sub" then
+	    while left$(lctrim(ls$),12)<>"end function" and left$(lctrim(ls$),7)<>"end sub"
+		if eof(1) then:exit while:end if
+		print #2,ls$
+		file input #1,ls$
+	    end while
+	    print #2,ls$
+	end if
+    end while
+    close 1
+
+    'preleva tutto il codice e lo mette in coda
+    print #2,""
+    print #2,"sub b2cmain"
+    open sf$+".1" for input as #1
+    while eof(1)=0
+	file input #1,ls$
+	if left$(lctrim(ls$),8)="function" or left$(lctrim(ls$),3)="sub" then
+	    while left$(lctrim(ls$),12)<>"end function" and left$(lctrim(ls$),7)<>"end sub"
+		if eof(1) then:exit while: end if
+		file input #1,ls$
+	    end while
+	else
+	    print #2,ls$
+	end if
+    end while
+    close 1
+    print #2,"end sub"
+    print #2,""
+    close 2
+
+
+'-----------------------------------------
+'stage 3 costruzione sintassi
+
+    open sf$+".2" for input as #1
+    open sf$+".3" for output as #2
+
+    while eof(1)=0
+	file input #1,ls$
+	ld$=translate(ls$)
+	print #2,ld$
+    end while
+
+    close 2
+    close 1
+'-----------------------------------------
+'stage 4 ristrutturazione interna
+    open sf$+".3" for input as #1
+    open df$ for output as #2
+    head()
+    print #2,commonvar
+    while eof(1)=0
+	file input #1,ls$
+	print #2,ls$
+    end while
+    footer()
+    close 2
+    close 1
+
+    kill (sf$+".1")
+    kill (sf$+".2")
+    kill (sf$+".3")
+
+end sub
+main

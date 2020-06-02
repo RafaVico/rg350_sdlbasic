@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:IsServerReady
+'
+'   Name:      IsServerReady.sdlbas
+'   Purpose:    True/False if server is sending data    
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

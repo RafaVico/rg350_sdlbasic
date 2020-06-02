@@ -1,0 +1,32 @@
+'
+' sdlBasic example Text draw:text
+'
+'   Name:      text.sdlbas
+'   Purpose:    print the text testo  on current screen with s size The type of render can be default=solid 1=Shaded 2=blended
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+a$="   ciao   "
+
+text(100,100,16,a$)
+text(100,120,32,"hello")
+text(101,155,8,"sdlBasic")
+
+ink(rgb(128,128,128))
+text(102,202,32,"sdlBasic")
+ink(rgb(255,255,255))
+text(100,200,32,"sdlBasic")
+
+ink(rgb(128,0,0))
+text(402,202,32,"sdlBasic")
+ink(rgb(255,0,0))
+text(400,200,32,"sdlBasic")
+
+
+
+locate(1,1):prints("press any key to exit")
+waitkey

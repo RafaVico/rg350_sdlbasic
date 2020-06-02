@@ -1,0 +1,214 @@
+' KKK
+' (C) Copyleft 2005 gsan92 ( gsan92 at libero dot it )
+' THIS GAME IS FREE SOFTWARE AND IS DISTRIBUTED UNDER THE GNU GPL 2
+' See the file COPYING for details
+'
+' Sonic and indica characters are (C) SEGA
+'
+' Developed without any windows program. Developed with Linux!
+' See RESOURCES for informations on the data
+'
+' No copyright infringiment is intended
+
+' wait factor
+' Set this to 10.5 for normal speed (default)
+' 9.3 for high speed
+' 15 for low speed
+fwait=10.5
+
+jumped=0
+bumps=0
+
+
+sub load_game_data
+loadimage("images/back.png",1)
+loadimage("images/shadow_standing.gif",3)
+loadimage("images/shadow_run0.gif",4)
+loadimage("images/shadow_run1.gif",5)
+loadimage("images/shadow_run2.gif",6)
+loadimage("images/shadow_run3.gif",7)
+loadimage("images/shadow_run4.gif",8)
+loadimage("images/lshadow_standing.gif",11)
+loadimage("images/lshadow_run0.gif",12)
+loadimage("images/lshadow_run1.gif",13)
+loadimage("images/lshadow_run2.gif",14)
+loadimage("images/lshadow_run3.gif",15)
+loadimage("images/lshadow_run4.gif",16)
+loadimage("images/tails_run0.gif",17)
+loadimage("images/a_tailsw.gif",19)
+loadsound("sounds/falling.wav",1)
+loadsound("sounds/sonkill.wav",2)
+loadsound("sounds/applause.wav",3)
+loadimage("images/ground.gif",99)
+loadmusic("musics/syntax.mod")
+playmusic(-1)
+end sub
+
+load_game_data
+colorkey(-1)
+dim sdir="right"
+dim sx=600
+dim sy=395
+dim tx=0
+dim ty=395
+dim score=10
+setdisplay(640,480,8,1)
+screen(0)
+setcaption("KKK")
+setautoback(90)
+ink(rgb(0,0,0))
+pasteicon(0,0,1)
+textrender("KKK - Press Enter to start",16,2)
+sprite(500,1,1,2)
+
+while key(13)=0
+wend
+
+deletesprite(500)
+
+function draw_shadow(a)
+if sdir="left" then
+if a="standing" then
+sprite(1,sx,sy,11)
+end if
+if a="run" then
+for x=1 to 5 
+sprite(1,sx,sy,11+x)
+wait(fwait-7.5)
+next
+end if
+end if
+if sdir="right" then
+if a="standing" then
+sprite(1,sx,sy,3)
+end if
+if a="run" then
+for x=1 to 5 
+sprite(1,sx,sy,3+x)
+wait(fwait-7.5)
+next
+end if
+end if
+end function
+
+sub move_directions
+if key(K_LEFT) then
+sdir="left"
+sx=sx-3
+draw_shadow("run")
+end if
+if key(K_RIGHT) then
+sdir="right"
+sx=sx+3
+draw_shadow("run")
+end if
+end sub
+
+sub jump
+jumped=1
+high=3.5
+for x=1 to high*4
+sy=sy-x
+draw_shadow("standing")
+wait(fwait-3)
+next
+for x=1 to high*4
+sy=sy+x
+draw_shadow("standing")
+move_directions
+next
+end sub
+
+sub check_move
+move_directions
+colorkey(-1)
+if sx<1 then
+sx=1
+end if
+if key(K_UP) then
+jump
+end if
+if sx>615 then
+sx=615
+end if
+wait(3)
+draw_shadow("standing")
+end sub
+
+sub make_tails
+sprite(4,tx,ty,17)
+wait(1)
+tails_dir=1
+if tails_dir=1 then
+for x=1 to 200
+tx=tx+0.01
+if tx>615 then
+tx=-25
+end if
+next
+end if
+end sub
+
+sub game_over_sequence
+deletesprite(87)
+playsound(1,1)
+ink(rgb(255,0,0))
+textrender("Game over!",16,18)
+sprite(5,1,1,18)
+fademusic(3)
+screenfade(0,3)
+print "Tails killed YOU!!!"
+wait(5000)
+end
+end sub
+
+sub check_collide
+if spritehit(4,1)=1 then
+if jumped=1 then
+bumps=bumps+1
+tx=-60
+playsound(2,1)
+jump
+else
+game_over_sequence
+end if
+end if
+jumped=0
+end sub
+
+' ground tiles measure 64x64
+gx=-64
+for x=1 to 10
+gx=gx+64
+pasteicon(gx,418,99)
+next
+draw_shadow("standing")
+textrender("Bumps:",16,200)
+pasteicon(1,1,200)
+
+while key(27)=0
+ink(rgb(0,0,0))
+textrender(bumps,16,201)
+sprite(87,70,1,201)
+check_move
+make_tails
+check_collide
+if key(K_2) then
+print "Suicide!"
+deletesprite(1)
+sprite(4,tx,ty,19)
+game_over_sequence
+end if
+if bumps=15 then
+ink(rgb(255,0,0))
+textrender("You won!",16,19)
+playsound(3,1)
+deletesprite(4)
+sprite(86,1,1,19)
+fademusic(3)
+screenfade(0,3)
+print "Shadow wins!"
+wait(5000)
+end
+end if
+wend

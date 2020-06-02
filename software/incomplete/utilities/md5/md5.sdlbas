@@ -1,0 +1,31 @@
+'sdlbasic caccia all'md5
+
+function md5(c$)
+  shell("c:/server/php/php.exe -q md5.php " +c$ +" >out.txt")
+  open "out.txt" for input as 1
+  input #1,x
+  close 1
+
+  'x=1
+  'for i = 1 to len(c$)
+  '  x=x*asc(mid$(c$,i,1))
+  'next
+  md5=x
+end function
+
+'la chiave cifrata
+'md5$="21232f297a57a5a743894a0e4a801fc3"
+md5$=md5("pippo")
+
+p$=""
+pc$=""
+while md5$ <> p$
+  pc$=inputs("scegli la password:",pc$)
+  p$=md5(pc$)
+  if p$ < md5$ then: prints("troppo basso"):end if
+  if p$ > md5$ then: prints("troppo alto"):end if
+end while
+prints (p$)
+prints (md5$)
+prints ("la chiave  e':"+pc$)
+waitkey(27)

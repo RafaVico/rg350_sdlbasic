@@ -1,0 +1,17 @@
+rm ../*.zip 
+rm ../*.exe
+rm ../*.deb 
+rm ../*.tar.gz 
+
+./mk-linux-targz	    
+./mk-windows-zip  
+./mk-gp2x-zip   
+./mk-linux-deb  
+./mk-windows-installer  
+./mk-source-targz
+./mk-software-zip
+./test-install
+cd ..
+
+
+

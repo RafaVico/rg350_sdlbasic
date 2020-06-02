@@ -1,0 +1,18 @@
+'
+' sdlBasic example Joystick:numaxesjoystick
+'
+'   Name:      numaxesjoystick.sdlbas
+'   Purpose:    get the number of joystick axes
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+while key(27)=0
+    locate (1,1)
+    if numjoysticks()>0 then
+	prints("numaxesjoystick(0) return:"+str$(numaxesjoystick(0)))
+    else
+	prints("not joystick found")
+    end if
+    waitvbl()
+end while

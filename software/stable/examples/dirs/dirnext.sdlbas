@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Dirs:dirnext
+'
+'   Name:      dirnext.sdlbas
+'   Purpose:    returns next entry in path dir
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$=dirfirst("./")
+while a$<>""
+    prints(a$)
+    a$=dirnext
+end while
+waitkey

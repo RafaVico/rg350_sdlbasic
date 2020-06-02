@@ -1,0 +1,24 @@
+'
+' sdlBasic example  Files:writebyte
+'
+'   Name:      writebyte.sdlbas
+'   Purpose:    write a byte in the file
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+open "myfile" for output as 1
+    writebyte(1,asc("c"))
+    writebyte(1,asc("i"))
+    writebyte(1,asc("a"))
+    writebyte(1,asc("o"))
+    writebyte(1,13)
+close 1
+
+open "myfile" for input as 1
+    while eof(1)=0
+	file input #1,a$
+	prints(a$)
+    end while
+close 1
+waitkey

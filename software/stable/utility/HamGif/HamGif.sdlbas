@@ -1,0 +1,27 @@
+'--- HamGif - more amiga nostalgy =)
+'--- An 'useless' test - simulating amiga-Ham6 with a gif picture
+'--- This should display 4096 colourspace pic from a 64 colour .gif  
+'--- Picture got from an Aminet slideshow 
+   xedge=640 : yedge=400
+    setdisplay(xedge,yedge,32,0):paper(8^8-1):ink(0):pen(0):cls
+   ScreenOpen (1,320,400,0,0,0,0,0)
+
+'    Loadimage("_4bhamcln.gif",1): pasteicon(0,0,1)
+    Loadimage("RinozHam6.gif",1): pasteicon(0,0,1)
+for y=0 to 399:ro=0:go=0:bo=0
+  for x=0 to 319
+    Screen(1)
+      c=point(x,y)
+        ri=bitwiseand((int(c/65536)),0xFF)
+        gi=bitwiseand((int(c/256  )),0xFF)
+        bi=bitwiseand(c,0xFF)
+    Screen (0)
+      if (ri=0) and (gi=0) then: bo=bi:end if
+      if (ri=0) and (bi=0) then: go=gi:end if
+      if (gi=0) and (bi=0) then: ro=ri:end if
+      if ((ri<>0) and (gi<>0) and (bi<>0)) then
+        ro=ri:go=gi:bo=bi:end if
+    ink(rgb(ro,go,bo)):dot(x*2,y):dot(x*2+1,y)    
+         if key(27) then:end:end if
+ next:next
+   while (0=0): if key(27) then:end:end if:Wend 

@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Memory Bank:baseimage
+'
+'   Name:      baseimage.sdlbas
+'   Purpose:    link a memorybank from a imagebank bitmap access
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

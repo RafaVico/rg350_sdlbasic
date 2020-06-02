@@ -1,0 +1,28 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  chdir.sdlbas 
+'| date 1/01/2004 
+'|
+'| description: 
+'| change the current directory
+'| keys : esc to exit
+'| 
+'|
+'| bugfix:
+'| 
+'| 
+'| Bug:
+'| 
+'| 
+'|------------------------------------------------------------------------------------------------------------
+setautoback(50)
+'show in stdoutput current dir
+shell("cd")
+print "current folder is:"+dir()
+prints ("current folder is:"+dir())
+prints("press any key")
+waitkey
+chdir("test")
+shell("cd")
+print "current folder is:"+dir()
+prints("current folder is:"+dir())
+waitkey(27)

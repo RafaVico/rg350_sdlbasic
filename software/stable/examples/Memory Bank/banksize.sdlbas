@@ -1,0 +1,9 @@
+'
+' sdlBasic example Memory Bank:banksize
+'
+'   Name:      banksize.sdlbas
+'   Purpose:    return the bank memory size (if omitted return the value of current bank)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

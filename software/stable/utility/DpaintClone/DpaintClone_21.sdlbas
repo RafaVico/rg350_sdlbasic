@@ -1,0 +1,387 @@
+'- Bugs: 1- Weird foreground/background colour preview error... (wdoz only?)
+'-           selecting other brush or tool also messes it
+'-       2- saturation from spray is square, and not round
+'-       3- weird behaviour on polyline and freehandline
+'- ToDo:
+'-       1- Loading palette from Gimp format (easy)
+'-       2- Empty and filled ellipses, and rotating them
+'-       3- Effectively choosing default brushes
+'-       4- Writing form texts with DPaint default font
+'-       5- Usable menu (starting one)
+'-       6- Some forms (loading and saving pics, palette, stencil, etc.)
+'-       7- logical, spare and undo screens
+'-       8- Zoom and Grid
+'-       9- Saving and loading pics
+'-      10- Display size chooser
+'-      11- GrWriting for realtime preview on editing (really needed)
+
+xed=320:yed=240:wdwd=0
+
+'-------------------------------------------------------------
+'- variables and arrays
+'-------------------------------------------------------------
+
+flaggrab=0:flagtext=0:flaggrid=0:flagsimm=0:flagzoom=0
+defbrush=1:currtool=11:currslce=1:palpage=0:sprydiam=16
+clrik=5:clrpp=3:editarea=0
+
+'-------------------------------------------------------------
+'- functions
+'-------------------------------------------------------------
+
+function mousebutton_bug()
+'- bug: sdlbasic core bug doesn't allow to get simultaneous mouse buttons pressed
+      tmpr=mousebutton
+   if mousebutton=3 then:tmpr=4:end if
+      mousebutton_bug=tmpr
+ end function
+
+sub bar_bug(x1,y1,x2,y2)
+   if x2<x1 then: tmpr=x1:x1=x2:x2=tmpr:end if
+   if y2<y1 then: tmpr=y1:y1=y2:y2=tmpr:end if
+   for tmpr=y1 to y2:line(x1,tmpr,x2,tmpr):next
+ end sub
+
+function mousezonedp(x,y,w,h)
+      tmpr=0:xq=xmouse-x:yq=ymouse-y
+   if (yq>0) and (xq>0) and (xq<=w) and (yq<=h) then: tmpr=1
+      if (xq+yq)>((w+h)/2) then:tmpr=2:end if
+    end if
+      mousezonedp=tmpr
+ end function
+
+function hexvl(a$)
+     t1=len(a$):tmpr=0
+   for t2=1 to t1
+      tq$=mid$(a$,t2,1)
+      e=asc(ucase$(tq$))
+      tmpr=(tmpr*16)+(abs(((e>=48 and e<=57)*(e-48))+((e>=65 and e<=70)*(e-55))))
+    next
+      hexvl=tmpr
+ end function
+
+sub BytePlotT(x,y,v,i)
+    ink(i)
+  for z=0 to 7:z2=7-z
+    if (((int(v/(2^z2)))mod 2) and (2^z2)) then
+      dot(x+z,y): end if:next
+ end sub
+
+sub bitmapbar(x,y,i,c,h$)
+     hln=1:rfc=0:pty=0
+   while hln<len(h$)
+       zv=hexvl(mid$(h$,hln,2))
+      BytePlotT(x+(rfc*8),y+pty,zv,i)
+      hln=hln+2
+      rfc=rfc+1:if rfc>(c-1) then:rfc=rfc-(c-0):pty=pty+1:end if
+    wend
+ end sub
+
+sub cubicurve(xqq0,yqq0,xqq1,yqq1,xqq2,yqq2)
+  xqq4=(xqq1+xqq0)/2:yqq4=(yqq1+yqq0)/2
+   xd45=xqq2-xqq4:yd45=yqq2-yqq4
+   xd34=xd45*2.414328:yd34=yd45*2.414328
+   xqq3=xqq4-xd34:yqq3=yqq4-yd34
+   xqq5=xqq4+xd34:yqq5=yqq4+yd34
+  xr1=xqq5-xqq0:yr1=yqq1-yqq5
+   xr2=xqq1-xqq5:yr2=yqq3-yqq1
+    stepv=30
+  for i=0 to stepv
+      ir=i*(1.570796/stepv)
+      xsn=(xr1*sin(ir))-(xr2*cos(ir))
+        ycs=(yr1*(cos(ir)*-1))-(yr2*sin(ir))
+      xi=xqq3+xsn:yi=yqq3+ycs
+      if i=0 then:xold=xi:yold=yi:end if
+      line (xold,yold,xi,yi): xold=xi:yold=yi
+   next
+ end sub
+
+'------------------------------------------------------
+'- palbdep : bitdepth of the available palette on toolbox (6=64, 5=32, 4=16, etc.)
+
+palbdep=6:aramt=32+(2^palbdep)
+
+ndvx=2^((palbdep-1)\2):ndvy=2^(1+(palbdep\2))
+dim mzx[aramt],mzy[aramt],mzw[aramt],mzh[aramt],slcd[aramt]
+dim bknd$[aramt],bslc$[aramt],brbt$[aramt]
+
+include"mousezonedescriptions.sdlblib"
+include"dpaint3ToolbarButtonIcons.sdlblib"
+include"dpaint4palette256c.sdlblib"
+
+'- mousezones - default brushes
+ slcd[12]=1:slcd[17]=1:slcd[18]=1:slcd[19]=1:slcd[20]=1
+ mzx[ 1]=  0:mzy[ 1]= 0:mzw[ 1]= 4:mzh[ 1]= 8
+  mzx[ 2]= 4:mzy[ 2]= 0:mzw[ 2]= 4:mzh[ 2]= 8
+  mzx[ 3]= 8:mzy[ 3]= 0:mzw[ 3]= 7:mzh[ 3]= 8
+  mzx[ 4]=15:mzy[ 4]= 0:mzw[ 4]= 9:mzh[ 4]= 8
+ mzx[ 5]=  0:mzy[ 5]= 8:mzw[ 5]= 7:mzh[ 5]= 6
+  mzx[ 6]= 7:mzy[ 6]= 8:mzw[ 6]= 6:mzh[ 6]= 6
+  mzx[ 7]=13:mzy[ 7]= 8:mzw[ 7]= 5:mzh[ 7]= 5
+  mzx[ 8]=18:mzy[ 8]= 8:mzw[ 8]= 6:mzh[ 8]= 5
+ mzx[ 9]=  0:mzy[ 9]=14:mzw[ 9]=12:mzh[ 9]= 7
+  mzx[10]=12:mzy[10]=13:mzw[10]=12:mzh[10]= 8
+
+'- mousezones - tools
+ for y=0 to 8:for x=0 to 1
+    n=11+x+(y*2)
+    mzx[ n]= x*12:mzy[ n]=21+(y*12):mzw[ n]=12:mzh[ n]=12
+  next:next
+
+palypos=21+(12*8)+12
+ mzx[29]= 0:mzy[29]=palypos:mzw[29]=24:mzh[29]=12
+  mzx[30]=0:mzy[30]=yed-12:mzw[30]=8:mzh[30]=12
+  mzx[31]=16:mzy[31]=yed-12:mzw[31]=8:mzh[31]=12
+
+'- mousezones - palette
+
+palypos=21+(12*8)+12+12:palysiz=yed-12-palypos
+pxcelsz=24/ndvx:pycelsz=palysiz/ndvy
+
+for x=0 to ndvx-1:for y=0 to ndvy-1
+   mzid=y+(x*ndvy)+32
+   mzx[mzid]= (x*pxcelsz):mzy[mzid]=palypos+(y*pycelsz)
+   mzw[mzid]=pxcelsz:mzh[mzid]=pycelsz
+ next:next
+
+'- starting
+
+setdisplay (xed,yed,32,wdwd):changemouse(2)
+paper(8^8-1):ink(0):pen(0):cls
+tbofx=xed-24
+
+'- draw toolbox
+
+sub drawtoolbox
+     ink(8^8-1):bar_bug(320-24,0,320,240):ink(0)
+   for i=1 to 10
+     if i<>defbrush then
+       bitmapbar(mzx[i]+tbofx,mzy[i],0x000000,2,hbdmp$[i,0])
+     else
+       bitmapbar(mzx[i]+tbofx,mzy[i],0x000000,2,hbdmp$[i,1])
+     end if
+    next
+   for i=11 to 20
+     if i<>currtool then
+       bitmapbar(mzx[i]+tbofx,mzy[i],0x000000,2,hbdmp$[i,0])
+     else
+       bitmapbar(mzx[i]+tbofx,mzy[i],0x000000,2,hbdmp$[i,currslce])
+     end if
+    next
+   if flaggrab=0 then
+      bitmapbar(mzx[21]+tbofx,mzy[21],0x000000,2,hbdmp$[21,0])
+    else
+      bitmapbar(mzx[21]+tbofx,mzy[21],0x000000,2,hbdmp$[21,1])
+    end if
+   if flagtext=0 then
+      bitmapbar(mzx[22]+tbofx,mzy[22],0x000000,2,hbdmp$[22,0])
+    else
+      bitmapbar(mzx[22]+tbofx,mzy[22],0x000000,2,hbdmp$[22,1])
+    end if
+   if flaggrid=0 then
+      bitmapbar(mzx[23]+tbofx,mzy[23],0x000000,2,hbdmp$[23,0])
+    else
+      bitmapbar(mzx[23]+tbofx,mzy[23],0x000000,2,hbdmp$[23,1])
+    end if
+   if flagsimm=0 then
+      bitmapbar(mzx[24]+tbofx,mzy[24],0x000000,2,hbdmp$[24,0])
+    else
+      bitmapbar(mzx[24]+tbofx,mzy[24],0x000000,2,hbdmp$[24,1])
+    end if
+   if flagzoom=0 then
+      bitmapbar(mzx[25]+tbofx,mzy[25],0x000000,2,hbdmp$[25,0])
+    else
+      bitmapbar(mzx[25]+tbofx,mzy[25],0x000000,2,hbdmp$[25,1])
+    end if
+   bitmapbar(mzx[26]+tbofx,mzy[26],0x000000,2,hbdmp$[26,0])
+   bitmapbar(mzx[27]+tbofx,mzy[27],0x000000,2,hbdmp$[27,0])
+   bitmapbar(mzx[28]+tbofx,mzy[28],0x000000,2,hbdmp$[28,0])
+   for i=30 to 31
+      bitmapbar(mzx[i]+tbofx,mzy[i],0x000000,2,hbdmp$[i,0])
+    next
+   for i=32 to aramt
+      ink(clrpte[(i-32)+(palpage*64)])
+      bar_bug(mzx[i]+tbofx,mzy[i],mzx[i]+mzw[i]+tbofx,mzy[i]+mzh[i])
+    next
+   ink(clrpte[clrpp])
+    bar(mzx[29]+tbofx,mzy[29],mzx[29]+mzw[29]+tbofx,mzy[29]+mzh[29])
+   ink(clrpte[clrik])
+    bar(mzx[29]+tbofx+6,mzy[29]+3,mzx[29]+mzw[29]+tbofx-6,mzy[29]+mzh[29]-3)
+ end sub
+
+'-------------------------------------------------------
+screenopen(1,320,240,5,8,320-30,240-13,0)
+screen(0)
+
+paper(clrpte[clrpp]):cls
+     drawtoolbox
+     stt=0:stc=0:stp=0:x0=0:y0=0:x1=0:y1=0:x2=0:y2=0:x9=0:y9=0:x8=0:y8=0
+
+while key(k_esc)=0
+  for i=0 to aramt
+   bmousetmp=mousebutton_bug
+   mzdpv=mousezonedp(mzx[i]+tbofx,mzy[i],mzw[i],mzh[i])
+
+if bmousetmp<>0 and mzdpv>0 then
+    if i>=1 and i<=10 then
+       defbrush=i:drawtoolbox
+     end if
+    if i>=11 and i<=20 then
+       currtool=i:currslce=mzdpv:drawtoolbox:end if
+    if i=21 then:flaggrab=1-flaggrab:drawtoolbox:end if
+    if i=22 then:flagtext=1-flagtext:drawtoolbox:end if
+    if i=23 then:flaggrid=1-flaggrid:drawtoolbox:end if
+    if i=24 then:flagsimm=1-flagsimm:drawtoolbox:end if
+    if i=25 then:flagzoom=1-flagzoom:drawtoolbox:end if
+    if i=26 then:end if
+    if i=27 then:end if
+    if i=28 then:paper(clrpte[clrpp]):cls:drawtoolbox:end if
+    if i=30 then
+       palpage=palpage-1
+       if palpage<0 then:palpage=3:end if:drawtoolbox
+     end if
+    if i=31 then
+       palpage=palpage+1
+       if palpage>3 then:palpage=0:end if:drawtoolbox
+     end if
+    if i>=32 and bmousetmp=1 then
+       clrik=(i-32)+(palpage*64):drawtoolbox
+     end if
+    if i>=32 and bmousetmp=4 then
+       clrpp=(i-32)+(palpage*64):drawtoolbox
+     end if
+ end if
+
+   bmousetmp=mousebutton_bug
+
+if bmousetmp<>0 and stt=0 then
+   stt=1
+  if currtool=20 and currslce=1 then
+     screen(1)
+    if stp=0 then
+       stp=1:x9=xmouse:y9=ymouse:x8=x9:y8=y9
+     end if
+     screen(0)
+   end if
+
+
+
+
+
+  if currtool=14 then:stt=3:end if
+   x0=xmousescreen(1) :y0=ymousescreen(1)
+    if bmousetmp=1 then:ink(clrpte[clrik]):end if
+    if bmousetmp=4 then:ink(clrpte[clrpp]):end if
+  if currtool=11 then
+    screen(1)
+    dot(x0,y0)
+    screen(0)
+  end if
+'- bug: saturated result of the spray is weird: should be circle, not square
+  if currtool=16 then
+     screen(1)
+     dot(x0+((rnd(sprydiam)/2)*sin(rnd(1000))),y0+((rnd(sprydiam)/2)*cos(rnd(1000))))
+     screen(0)
+   end if
+ end if
+
+if bmousetmp<>0 and stt=1 then
+   x0t=xmousescreen(1):y0t=ymousescreen(1)
+    if bmousetmp=1 then:ink(clrpte[clrik]):end if
+    if bmousetmp=4 then:ink(clrpte[clrpp]):end if
+    if currtool=11 then
+	screen(1)
+	dot(x0t,y0t)
+	screen(0)
+    end if
+
+  if currtool=12 and currslce=1 then
+    screen(1)
+    if stp=1 then
+     line(x8,y8,x1,y1):x8=x1:y8=y1
+    else
+     stp=1
+    end if
+    screen(0)
+   end if
+
+'- bug: saturated result of the spray is weird: should be circle, not square
+  if currtool=16 then
+    screen(1)
+     dot(x0t+((rnd(sprydiam)/2)*sin(rnd(1000))),y0t+((rnd(sprydiam)/2)*cos(rnd(1000))))
+     screen(0)
+   end if
+ end if
+
+if bmousetmp=0 and stt=3 then
+   stt=2:x2=xmousescreen(1):y2=ymousescreen(1)
+ end if
+
+if bmousetmp<>0 and stt=2 then
+   stt=1
+    if bmousetmp=1 then:ink(clrpte[clrik]):end if
+    if bmousetmp=4 then:ink(clrpte[clrpp]):end if
+ end if
+
+
+if bmousetmp=0 and stt=1 then
+  screen(1)
+     stt=0:x1=xmousescreen(1):y1=ymousescreen(1):r0=sqr(((x0-x1)^2)+((y0-y1)^2))
+  if currtool=13 then:line(x0,y0,x1,y1):end if
+  if currtool=14 then:cubicurve(x0,y0,x2,y2,x1,y1):end if
+  if currtool=15 then:paint(x1,y1):end if
+  if currtool=17 and currslce=1 then:box(x0,y0,x1,y1):end if
+  if currtool=17 and currslce=2 then:bar(x0,y0,x1,y1):end if
+  if currtool=18 and currslce=2 then:fillcircle(x0,y0,r0):end if
+  if currtool=18 and currslce=1 then:circle(x0,y0,r0):end if
+  if currtool=20 and currslce=1 then:line(x8,y8,x1,y1):x8=x1:y8=y1
+     if (abs(x9-x8)+abs(y9-y8))<3 then: stp=0:end if
+   end if
+   screen(0)
+ end if
+
+if key(k_rshift) or key(k_lshift) then
+
+if key(asc("d")) then:currtool=12:currslce=2:drawtoolbox:end if
+if key(asc("r")) then:currtool=17:currslce=2:drawtoolbox:end if
+if key(asc("c")) then:currtool=18:currslce=2:drawtoolbox:end if
+if key(asc("e")) then:currtool=19:currslce=2:drawtoolbox:end if
+if key(asc("w")) then:currtool=20:currslce=2:drawtoolbox:end if
+if key(asc("k")) then:paper(clrpte[clrpp]):cls:drawtoolbox:end if
+
+else
+
+if key(asc("s")) then:currtool=11:drawtoolbox:end if
+if key(asc("d")) then:currtool=12:currslce=1:drawtoolbox:end if
+if key(asc("v")) then:currtool=13:drawtoolbox:end if
+if key(asc("q")) then:currtool=14:drawtoolbox:end if
+if key(asc("f")) then:currtool=15:drawtoolbox:end if
+if key(asc("r")) then:currtool=17:currslce=1:drawtoolbox:end if
+if key(asc("c")) then:currtool=18:currslce=1:drawtoolbox:end if
+if key(asc("e")) then:currtool=19:currslce=1:drawtoolbox:end if
+if key(asc("w")) then:currtool=20:currslce=1:drawtoolbox:end if
+
+' to scroll screen1 the paint area i use the arrow keys
+if timer mod 50 =1then
+    screen(1)
+    if key(K_up) then : offset(xoffset,yoffset -1) :end if
+    if key(K_down) then : offset(xoffset,yoffset +1) :end if
+    if key(K_left) then : offset(xoffset-1,yoffset) :end if
+    if key(K_right) then : offset(xoffset+1,yoffset) :end if
+    screen(0)
+end if
+
+
+'u Undo
+'m Magnify on/off
+'g Grid on/ off
+'/ Symmetry on/off
+
+end if
+
+next:
+wend
+waitkey
+
+
+

@@ -1,0 +1,22 @@
+'
+' sdlBasic example  Sub and function:return
+'
+'   Name:      return.sdlbas
+'   Purpose:    set the result of a function(can substituite funcname=x)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+function myfunction(a)
+	if a=10 then
+		return a
+	end if
+	prints(a)
+	return 0
+end function
+
+for i = 0 to 20
+	prints("return"+str$( myfunction(i)))
+next
+
+waitkey

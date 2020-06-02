@@ -1,0 +1,22 @@
+'
+' sdlBasic example control structures:while wend exit while
+' 
+'   Name:      while.sdlbas
+'   Purpose:   example of if the while wend exit while loop structure
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+i=0
+while inkey <>27
+	i=i+1
+	prints(i)
+	if i>200 then 
+		exit while
+	end if	
+' you can use indifferent wend or end while	
+wend
+'end while

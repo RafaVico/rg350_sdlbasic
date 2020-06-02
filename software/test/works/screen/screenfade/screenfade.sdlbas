@@ -1,0 +1,32 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  fade.sdlbas
+'| date 21/12/2003
+'|
+'| description:
+'| fading in and out  display
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+setdisplay(600,500,32,1)
+loadimage("Vroby.bmp",1)
+loadimage("sdlBasic.png",2)
+
+screenfadein (0,2,10)
+wait(11000)
+screencrossfade(0,1,10)
+wait(11000)
+
+screencrossfade(0,2,10)
+wait(11000)
+screencrossfade(0,1,10)
+wait(11000)
+
+screenfade(0,10)
+wait(11000)
+
+

@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Screen:setautoback
+'
+'   Name:      setautoback.sdlbas
+'   Purpose:    enable / disable automatic screenswap  m=0 disable m>0 wait m milliseconds and perform screenswap m<0 perform the invocate in code screenswap after m
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

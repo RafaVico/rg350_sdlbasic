@@ -1,0 +1,8 @@
+'
+' rectangle test
+'
+
+rectangle(10,10,25,50)
+rectangle(20,20,25,50,1)
+rectangle(30,30,25,50,0)
+waitkey

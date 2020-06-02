@@ -1,0 +1,45 @@
+'
+' menu simple
+'
+'________________________________________________________________________________________________________________
+
+setdisplay(640,480,32,1)
+include "interface.sdlblib"
+
+
+
+menulabel1=newcontrol(label,0,10,0,60,20,"File")
+menufile=newcontrol(menu,0,10,20,100,60,0)
+addlist(menufile,"new")
+addlist(menufile,"--------------------------------------")
+addlist(menufile,"open")
+addlist(menufile,"save")
+addlist(menufile,"--------------------------------------")
+addlist(menufile,"exit")
+
+submenusave=newcontrol(menu,0,50,60,100,10,0)
+addlist(submenusave,"save")
+addlist(submenusave,"save as")
+
+
+
+ink(_back_col):bar(0,0,640,20)
+draw
+while 0=0
+    evt=""
+    waitevent(0)
+    if was(menulabel1,activated) then
+	evt=getmenu(menufile)
+	if evt="save" then
+	    evt=evt+"-"+getmenu(submenusave)
+	    hidemenu(submenusave)
+	end if
+
+	if evt="exit" then
+	    end
+	end if
+	setcaption("menu selected:"+evt)
+	hidemenu(menufile)
+    end if
+
+end while

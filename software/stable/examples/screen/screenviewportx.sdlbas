@@ -1,0 +1,9 @@
+'
+' sdlBasic example Screen:screenviewportx
+'
+'   Name:      screenviewportx.sdlbas
+'   Purpose:    give the x coordinate of current screen viewport
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

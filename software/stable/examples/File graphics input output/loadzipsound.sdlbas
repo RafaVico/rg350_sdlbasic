@@ -1,0 +1,9 @@
+'
+' sdlBasic example File graphics input output:loadzipsound
+'
+'   Name:      loadzipsound.sdlbas
+'   Purpose:    load a wave file in a sound slot n
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

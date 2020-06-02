@@ -1,0 +1,13 @@
+'***************
+'* bmp display *
+'***************
+
+setdisplay(800,600,32,1)
+loadimage("Vroby.jpg",1)
+pasteicon(0,0,1)
+for i =401 to 0 step -1
+screencopy(0,0,0,400,600,0,500+i,0)
+screenswap()
+next
+
+waitkey(27)

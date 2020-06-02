@@ -1,0 +1,24 @@
+'
+' sdlBasic example  Maths:randomize
+'
+'   Name:      randomize.sdlbas
+'   Purpose:    reseed the random number generator
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+randomize(0.12)
+for i =0 to 10
+    n=rnd(50)
+    prints(n)
+next
+prints("in this examples the random number are ever equals because randomize was initialized with 0.12")
+wait(1000)
+randomize(timer)
+for i =0 to 10
+    n=rnd(50)
+    prints(n)
+next
+prints("in this examples the random number are not ever equals because randomize was initialized with timer that change")
+prints("\r press any key to exit")
+waitkey

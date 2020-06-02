@@ -1,0 +1,16 @@
+------------------------------------------------------------------------------------------------------------
+--				baseScreen.sdlbas
+--				author: zoiba
+------------------------------------------------------------------------------------------------------------
+
+setDisplay(320,240,16,1)
+baseScreen(1,0)
+print sizebank(1)
+while not key(k_esc)
+			for i = 0 to (sizeBank(1)-1)step 4
+						loke(1,i,rgb(rnd(255),rnd(255),rnd(255)))
+			next
+			waitVBL
+wend
+freeBase(1)
+waitKey

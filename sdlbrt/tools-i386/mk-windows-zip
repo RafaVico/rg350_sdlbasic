@@ -1,0 +1,23 @@
+# make targz module v0.2
+#-----------------------------
+cd ../
+
+Package=sdlbrt-win32
+Version=$(date --rfc-3339 date)
+Source=win32
+
+rm -rf PACKAGE
+mkdir PACKAGE
+
+cp -R ${Source}/*  PACKAGE
+
+rm ${Package}-${Version}.zip
+
+cd PACKAGE
+zip -r ${Package}-${Version}.zip *
+mv ${Package}-${Version}.zip ..
+cd ..
+
+rm -rf PACKAGE
+
+

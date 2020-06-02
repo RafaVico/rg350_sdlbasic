@@ -1,0 +1,132 @@
+'
+' beast demo scrolling
+'
+common mk_1
+
+mk_1=49
+dim i as integer
+fps(1)
+setdisplay(640,480,32,0)
+dualplayfield(1)
+screenopen(1,100,40,0,0,100,20,3)
+autoback(0)
+autoupdatebob(0)
+mousehide()
+soundchannels(0)
+screen(0)
+
+dim x[21]
+dim y[21]
+dim v[21]
+dim l[21]
+
+loadmusic ("media/b-title.mod")
+
+'setcolorkey(rgb(255,0,255))
+
+loadimage("media/background.png",0)	:x[0]=0:y[0]=0:v[0]=0:l[0]=640
+loadimage ("media/beast01.png",1)	:x[1]=0:y[1]=0:v[1]=0.1:l[1]=640
+
+loadimage("media/blimp.png",2)		:x[2]=displaywidth():y[2]=160:v[2]=0-0.5:l[2]=640
+loadimage("media/blimp_small.png",3)	:x[3]=0:y[3]=100:v[3]=0.1:l[3]=640
+
+loadimage("media/clouds5.png",4)	:x[4]=0:y[4]=200:v[4]=0.5:l[4]=640
+loadimage("media/clouds4.png",5)	:x[5]=0:y[5]=180:v[5]=1:l[5]=640
+loadimage("media/clouds3.png",6)	:x[6]=0:y[6]=140:v[6]=2:l[6]=640
+loadimage("media/clouds2.png",7)	:x[7]=0:y[7]=60:v[7]=3:l[7]=640
+loadimage("media/clouds1.png",8)	:x[8]=0:y[8]=0:v[8]=8:l[8]=640
+
+loadimage("media/mountains.png",9)	:x[9]=0:y[9]=270:v[9]=1:l[9]=640
+loadimage("media/grassall.png",10)	:x[10]=0   :y[10]=430  :v[10]=2    :l[10]=640
+loadimage("media/grass4.png",11)	:x[11]=0:y[11]=460:v[11]=32:l[11]=640
+loadimage("media/grass3.png",12)	:x[12]=0:y[12]=445:v[12]=16  :l[12]=640
+loadimage("media/grass2.png",13)	:x[13]=0:y[13]=435:v[13]=8  :l[13]=640
+loadimage("media/grass1.png",14)	:x[14]=0   :y[14]=430  :v[14]=4   :l[14]=640
+
+loadimage("media/tree.png",15)		:x[15]=0:y[15]=160:v[15]=8:l[15]=640
+loadimage("media/wall.png",16)		:x[16]=0:y[16]=440:v[16]=32:l[16]=640
+
+loadimage("media/moon.png",17)		:x[17]=500:y[17]=40:v[17]=0:l[17]=64
+
+loadimage("media/splash.png",18)	:x[18]=displaywidth():y[18]=0:v[18]=1.5:l[18]=640
+loadimage("media/splash2.png",19)
+
+'start
+
+while y[1]<480
+   sprite(1,x[1],y[1],1)
+    y[1]=y[1]+v[1]
+    v[1]=v[1]+0.01
+    screenswap()
+end while
+pasteicon(0,0,0)
+pastebob(x[17],y[17],17)
+
+playmusic(-1)
+
+
+while inkey()<>27
+
+	i=2
+	x[i]=x[i]-v[i]:if x[i]<-l[i] then : x[i]=displaywidth(): end if
+	sprite((i*2),x[i],y[i],i)
+
+
+	for i=3 to 14
+		x[i]=x[i] - v[i]:if x[i]<-l[i] then : x[i]=0: end if
+		sprite((i*2),x[i],y[i],i)
+		sprite(i*2+1,x[i]+displaywidth(),y[i],i)
+	next
+
+	for i=15 to 16
+		x[i]=x[i]-v[i]:if x[i]<-l[i] then : x[i]=displaywidth(): end if
+		sprite((i*2),x[i],y[i],i)
+	next
+
+
+	x[18]=x[18]-v[18]
+		if x[18]< -l[18]*2 then
+			 v[18]= -v[18]
+		end if
+		if x[18]>l[18] then
+			 v[18]= -v[18]
+		end if
+
+
+	sprite((18*2),x[18],y[18],18)
+	sprite( 18*2 + 1,x[18]+displaywidth(),y[18],19)
+
+
+	if key(mk_1) then
+		loadmusic ("media/b-title.mod")
+		playmusic(-1)
+	end if
+
+	if key(50) then
+		loadmusic ("media/Beast1_2.mod")
+		playmusic(-1)
+	end if
+
+	if key(51) then
+		loadmusic ("media/Beast1_3.mod")
+		playmusic(-1)
+	end if
+
+	if key(52) then
+		loadmusic ("media/Beast1_4.mod")
+		playmusic(-1)
+	end if
+
+	if key(53) then
+		loadmusic ("media/Beast1_5.mod")
+		playmusic(-1)
+	end if
+
+	waitvbl()
+	screenswap()
+	screen (1)
+	locate(0,0)
+	prints("fps: " & str$(fps(-1)))
+	screen(0)
+end while
+

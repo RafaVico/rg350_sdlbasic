@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>exit while</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">exit while
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text"><a href="30while...Wend.html"><span style="font-weight: bold;">while ... 
+					wend</span></a> 文のloop文の実行をやめて<span style="font-weight: bold;"> wend</span>
+			| <span style="font-weight: bold;">end while</span> 文の位置まで飛び越す。
+			<br>
+			<br>
+			<span class="syntax2">
+				<br>
+			</span>
+			<br>
+			<span class="smallTitle">書式: </span>
+			<br>
+			<div style="text-align: left; background-color: rgb(239, 239, 255);">
+				<span class="syntax2">exit while
+					<br>
+				</span>
+			</div>
+			<br>
+			<span class="text"></span><span class="smallTitle">例:
+				<br>
+			</span>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">i=0
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">while i&lt;100
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">&nbsp;&nbsp;&nbsp; i+=1
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">&nbsp;&nbsp;&nbsp; if i&gt;50 then : <span style="font-weight: bold;">
+						exit while</span> : end if &nbsp;' --------&gt; &nbsp; &nbsp; jumps down to 
+					the end of the loop...</span><span class="syntax2">
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">&nbsp;&nbsp; &nbsp;prints(i)
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">end while</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="text code">waitKey &nbsp; &nbsp; &nbsp; &nbsp;' &nbsp; 
+					&lt;----------------------------------- ...here
+					<br>
+				</span>
+			</div>
+			<br>
+			<span style="font-family: Arial,Helvetica,sans-serif;">参照：</span><span class="text">
+				<a href="30while...Wend.html"><span style="font-weight: bold;">while ... wend</span></a>
+			</span>
+	</body>
+</html>

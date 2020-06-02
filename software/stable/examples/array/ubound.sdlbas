@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Array:ubound
+'
+'   Name:      ubound.sdlbas
+'   Purpose:    upperbound of array
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'  BUG: does not work??
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+dim a$[10]
+a$[6]="1"
+prints (ubound(a$[],6))
+prints(a$[10])
+waitkey

@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Control structures:xor
+'
+'   Name:      xor.sdlbas
+'   Purpose:    condition in espression logic xor
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a=1 :b=0
+if a=0 xor b=0 then
+    prints("ok")
+else
+    prints("no")
+end if
+waitkey
+

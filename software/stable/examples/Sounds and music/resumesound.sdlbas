@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Sounds and music:resumesound
+'
+'   Name:      resumesound.sdlbas
+'   Purpose:    unpaused channel c (-1 or none =all)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

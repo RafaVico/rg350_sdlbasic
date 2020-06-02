@@ -1,0 +1,43 @@
+	setdisplay (640,480,8,1)
+	screenopen(0,1000,1000,50,50,500,300,0)
+	spriteclip(60,60,300,250)
+	'
+	'mousehide()
+	loadimage( "alien.gif",1)
+	loadimage( "bg.gif",2)
+	loadmusic( "bladrmx.mod")
+	loadsound( "shot.wav",0)
+	playmusic( -1)
+
+	blt (2,0,0,185,480,0,0)
+	blt (2,0,0,185,480,185,0)
+	blt (2,0,0,185,480,320,0)
+	blt (2,0,0,185,480,320+185,0)
+
+	text (10,10,10,"ciao mondo")
+
+
+	ink(rgb(0,0,0))
+	circle (100,100,50)
+	fillcircle (300,100,50)
+	fillellipse (100,100,50,75)
+	pastebob(10,10,1)
+	screenswap()
+	x = key(27)
+
+
+	while (x=0)
+	    if x=1 then : exit while :end if
+		sprite(1,xmouse()-16,ymouse()-16,1)
+		screenswap()
+
+		x=key(27)
+		print "  xmouse:",xmouse()
+		print "  ymouse:",ymouse()
+		print "  bmouse:",bmouse()
+		if bmouse() then : playsound(0,0) : end if
+		print " - 27:",x
+
+	end while
+
+

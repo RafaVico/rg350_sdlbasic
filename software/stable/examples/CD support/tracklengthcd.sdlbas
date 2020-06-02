@@ -1,0 +1,25 @@
+'
+' sdlBasic example CD support:tracklengthcd
+'
+'   Name:      tracklengthcd.sdlbas
+'   Purpose:    return the length of track t
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+opencd(0,0)
+while indrivecd(0)=0
+    prints("please insert cd")
+    wait(500)
+end while
+prints("tracks:"+str$(trackscd(0)))
+
+t=trackscd(0)-1
+prints("track "+str$(t))
+prints("lenght "+str$(tracklengthcd(0,t)))
+waitkey
+
+stopcd(0)
+ejectcd(0)
+closecd(0)

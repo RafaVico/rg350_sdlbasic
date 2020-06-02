@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Maths:int
+'
+'   Name:      int.sdlbas
+'   Purpose:    convert to 32 bit integer, truncating decimals
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("n=3.14:prints(int(n))")
+n=3.14:prints(int(n))
+prints("press any key")
+waitkey

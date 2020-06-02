@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Maths:bitwisexor
+'
+'   Name:      bitwisexor.sdlbas
+'   Purpose:    return the logic xor of the operands
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints(bitwisexor(127,127))
+prints("press any key to exit")
+waitkey

@@ -1,0 +1,23 @@
+# make targz module v0.2
+#-----------------------------
+cd ../
+
+Package=sdlbrt-gp2x
+Version=$(date --rfc-3339 date)
+Source=open2x
+
+#rm -rf PACKAGE
+mkdir PACKAGE
+
+cp -R ${Source}/*  PACKAGE
+
+rm ${Package}-${Version}.zip
+
+cd PACKAGE
+zip -r ${Package}-${Version}.zip *
+mv ${Package}-${Version}.zip ..
+cd ..
+
+#rm -rf PACKAGE
+
+

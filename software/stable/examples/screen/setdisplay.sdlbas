@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Screen:setdisplay
+'
+'   Name:      setdisplay.sdlbas
+'   Purpose:    open the screen/window in double buffer. 0=screen|1=window|2=resizable
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,9 @@
+windowed=0
+ setdisplay(640,256,32,windowed)
+
+mousehide()
+ loadimage ("Anagram_2c2L2.png",0)
+ pasteicon(0,0,0)
+screen(0)
+
+waitkey

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="en">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>replace$([index], source$, replace$)</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">replace$()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			文字列<span class="syntax">source</span><span class="text">を<span class="syntax"> position</span></span>
+			の位置から置換文字<span class="syntax">replace</span>で置き換えて結果の文字列を戻す。
+			<br>
+			$文字は省略可能 <span style="font-weight: bold;">replace()</span> 。
+			<br>
+			<span class="smallTitle">
+				<br>
+				書式:
+				<br>
+			</span>
+			<div style="text-align: left; background-color: rgb(239, 239, 255);">
+				<span class="syntax2"></span><span class="syntax">string </span><span class="syntax2">
+					= replace$( </span><span class="syntax">position </span><span class="syntax2">, </span>
+				<span class="syntax">source </span><span class="syntax2">, </span><span class="syntax">
+					replace </span><span class="syntax2">)
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(239, 239, 255);">
+				<span class="syntax2"></span><span class="syntax">string </span><span class="syntax2">
+					= replace( </span><span class="syntax">position </span><span class="syntax2">, </span>
+				<span class="syntax">source </span><span class="syntax2">, </span><span class="syntax">
+					replace </span><span class="syntax2">)
+					<br>
+				</span>
+			</div>
+			<span class="smallTitle">
+				<br>
+				例:
+				<br>
+			</span>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="code">a$="ciao ciao" </span><span class="text code">
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="code">print("string: "+a$) </span><span class="text code">
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="code">print( <span style="font-weight: bold;">replace(</span> a$,"bye 
+					bye" <span style="font-weight: bold;">)</span> ) </span><span class="text code">
+					<br>
+				</span>
+			</div>
+			<div style="text-align: left; background-color: rgb(255, 255, 204);">
+				<span class="code">print( <span style="font-weight: bold;">replace(</span> 5, 
+					a$,"bye bye" <span style="font-weight: bold;">)</span> ) </span><span class="text code">
+					<br>
+				</span>
+			</div>
+			<br>
+			<span class="text">参照:<a href="replaceSubstr$%28%29.html"><span style="font-weight: bold;"> 
+						replaceSubstr$()</span></a>&nbsp;</span>
+	</body>
+</html>

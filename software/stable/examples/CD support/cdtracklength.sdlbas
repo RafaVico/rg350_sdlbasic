@@ -1,0 +1,9 @@
+'
+' sdlBasic example CD support:cdtracklength
+'
+'   Name:      cdtracklength.sdlbas
+'   Purpose:    return the length of track t
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

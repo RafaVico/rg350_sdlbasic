@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>paper()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">paper()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			テキスト背景色を設定する。<span class="syntax">color</span>を省略した場合は現在の背景色を返す。 </span><span class="text">
+			<br>
+			<br>
+		</span><span class="syntax2"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">paper( </span><span class="syntax">color</span><span class="syntax2">
+			</span><span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">variable </span><span class="syntax2">
+				= paper()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+		</span><span class="syntax">color</span><span class="text">はUint32で指定する。 <span style="font-weight: bold;">
+				rgb()</span>コマンドでRGBに変換出来る。戻り値はUint32フォーマット。
+			<br>
+		</span><span class="syntax2"></span><span class="syntax2">
+			<br>
+		</span><span class="smallTitle">例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">paper(</span> 16711680 <span style="font-weight: bold;">
+					)</span> </span><span class="syntax2"></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">printS("this is a red background")
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">printS( "background color = Uint32 " &amp; paper() </span>
+			<span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">paper(</span> 0x0000ff&nbsp;<span style="font-weight: bold;">)</span>&nbsp;
+			</span><span class="syntax2"></span><span class="syntax2"></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">printS("this is a blu background")
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">printS( "background color = Uint32 " &amp; paper() </span>
+			<span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">paper(</span> rgb(0,255,0) <span style="font-weight: bold;">
+					)</span> </span><span class="syntax2"></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">printS("this is a green background")
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">printS( "background color = Uint32 " &amp; paper() </span>
+			<span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">waitKey
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

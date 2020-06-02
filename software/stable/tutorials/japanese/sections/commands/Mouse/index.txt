@@ -1,0 +1,14 @@
+CVS
+hideMouse.html
+index.html
+index.txt
+mouseButton.html
+mousePointer().html
+mouseScreenX().html
+mouseScreenY().html
+mouseX.html
+mouseY.html
+mouseZone().html
+placeMouse().html
+sectionName.txt
+showMouse.html

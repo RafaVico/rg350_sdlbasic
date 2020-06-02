@@ -1,0 +1,20 @@
+'
+' sdlBasic example  File graphics input output:savesound
+'
+'   Name:      savesound.sdlbas
+'   Purpose:    save a wave file from sound slot n
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'BUGS:
+' not work well
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+sound=loadsound("../wav.wav")
+playsound(sound,1)
+wait(500)
+savesound("copy.wav",sound)
+copy=loadsound("copy.wav")
+playsound(copy,1)
+prints("press any key to exit")
+waitkey

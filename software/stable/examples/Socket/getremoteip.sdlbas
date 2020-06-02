@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:getremoteip
+'
+'   Name:      getremoteip.sdlbas
+'   Purpose:    return the ip address of remote client connetted
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

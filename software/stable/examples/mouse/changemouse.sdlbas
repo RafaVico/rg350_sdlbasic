@@ -1,0 +1,27 @@
+'
+' changeMouse Pointer
+'
+setdisplay(640,480,32,0)
+
+sub main
+	'mousehide
+
+	line(0,0,310,310)
+	line (0,32,31,0)
+
+	changemouse(1)
+
+	while(inkey<>27)
+		if key(k_4) then :changemouse(1):screen(0):setcolorkey(0):grab(0,0,0,31,31):hotspot(0,2,2):print 43:end if
+		if key(k_3) then :changemouse(3):print 3:end if
+		if key(k_2) then :changemouse(2):print 2:end if
+		if key(k_1) then :changemouse(1):print 1:end if
+		if key(k_0) then :changemouse(0):print 0:end if
+		if bmouse=1 then
+		    dot(xmouse,ymouse)
+		end if
+
+	end while
+end sub
+
+main

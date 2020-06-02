@@ -1,0 +1,41 @@
+
+'- bknd$
+for i=1 to aramt:bknd$[i]="(unknown) ":next
+bknd$[ 1]="DefaultBrush:Dot    ":bknd$[ 2]="DefaultBrush:Round1 "
+bknd$[ 3]="DefaultBrush:Round2 ":bknd$[ 4]="DefaultBrush:Round3 "
+bknd$[ 5]="DefaultBrush:Square4":bknd$[ 6]="DefaultBrush:Square3"
+bknd$[ 7]="DefaultBrush:Square2":bknd$[ 8]="DefaultBrush:Square1"
+bknd$[ 9]="DefaultBrush:Extra1 ":bknd$[10]="DefaultBrush:Extra2 "
+bknd$[11]="Dot                 ":bknd$[12]="StreamLine          "
+bknd$[13]="StraightLine        ":bknd$[14]="CurvedLine          "
+bknd$[15]="Fill                ":bknd$[16]="Spray               "
+bknd$[17]="Rectangle           ":bknd$[18]="Circle              "
+bknd$[19]="Ellipse             ":bknd$[20]="Polygon             "
+bknd$[21]="GetBrush            ":bknd$[22]="Text                "
+bknd$[23]="Grid                ":bknd$[24]="Simmetry            "
+bknd$[25]="Magnify             ":bknd$[26]="ZoomMagnify-        "
+bknd$[27]="UnDo                ":bknd$[28]="Clear               "
+bknd$[29]="PickColour          ":bknd$[30]="BrowsePalette-      "
+bknd$[31]="BrowsePalette+      "
+for i=0 to 63:bknd$[32+i]="ColourFgnd"+str$(i)+" ":next
+
+'- bslc$
+for i=1 to aramt:bslc$[i]="(NotApplyable)":next
+bslc$[12]="Empty/Filled   ":bslc$[17]="Empty/Filled   "
+bslc$[18]="Empty/Filled   ":bslc$[19]="Empty/Filled   "
+bslc$[20]="Empty/Filled   "
+
+'- brbt$
+for i=1 to aramt:brbt$[i]= "(null)          ":next
+for i=1 to 10:brbt$[i]= "Size         ":next
+brbt$[11]="Dot              ":brbt$[12]="FillType         "
+brbt$[13]="Spacing          ":brbt$[14]="Spacing          "
+brbt$[15]="FillType         ":brbt$[16]="Size             "
+brbt$[17]="Spacing/FillType ":brbt$[18]="Spacing/FillType "
+brbt$[19]="Spacing/FillType ":brbt$[20]="Spacing/FillType "
+brbt$[22]="ChooseFont       ":brbt$[23]="GridSettings     "
+brbt$[24]="SimmetrySettings ":brbt$[26]="ZoomMagnify+     "
+brbt$[28]="Clear            ":brbt$[29]="ColourPalette    "
+brbt$[30]="BrowsePalette-   ":brbt$[31]="BrowsePalette+   "
+for i=0 to 63:brbt$[32+i]="ColourBgnd"+str$(i)+" ":next
+

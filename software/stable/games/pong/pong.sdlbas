@@ -1,0 +1,166 @@
+'
+' sdlBasic game: Pong
+'
+'   Name:      pong.sdlbas
+'   Purpose:   very simple clone of pong atari (1977)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+' ball bouncing
+'  audio part
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setdisplay(640,480,32,1)
+autoback(0)
+mousehide
+
+screenopen(7,80,80,0,0,0,0,0)
+for i= 0 to 5
+    ink(rgb(64+(i*18),64+(i*18),64+(i*18)))
+    fillcircle(10-i,10-i,10-i*2)
+next
+grab(1,0,0,20,20)
+screen(0)
+print 0
+screenclose(7)
+
+
+screenopen(7,80,80,0,0,0,0,0)
+ink(rgb(192,0,0))
+bar(10,10,30,60)
+ink(rgb(128,0,0))
+bar(28,10,30,60)
+bar(10,58,30,60)
+ink(rgb(255,0,0))
+bar(10,10,30,12)
+bar(10,10,12,60)
+grab(2,0,0,50,80)
+screen(0)
+screenclose(7)
+
+hotspot(1,1,1)
+hotspot(2,1,1)
+
+while key(27) = 0
+	cls
+	text(50,220,30,"Pong")
+
+	screenswap()
+
+	while key(K_Space)=0 : end while
+    wait(5000)
+
+	punti1=0
+	punti2=0
+	tocca=0
+	while key(27) = 0
+
+		v=2
+
+		if tocca = 0 then
+			x=65
+                else
+			x=610-35
+		end if
+
+
+		dx=0
+		dy=0
+
+		y=240
+		y1=240
+		y2=240
+
+		cls
+		'crea la grafica di partenza
+		ink(rgb(255,255,255))
+		bar(317,0,323,480)
+		bar(0,0,640,5)
+		bar(0,475,640,480)
+
+		text(300,20,20,str$(punti1))
+		text(350,20,20,str$(punti2))
+
+		while key(K_Space)<>0 : end while
+
+		while(0=0)
+                locate (1,1):prints(str$(ysprite(3))+" "+str$(ysprite(1))+" "+str$(ysprite(2)))
+
+			x=x+dx
+			y=y+dy
+
+			'alto basso
+			if y<5 then :dy=-dy:end if
+			if y>455 then :dy=-dy:end if
+
+
+
+			'rimbalzo fisso
+			if  spritehit(3,1) then
+                            dx=v
+                            'dy=-dy
+                            '(ysprite(0)-ysprite(1)/4000)
+			end if
+
+			if  spritehit(3,2) then
+                            dx=-v
+                            'dy=-dy
+                            '(ysprite(2)-ysprite(0))
+			end if
+
+			'punto
+			if x>610 then
+				punti1=punti1+1
+				tocca=1
+				exit while
+			end if
+
+			if x<10 then
+				punti2=punti2+1
+				tocca=0
+				exit while
+			end if
+
+
+			if key(K_space) then
+				if tocca =0 then
+				    dx=v
+				else
+				    dx=-v
+				end if
+				dy=v
+			end if
+
+			if key(27) then :exit while :end if
+
+			if key(asc("a")) then: y1=y1-1:end if
+			if key(asc("z")) then: y1=y1+1:end if
+
+			if key(k_up) then: y2=y2-1:end if
+			if key(k_down) then: y2=y2+1:end if
+
+			'tracciamento
+
+			sprite(3,x,y,1)
+			sprite(1,30,y1,2)
+			sprite(2,610,y2,2)
+
+			screenswap()
+		 end while
+
+		'fine partita?
+		 if punti1>15 then
+			 exit while
+		end if
+
+		if punti1>15 then
+			 exit while
+		end if
+
+
+	end while
+end while

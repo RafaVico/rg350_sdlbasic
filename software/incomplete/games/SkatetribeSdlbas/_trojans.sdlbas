@@ -1,0 +1,24 @@
+windowed=1
+ setdisplay(320,200,16,windowed)
+ autoback(0):mousehide()
+ loadimage ("backgrounds/trojans.png",0)
+screen(0)
+  loadmusic ("tunes/chaos.mod"):playmusic(-1)
+while(0=0)
+  tikcr=ticks
+  y1=0
+   y2=(tikcr/8)mod 200
+   y3=(tikcr/2)mod 200
+
+  blt(0,0,y1,64,200-y1,0,0)
+   blt(0,0,0,64,y1,0,200-y1)
+  blt(0,64,y2,10,200-y2,64,0)
+   blt(0,64,0,10,y2,64,200-y2)
+  blt(0,74,y3,182,200-y3,74,0)
+   blt(0,74,0,182,y3,74,200-y3)
+  blt(0,256,y1,64,200-y1,256,0)
+   blt(0,256,0,64,y1,256,200-y1)
+     screenswap()
+     if key(27) then : end :end if
+end while
+

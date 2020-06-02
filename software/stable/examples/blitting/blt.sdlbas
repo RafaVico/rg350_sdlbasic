@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Blitting:blt
+'
+'   Name:      blt.sdlbas
+'   Purpose:    copy a part of graphics slot in screen
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+
+for y=0 to 480 step 16
+for x=0 to 640 step 16
+    blt(1,0,0,16,16,x,y)
+next
+next
+waitkey

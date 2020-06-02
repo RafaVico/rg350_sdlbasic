@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Sounds and music:musicexists
+'
+'   Name:      musicexists.sdlbas
+'   Purpose:    give 1 if the music is load 0 if empty
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

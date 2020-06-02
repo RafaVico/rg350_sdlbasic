@@ -1,0 +1,18 @@
+'
+' sdlBasic example Joystick:joy
+'
+'   Name:      joy.sdlbas
+'   Purpose:    return joystick boolean coordinate
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+while key(27)=0
+    locate (1,1)
+    if numjoysticks()>0 then
+	prints("joy(0) return:"+str$(joy(0)))
+    else
+	prints("not joystick found")
+    end if
+    waitvbl()
+end while

@@ -1,0 +1,28 @@
+'
+' textarea
+'-----------------------------------
+
+include "interface.sdlblib"
+a$=""
+for i =0 to 1000
+    a$=a$+"bla.. "
+    if i mod 10=9 then
+	a$+=chr$(13)
+    end if
+next
+
+win1=newcontrol(window,0,15,20,320,280,"Dialog1")
+txt1=newcontrol(textarea,win1,1,1,318,278,a$)
+draw
+
+while(0=0)
+	waitevent(0)
+
+
+
+	'press esc for stop the program
+	if key(27)=1 then
+		end
+	end if
+
+end while

@@ -1,0 +1,17 @@
+#!/usr/local/bin/sdlBasic
+' basescreen
+setdisplay(800,600,32,1)
+
+basescreen(1,0)
+print sizebank(1)
+for i = 0 to (sizebank(1)-1)step 4
+    poke(1,i,0)
+    poke(1,i+1,255)
+    poke(1,i+2,255)
+    poke(1,i+3,0)
+
+    wait(1)
+next
+    waitvbl
+freebase(1)
+waitkey

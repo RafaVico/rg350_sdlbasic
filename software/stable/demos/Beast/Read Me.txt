@@ -1,0 +1,27 @@
+i have rewrite this code for testing in sdlBasic
+it's work!!!!
+
+
+Shadow of the Beast Demo
+by cbmeeks of SignalDev.com
+cbm@signaldev.com
+
+
+Press Esc to exit.
+
+This was coded in Blitz Basic (Blitz Plus actually)
+http://www.blitzbasic.com
+
+Tell them cbmeeks sent ya!
+
+I love Amiga!!
+Commodore rocked!
+
+Please visit my sites:
+
+http://www.metroidclassic.com
+http://www.signaldev.com
+
+There are NO popups or banners EVER!!!
+
+-cbmeeks

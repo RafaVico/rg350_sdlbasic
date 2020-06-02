@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>command</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">command$()</span>
+		</div>
+		<br>
+		<span class="text">コマンドラインから渡された引数を返す。 それらはパラメーターとしてプログラムで使用される。 </span><span class="syntax2">
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">numberOfArguments </span><span class="syntax2">
+				= command $ ()
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2"></span><span class="syntax">argument </span><span class="syntax2">
+				= command $ ( n </span><span class="syntax2">) </span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text"></span><span class="text">パラメーターなしの時はコマンドライン上のアーギュメントの数, 
+			数nを指定したときは、コマンドライン上のn番目のアーギュメントを返す。 </span>
+		<br class="text">
+		<span class="text">$マークは省略可<span style="font-weight: bold;"> </span></span>
+		<br>
+		<br>
+		<span class="text"></span><span class="smallTitle">例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">print( command())
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">for i =1 to <span style="font-weight: bold;">command() </span>
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<div style="margin-left: 40px;">
+				<span class="code">print(<span style="font-weight: bold;"> command(</span> i <span style="font-weight: bold;">
+						)</span> ) </span>
+				<br>
+				<span class="code"></span>
+			</div>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">next </span><span class="text code">
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

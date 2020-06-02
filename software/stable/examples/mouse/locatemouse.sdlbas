@@ -1,0 +1,7 @@
+'
+' locate mouse
+
+'
+
+locatemouse(320,240)
+waitkey

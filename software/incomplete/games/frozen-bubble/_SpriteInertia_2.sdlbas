@@ -1,0 +1,25 @@
+xed=640:yed=480:wdwd=0:setdisplay(xed,yed,32,wdwd)
+  paper(0x7f7f7f):cls:mousehide
+function rndfloat:rndfloat=rnd(1000)/1000:end function
+  loadimage("gfx/balls/bubble-7.gif",1007)
+  nbalz=5:ybalcolaccel=1:frmam=50
+
+  dim xbalcolspeed[nbalz],ybalcolspeed[nbalz]
+while 0=0
+
+for i=1 to nbalz:xbalcolspeed[i]=(rndfloat*4)-2:ybalcolspeed[i]=(rndfloat*4)-12:next
+
+     sprite(1,(xed\2)-32,(yed\2)-14,1007)
+     sprite(2,(xed\2)   ,(yed\2)-14,1007)
+     sprite(3,(xed\2)+32,(yed\2)-14,1007)
+     sprite(4,(xed\2)-16,(yed\2)+14,1007)
+     sprite(5,(xed\2)+16,(yed\2)+14,1007)
+
+for j=1 to 12:waitvbl:next
+
+for j=1 to frmam:for i=1 to nbalz
+     sprite(i,xsprite(i)+xbalcolspeed[i],ysprite(i)+ybalcolspeed[i],1007)
+
+     ybalcolspeed[i]=ybalcolspeed[i]+ybalcolaccel
+  next:if key(k_esc)<>0 then:end:end if:waitvbl:next:wend
+

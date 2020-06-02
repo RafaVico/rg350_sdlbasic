@@ -1,0 +1,38 @@
+'
+' sdlBasic example Array: common example
+' 
+'   Name:      common.sdlbas
+'   Purpose:   example of comman declaration of variables  
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+option explicit
+setautoback(50)
+
+common i 
+
+common  array$[100]
+'common  array$[]
+
+for i = 0 to 100
+	array$[i]="record"+str$(i)
+next
+
+
+sub main
+
+	for i = 0 to 100
+		prints(array$[i])
+	next
+	
+	dim  array$[110]
+	for i = 0 to 110
+		array$[i]="record"+str$(110-i)
+	next
+end sub
+
+main
+for i = 0 to 110
+	prints(array$[i])
+next

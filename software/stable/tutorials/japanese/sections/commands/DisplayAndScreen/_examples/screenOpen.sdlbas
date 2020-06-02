@@ -1,0 +1,36 @@
+------------------------------------------------------------------------------------------
+-- screenOpen.sdlbas
+-- author: Zoiba
+------------------------------------------------------------------------------------------
+
+function drawlines(x,y)
+	for i = 0 to 100
+		    ink(rgb(rnd(255),rnd(255),rnd(255)))
+		    line(rnd(x),rnd(y),rnd(x),rnd(y))
+	next
+end function
+
+setdisplay (640,480,32,1)
+dualplayfield(0)
+fps(1)
+
+autoback( 0 )
+
+-- opens lower screen and draw lines
+screenopen(0,640,480,0,0,640,480,0):'lo schermo sotto
+drawlines(640,480)
+
+screenopen(1,1280,480,0,0,640,480,2):'lo schermo sotto
+drawlines(1280,480)
+
+screenopen(2,1280,480,0,0,640,480,2):'lo schermo sotto
+drawlines(1280,480)
+
+autoback( 1 )
+
+for x=1 to 300
+	screen(1):offset(x,0)
+	screen(2):offset(x*2,0)
+	screen(0):	locate(0,0):prints(fps)
+	waitVBL
+next

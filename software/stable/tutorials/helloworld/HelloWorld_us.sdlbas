@@ -1,0 +1,142 @@
+' The sdlBasic programming introduction for Homer Simpson.
+' Mmmm... SDL...
+
+' Let's start with the traditional "hello world" program.
+' As you can see, comment lines in sdlBasic are preceded by the character '(apex)
+' ... but let's back to funny stuff.
+
+
+' Let's start defining a new screen. To do that we will use the setdisplay command.
+' setdisplay(X,Y,depth,type)
+' X and Y are numbers, and his values represents the size of new screen expressed
+' in pixel.
+' depth is a number standing for the amount of colors that new screen will be 
+' capable to display. A depth of 16 allow, for example, a 65536 color display.
+' type is a number that determine how new screen will be displayed: 0=full screen,
+' 1=unresizable window, 2=resizable window
+setdisplay(320,240,16,0)
+
+
+' Let's switch off the screen auto update: we want to do it by hands
+'autoback(0)
+
+
+' let's use the print command so we will watch the command output into the
+' console, it will be very precious later, on debugging time.
+print("Hello World!!!")
+
+
+' Let's pause the program execution so we can read the program output.
+' waitkey command wait until any key will be pressed by the user.
+' wait(n) command wait n milliseconds before the program continue the execution.
+' as you see, you can write more commands on the same line separated by : (colon)
+waitkey: wait(100)
+
+
+'--------------------------------------------------------------------------------
+
+' Now let's use the prints command that, unlike print, work on SDL display,
+' text will be printed out with the default color (white) on the upper left
+' corner of the screen.
+prints("Hello White World")
+
+
+' Let's change the color of next text
+pen(0xffff00)	'<----- hexadecimal representation of red=255 green=255 blue=0
+		'       that is yellow
+
+prints("Hello Yellow World")
+
+pen(0x0000ff) ': red=0 green=0 blue=255 that is blue
+
+
+' let's move next text to a new screen position: x = 10, y = 8.
+locate(10,8)
+
+prints("Hello Blue World")
+
+pen(0x00ff00) ': red=0 green=255 blue=0 that is green
+
+prints("Hello Green World")
+
+pen(0xff00ff) ': red=255 green=0 blue=255 that is pink
+
+prints("Hello Pink World")
+
+
+
+
+
+' printing operations, until now, was executed "behind" the visible screen, in a
+' "virtual" screen called logical screen, and, at this point of the program
+' execution, the output of prints command in not visible yet.
+' Let's show the output by the screenswap() command that, as told by his name,
+' swap logical and physical screens so the contents of logical screen become
+' visible and the current physical screen become the logical one.
+screenswap()
+
+
+' Let's pause sdlBasic again...
+waitkey: wait(100)
+
+
+'--------------------------------------------------------------------------------
+
+' Let's clean up the logical screen.
+cls
+
+
+' Now we use the text command, another command for printing text on SDL screen
+' that let us set kind of font, size and location of the text output.
+text(100,100,20,"Hello Text A")
+text(320,240,20,"Hello Text B")
+text(200,300,20,"Hello Text C")
+
+' Show last output by swapping screens.
+screenswap()
+
+' Let's pause sdlBasic again...
+waitkey
+wait(100)
+
+
+
+'--------------------------------------------------------------------------------
+
+' Now let's jump ahead and use textrender command that "transform" text as image
+' textrender(text, textSize, bankNumber)
+' text is the string that will be printed by the command.
+' textSize is a number representing the size of printed text
+' bankNumber is the number of bank which store the image created by the command.
+textrender("Hello Bob",40,1)
+
+' Now let's move the created image around the screen by using the bob system
+' I will tell you what is a bob in detail in nexts tutorials.
+
+' To do that we need to meet for/next commands that are needed to repeat series
+' of operation a determinate number of times.
+' In that case commands bob(1,x,240,1) and screenswap() will be repeated 741
+' times and the variable x will progressively assume values from -100 to 640
+
+
+' Bob command is used to show rendered text on screen at a determinate
+' coordinates. Let's see how it work: bob(bobN, X, Y, bankN)
+' bobN is a number that identify which bob we are using to show the image.
+' X and Y are numeric values that determinate the position of bob on screen.
+' bankN is the bank number that store the image we want to show.
+' textrender command stored the image into bank 1, so bankN, in this case, will
+' be 1.
+
+' Because we used variable x into bob definition (that increment his values each
+' cycle) bob X position will increase each cycle giving the illusion of movement.
+' Please note that after the bob relocation, we must swap physical and logical screens to show the change for each cycle.
+for x = -100 to 640
+    bob(1,x,240,1)
+    screenswap()
+next
+
+' Let's pause again...
+waitkey: wait(100)
+
+' D'oh!
+' zoiba

@@ -1,0 +1,65 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  multiserverTCP.sdlbas
+'| date 16/07/2004
+'|
+'| description:
+'| a little server multiuser in port 1024
+'| command "Q" sto the server
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+setdisplay (320,100,0,1)
+
+sub main
+    dim client[10]
+    numclient=1
+    server=opensock(1024)
+    if server=0 then:prints("not connetted host "):waitkey:end:end if
+    if server=-1 then:prints("host not exist"):waitkey:end:end if
+    prints("localip is :"+getlocalip()) 'not implemented in windows
+
+    while key(27)=0
+	for i= 1 to numclient
+	    if client[i] =0 then
+		client[i]=acceptsock(server)
+		if client[i] <>0 then
+		    numclient+=1
+		    prints("remote host ip is :"+getremoteip(client[i]))
+		    prints("remote host port is :"+str$(getremoteport(client[i])))
+		    writelinesock(client[i],"welcome in 1024 sdlBasic server ")
+		    writelinesock(client[i],"send Q caracter for shootdown this server ")
+		end if
+	    else
+		if isclientready(client[i])=1 then
+		    ret$=readlinesock(client[i])
+		    if left$(ret$,1)="Q" then
+			    writelinesock(client[i],"good bye")
+			    closesock(client[i])
+			    client[i]=0
+		    end if
+		    if left$(ret$,1)="X" then
+			    exit while
+		    end if
+		    prints("client"+str$(i)+":"+ret$)
+		    for ia=1 to numclient
+			if client[ia]<>0 then
+			    writelinesock(client[ia],"client"+str$(i)+":"+left$(ret$,len(ret$)-1))
+			end if
+		    next
+		end if
+	    end if
+	next
+    end while
+    for i= 1 to numclient
+	writelinesock(client[i],"good bye ")
+	closesock(client[i])
+    next
+    wait(500)
+    closesock(server)
+end sub
+main

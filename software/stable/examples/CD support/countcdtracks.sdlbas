@@ -1,0 +1,9 @@
+'
+' sdlBasic example CD support:countcdtracks
+'
+'   Name:      countcdtracks.sdlbas
+'   Purpose:    return the number of tracks in cd
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

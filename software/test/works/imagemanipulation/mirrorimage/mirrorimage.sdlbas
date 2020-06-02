@@ -1,0 +1,10 @@
+'mirrorimage
+
+'setcolorkey(0xffffff)
+loadimage("sdlnow.gif",1)
+print imagewidth(1)
+pastebob(0,0,1)
+mirrorimage(1,1,1)
+print imagewidth(1)
+pastebob(0,48,1)
+waitkey

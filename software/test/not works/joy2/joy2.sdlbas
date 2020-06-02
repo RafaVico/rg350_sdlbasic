@@ -1,0 +1,73 @@
+' test per joypad sp2 style
+' fase 1 scelta della risoluzione
+hidemouse
+dim modo [2048]
+for i= 0 to 2048: modo[i]=i: next
+modo[1]="modaita' assoluta"
+modo[2]="modalita' relativa"
+do
+	setdisplay(640,480,32,1)
+
+	pen(0xffffff)
+	cls
+	prints( "prove tecniche con i joystick ps2 style")
+	prints("selezione della risoluzione")
+	prints("1)-  -640*480")
+	prints("2)-  -800*600")
+	prints("3)-  -1024*768")
+	prints("4)-  -1280*1024")
+	prints("esc)- exit program")
+	do
+		waitvbl
+		'waitkey
+		i=inkey
+
+		select case i
+			case asc("1")
+			xsc=640:ysc=480:exit do
+			case  asc("2")
+			xsc=800:ysc=600:exit do
+			case  asc("3")
+			xsc=1024:ysc=768:exit do
+			case  asc("4")
+			xsc=1280:ysc=1024:exit do
+			case 27
+			end
+		end select
+	loop
+'Fase 2 test interattivi
+setdisplay (xsc,ysc,32,0)
+pen(0xffffff)
+cl=rgb(200,200,200)
+cl1=rgb(200,100,100)
+modalita=1:xr=10:yr=10
+while modalita<>4
+a=getaxisjoystick(0,0):a1=a+32768:a2=a/5000
+b=getaxisjoystick(0,1):b1=b+32768:b2=b/5000
+j= bjoy(0):if j<>0 then
+modalita=j
+end if
+if modalita=1 then
+xr=int((a1*xsc)/65535)
+yr=int((b1*ysc)/65535)
+end if
+if modalita=2 then
+xr=int(xr+a2)
+yr=int(yr+b2)
+end if
+cls
+locate(1,1):prints(" orrizzontale "&a&" verticale"&b)
+locate(1,3):prints(modo[modalita])
+
+
+ink (cl1)
+bar(xr,yr,xr+32,yr+32)
+ink (cl)
+locate(24,24):prints("premi il bottone 3 per uscire")
+locate(24,26):prints("premi il bottone 1 per modalita' assoluta")
+locate(24,28):prints("premi il bottone 2 per modalita' relativa")
+
+waitvbl
+
+wend
+loop

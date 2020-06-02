@@ -1,0 +1,9 @@
+'
+' sdlBasic example Image manipulation:colorkey
+'
+'   Name:      colorkey.sdlbas
+'   Purpose:    set the colorkey for bitmap transparency if set -1 (default ) will be used the left-up corner color.
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -1,0 +1,62 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  text.sdlbas
+'| date 1/12/2002
+'|
+'| description:
+'| show a render text in screen (very old test )
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+setautoback(0)
+n=0
+setdisplay (800,600,32,1)
+dualplayfield(1)
+screenopen (0,1000,600,0,0,800,600,0)
+
+screenopen(1,700,150,10,0,700,100,1)
+
+mousehide
+
+dim x[20],y[20],dx[20],dy[20]
+for i = 0 to 20
+	 dx[i]=i : dy[i]=i
+	ink (rgb(255,255,i*25))
+	 textrender("sdlBasic ",i*5,i,1)
+next
+screenalpha(1,128)
+screen(0)
+while(!key(K_esc))
+    for i=1 to 20
+	x[i]=x[i]+dx[i]: y[i]=y[i]+dy[i]
+	if x[i]>700 then : dx[i]=0-dx[i]:end if
+	if x[i]<0 then : dx[i]=0-dx[i]:end if
+	if y[i]>500 then : dy[i]=0-dy[i]:end if
+	if y[i]<0 then : dy[i]=0-dy[i]:end if
+	sprite (i,x[i],y[i],i)
+next
+
+screen(1)
+    screenrect(10,y[1],500,100,flagscreenrect)
+
+n = n + 1:'print n
+ink (rgb(255,0,0))
+text (80,10,25,"display"+ str$(displaywidth())+" "+ str$(displayheight())+" " + str$(displaybpp()))
+text (80,40,25,"screen"+ str$(screenwidth())+" "+ str$(screenheight()))
+text (80,70,25,"offset"+ str$(xoffset())+" "+ str$(yoffset()))
+
+if key(asc("1")) then :text (10,100,25,"OK!" ): end if
+
+'screen(0)
+screenswap
+'waitvbl
+cls()
+
+if key(27) then :end :end if
+
+end while

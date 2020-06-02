@@ -1,0 +1,274 @@
+# /opt/sdlBasic/bin/sdlBrt
+Function returnNextTag(fileStream)
+	stringStart=0
+	stringa=""
+	count=1
+	seek(fileStream,loc(fileStream)-1)
+	while eof(fileStream)=0
+		b=chr$(readbyte(fileStream))
+		if count>1 then
+			if b=">"then
+				 exit while
+			else
+				count = count+1
+				stringa=stringa&b
+			end if
+		else
+			if b="<" then
+				stringStart=loc(fileStream)
+				count = count+1
+			end if
+		end if
+	end while
+	--print count
+	if count>1 then
+		if stringa="" then
+			seek(fileStream,loc(fileStream)-1)
+			return -1
+		else
+			seek(fileStream,loc(fileStream)-1)
+			return stringa
+		end if
+	end if
+end function
+
+Function returnNextIntraTag(fileStream)
+	stringStart=0
+	stringa=""
+	count=1
+	seek(1,loc(fileStream)-1)
+	while eof(fileStream)=0
+		b=chr$(readbyte(fileStream))
+		if count>1 then
+			if b="<"then
+				 exit while
+			else
+				count = count+1
+				stringa=stringa&b
+			end if
+		else
+			if b=">" then
+				stringStart=loc(fileStream)
+				count = count+1
+			end if
+		end if
+	end while
+	--print count
+	if count>1 then
+		if stringa="" then
+			seek(fileStream,loc(fileStream)-1)
+			return -1
+		else
+			return stringa
+		end if
+	end if
+end function
+
+function createHeader(stream,title)
+	file output #stream, "<!DOCTYPE html PUBLIC "&chr$(34)&"-//W3C//DTD HTML 4.01 Transitional//EN"&chr$(34)&">"
+	file output #stream, "<html>"
+	file output #stream, "<head>"
+	file output #stream,  ""
+	file output #stream,  "   <meta content="&chr$(34)&"text/html; charset=ISO-8859-1"&chr$(34)&" http-equiv="&chr$(34)&"content-type"&chr$(34)&">"
+	file output #stream,  "   <title>index</title>"
+	file output #stream,   "   <link rel="&chr$(34)&"stylesheet"&chr$(34)&" href="&chr$(34)&"../../style.css"&chr$(34)&" type="&chr$(34)&"text/css"&chr$(34)&">"
+	file output #stream, ""
+	file output #stream, "</head>"
+	file output #stream, ""
+	file output #stream, "<body style="&chr$(34)&"color: rgb(0, 0, 0);"&chr$(34)&" alink="&chr$(34)&"#ee0000"&chr$(34)&" link="&chr$(34)&"#0000ee"&chr$(34)&" vlink="&chr$(34)&"#551a8b"&chr$(34)&">"
+	--file output #stream, "<div style="&chr$(34)&"text-align: left; background-color: rgb(239, 239, 255);"&chr$(34)&"><span class="&chr$(34)&"text"&chr$(34)&" style="&chr$(34)&"font-weight: bold;"&chr$(34)&">"&  findDir() &"</span><br>"
+	file output #stream, "<div style="&chr$(34)&"text-align: left; background-color: rgb(239, 239, 255);"&chr$(34)&"><span class="&chr$(34)&"text"&chr$(34)&" style="&chr$(34)&"font-weight: bold;"&chr$(34)&">"&  title &"</span><br>"
+	file output #stream, "</div>"
+	file output #stream, "<br>"
+
+end function
+
+function findDir()
+	curDir$=dir$
+	 pos=rinStr ( curDir$, "/" )
+	 return  right$( curDir$, len(curDir$)-pos)
+end function
+
+function createFooter(stream)
+	file output #stream, "</body>"
+	file output #stream, "</html>"
+end function
+
+function formatName(title)
+	formattedName=""
+	flag=0
+	for n = 1 to len(title)
+			c$=mid(title,n,1)
+			if c$<>" " then
+				if flag then
+					formattedName=formattedName+uCase(c$)
+					flag=0
+				else
+					formattedName=formattedName+c$
+				end if
+			else
+				flag=1
+			end if
+	next
+	return formattedName
+end function
+
+function findTag(tag, fileStream)
+	while eof(fileStream)=0
+		rtag=returnNextTag(fileStream)
+		if tag=rtag then : exit while : end if
+	wend
+	--print loc(fileStream)
+	return loc(fileStream)
+end function
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+--											MAIN
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+setDisplay( 640, 300, 32, 1 )
+
+txtFile="index.txt"
+fileFlag2=0
+openTextFlag=0
+openFlagSpan=0
+
+-------------------------------------------------------------------------------------------------
+------------------------------------------ creating indexes of commands sorted by functionality
+-------------------------------------------------------------------------------------------------
+originalDir$=dir$
+
+if isLinux then : shell("ls > dirs.txt") : end if
+open "dirs.txt" for input as 5
+
+while not eof( 5 )
+	file input #5, directory$
+	locate (1,4) : prints("working on "&directory$&"                                       ")
+	if directory$<>"dirs.txt" and directory$<>"index.html" and directory$<>"CVS" and directory$<>"indexCreator.sdlbas" and directory$<>"alphabetical"then
+		chDir(originalDir$&"/"&directory$)
+
+		if isLinux then : shell("ls > index.txt") : end if
+
+		open txtFile for input as 1
+		open "index.html" for output as 2
+		------------------------------------------------ writing header
+		open "sectionName.txt" for input as 6
+		file input #6, sectionName$
+		close 6
+		createHeader(2,sectionName$)
+
+		while not eof( 1 )
+			' read a line from the file and print it
+			file input #1, path$
+			if path$<>"index.txt" and path$<>"index.html" and path$<>"CVS" and path$<>"sectionName.txt" then
+				if  left$( path$, 1 )<>"_" then
+					--link$=left$(path$, length(path$)-5)
+					------------------------------------------ searching link title
+					loc1=loc(1) --------- seek bug? store actual stram 1 loc
+					--print loc(1)
+					--print path$
+					open  path$ for input as 3
+					findTag("span class="&chr$(34)&"subTitle"&chr$(34), 3)
+					link$=returnNextIntraTag(3)
+					--print link$
+					close 3
+					seek(1,loc1) ------------------- restore original stream 1 loc
+					------------------------------------------
+					if inStr( path$, "!" )<>0  then
+						file output #2, "<div style="&chr$(34)&"text-align: left; background-color: rgb(255, 0, 0);"&chr$(34)&">"
+						file output #2, "<a class="&chr$(34)&"link"&chr$(34)&" target="&chr$(34)&"content"&chr$(34)&" href="&chr$(34)&path$&chr$(34)&">"&link$&"</a><br>"
+						file output #2, "</div>"
+					else
+						file output #2, "<a class="&chr$(34)&"link"&chr$(34)&" target="&chr$(34)&"content"&chr$(34)&" href="&chr$(34)&path$&chr$(34)&">"&link$&"</a><br>"
+					end if
+				end if
+			end if
+		end while
+
+		createFooter(2)
+
+		close 1
+		close 2
+	end if
+end while
+
+-------------------------------------------------------------------------------------------------
+------------------------------------------ creating indexes of commands sorted alphabetically
+-------------------------------------------------------------------------------------------------
+
+chDir(originalDir$)
+seek(5,1) ------reset dir.txt
+open "alphabetical/index.txt" for output as 2
+--createHeader(2,"index")
+while not eof( 5 )
+	file input #5, directory$
+	locate (1,4) : prints("working on "&directory$&"                                       ")
+	if directory$<>"dirs.txt" and directory$<>"alphabetical" and directory$<>"CVS" and directory$<>"sortedIndex.txt" and directory$<>"indexCreator.sdlbas" then
+		chDir(originalDir$&"/"&directory$)
+		open txtFile for input as 1
+		while not eof( 1 )
+			' read a line from the file and print it
+			file input #1, path$
+			if path$<>"index.txt" and path$<>"index.html" and path$<>"CVS " and path$<>"indexCreator.sdlbas" and path$<>"sectionName.txt" then
+				if  left$( path$, 1 )<>"_" then
+					-------------------------------------- searching link title
+					loc1=loc(1) --------- seek bug? store actual stram 1 loc
+					--print loc(1)
+					--print path$
+					open  path$ for input as 3
+					findTag("span class="&chr$(34)&"subTitle"&chr$(34), 3)
+					link$=returnNextIntraTag(3)
+					--print asc(left$(link$,1))
+					if left$(link$,1)=chr(10) then
+						link$=right$(link$,len(link$)-1)
+					end if
+					--print link$
+					close 3
+					seek(1,loc1) ------------------- restore original stream 1 loc
+					--------------------------------------
+					file output #2, link$&":"&directory$&"/"&path$
+				end if
+			end if
+		end while
+		close 1
+	end if
+end while
+close 2
+close 5
+
+chDir(originalDir$&"/alphabetical")
+if isLinux then : shell("sort index.txt --output=sortedIndex.txt") : end if
+
+data( "a - b", "c","d","e - f","g - i", "j - l", "m - n", "o - q", "r", "s", "t - z")
+chunk$=read()
+
+open "sortedIndex.txt" for input as 1
+open chunk$&".html" for output as 2
+createHeader(2,chunk$)
+
+while not eof( 1 )
+	file input #1, lin$
+	n= inStr( lin$, ":" )
+	link$=left$(lin$, n-1)
+	path$=right$(lin$,len(lin$)-n)
+	locate (1,4) : prints("working on "&link$&"                                       ")
+	if left$( link$, 1 )>right(chunk$,1) then
+		createFooter(2)
+		close 2
+		chunk$=read()
+		open chunk$&".html" for output as 2
+		createHeader(2,chunk$)
+	end if
+	if inStr( path$, "!" )<>0  then
+		file output #2, "<div style="&chr$(34)&"text-align: left; background-color: rgb(255, 0, 0);"&chr$(34)&">"
+		file output #2, "<a class="&chr$(34)&"link"&chr$(34)&" target="&chr$(34)&"content"&chr$(34)&" href="&chr$(34)&"../"&path$&chr$(34)&">"&link$&"</a><br>"
+		file output #2, "</div>"
+	else
+		file output #2, "<a class="&chr$(34)&"link"&chr$(34)&" target="&chr$(34)&"content"&chr$(34)&" href="&chr$(34)&"../"&path$&chr$(34)&">"&link$&"</a><br>"
+	end if
+end while
+createFooter(2)
+close 1
+close 2

@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Memory Bank:peek
+'
+'   Name:      peek.sdlbas
+'   Purpose:    read a byte value in memory bank at specific address
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

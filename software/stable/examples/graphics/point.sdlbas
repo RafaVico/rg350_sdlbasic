@@ -1,0 +1,20 @@
+' sdlBasic example Graphics: point example
+'   Name:     point.sdlbas
+'   Purpose:   example point function
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+
+setdisplay(320,240,32,1)
+  paper (0xffffff):ink (0x000000)
+  pen (0x000000):cls
+setautoback(25)
+prints("dot a pixel with blue (255)")
+  ink(rgb(0,0,255))
+  dot(0,0)
+prints("press return to continue" )
+  waitkey(13)
+  prints("point give the color of pixel ")
+  prints("the color of point 0,0 is: "+str$(point(0,0)))
+locate(2,15):prints("press space to exit" )
+  waitkey(k_space)
+

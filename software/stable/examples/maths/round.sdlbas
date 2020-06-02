@@ -1,0 +1,26 @@
+'
+' sdlBasic example  Maths:round
+'
+'   Name:      round.sdlbas
+'   Purpose:    round to nearest integer
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("n=3.14:prints(round(n))")
+n=3.14:prints(round(n))
+
+prints("n=3.84:prints(round(n))")
+n=3.84:prints(round(n))
+
+prints("n=3.49:prints(round(n))")
+n=3.49:prints(round(n))
+
+prints("n=3.50:prints(round(n))")
+n=3.50:prints(round(n))
+
+prints("n=3.51:prints(round(n))")
+n=3.51:prints(round(n))
+
+prints("press any key to exit")
+waitkey

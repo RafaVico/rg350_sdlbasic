@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Control structures:or
+'
+'   Name:      or.sdlbas
+'   Purpose:    condition in espression logic or
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a=1
+b=0
+if a<>0 or b<>0 then
+    prints("ok")
+else
+    prints("none")
+end if
+waitkey

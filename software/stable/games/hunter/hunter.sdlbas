@@ -1,0 +1,241 @@
+'hunter
+common score
+setdisplay(640,480,32,1)
+autoback(-25)
+mousehide()
+
+sub init
+    screenopen(7,32,32,0,0,0,0,0)
+    'space ship
+    cls
+    ink(0xffffff)
+    line(16,0,8,32)
+    line(16,0,24,32)
+    line(8,32,16,24)
+    line(24,32,16,24)
+    ink(1):paint(16,16)
+
+    grab(100,0,0,32,32)
+
+    hotspot(100,1,1)
+    for i = 1 to 35
+	copyimage(100,100+i)
+	rotateimage(100+i,360-(10*i))
+	hotspot(100+i,1,1)
+    next
+
+    'enemy ship
+    cls
+    ink(0xffffff)
+    circle(16,16,8)
+    ellipse(16,16,8,6)
+    ink(1):paint(16,16)
+    grab(200,0,0,32,32)
+    hotspot(200,1,1)
+
+    'fire shot
+    cls
+    ink(0xffffff)
+    circle(16,16,2)
+    grab(300,0,0,32,32)
+    hotspot(300,1,1)
+
+    screenclose(7)
+
+    score=0
+end sub
+
+
+
+sub game
+    ships=3:score=0
+    'ship
+     x=320: y=240: v=0: vx=0: vy=0: fr=0 :ship=0
+    'fire
+    fx=50:  fy=240: fv=0: fvx=0: fvy=0: ffr=300 :sfire=0
+
+    'enemy
+    ex=50:  ey=240: ev=0: evx=0: evy=0: efr=200 :enemy=0
+    'enemy fire
+    efx=50:  efy=240: efv=0: efvx=0: efvy=0: effr=300 :efire=0
+
+
+    while key(27)=0
+
+	'ship move
+	if key(k_left) then
+	    fr=fr-1
+	end if
+	if fr<0 then :fr=fr+36 :end if
+
+	if key(k_right) then
+	    fr=fr+1
+	end if
+	if fr>35 then :fr=fr-36 :end if
+
+	if key(k_up) then
+	    ir= fr *(3.14/18)
+	    vx=vx+(sin(ir))
+	    vy=vy-(cos(ir))
+	end if
+
+	if key(k_space) then
+	    sfire= 50
+	    ir= fr *(3.14/18)
+	    fvx=(sin(ir))*10
+	    fvy=-(cos(ir))*10
+	    fx=x
+	    fy=y
+	end if
+
+	x=x+vx
+	if x>640 then: x=x-640 :end if
+	if x<0 then: x=x+640 :end if
+	y=y+vy
+	if y>480 then: y=y-480 :end if
+	if y<0 then: y=y+480 :end if
+	if ship<0 then
+	    ship+=1
+	    deletesprite(1)
+	else
+	    sprite (1,x,y,100+fr)
+	end if
+	'---------
+
+	'fire move
+	if sfire >0 then
+	    sfire = sfire-1
+	    fx=fx+fvx
+	    fy=fy+fvy
+	    sprite(3,fx,fy,ffr)
+	    if sfire=0 then: deletesprite(3):end if
+	end if
+	'---------
+
+	'fire collision
+	if spritehit(2,3) then
+	    score=score+100
+	    ex=-rnd(640)
+	    ey=rnd(480)
+	    evx=0
+	    evy=0
+	    enemy=-50
+	end if
+	'---------
+
+
+	'enemy move
+	if rnd(10)>7 then
+	    evx+=rnd(4)-2
+	    evy+=rnd(4)-2
+	end if
+
+	if enemy=0 and efire=0 then
+	    if abs(ex-y)<10 or abs(ey-x)<10 then
+		efire=100
+		efvx=-sgn(ex-x)*5
+		efvy=-sgn(ey-y)*5
+
+		efx=ex
+		efy=ey
+	    end if
+
+	    if abs(ex-x)<10 or abs(ey-y)<10 then
+		efire=100
+		efvx=-sgn(ex-x)*5
+		efvy=-sgn(ey-y)*5
+
+		efx=ex
+		efy=ey
+	    end if
+	end if
+
+	ex=ex+evx
+	if ex>640 then: ex=ex-640 :end if
+	if ex<0 then: ex=ex+640 :end if
+	ey=ey+evy
+	if ey>480 then: ey=ey-480 :end if
+	if ey<0 then: ey=ey+480 :end if
+	if enemy <0 then
+	    enemy+=1
+	    deletesprite(2)
+	else
+	    sprite(2,ex,ey,200)
+	end if
+	'---------
+
+	'enemy fire move
+	if efire >0 then
+	    efire =efire-1
+	    efx=efx+efvx
+	    efy=efy+efvy
+	    sprite(4,efx,efy,effr)
+	    if efire=0 then: deletesprite(4):end if
+	end if
+	'---------
+
+	'enemy fire collision
+	if spritehit(1,4) then
+	    ships-=1
+	    x=320
+	    y=240
+	    vy=0:vx=0
+	    ship=-25
+	end if
+	'---------
+
+	'enemy  collision
+	if spritehit(1,2) then
+	    ships-=1
+	    x=320
+	    y=240
+	    vy=0:vx=0
+	    score=score+100
+	    ex=rnd(640)
+	    ey=rnd(480)
+	    ship=-25
+	    enemy=-50
+	end if
+	'---------
+
+
+	locate(0,0):prints("ships" +str$(ships)+" Score"+str$(score))
+
+	if ships=0 then
+	    exit while
+	end if
+
+	screenswap
+    end while
+if ships=0 then
+    exit sub
+end if
+end sub
+
+
+
+sub titolo
+    deletesprite(1)
+    deletesprite(2)
+    deletesprite(3)
+    deletesprite(4)
+    cls
+    ink(0xffffff)
+    text(250,220,20,"hunter")
+    text(250,260,10,"press return to start")
+    text(280,280,10,"last score "+str$(score))
+    screenswap
+    waitkey(13)
+    cls
+end sub
+
+
+sub main
+    init
+    while key(27)=0
+	titolo
+	game
+    end while
+
+end sub
+main

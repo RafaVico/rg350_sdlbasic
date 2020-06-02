@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>text()</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">text()
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			現在のスクリーンにテキストをプリントする。このコマンドでは現在のフォントが使用される。 <a href="setFont%28%29.html"><span style="font-weight: bold;">
+					setFont()</span></a>を参照のこと。 テキストのカラーには、<span style="font-weight: bold;">ink()</span>などでセットできる現在のインクカラーが使用される。
+			<br>
+		</span><span class="syntax2"></span><span class="syntax2">
+			<br>
+		</span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">text( </span><span class="syntax">x </span><span class="syntax2">
+				, </span><span class="syntax">y </span><span class="syntax2">, </span><span class="syntax">
+				size </span><span class="syntax2">, </span><span class="syntax">text </span>
+			<span class="syntax2">)
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">text( </span><span class="syntax">x </span><span class="syntax2">
+				, </span><span class="syntax">y </span><span class="syntax2">, </span><span class="syntax">
+				size </span><span class="syntax2">, </span><span class="syntax">text </span>
+			<span class="syntax2">, </span><span class="syntax">style </span><span class="syntax2">
+				)
+				<br>
+			</span>
+		</div>
+		<span class="text"></span><span class="syntax">
+			<br>
+			x, y </span><span class="text">テキストがプリンされる画面の位置。</span> <span class="syntax2">
+			<br>
+		</span><span class="text"></span><span class="syntax">size </span><span class="text">
+			テキストのサイズ（ポイントで指定)。 </span><span class="syntax2">
+			<br>
+		</span><span class="text"></span><span class="syntax">style </span><span class="text">
+			0(デフォールト)＝solid 1= shaded, 2 = blended.
+			<br>
+			<br>
+		</span><span class="syntax2"></span><span class="smallTitle">例:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">a$=" ciao "
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">text(</span> 100,100,16,a$ <span style="font-weight: bold;">
+					) </span></span><span class="syntax2"></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">text(</span> 100,120,32,"hello"
+				<span style="font-weight: bold;">)</span> </span><span class="syntax2"></span>
+			<span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">ink(rgb(255,128,0))
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code"><span style="font-weight: bold;">text(</span>102,202,32,"sdlBasic"
+				<span style="font-weight: bold;">)</span>&nbsp; </span><span class="syntax2"></span>
+			<span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="text code">waitkey
+				<br>
+			</span>
+		</div>
+	</body>
+</html>

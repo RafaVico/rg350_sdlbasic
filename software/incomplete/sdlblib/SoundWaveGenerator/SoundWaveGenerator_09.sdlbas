@@ -1,0 +1,138 @@
+'--- Paulo Silva (GPL)
+'--- sound wave random generator
+'-- 031001 (wxBasic version)
+'-- 040602 (sdlBasic version)
+'-- bug:
+'-- • sliders are not working well (?)
+
+include "interface.sdlblib"
+
+ common wvfat=0,xscnv=256,yscnv=128:randomize
+
+xedge=256:yedge=216
+  setdisplay(xedge,yedge,32,1)
+  paper (0xAAAAAA):ink (0x000000): pen (0x000000):cls
+
+Function mdle(a,b)
+   mdle=((a/b)-(int(a/b)))*b
+ End Function
+Function wvf(a,k)
+  if k=0 then:wvf=sin(a*6.283184):End If
+  if k=1 then
+      tmpr=(mdle(a+.75,1))*4
+    if tmpr >= 2 then:tmpr=4-tmpr:end if
+      tmpr=tmpr-1: wvf=tmpr*(-1)
+   End If
+  if k=2 then
+      tmpr=-1
+    if (mdle(a,1))>=.5 then:tmpr=1:end if
+      wvf=tmpr*(-1)
+   End If
+ End Function
+function hexvl(a$)
+   e=asc(a$)
+   hexvl=abs(((e>=48 and e<=57)*(e-48))+((e>=65 and e<=70)*(e-55))+((e>=97 and e<=102)*(e-87)))
+ end function
+function hexvpr(a$)
+    lngta=len(a$):i=1
+  while i<=lngta
+    m1$=mid$(a$,i,1)
+    m2$=mid$(a$,i+1,1)
+    b=(hexvl(m1$)*16)+hexvl(m2$)
+    WriteByte(1,b):i+=2
+  end while
+ end function
+function clpam(v1,cl,am)
+   if abs(v1)>abs(cl) then:v1=(abs(cl))*(sgn(v1)):end if
+      v1=v1*am
+   if abs(v1)>1 then:v1=1*(sgn(v1)):end if
+      clpam=v1
+ end function
+
+Sub ButtonToSquarePosControl
+    n1=getparam(slider1,_value)*96/100
+     n2=getparam(slider2,_value)*96/100
+     n3=getparam(slider3,_value)*96/100
+  f1=2^(5+(n1/12)): f2=2^(5+(n2/12)): f3=2^(5+(n3/12))
+  ws=xscnv:hs=yscnv/2:vo=hs
+    ink(0xAAAAAA):bar(0,0,256,128)
+    for i=1 to ws
+       r1gv=(getparam(radio1,_state)-2)\2
+        r2gv=(getparam(radio2,_state)-2)\2
+        r3gv=(getparam(radio3,_state)-2)\2
+      wsp=32:k=(abs(r2gv))+(2*(abs(r3gv)))
+       a1=wvf((i/ws)*(f1/wsp),k)
+       a2=wvf((i/ws)*(f2/wsp),k)
+       a3=wvf((i/ws)*(f3/wsp),k)
+      clpn=(getparam(slidercl,_value))/100
+       ampr=(getparam(slideram,_value))/10
+      am=hs+(hs*(clpam(((a1+a2+a3)/3),clpn,ampr)))
+      ink(0):Line(i,vo,i+1,am)
+       '     locate(0,0):prints(n1)
+       '     locate(0,1):prints(n2)
+       '     locate(0,2):prints(n3)
+       '     locate(0,3):prints(clpn)
+       '     locate(0,4):prints(ampr)
+    vo=am
+    next
+ End Sub
+
+Sub waveout
+  open "test.wav" for output as #1
+       a$="524946464417000057415645666D74201000000001000100112B0000"
+    a$=a$+"112B000001000800646174612017000000000000"
+     u=hexvpr(a$)
+     n1=getparam(slider1,_value)*(96/100)
+      n2=getparam(slider2,_value)*(96/100)
+      n3=getparam(slider3,_value)*(96/100)
+            locate(0,0):prints(n1)
+            locate(0,1):prints(n2)
+            locate(0,2):prints(n3)
+    f1=2^(5+(n1/12)):f2=2^(5+(n2/12)):f3=2^(5+(n3/12)):ws=5916:hs=127
+     for i=1 to ws
+      wsp=1
+
+       r1gv=(getparam(radio1,_state)-2)\2
+        r2gv=(getparam(radio2,_state)-2)\2
+        r3gv=(getparam(radio3,_state)-2)\2
+'            locate(0,0):prints(r1gv)
+'            locate(0,1):prints(r2gv)
+'            locate(0,2):prints(r3gv)
+      k=(abs(r2gv))+(2*(abs(r3gv)))
+      a1=wvf((i/ws)*(f1/wsp),k)
+       a2=wvf((i/ws)*(f2/wsp),k)
+       a3=wvf((i/ws)*(f3/wsp),k)
+      clpn=(getparam(slidercl,_state))/100
+       ampr=(getparam(slideram,_state))/10
+      am=hs+(hs*(clpam(((a1+a2+a3)/3),clpn,ampr)))
+       am=(0*(abs(am<0)))+(255*(abs(am>255)))+(am*((am>=0)and(am<=255)))
+       WriteByte(1,am)
+    next
+  close #1
+ End Sub
+
+
+
+
+radio1=1:setnew(radio1,radio,0,4,192,20,20,"")
+ radio2=2: setnew(radio2,radio,0,24,192,20,20,"")
+ radio3=3: setnew(radio3,radio,0,44,192,20,20,"")
+slider1=4:setnew(slider1,slider,14,4,132,160,10,45)   '96
+ slider2=5:setnew(slider2,slider,0,4,152,160,10,50)  '96
+ slider3=6:setnew(slider3,slider,14,4,172,160,10,55)  '96
+ slidercl=7:setnew(slidercl,slider,14,84,192,80,10,95)  '100
+ slideram=8:setnew(slideram,slider,14,164,192,80,10,15) '1000
+button1=9:setnew(button1,button,0,64,192,16,16,"")
+
+
+ draw
+while(0=0)
+   waitevent(1)
+    if key(27)=1 then:end:end if
+   if getparam(button1,_state)=activated then
+      waveout
+    end if
+   if bmouse()=1 then
+      ButtonToSquarePosControl
+    end if
+ wend

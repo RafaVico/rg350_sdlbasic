@@ -1,0 +1,19 @@
+'
+' sdlBasic example  Date and time:time$
+'
+'   Name:      time$.sdlbas
+'   Purpose:    return time in HH:MM:SS format
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+while key(27)=0
+    locate(1,1)
+    prints("now ="+str$(time))
+    second$=right$(time$,2)
+    minute$=mid$(time$,4,2)
+    hour$=left$(time$,2)
+    prints("hour:"+hour$+" - minute:"+minute$+" - seconds:"+second$)
+
+    waitvbl
+end while

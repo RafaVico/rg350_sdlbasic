@@ -1,0 +1,45 @@
+'
+'test
+'--------------------------------
+setdisplay(380,340,0,1)
+include "interface.sdlblib"
+paper(_back_col):cls
+
+'setnew(0,window,0,15,20,320,280,"Dialog1")
+setnew(1,radio,0,147,70,144,20,"TextVersion1")
+setnew(2,radio,0,147,90,144,20,"TextVersion2")
+setnew(3,label,0,7,118,284,12,"StaticText")
+
+'setnew(4,staticbox,0,7,6,99,100,"")
+
+setnew(4,list,0,7,6,90,80,0)
+for i= 0 to 15
+    addlist(4,"prova"+str$(i))
+next
+setparam(4,_value,3)
+
+setnew(5,button,0,7,138,87,20,"Button1")
+setnew(6,button,0,105,138,87,20,"Button2")
+setnew(7,button,0,203,138,89,20,"Button3")
+setnew(8,button,0,115,14,29,30,"1")
+setnew(9,button,0,154,14,28,30,"2")
+setnew(10,button,0,190,14,28,30,"3")
+setnew(11,button,0,231,14,28,30,"4")
+setnew(12,check,0,231,168,40,20,"check1")
+setnew(13,button,0,304,-14,12,12,"X")
+
+setnew(14,frame,0,20,168,120,100,"StaticBox1")
+setnew(15,slider,14,10,20,100,10,50)
+setnew(16,textentry,14,10,42,96,40,"TextEntry1")
+
+setnew(17,gauge,0,170,188,96,0,32)
+
+draw
+while(0=0)
+	waitevent(0)
+
+	'press esc for stop the program
+	if key(27)=1 then
+		end
+	end if
+wend

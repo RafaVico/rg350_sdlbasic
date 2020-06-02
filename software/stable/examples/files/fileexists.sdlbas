@@ -1,0 +1,15 @@
+'
+' sdlBasic example  Files:fileexists
+'
+'   Name:      fileexists.sdlbas
+'   Purpose:    returns true if the file exists
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+if fileexists("fileexists.sdlbas") then
+    prints("file \"fileexists.sdlbas\" exists")
+else
+    prints("error")
+end if
+waitkey

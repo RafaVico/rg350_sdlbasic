@@ -1,0 +1,36 @@
+' Bar Alpha graphics example
+' Paulo Silva - april 04 - GPL
+' writed over a template coded from Vroby 
+
+sub BarAlpha(x1,y1,x2,y2,c,a)
+' alpha is from 0 to 255
+      if x2<x1 then: tmpr=x1:x1=x2:x2=tmpr: end if
+      if y2<y1 then: tmpr=y1:y1=y2:y2=tmpr: end if
+   for y=y1 to y2: for x=x1 to x2
+      r0=(int(point(x,y)/0x10000))mod 256
+      g0=(int(point(x,y)/0x100))mod 256
+      b0=(point(x,y))mod 256
+      r1=(int(c/0x10000))mod 256
+      g1=(int(c/0x100))mod 256
+      b1=c mod 256
+      r2=((r1*a)+(r0*(255-a)))/255
+      g2=((g1*a)+(g0*(255-a)))/255
+      b2=((b1*a)+(b0*(255-a)))/255
+        c2=(r2*0x10000)+(g2*0x100)+b2
+        ink(c2):dot (x,y)
+    next:next
+ end sub
+
+setdisplay(320,240,32,1)
+paper (0xffffff):ink (0x000000)
+pen (0x000000):cls
+setautoback(25)
+prints("draw some alpha bars ")
+
+     BarAlpha(20,20,80,80,0x00FF00,255)
+     BarAlpha(50,50,100,100,0xFF00FF,128)
+
+locate(2,15):prints("press space to exit" )
+waitkey(k_space)
+
+

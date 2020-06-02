@@ -1,0 +1,20 @@
+'
+' sdlBasic example  Files:readbyte
+'
+'   Name:      readbyte.sdlbas
+'   Purpose:    return a byte from the file
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+open "myfile" for output as 1
+    print #1,"ciao ciao"
+close 1
+
+open "myfile" for input  as 1
+    while eof(1)=0
+	a=readbyte(1)
+	prints(str$(a)+" "+chr$(a))
+    end while
+close 1
+waitkey

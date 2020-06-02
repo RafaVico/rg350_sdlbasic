@@ -1,0 +1,16 @@
+-----------------------------------------------------------------------------------------------------------
+-- screenViewportH.sdlbas
+-- author: nitrofurano
+------------------------------------------------------------------------------------------------------------
+
+setDisplay(320,200,32,1):paper(0xFFFFFF):ink(0x000000):pen(0x000001):cls
+screenOpen(1,104,128,  0,0,104,128,0):paper(0x77FFFF):ink(0x000000):pen(0x000001):cls
+screenOpen(2,104,128,104,0,104,128,0):paper(0xFF77FF):ink(0x000000):pen(0x000001):cls
+screenOpen(3,104,128,208,0,104,128,0):paper(0xFFFF77):ink(0x000000):pen(0x000001):cls
+paper(0xFFFFFF)
+while key(27)=0
+   b=int(rnd(4)):screen(b)
+   screenViewport((b-1)*104,0,104,rnd(128),0)
+   locate(1,1):prints(str$(screenViewportH)+"   ")
+   waitVBL:wait(250)
+ wend

@@ -1,0 +1,278 @@
+'
+' sdlBasic game: Red Baron
+'
+'   Name:      red baron.sdlbas
+'   Purpose:   red baron is a copy of very preistoric arcade games. it was ported from darkbasic.
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+'
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function caccia(cs)
+x=xsprite(1)
+y=ysprite(1)
+
+' controllo del player
+	if cs=-1 then :y=510:cs=0:end if
+
+	if cs=0 and y > 240 then :iny= -2 : x=320 :end if
+	if cs=0 and y <= 240 then : iny = 0 : cs=1 :end if
+
+
+	if cs=1 then
+		inx=0 : iny=0
+		if key(K_UP) and y>0  then : iny=-4 : end if
+		if key(K_DOWN) and y<480 then : iny=4 :end if
+		if key(K_LEFT) and x>0 then : inx=-4 :end if
+		if key(K_RIGHT)and x<640 then : inx=4 : end if
+		if key(27) then :end : end if
+	end if
+
+	if cs = 2 and y<610 then : iny=4:inx=0 :end if
+	if cs = 2 and y>=610 then : cs=-1 :end if
+
+      x=x+inx : y=y+iny
+	sprite (1,x,y,1)
+
+	 return cs
+end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function nemico(en,cs)
+
+	x=xsprite(en)
+	y=ysprite(en)
+
+' gestione dei nemici
+	if cs=-1 then
+		if en=10 then : x=200 : end if
+		if en=20 then : x=440 : end if
+		y=-128
+		cs=0
+	end if
+
+	if cs=0 and y<120 then : y=y+2 : end if
+	if cs=0 and y>=120 then
+		    if en=10 then : cs=2 :end if
+		    if en=20 then : cs=4 :end if
+	end if
+
+	if cs=1 then : x=x-2 : y=y-2 : end if
+	if cs=2 then : x=x+2 : y=y-2 : end if
+	if cs=3 then : x=x-2 : y=y+2 : end if
+	if cs=4 then : x=x+2 : y=y+2 : end if
+
+	if cs>0 then
+		if x>600 then : cs=cs-1 : end if
+		if x<0 then : cs=cs+1 : end if
+		if y>440 then : cs=cs-2 : end if
+		if y<0 then : cs=cs+2 : end if
+	end if
+
+	if cs=5 then :y=y+4: end if
+	if cs=5 and y>600 then : cs=-1 : end if
+
+
+	sprite (en,x,y,3)
+	return cs
+end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+function fuoco(master,user,cs)
+	if cs=-1 then : x=-32:y=-64 :end if
+
+	if cs=0 then
+		x=xsprite(master):y=ysprite(master)
+		sprite (user,x,y,2)
+		cs=1
+	end if
+
+	if cs=1 then
+		y=ysprite(user) : x=xsprite(user)
+		if y>= -64 then : y=y-4 :end if
+		if y< -64 then : cs=2 :end if
+	end if
+
+	if cs=2 then : x=-32 : y=-64:cs=-1 :end if
+
+	sprite (user,x,y,2)
+
+	return cs
+
+end function
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub init
+    'caricamento delle immagini nei sprite
+    loadimage ("media/player.bmp",1)
+    loadimage ("media/gun.bmp",2)
+    loadimage ("media/enemy.bmp",3)
+    loadimage("media/background1.png",4)
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub game
+    'player
+    sprite (1,0,500,1 )
+    sprite (2,64,-64,2)
+    'en1
+    sprite (10,128,-64,3)
+    sprite (11,196,-64,2)
+    'en2
+    sprite (20,256,-64,3)
+    sprite (21,320,-64,2)
+    cls()
+
+    score =0
+    live=3
+    screenopen(0,640,480+256,0,0,640,480,0)
+    for x= 0 to 640 step 256
+	for y=0 to 480+32 step 256
+	    pasteicon(x,y,4)
+	next
+    next
+
+
+
+    screenopen(1,320,50,0,0,320,50,2)
+
+    s=1
+    screen (0)
+
+
+    '************************************************
+    '**** inizio ciclo principale                ****
+    '************************************************
+
+    'stato iniziale -1 spento 0 inizia 1 attivato 2 disattivato
+    pl_stato=-1
+    pl_fire1=-1
+    pl_fire2=-1
+    pl_fire3=-1
+    pl_fire4=-1
+    pl_fire5=-1
+    f=0
+
+    en1_stato=-1
+    en1_fire=-1
+
+    en2_stato=-1
+    en2_fire=-1
+
+
+
+
+    'do
+    while(0=0)
+	screen(1)
+	if s=1 and pl_stato<>2 then
+	    locate(0,0)
+	    prints("score:"+str$(score)+"  "+"lives:"+str$(live)+" ")
+	    s=0
+	end if
+	screen(0)
+
+	stato = caccia(pl_stato): pl_stato=stato
+
+	'stato =nemico(10,en1_stato):en1_stato=stato
+	'stato =nemico(20,en2_stato):en2_stato=stato
+	nemico(10,en1_stato)
+	nemico(20,en2_stato)
+
+
+
+	if pl_stato<>2 then
+	    if f>0 then : f=f-1:end if
+	    if key(K_SPACE)=1 then
+		if pl_fire1=-1 and f<1 then : pl_fire1=pl_fire1+1:f=25:end if
+		if pl_fire2=-1 and f<1 then : pl_fire2=pl_fire2+1:f=25:end if
+		if pl_fire3=-1 and f<1 then : pl_fire3=pl_fire3+1:f=25:end if
+		if pl_fire4=-1 and f<1 then : pl_fire4=pl_fire4+1:f=25:end if
+		if pl_fire5=-1 and f<1 then : pl_fire5=pl_fire5+1:f=25:end if
+	    else
+		f=2
+	    end if
+	end if
+
+	if pl_fire1<>-1 then : pl_fire1=fuoco(1,2,pl_fire1) : end if
+	if pl_fire2<>-1 then : pl_fire2=fuoco(1,3,pl_fire2) : end if
+	if pl_fire3<>-1 then : pl_fire3=fuoco(1,4,pl_fire3) : end if
+	if pl_fire4<>-1 then : pl_fire4=fuoco(1,5,pl_fire4) : end if
+	if pl_fire5<>-1 then : pl_fire5=fuoco(1,6,pl_fire5) : end if
+
+	if en1_stato <>5 then
+	    delta1= abs(xsprite(10)- xsprite(1))
+	    if en1_fire=-1 then
+		if delta1<16 then
+			if ysprite(10)>ysprite(1) then :en1_fire=0 : end if
+		end if
+	    else
+ 		en1_fire=fuoco(10,11,en1_fire)
+	    end if
+	end if
+
+	if en2_stato<>5 then
+	    delta2= abs(xsprite(20)- xsprite(1))
+	    if en2_fire=-1 then
+		    if delta2<16 then
+			    if ysprite(20)>ysprite(1) then: en2_fire=0 :end if
+		    end if
+	    else
+		    fuoco(20,21,en2_fire)
+	    end if
+	end if
+
+	for i = 2 to 6
+	    if spritehit(10,i)=1 then : en1_stato=5:pl_fire1=2:en1_fire=2 : score=score+100:s=1 :end if
+	    if spritehit(20,i)=1 then : en2_stato=5:pl_fire1=2:en2_fire=2 : score=score+100:s=1 :end if
+	next
+
+	if spritehit(1,11)=1 and pl_stato<>2  then : en1_fire=2 :pl_stato=2:live=live-1:s=1 :end if
+
+	if spritehit(1,21)=1 and pl_stato<>2  then : en2_fire=2 :pl_stato=2 :live-=1:s=1:end if
+	if live<0 and pl_stato<>2 then :exit while:end if
+
+
+	scroll=scroll+0.5
+	offset(0,256-(scroll mod 256))
+	screenswap()
+	if key(27) then :end : end if
+    end while
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub titolo
+    screenopen(0,640,480,0,0,640,480,0)
+    for i =0 to 32: deletesprite(i):next
+    cls
+	text(140,200,64,"RED BARON")
+	text(200,280,16,"press any key to start")
+	screenswap
+	    waitkey
+
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+sub main
+    init
+    while key(27)=0
+	titolo
+	game
+	screenclose(1)
+    end while
+end sub
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'*************************************************
+'***  Programma                               ****
+'*************************************************
+setdisplay(640,480,32,0)
+autoback(-20)
+mousehide()
+
+main
+

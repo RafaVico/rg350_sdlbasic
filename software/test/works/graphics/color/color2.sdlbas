@@ -1,0 +1,5 @@
+
+for r=0 to 5: for g=0 to 5: for b=0 to 5
+   idx=(r*36)+(g*6)+b
+   color(idx,rgb(51*r,51*g,51*b))
+ next:next:next

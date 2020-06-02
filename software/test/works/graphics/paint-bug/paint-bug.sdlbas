@@ -1,0 +1,9 @@
+setdisplay(160,120,32,1)
+cls
+ink(0xDDEEEE)
+paper(0xFF0000)
+pen(0)
+cls
+setautoback(25)
+paint(100,100)
+waitkey

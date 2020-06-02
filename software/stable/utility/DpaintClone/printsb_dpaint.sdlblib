@@ -1,0 +1,54 @@
+'--- An example to avoid installed fonts and pictures for
+'---   a mere text displaying (is it useful or useless?)
+'--- Font drawing readed from the hexdump below (zzqz$[]) (8x8pixels)
+'--- Bug: hard to define Textplot(a$) as a sub-routine 
+'--- Bug: prints(asc(chr$(237))) command provides -19 as result (237-256)
+'---   isn't it weird? - can this be related to signed integers?
+   function xlocate:xlocate=atx:end function
+   function ylocate:ylocate=aty:end function
+   dim zzqz$[255]:for i=0 to 255:zzqz$[i]="55aa55aa55aa55aa":next
+zzqz$[32]="0000000000000000":zzqz$[33]="1818181818001800":zzqz$[34]="6c6c000000000000":zzqz$[35]="6c6cfe6cfe6c6c00"
+ zzqz$[36]="183e603c067c1800":zzqz$[37]="0066acd8366acc00":zzqz$[38]="386c6876dcce7b00":zzqz$[39]="1818300000000000"
+ zzqz$[40]="0c18303030180c00":zzqz$[41]="30180c0c0c183000":zzqz$[42]="00663cff3c660000":zzqz$[43]="0018187e18180000"
+ zzqz$[44]="0000000000181830":zzqz$[45]="0000007e00000000":zzqz$[46]="0000000000181800":zzqz$[47]="03060c183060c000"
+ zzqz$[48]="3c666e7e76663c00":zzqz$[49]="1838781818181800":zzqz$[50]="3c66060c18307e00":zzqz$[51]="3c66061c06663c00"
+ zzqz$[52]="1c3c6cccfe0c0c00":zzqz$[53]="7e607c0606663c00":zzqz$[54]="1c30607c66663c00":zzqz$[55]="7e06060c18181800"
+ zzqz$[56]="3c66663c66663c00":zzqz$[57]="3c66663e060c3800":zzqz$[58]="0018180000181800":zzqz$[59]="0018180000181830"
+ zzqz$[60]="0006186018060000":zzqz$[61]="00007e007e000000":zzqz$[62]="0060180618600000":zzqz$[63]="3c66060c18001800"
+ zzqz$[64]="7cc6ded6dec07800":zzqz$[65]="3c66667e66666600":zzqz$[66]="7c66667c66667c00":zzqz$[67]="1e30606060301e00"
+ zzqz$[68]="786c6666666c7800":zzqz$[69]="7e60607860607e00":zzqz$[70]="7e60607860606000":zzqz$[71]="3c66606e66663e00"
+ zzqz$[72]="6666667e66666600":zzqz$[73]="3c18181818183c00":zzqz$[74]="0606060606663c00":zzqz$[75]="c6ccd8f0d8ccc600"
+ zzqz$[76]="6060606060607e00":zzqz$[77]="c6eefed6c6c6c600":zzqz$[78]="c6e6f6decec6c600":zzqz$[79]="3c66666666663c00"
+ zzqz$[80]="7c66667c60606000":zzqz$[81]="78ccccccccdc7e00":zzqz$[82]="7c66667c6c666600":zzqz$[83]="3c66703c0e663c00"
+ zzqz$[84]="7e18181818181800":zzqz$[85]="6666666666663c00":zzqz$[86]="666666663c3c1800":zzqz$[87]="c6c6c6d6feeec600"
+ zzqz$[88]="c3663c183c66c300":zzqz$[89]="c3663c1818181800":zzqz$[90]="fe0c183060c0fe00":zzqz$[91]="3c30303030303c00"
+ zzqz$[92]="c06030180c060300":zzqz$[93]="3c0c0c0c0c0c3c00":zzqz$[94]="10386cc600000000":zzqz$[95]="00000000000000fe"
+ zzqz$[96]="18180c0000000000":zzqz$[97]="00003c063e663e00":zzqz$[98]="60607c6666667c00":zzqz$[99]="00003c6060603c00"
+ zzqz$[100]="06063e6666663e00":zzqz$[101]="00003c667e603c00":zzqz$[102]="1c307c3030303000":zzqz$[103]="00003e66663e063c"
+ zzqz$[104]="60607c6666666600":zzqz$[105]="1800181818180c00":zzqz$[106]="0c000c0c0c0c0c78":zzqz$[107]="6060666c786c6600"
+ zzqz$[108]="1818181818180c00":zzqz$[109]="0000ecfed6c6c600":zzqz$[110]="00007c6666666600":zzqz$[111]="00003c6666663c00"
+ zzqz$[112]="00007c66667c6060":zzqz$[113]="00003e66663e0606":zzqz$[114]="00007c6660606000":zzqz$[115]="00003c603c067c00"
+ zzqz$[116]="30307c3030301c00":zzqz$[117]="0000666666663e00":zzqz$[118]="00006666663c1800":zzqz$[119]="0000c6c6d6fe6c00"
+ zzqz$[120]="0000c66c386cc600":zzqz$[121]="00006666663c1830":zzqz$[122]="00007e0c18307e00":zzqz$[123]="0e18187018180e00"
+ zzqz$[124]="1818181818181800":zzqz$[125]="7018180e18187000":zzqz$[126]="729c000000000000":zzqz$[127]="0000000000000000"
+function hexvl(a$)
+   e=asc(ucase$(a$))
+   hexvl=abs(((e>=48 and e<=57)*(e-48))+((e>=65 and e<=70)*(e-55)))
+ end function
+function bytefromhexdump(a$,byteadr)
+   i=(byteadr*2)+1:m1$=mid$(a$,i,1):m2$=mid$(a$,i+1,1)
+   tmpr=(hexvl(m1$)*16)+hexvl(m2$):bytefromhexdump=tmpr
+ end function
+sub HexdumpPlot(x,y,a$,i,p)
+  for e=0 to (len(a$)/2)-1:v=bytefromhexdump(a$,e)
+    for z=0 to 7:ik=p:z2=7-z   
+      if (((int(v/(2^z2)))mod 2) and (2^z2)) then:ik=i:end if
+      ink(ik):dot(x+z,y+e):next:next
+ end sub
+sub printsb(a$)
+     xl=xlocate:yl=ylocate:alen=len(a$)
+   for iz=1 to alen
+      hx$=zzqz$[asc(mid$(a$,iz,1))]
+      HexdumpPlot(xl*8,yl*8,hx$,pen,paper):xl=xl+1
+      if xl>((displaywidth\8)-1) then:xl=0:yl=yl+1:end if:next
+ end sub

@@ -1,0 +1,18 @@
+'
+' sdlBasic example Joystick:xgetballjoystick
+'
+'   Name:      xgetballjoystick.sdlbas
+'   Purpose:    get relative x trackball motion
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+while key(27)=0
+    locate (1,1)
+    if numjoysticks()>0 then
+	prints("xgetballjoystick(0,0) return:"+str$(xgetballjoystick(0,0)))
+    else
+	prints("not joystick found")
+    end if
+    waitvbl()
+end while

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>elseIf</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">elseIf
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text"></span><span class="text"><span style="font-weight: bold;">if</span>
+			文に引き続いた複数のif文を許す。 この構文によりさまざまな条件式とそれに伴うブロックコマンドが実行される。
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">if </span><span class="syntax">condition expression</span><span class="syntax2">
+				then</span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<span style="color: rgb(102, 102, 102);">
+					条件が真のとき実行されるコマンド
+					<br>
+				</span></span><span class="syntax2">elseIf</span><span class="syntax"> alternativeCondition 
+				expression </span><span class="syntax2">then </span><span class="syntax2"></span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="color: rgb(102, 102, 102);">
+					最初の条件式が偽で</span><span style="color: rgb(102, 102, 102);">次の条件式が真である場合の実行されるコマンド</span>
+				<br>
+			</span></span><span class="syntax2">{ elseIf</span><span class="syntax"> ... </span>
+			<span class="syntax2">then }</span><span class="syntax2"></span>
+			<br class="syntax2">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="color: rgb(102, 102, 102);">
+					{....}</span></span><span class="syntax2"><span style="color: rgb(102, 102, 102);"></span></span>
+			<br class="syntax2">
+			<span class="syntax2">end if
+				<br>
+			</span><span class="syntax2"></span><span class="syntax2"></span><span class="syntax2">
+			</span>
+			<br>
+			<span class="syntax2"></span>
+		</div>
+		<span class="syntax2"><span class="text"></span></span>
+		<br>
+		<span class="syntax2"><span class="smallTitle">例:
+				<br>
+			</span></span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">setautoback(50)</span>
+			<br class="code">
+			<span class="code">prints("press a number key")</span>
+			<br class="code">
+			<span class="code">waitKey</span>
+			<br class="code">
+			<span class="code">x$=chr$(inkey)</span>
+			<br class="code">
+			<span class="code">if x$="1" then</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; prints("press 1")</span>
+			<br class="code">
+			<span class="code"><span style="font-weight: bold;">elseif</span> x$="2" then</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; prints("press 2")</span>
+			<br class="code">
+			<span class="code">else</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; prints("press other key")</span>
+			<br class="code">
+			<span class="code">end if</span>
+			<br class="code">
+			<span class="code">if x$="4" then :prints("good bye"):end if</span>
+			<br class="code">
+			<span class="code">prints("press esc to exit")</span>
+			<br class="code">
+			<span class="code">waitKey (27)</span>
+			<br>
+		</div>
+		<br>
+		<span class="text"></span><span class="text">似た構文として <span style="font-weight: bold;">if 
+				... then</span>も参照のこと。 </span><span class="syntax2"><span class="syntax2">
+				<br>
+			</span></span>
+		<br>
+		<span class="text">参照： <a style="font-weight: bold;" href="10if-then-endIf.html">if ... 
+				then ... end if</a> and <a href="11else.html"><span style="font-weight: bold;">else</span></a></span><span class="syntax2"><span class="syntax2">
+				<br>
+			</span></span>
+	</body>
+</html>

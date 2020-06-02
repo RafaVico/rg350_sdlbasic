@@ -1,0 +1,8 @@
+' mouse wheel: not works in any mode
+' teorically wheel down and wheel up are button 4 and 5
+'
+while key(27)=0
+    prints(bmouse)
+    wait (50)
+    waitvbl
+end while

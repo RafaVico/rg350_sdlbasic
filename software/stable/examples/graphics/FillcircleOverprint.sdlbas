@@ -1,0 +1,42 @@
+' Fillcircle Overprint graphics example
+' Paulo Silva - april 04 - GPL
+' writed over a template coded from Vroby 
+
+sub FillcircleOverprint(x,y,r,c,a)
+'--- alpha is from 0 to 255
+'--- bug: middle horizontal line is drawn twice - please try light opacities
+  for pz=-1 to 1
+    for yd=0 to r
+        xl=(sin(acos(yd/r)))*r
+      for xd=-xl to xl
+        xp=x+xd:yp=y+(yd*pz)
+      r0=(int(point(xp,yp)/0x10000))mod 256
+       g0=(int(point(xp,yp)/0x100))mod 256
+       b0=(point(xp,yp))mod 256
+      r1=(int(c/0x10000))mod 256
+       g1=(int(c/0x100))mod 256
+       b1=c mod 256
+      r2=255-((255-r0)+((255-r1)*(a/255))):if r2<0 then:r2=0:end if
+       g2=255-((255-g0)+((255-g1)*(a/255))):if g2<0 then:g2=0:end if
+       b2=255-((255-b0)+((255-b1)*(a/255))):if b2<0 then:b2=0:end if
+      c2=(r2*0x10000)+(g2*0x100)+b2
+       ink(c2):dot (xp,yp)
+     next:next:next
+ end sub
+
+
+
+setdisplay(320,240,32,1)
+paper (0xffffff):ink (0x000000)
+pen (0x000000):cls
+setautoback(25)
+prints("draw some overprint filled circles")
+
+FillcircleOverprint(50,50,30,0xFFFF00,255)
+FillcircleOverprint(75,60,30,0xFF00FF,255)
+FillcircleOverprint(60,70,30,0x00FFFF,255)
+
+locate(2,15):prints("press space to exit" )
+waitkey(k_space)
+
+

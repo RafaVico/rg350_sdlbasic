@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Strings:str$
+'
+'   Name:      str$.sdlbas
+'   Purpose:    return string representation of numeric expression
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a=5
+prints("number is "+str$(a))
+waitkey

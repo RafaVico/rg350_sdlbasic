@@ -1,0 +1,58 @@
+
+'- error not displayed on prompt and sdlbasic.err:
+'- SDLEngine:Surface not found: Text has zero width
+
+xe=640:ye=480
+
+setdisplay(xe,ye,32,1):paper(8^8-1):ink(0):pen(0):cls
+setautoback(25)
+
+function lstinf$(a$,b$,c$)
+     adra=1:adrb=1:blngt=len(b$):d$=""
+   while adrb<=blngt
+     if mid$ (a$,adra,1)=mid$ (b$,adrb,1) Then:adrb+=1:End If
+     adra+=1:end while
+   while mid$(a$,adra,1)<>left$(c$,1):d$=d$+mid$(a$,adra,1):adra+=1:end while
+     lstinf$=d$
+ end function
+
+  open"sprites.lst" for input as #1
+
+   flg=0:cntr=0
+while eof(1)=0
+    stop
+'-    if eof(1)<>0 then:flg=1:end if
+  file input #1,text$:text$=ltrim$(text$):text$=rtrim$(text$)
+  text$=text$+":&&&&"
+'-    if lcase$(left$(text$,3))<>"pic" then:flg=1:end if
+  fname$=lstinf$(text$,":",":")
+   xsize=val(lstinf$(text$,"::",":"))
+   ysize=val(lstinf$(text$,":::",":"))
+  if left$(text$,3)="pic" then
+   setcaption("loading:"+str$(cntr)+":"+str$(eof(1)))
+    Loadimage(fname$,1)
+    pasteicon(0,0,1)
+    cntr=cntr+1
+   end if
+    grab(1+cntr,0,0,xsize,ysize)
+     for zz=0 to 1:waitvbl:next
+ wend
+close #1
+'setcaption("list closed")
+
+  sprmx=cntr:cls
+
+ 'setcaption("starting sprite display")
+
+while key(27)=0
+ for i=2 to sprmx:for x=0 to 200
+    bob(1,x,100,i+1):waitvbl
+   next:next
+ wend
+
+
+
+
+
+
+

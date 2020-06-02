@@ -1,0 +1,11 @@
+'
+' sdlBasic example  Strings:space
+'
+'   Name:      space.sdlbas
+'   Purpose:    return string with n spaces in it
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("|"+space(10)+"|")
+waitkey

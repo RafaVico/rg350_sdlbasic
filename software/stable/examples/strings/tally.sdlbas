@@ -1,0 +1,19 @@
+'
+' sdlBasic example Strings: tally example
+' 
+'   Name:     tally.sdlbas
+'   Purpose:   example tally string function 
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setautoback(50)
+
+a$="ciao ciao ciao ciao"
+prints("string: "+a$)
+prints("tally(a$,\"ciao\"):"+str$(tally(a$,"ciao")))
+prints("tally(5,a$,\"ciao\"):"+str$(tally(5,a$,"ciao")))
+prints("tally(15,a$,\"ciao\"):"+str$(tally(15,a$,"ciao")))
+
+waitkey

@@ -1,0 +1,31 @@
+'##################################################
+'#
+'# Anticoeffetto Color test for palette mode
+'#
+'##################################################
+
+setdisplay(640,480,8,0)
+enablepalette(1)
+'autoback(0)
+for i= 1 to 255
+    color(i,rgb(i,i,i))
+    ink(i)
+next
+
+
+a=200: b=1
+for i =100 to 200
+    ink (color(i))
+    bar(0,a,640,a+b)
+    a=a+b:b=b*1.010
+next
+
+screenswap
+waitkey
+   'colorcycling(1,255,1,5)
+
+while key(27)=0
+    screenswap
+   colorcycling(100,201,1)
+
+end while

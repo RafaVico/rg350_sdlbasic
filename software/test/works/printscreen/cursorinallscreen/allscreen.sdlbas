@@ -1,0 +1,15 @@
+'
+' Cursor in all screen
+'
+setdisplay(640,480,32,0)
+
+for i =0 to 7
+    screenopen(i,320,200,20*i,20*i,320,200,0)
+    paper(color(i)):cls
+    curson
+    pen(color(7-i))
+    fprints("screen "+str$(i))
+    wait(1000)
+next
+prints("press any Key")
+waitkey

@@ -1,0 +1,9 @@
+'
+' sdlBasic example Graphics:getpixel
+'
+'   Name:      getpixel.sdlbas
+'   Purpose:    give the color of x,y point
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

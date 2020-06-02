@@ -1,0 +1,13 @@
+'
+' sdlBasic example  File graphics input output:loadmusic
+'
+'   Name:      loadmusic.sdlbas
+'   Purpose:    load a music module (xm,mod,ogg,mp3 and mid)
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'you can load as music wav mp3 ogg mod(all family like xm) and mid file
+loadmusic("../wav.wav")
+playmusic(-1)
+waitkey

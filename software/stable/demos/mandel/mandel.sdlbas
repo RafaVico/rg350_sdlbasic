@@ -1,0 +1,73 @@
+'
+' sdlBasic demos: Mandel
+'
+'   Name:      mandel.sdlbas
+'   Purpose:   simple fractal mandelbrot
+'  Author:   amiga Gianluigi Davassi  ported on sdlBaic __vroby__
+'  Licence:    LGPL
+'
+' Bugs:
+'
+' Todo:
+'
+'
+'MANDEL V 2.0
+'JFOX@AIRMAIL.NET
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+setdisplay(640,480,8,0)
+'mousehide
+'enablepalette(1)
+for i=0 to 255:color(i,rgb(i,i,i)):next
+autoback(0)
+autoupdatebob(0)
+autoupdatesprite(0)
+dualplayfield(0)
+CLS
+MAXCOLOR=16
+XMAX=640
+YMAX=480
+LEFTSIDE=-2
+TOP=1.25
+XSIDE=2.5
+YSIDE=-2.5
+XSCALE=XSIDE/XMAX
+YSCALE=YSIDE/YMAX
+FOR Y=0 TO YMAX/2'
+	FOR X=0 TO XMAX
+		CX=X*XSCALE+LEFTSIDE
+		CY=Y*YSCALE+TOP
+		ZX=0
+		ZY=0
+		COLORCOUNTER=0
+		WHILE (ZX*ZX+ZY*ZY<4 AND COLORCOUNTER<MAXCOLOR)
+			TEMPX=ZX*ZX-ZY*ZY+CX
+			ZY=2*ZX*ZY+CY
+			ZX=TEMPX
+			COLORCOUNTER=COLORCOUNTER+1
+		WEND
+		mcolor=rgb(255-COLORCOUNTER*8,255-COLORCOUNTER*5,255-COLORCOUNTER*4)
+		ink(mCOLOR)
+		DOT(X,Y)
+		DOT(X,YMAX-Y)
+	NEXT
+	screenswap
+NEXT
+screenswap
+
+color(0,rgb(0,0,0))
+color(255,rgb(255,255,255))
+paper(color(255))
+pen(color(0))
+prints(timer)
+prints(ticks)
+screenswap
+colorcycling(1,254,1,10)
+waitkey
+colorcycling(0)
+if displaybpp>8 then
+    screenfade(0,10)
+    while screenfade(0)<>0:
+    end while
+end if

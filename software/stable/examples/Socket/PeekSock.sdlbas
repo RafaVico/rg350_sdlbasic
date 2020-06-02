@@ -1,0 +1,9 @@
+'
+' sdlBasic example  Socket:PeekSock
+'
+'   Name:      PeekSock.sdlbas
+'   Purpose:    Peek information coming from socket, but do not clear.
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

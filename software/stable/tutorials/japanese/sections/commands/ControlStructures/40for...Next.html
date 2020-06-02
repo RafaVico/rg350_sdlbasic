@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>for ... next</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">for ... next
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">ブロックコマンドを指定された回数だけ繰り返す。 くり返し制御は変数の値により制御される。</span>
+		<br>
+		<br>
+		<span class="smallTitle">書式: </span><span class="text">
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">for variable </span><span class="syntax2">= </span><span class="syntax">
+				start（初期値） </span><span class="syntax2">to </span><span class="syntax">finish（終値）
+			</span><span class="syntax2">{step </span><span class="syntax">increment（増分) </span>
+			<span class="syntax2">}
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="color: rgb(102, 102, 102);">
+					commands </span></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {exit for}
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; {continue}
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">next
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">制御変数<span class="syntax">start(初期値）</span><span class="text">は<span class="syntax">increment（増分）</span><span class="text">
+					により<span class="syntax">finish(終値)</span>まで増加される。
+					<br>
+					step変数が省略された場合には１だけ増加される。
+					<br>
+					<span style="font-weight: bold;">for</span> と <span style="font-weight: bold;">next</span>の間のコマンドは一度のイタレーションループに一度だけ実行される。
+					<br>
+					<span style="font-weight: bold;">next</span>の代わりに <span style="font-weight: bold;">end 
+						for</span>も使用することもできる。
+					<br>
+					<br>
+				</span><span class="syntax2"></span><span class="smallTitle">例:
+					<br>
+				</span><span class="code"></span><span style="font-weight: bold;" class="code"></span>
+				<br>
+				<div style="text-align: left; background-color: rgb(255, 255, 204);">
+					<span class="code">' Print the&nbsp;numbers from 1 to 10</span>
+					<br class="code">
+					<span class="code"><span style="font-weight: bold;">for</span> i = 1 to 10</span>
+					<br class="code">
+					<span class="code">&nbsp;&nbsp;&nbsp; print i&nbsp; </span>
+					<br class="code">
+					<span style="font-weight: bold;" class="code">next</span><span class="smallTitle"></span>
+					<br>
+					<span class="smallTitle"></span>
+				</div>
+				<br>
+				<span class="text">参照：<a href="41exitFor.html"><span style="font-weight: bold;">exit for</span></a>,
+					<a href="50continue.html"><span style="font-weight: bold;">continue</span></a> ,<a href="42step.html"><span style="font-weight: bold;">step</span></a></span>
+				<br>
+	</body>
+</html>

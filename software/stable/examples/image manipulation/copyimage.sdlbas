@@ -1,0 +1,14 @@
+'
+' sdlBasic example  Image manipulation:copyimage
+'
+'   Name:      copyimage.sdlbas
+'   Purpose:    copy image s to image d
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+copyimage(1,2)
+pastebob(10,10,1)
+pastebob(10,100,2)
+waitkey

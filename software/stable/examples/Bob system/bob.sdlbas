@@ -1,0 +1,17 @@
+'
+' sdlBasic example  Bob system:bob
+'
+'   Name:      bob.sdlbas
+'   Purpose:    set or move bob n at x,y with frame fr
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+loadimage("../sprites.png",1)
+
+for i =0 to 100
+    bob(1,i,100,1)
+    waitvbl
+next
+waitkey
+

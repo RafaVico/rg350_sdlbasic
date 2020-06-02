@@ -1,0 +1,22 @@
+'animRap.sdlBas
+
+for i=1 to 32
+	loadimage("anim/sdlbasic_lo"+right$("000"+ltrim$(str$(i)),3)+".gif",i)
+next
+loadsound("logorap.wav",1)
+
+i=1
+y=0
+playsound(1,-1,-1)
+while inkey=0
+	'locate (1,1):prints(i)
+	sprite(1,160,100+y,i)
+	screenswap
+	i=(i+0.5)
+	if i>32 then
+		i=1
+
+		'playsound(1,10)fixed crash!!!
+		y=y+rnd(50)-25
+	end if
+end while

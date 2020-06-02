@@ -1,0 +1,19 @@
+-----------------------------------------------------------------------------------------------------------
+-- caption.sdlbas
+-- author: nitrofurano
+------------------------------------------------------------------------------------------------------------
+
+setDisplay(320,200,32,1)
+paper(0xffffff)
+ink(0x000001)
+pen(0x000001)
+cls
+a$="sdlbasic - setcaption example - "
+while key(27)=0
+	a$=right$(a$,len(a$)-1)+left$(a$,1)
+	setCaption(a$)
+	for i=0 to 3
+		waitVBL
+	next
+wend
+

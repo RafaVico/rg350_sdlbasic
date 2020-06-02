@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Maths:bitwiseand
+'
+'   Name:      bitwiseand.sdlbas
+'   Purpose:    return the logic and of the operands
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints(bitwiseand(127,127))
+prints("press any key to exit")
+waitkey

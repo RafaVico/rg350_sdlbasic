@@ -1,0 +1,52 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  clientTCP.sdlbas
+'| date 16/07/2004
+'|
+'| description:
+'| a little client
+'|
+'| bugfix:
+'|
+'|
+'| Bug:>
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+setdisplay (640,200,0,1)
+
+sub main
+    curson
+    'input host: for default is localhost (this computer) you can use ipnumber or host name
+    host$=inputs("host name:","localhost")
+    server=ConnectSock(host$,1234)
+
+    'verify that connection has not problems
+    if server=0 then:prints("not connetted host "):waitkey:end:end if
+    if server=-1 then:prints("host not exist"):waitkey:end:end if
+
+    prints("connetted host ")
+    wait(500)
+    while ret$<>"Q"
+        response=IsServerReady(server)
+	if(response>0)then
+	    'ret$=readsock(server,1024)
+	    ret$=readlinesock(server)
+	    'ret=readbytesock(server)
+	    'prints(str$(ret)+":"+chr$(ret))
+	    fprints(ret$)
+
+	end if
+
+	if inkey<>0 then
+	    ret$=inputs(">","")
+	    print writelinesock(server,ret$)
+	    wait (500)
+	end if
+	if ret$="X" then
+	    ret$="Q"
+	end if
+    end while
+    writelinesock(server,"good bye \n")
+    closesock(server)
+end sub
+main

@@ -1,0 +1,19 @@
+' image control test
+
+include "interface.sdlblib"
+
+window1=newcontrol(window,0,20,20,320,200,"my window")
+
+'image h is reimpostate for preserve aspect ratio
+' if h=0 border is not draw
+image1=newcontrol(image,window1,60,50,200,80,"vroby.jpg")
+
+button1=newcontrol(button, window1,100,160,120,15," press me to exit ")
+draw
+while key(27)=0
+    waitevent(1)
+    if was(button1,activated) then
+	exit while
+    end if
+end while
+destroyall

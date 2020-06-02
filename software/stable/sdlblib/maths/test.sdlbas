@@ -1,0 +1,23 @@
+'
+' math test
+'
+'
+'include "maths.sdlblib"
+
+setdisplay(320,240,32,1):paper(8^8-1):ink(0):pen(0):cls
+
+a1=240:b1=63
+  prints( "boolean operations")
+  prints (bitwiseand(a1,b1))
+  prints (bitwiseor(a1,b1))
+  prints (bitwisexor(a1,b1))
+  prints (andbit(a1,b1))
+  prints (orbit(a1,b1))
+  prints (xorbit(a1,b1))
+
+    prints("")
+a1=240:b1=63
+  prints( "min max test")
+  prints (min(a1,b1))
+  prints (max(a1,b1))
+waitkey

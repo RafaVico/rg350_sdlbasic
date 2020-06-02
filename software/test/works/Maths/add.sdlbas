@@ -1,0 +1,7 @@
+
+x=0xfff
+while x>0
+    x-=0xf
+    prints(hex$(x))
+end while
+waitkey

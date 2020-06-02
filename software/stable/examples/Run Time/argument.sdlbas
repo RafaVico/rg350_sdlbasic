@@ -1,0 +1,9 @@
+'
+' sdlBasic example Run Time:argument
+'
+'   Name:      argument.sdlbas
+'   Purpose:    returns the arguments sends to sub/function with n=0 or without parameter will be return the arguments count
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

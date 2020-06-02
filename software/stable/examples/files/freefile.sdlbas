@@ -1,0 +1,14 @@
+'
+' sdlBasic example  Files:freefile
+'
+'   Name:      freefile.sdlbas
+'   Purpose:    return the handle of the next free file
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+open "p" for output as 1
+prints("the first free file is:"+str$(freefile))
+waitkey
+close 1
+kill("p")

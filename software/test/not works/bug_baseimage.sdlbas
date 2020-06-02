@@ -1,0 +1,13 @@
+'- how BaseImage works?
+setdisplay(256,256,32,1)
+screenopen(1,256,256,0,0,256,256,1)
+screen(1)
+paper(8^8-1):ink(0x888):cls:waitvbl:cls
+grab(1,0,0,32,32)
+
+baseimage(1,1)
+for i= 0 to 1000
+poke(1,i,255)
+next
+pasteicon(0,0,1)
+waitkey

@@ -1,0 +1,12 @@
+'
+' sdlBasic example  Strings:lcase
+'
+'   Name:      lcase.sdlbas
+'   Purpose:    convert string to lower case
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+a$="PIPPO"
+prints(lcase(a$))
+waitkey

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="ja">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>Dynamic Arrays</title>
+		<meta content="zoiba" name="author">
+		<link rel="stylesheet" href="../style.css" type="text/css">
+	</head>
+	<body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="background-color: rgb(0, 0, 0); text-align: left;">
+			<span class="title">動的配列</span><span class="title">
+				<br class="text">
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			標準の配列宣言に加えて、sdlBasicは動的な配列をサポートします。 インデックスを書かずに、配列を宣言するならば：
+			<br>
+			<br>
+			<!--聞いてないよ -->
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">Dim myArray[]</span><span class="text"></span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text">&nbsp;
+			<br>
+			sdlBasicは動的な配列としてそれを扱います。 動的な配列では、それらのインデックスとしてストリングを使います：
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">myArray["cat"] = "Chester"</span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text">&nbsp;
+			<br>
+			インデックスのために数値も使うことができるが、それらはストリングとして内部に蓄えられる。 従って、以下の宣言は等しい：
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">myArray[1,2,3] = 23</span>
+			<br class="code">
+			<span class="code">myArray["1,2,3"] = 23</span><span class="text"></span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text">&nbsp;
+			<br>
+			動的な配列を使うためにFor Each文を使うことができます：
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">For Each key In myArray</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; Print key, myArray[key]</span>
+			<br class="code">
+			<span class="code">Next</span>
+			<br>
+			<span class="text"></span>
+		</div>
+		<span class="text"></span><span class="text">
+			<br>
+		</span>
+		<div style="text-align: right;">
+			<span class="text">&nbsp;</span>
+		</div>
+		<div style="text-align: right;">
+			<span class="text">&nbsp;</span>
+		</div>
+	</body>
+</html>

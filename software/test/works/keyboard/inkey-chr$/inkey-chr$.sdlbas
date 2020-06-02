@@ -1,0 +1,11 @@
+	do
+	i=inkey
+	prints(chr$(i))
+
+	select case i
+		case 27
+		end
+
+	end select
+
+loop

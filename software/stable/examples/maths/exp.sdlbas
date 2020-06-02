@@ -1,0 +1,13 @@
+'
+' sdlBasic example  Maths:exp
+'
+'   Name:      exp.sdlbas
+'   Purpose:    returns exponential function
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+prints("prints(exp(16))")
+prints(exp(16))
+prints("press any key to exit")
+waitkey

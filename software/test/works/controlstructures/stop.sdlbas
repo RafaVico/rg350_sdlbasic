@@ -1,0 +1,30 @@
+stop
+testo$="ciao"
+sub hlines
+    dim x[]
+    x["a","b"]="iao"
+    x["b"]="c"
+    x["c"]=12
+    stop
+
+
+    for a =0 to 480 step 10
+	line(0,a,640,a)
+	'stop
+    next
+end sub
+
+sub main
+for i = 0 to 10
+    paper(i*10000)
+    cls
+    hlines
+    prints("prima")
+    'stop
+    prints("dopo")
+next
+end sub
+
+main
+
+waitkey()

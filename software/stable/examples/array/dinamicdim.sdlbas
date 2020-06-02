@@ -1,0 +1,25 @@
+common arcount=0
+common ar$[arcount]
+
+sub addrecord(record)
+    shared ar$[]
+    dim tmp[arcount]
+    for i=0 to arcount:tmp[i]=ar$[i]:next
+    arcount+=1
+    dim ar$[arcount]
+    for i=0 to arcount -1:ar$[i]=tmp[i]:next
+    ar$[arcount]=record
+end sub
+
+
+for i= 0 to 1000
+    addrecord(str$(i))
+    prints(str$(i))
+next
+for i= 0 to 1000 step 1
+    prints(ar$[i])
+next
+
+
+
+waitkey

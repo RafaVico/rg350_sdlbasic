@@ -1,0 +1,25 @@
+'
+' sdlBasic example  Sub and function:declare
+'
+'   Name:      declare.sdlbas
+'   Purpose:    declare a subrutine/function in qbasic mode
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'
+'-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+declare sub mysub(a)
+declare function myfunction(a)
+
+ mysub("1")
+ myfunction("2")
+
+waitkey
+
+sub mysub(a)
+	prints("a")
+end sub
+
+function my function(a)
+	prints(a)
+end function

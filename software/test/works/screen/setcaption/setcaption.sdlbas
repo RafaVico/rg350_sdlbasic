@@ -1,0 +1,19 @@
+'|------------------------------------------------------------------------------------------------------------
+'| sdlBasic test  setcaption.sdlbas
+'| date 11/06/2004
+'|
+'| description:
+'| change and report the window title
+'|
+'| bugfix:
+'|
+'|
+'| Bug:
+'|
+'|
+'|------------------------------------------------------------------------------------------------------------
+
+setdisplay(640,480,32,1)
+setcaption("la pizza è pronta")
+prints(caption)
+waitkey

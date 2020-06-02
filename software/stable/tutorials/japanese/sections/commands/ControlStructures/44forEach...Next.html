@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>for each ... next</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">for each ... next
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+			arrayのなかからシーケンシャルに variableを抜き出しそれに対してコマンドを実行する。 
+			<!--- Iterate through array, sequentially assigning the 
+			key from each array index to variable.--->
+			<br>
+		</span>
+		<br>
+		<span class="smallTitle">書式: </span>
+		<br>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">for each </span><span class="syntax">variable </span><span class="syntax2">
+				In </span><span class="syntax">array </span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <span style="color: rgb(102, 102, 102);">
+					commands </span></span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [exit for]
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [continue]
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">next
+				<br>
+			</span>
+		</div>
+		<span class="text">
+			<br>
+		</span><span class="text"><span style="font-weight: bold;">for each</span> と <span style="font-weight: bold;">
+				next</span>の間のコマンドはループのなかで 一度だけ実行される。 <!-----The commands between <span style="font-weight: bold;">
+				for each</span> statement and <span style="font-weight: bold;">next</span> statement 
+			are executed each iteration through the loop. ---->
+			<span style="font-weight: bold;">next</span> statement. </span>のかわりに <span style="font-weight: bold;">
+			end for</span>も可。 <span class="smallTitle">
+			<br>
+			例: </span><span style="font-family: Arial,Helvetica,sans-serif;">
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code">' Create a dynamic arrays</span>
+			<br class="code">
+			<span class="code">dim number[]</span>
+			<br class="code">
+			<br class="code">
+			<span class="code">' Fill it with values</span>
+			<br class="code">
+			<span class="code">number[1] = "one"</span>
+			<br class="code">
+			<span class="code">number[2] = "two"</span>
+			<br class="code">
+			<span class="code">number[3] = "three"</span>
+			<br class="code">
+			<span class="code">number["four"] = 4</span>
+			<br class="code">
+			<span class="code">number["five"] = 5</span>
+			<br class="code">
+			<span class="code">number["six"] = 6</span>
+			<br class="code">
+			<span class="code">' Display the keys and values</span>
+			<br class="code">
+			<span class="code"><span style="font-weight: bold;">for each</span> k <span style="font-weight: bold;">
+					in</span> number</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; print k, number[k]</span>
+			<br class="code">
+			<span class="code"><span style="font-weight: bold;">end for</span> ------------------- 
+				you can use indifferently next or end for</span><span style="font-family: Arial,Helvetica,sans-serif;"></span>
+			<br>
+			<span style="font-family: Arial,Helvetica,sans-serif;"></span>
+		</div>
+		<span style="font-family: Arial,Helvetica,sans-serif;">
+			<br>
+		</span><span class="text">参照： <a href="41exitFor.html"><span style="font-weight: bold;">exit 
+					for</span></a>, <a href="50continue.html"><span style="font-weight: bold;">continue</span></a>
+		</span>
+		<br>
+	</body>
+</html>

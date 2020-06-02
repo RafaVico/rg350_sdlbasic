@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html style="direction: ltr;" lang="jp">
+	<head>
+		<meta content="text/html; charset=Shift-JIS" http-equiv="content-type">
+		<title>sub</title>
+		<link rel="stylesheet" href="../../style.css" type="text/css">
+			<meta content="zoiba" name="author">
+	</head>
+	<body style="background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
+		<div style="text-align: left; background-color: rgb(204, 204, 255);">
+			<span class="subTitle">sub ... end sub
+				<br>
+			</span>
+		</div>
+		<br>
+		<span class="text">サブルーチン定義
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">書式:
+			<br>
+		</span>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">sub </span><span class="syntax2"></span><span class="syntax">name</span><span class="syntax2">
+			</span><span class="syntax2">( </span><span class="syntax">parmlist {...}</span><span class="syntax2">
+			</span><span class="syntax2"></span><span class="syntax2">) </span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">&nbsp;&nbsp;&nbsp; </span><span style="color: rgb(102, 102, 102);" class="syntax">
+				block of instructions</span><span class="syntax2"> </span><span class="syntax2">
+				<br>
+			</span>
+		</div>
+		<div style="text-align: left; background-color: rgb(239, 239, 255);">
+			<span class="syntax2">end sub
+				<br>
+			</span>
+		</div>
+		<span class="text"></span>
+		<br>
+		<span class="text"></span><span class="syntax">name </span><span class="text">サブルーチンの名前,最初が数字以外の英文字で始まる文字列。 
+			たとえば: 1printString は正しくない。printString1 は正しい。</span>
+		<br class="text">
+		<span class="text"></span><span class="syntax">parmlist</span><span class="text"> 複数の変数でサブルーチンに引き渡される
+		</span>
+		<br class="text">
+		<span class="text">プログラムを書く上であるシークエンスを何度か繰り返す必要がある場合に、 
+			sdlBasicではそのシークエンスを一か所にまとめそれが必要なそれぞれの場所から 名前で呼び出すことをお勧めする。 
+			サブルーチンのなかで使用される変数はたとえ同じ名前が本体の別の場所にあっても ローカル変数になる。 これは配列も同じ。 
+			<!--- While writing 
+			programs may happen you need to repeat the same sequence of instructions in 
+			several parts of the program. sdlBasic offer you the chance of write the 
+			instruction sequence one time and then recall it from every part of the program 
+			may needs it. Variables used inside the subroutine are local variables, that 
+			means they will not influence other variables that happens to use the same 
+			variable name in your main program or in any other subroutine. This is valid 
+			for arrays too.-->
+			<br>
+			<br>
+			参照：&nbsp;</span><span class="text"><a style="font-weight: bold;" href="../Array/common.html">Commons</a>,
+			<a style="font-weight: bold;" href="../Array/shared.html">Shared</a>, <a style="font-weight: bold;" href="../Array/dim.html">
+				Dim</a></span><span class="text"> </span>
+		<br class="text">
+		<span class="text">サブルーチンにはパラメーターのリストを渡すことができる。 パラメーターの必要のないサブルーチンは()を省略出来る。 
+			<!-- You 
+			can pass a list of parameters to your subroutine, but, unlike Function, you 
+			can't return any results. Subroutine that do not require input parameters can 
+			be used in your main program without brackets. --></span><span class="text">
+			<br>
+		</span>
+		<br>
+		<span class="text"></span><span class="smallTitle">例: </span><span style="font-family: Arial,Helvetica,sans-serif;">
+		</span>
+		<br>
+		<div style="text-align: left; background-color: rgb(255, 255, 204);">
+			<span class="code"><span style="font-weight: bold;">Sub&nbsp;</span> printString(a$)</span>
+			<br class="code">
+			<span class="code">&nbsp;&nbsp;&nbsp; prints(a$)</span>
+			<br class="code">
+			<span style="font-weight: bold;" class="code">end Sub</span>
+			<br class="code">
+			<span class="code">printString("yo!!!") </span>
+			<br>
+		</div>
+		<br>
+		<span class="text">参照：</span><span class="text"><a style="font-weight: bold;" href="../Array/common.html">
+				Commons</a>, <a style="font-weight: bold;" href="../Array/shared.html">Shared</a>
+			, <a style="font-weight: bold;" href="../Array/dim.html">Dim</a></span><span class="text">
+		</span>
+	</body>
+</html>

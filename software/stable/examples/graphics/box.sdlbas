@@ -1,0 +1,14 @@
+' sdlBasic example Graphics: box example
+'   Name:     box.sdlbas
+'   Purpose:   example box function  
+'  Author:     __vroby__    ( __vroby__@libero.it )
+'  Licence:    LGPL
+'--------------------------------------------
+setdisplay(320,240,32,1): paper (0xffffff):ink (0x000000)
+  pen (0x000000):cls
+setautoback(25)
+prints("draw a box ")
+ink (0x000000):box(10,20,110,120)
+locate(2,15):prints("press space to exit")
+waitkey(k_space)
+
