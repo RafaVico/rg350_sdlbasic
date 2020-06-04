@@ -14,7 +14,7 @@
 '
 '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-setdisplay(640,480,16,0)
+setdisplay(320,240,16,0)
 autoback(-15)
 mousehide()
 cursoff()
@@ -69,7 +69,7 @@ sub renderRacchetta
 end sub
 '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-sub renderBlocco (number n,number c)
+sub renderBlocco (n,c)
 'sub renderBlocco (n,c)
 	screenopen(7,64,48,0,0,0,0,0)
 	ink(c)
@@ -104,16 +104,16 @@ sub rendercampo
     dim n
 	paper(rgb(40,160,40))
 	cls()
-	for y=0 to 480 step 16
-		for x=0 to 500 step 32
+	for y=0 to 240 step 16
+		for x=0 to 250 step 32
 			pasteicon(x,y,10)
 		next
 	next
 
 	ink(rgb(255,255,255))
-	bar(0,0,640,2)
-	bar(0,0,2,480)
-	bar(514,0,516,480)
+	bar(0,0,320,2)
+	bar(0,0,2,240)
+	bar(514,0,300,240)
 
 
 	n=3
@@ -145,10 +145,10 @@ sub game
 	vx=0
 	vy=0
 
-	sprite (1,320,445,1)
-	sprite (2,320,460,2)
+	sprite (1,160,210,1)
+	sprite (2,160,230,2)
 
-	while ysprite(1)<460
+	while ysprite(1)<230
 		if key(k_esc)then
 			exit while
 		end if
@@ -258,25 +258,25 @@ end sub
 '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 sub titolo
-    dim i as integer
+    dim i
     dim y
     dim x
 	for i=1 to 35:deletesprite(i):next
 	'paper(0)
-	screenopen(0,640+32,480+32,0,0,640,480,0)
+	screenopen(0,320+32,240+32,0,0,320,240,0)
 	ink(rgb(0,255,0))
 	bar (50,50,200,200)
-	for y=0 to 480+32 step 16
-		for x=0 to 640+32 step 32
+	for y=0 to 240+32 step 16
+		for x=0 to 320+32 step 32
 			pasteicon(x,y,10)
 		next
 	next
 
-	screenopen(1,640,480,0,0,640,480,2)
+	screenopen(1,320,240,0,0,320,240,2)
 	ink(rgb(255,0,0))
 	Text(50,210,64,"Arcanoid")
-	text(420,240,32,"sdlBasic")
-	text (200,350,12,"press enter to start")
+	text(280,120,32,"sdlBasic")
+	text (100,160,12,"press enter to start")
 	ink(rgb(255,255,255))
 	line(10,280,630,280)
 	screen(0)
@@ -287,10 +287,12 @@ sub titolo
 		screenswap()
 		i=(i+1)
 		if i>32 then :i=i-32 :end if
-		if key(k_esc) then :end():end if
+		if key(k_esc) then
+			end
+		end if
 	end while
 	screenclose(1)
-	screenopen(0,640,480,0,0,640,480,0)
+	screenopen(0,320,240,0,0,320,240,0)
 	cls()
 end sub
 '-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

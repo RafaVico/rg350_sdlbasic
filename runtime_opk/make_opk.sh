@@ -24,7 +24,6 @@ FLIST="sdlbrt"
 FLIST="${FLIST} run.sh"
 FLIST="${FLIST} pfcb.ttf"
 FLIST="${FLIST} sdlbrt.png"
-FLIST="${FLIST} share"
 FLIST="${FLIST} default.gcw0.desktop"
 
 rm -f ${OPK_NAME}

@@ -1,9 +1,9 @@
-setdisplay(640,480,16,1)
+setdisplay(320,240,16,0)
 common c=0
 while key(27)=0
    ink(rgb(255,255,255))
    cls
-   text(0,0,124,c)
+   text(0,0,24,str(c))
 
    c=c+1
    ScreenSwap

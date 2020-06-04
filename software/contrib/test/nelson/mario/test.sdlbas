@@ -25,6 +25,9 @@ side=leftd
 pstep=0
 screen(0)
 while 0=0
+	if key(k_esc) then
+		exit while
+	end if
   if key(k_left) then
     side = leftd
     player_x = player_x - 3
